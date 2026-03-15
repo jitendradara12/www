@@ -4,6 +4,26 @@ body {
   background-color: aqua;
   /* color: #ccc; */
 }
+nav {
+  position: sticky;
+  max-width: 800px;
+  margin: 0;
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav .site-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: inherit;
+}
+nav a:not(.site-title) {
+  margin-left: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+}
 
 main {
   max-width: 800px;
