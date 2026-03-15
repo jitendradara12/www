@@ -2,3 +2,20 @@ baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'site'
 theme = 'lugo'
+
+[[menu.main]]
+  name = "Home"
+  url = '/'
+  weight = 999
+
+[[menu.main]]
+  name = "contact"
+  url = '/t'
+  weight = 0
+
+[[menu.main]]
+  name = "about"
+  url = '/me'
+  weight = 1
+
+
