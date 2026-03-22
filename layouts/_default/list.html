@@ -1,17 +1,17 @@
 {{ define "title" -}}
-{{ .Title | title }}
+<span class="masthead-label">Collection</span>
+<h2 class="headline-md">{{ .Title | title }}</h2>
 {{- end }}
 {{ define "main" -}}
 {{ .Content }}
-<ul>
+<ul class="article-list">
 {{- range.Pages }}
 <li>
-	{{- if .Param "datesinlist" }}<time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006 Jan 02" }}</time> &ndash; {{ end -}}
+	{{- if .Param "datesinlist" }}<span class="label-sm"><time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006 Jan 02" }}</time></span><br>{{ end -}}
 	<a href="{{ .RelPermalink }}">{{ .Title }}</a>
 	{{- if .Param "authorsinlist" }}
 	{{ with .Params.authors }}
-		by 
-		{{ delimit . ", " " and " }}
+		<span class="label-sm">by {{ delimit . ", " " and " }}</span>
 	{{end}}
 	{{ end -}}
 </li>

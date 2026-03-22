@@ -10,6 +10,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="robots" content="index, follow">
 	<meta charset="utf-8">
+	<script>
+		const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+		if (savedTheme === 'dark') {
+			document.documentElement.setAttribute('data-theme', 'dark');
+		}
+	</script>
 </head>
 <body>
 <nav>
@@ -24,26 +30,45 @@
   </div>
 </nav>
 <main>
-<header><h1 id="tag_Tags">Tags</h1></header>
+<header><span class="masthead-label">Collection</span>
+<h2 class="headline-md">Tags</h2></header>
 <article>
 
-<ul>
-<li><time datetime="2025-12-14T13:03:12&#43;05:30">2025 Dec 14</time> &ndash; <a href="/tags/temp/">Temp</a>
+<ul class="article-list">
+<li><span class="label-sm"><time datetime="2025-12-14T13:03:12&#43;05:30">2025 Dec 14</time></span><br><a href="/tags/temp/">Temp</a>
 	
 	</li>
-<li><time datetime="2025-12-14T13:03:12&#43;05:30">2025 Dec 14</time> &ndash; <a href="/tags/try/">Try</a>
+<li><span class="label-sm"><time datetime="2025-12-14T13:03:12&#43;05:30">2025 Dec 14</time></span><br><a href="/tags/try/">Try</a>
 	
 	</li>
 </ul>
 </article>
 </main>
 
-<footer>
-  
-
-	
-	
+<footer class="editorial-footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      
+</div>
+    <div class="footer-right">
+      </div>
+  </div>
 </footer>
 
+
+<button id="theme-toggle" aria-label="Toggle Dark Mode" title="Toggle Theme">◐</button>
+<script>
+	const themeToggle = document.getElementById('theme-toggle');
+	themeToggle.addEventListener('click', () => {
+		let theme = document.documentElement.getAttribute('data-theme');
+		if (theme === 'dark') {
+			document.documentElement.removeAttribute('data-theme');
+			localStorage.setItem('theme', 'light');
+		} else {
+			document.documentElement.setAttribute('data-theme', 'dark');
+			localStorage.setItem('theme', 'dark');
+		}
+	});
+</script>
 </body>
 </html>

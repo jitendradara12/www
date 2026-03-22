@@ -5,33 +5,68 @@
 	<description>Recent content in Temp on site</description>
 	<generator>Hugo -- gohugo.io</generator>
 	<language>en-us</language>
-	<lastBuildDate>Sun, 14 Dec 2025 13:03:12 +0530</lastBuildDate>
+	<lastBuildDate>Sun, 14 Dec 2025 13:02:42 +0530</lastBuildDate>
     
         <atom:link href="http://localhost:1313/tags/temp/index.xml" rel="self" type="application/rss+xml" />
 	
 	
 	<item>
-		<title>sec</title>
+		<title>Clarity Over Noise</title>
 		<link>http://localhost:1313/t/second/</link>
 		<pubDate>Sun, 14 Dec 2025 13:03:12 +0530</pubDate>
 		
 		<guid>http://localhost:1313/t/second/</guid>
 		<description>&lt;p&gt;content/
 &lt;a href=&#34;http://localhost:1313/t/first&#34;&gt;link to first&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;├── wiki/&lt;/p&gt;
-&lt;p&gt;├── til/&lt;/p&gt;
-&lt;p&gt;├── errors/&lt;/p&gt;
-&lt;p&gt;└── projects/&lt;/p&gt;
-&lt;ol start=&#34;3&#34;&gt;
-&lt;li&gt;&amp;ldquo;hi&amp;rdquo; yet, &lt;strong&gt;this Hugo project IS the thing.&lt;/strong&gt; look markdown.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;h2 id=&#34;the-cost-of-constant-input&#34;&gt;The Cost of Constant Input&lt;/h2&gt;
+&lt;p&gt;Most people do not lack intelligence. They lack signal.&lt;/p&gt;
+&lt;p&gt;Continuous scrolling, fragmented reading, shallow consumption — these patterns train the brain to avoid depth. Attention becomes reactive instead of directed. Over time, this creates a false sense of productivity while actual understanding declines.&lt;/p&gt;
+&lt;p&gt;The problem is not information scarcity. It is filtration failure.&lt;/p&gt;
+&lt;h2 id=&#34;thinking-as-a-skill&#34;&gt;Thinking as a Skill&lt;/h2&gt;
+&lt;p&gt;Thinking is not automatic. It is trained.&lt;/p&gt;
+&lt;p&gt;Clear thinking requires:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Post 1:&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Post 2:&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Post 3:&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Why it works:&lt;/strong&gt;
-&lt;img src=&#34;http://localhost:1313/tmp.png&#34; alt=&#34;image&#34;&gt;&lt;/li&gt;
+&lt;li&gt;Slowing down input&lt;/li&gt;
+&lt;li&gt;Structuring ideas&lt;/li&gt;
+&lt;li&gt;Testing assumptions&lt;/li&gt;
+&lt;li&gt;Writing to refine thought&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;Without these, the mind defaults to imitation — repeating what it has seen without verification.&lt;/p&gt;
+&lt;h2 id=&#34;build-a-personal-system&#34;&gt;Build a Personal System&lt;/h2&gt;
+&lt;p&gt;A simple structure:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;wiki/&lt;/strong&gt; → stable knowledge&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;til/&lt;/strong&gt; → small daily learnings&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;errors/&lt;/strong&gt; → documented mistakes&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;projects/&lt;/strong&gt; → applied output&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This creates a feedback loop:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Learn something&lt;/li&gt;
+&lt;li&gt;Apply it&lt;/li&gt;
+&lt;li&gt;Fail or refine&lt;/li&gt;
+&lt;li&gt;Record the outcome&lt;/li&gt;
+&lt;li&gt;Repeat&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Over time, this compounds into real competence.&lt;/p&gt;
+&lt;h2 id=&#34;depth-beats-volume&#34;&gt;Depth Beats Volume&lt;/h2&gt;
+&lt;p&gt;Reading 50 articles changes little.
+Understanding one concept deeply changes behavior.&lt;/p&gt;
+&lt;p&gt;Depth requires:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Re-reading&lt;/li&gt;
+&lt;li&gt;Writing summaries&lt;/li&gt;
+&lt;li&gt;Connecting ideas across domains&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Shallow exposure feels fast. Depth produces results.&lt;/p&gt;
+&lt;h2 id=&#34;why-it-works&#34;&gt;Why It Works&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Reduces cognitive noise&lt;/li&gt;
+&lt;li&gt;Converts passive input into active output&lt;/li&gt;
+&lt;li&gt;Forces confrontation with gaps in understanding&lt;/li&gt;
+&lt;li&gt;Builds a system independent of external validation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Clarity is not found. It is constructed.&lt;/p&gt;
 </description>
 	</item>
 	

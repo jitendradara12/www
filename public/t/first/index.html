@@ -28,6 +28,7 @@ with open(&#39;random_lines.txt&#39;, &#39;w&#39;) as f:
         line = f&#34;{random_word}:{random_string}\n&#34;
         f.write(line)
 This is a very common roadmap hurdle. The mistake most developers make is thinking a personal site needs &ldquo;articles&rdquo; like generic Medium posts (&ldquo;What is an Array?&rdquo;). You don’t need to do that.">
+	<meta name="keywords" content="random, fake, temp">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="robots" content="index, follow">
 	<meta charset="utf-8">
@@ -45,7 +46,8 @@ This is a very common roadmap hurdle. The mistake most developers make is thinki
   </div>
 </nav>
 <main>
-<header><h1 id="tag_First">First</h1></header>
+<header><span class="masthead-label">Article</span>
+<h1 class="display-lg">First</h1></header>
 <article>
 
 <p>hello there,</p>
@@ -119,13 +121,22 @@ This is a very common roadmap hurdle. The mistake most developers make is thinki
 </article>
 </main>
 
-<footer>
-  <div id="nextprev"><a href="/t/second/"><div id="nextart">Next:<br>sec</div></a>
+<footer class="editorial-footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div class="taglist">
+		<span class="masthead-label">Related</span>
+                <ul><li><a id="tag_random" href="http://localhost:1313/tags/random">Random</a></li><li><a id="tag_fake" href="http://localhost:1313/tags/fake">Fake</a></li><li><a id="tag_temp" href="http://localhost:1313/tags/temp">Temp</a></li></ul>
+        </div>
 </div>
-
-
-	
-	
+    <div class="footer-right">
+      <div id="nextprev" class="footer-nav"><div class="nav-item">
+  <span class="masthead-label">Continue Reading</span>
+  <a href="/t/second/" class="display-md">Clarity Over Noise</a>
+</div>
+</div>
+</div>
+  </div>
 </footer>
 
 </body>

@@ -1,13 +1,14 @@
         {{- if isset .Params "tags" -}}
             {{- $tagsLen := len .Params.tags -}}
             {{- if gt $tagsLen 0 -}}
-        <div style="clear:both" class=taglist>
-		{{- with .Site.Params.relatedtext }}{{ . }}<br>{{ end -}}
+        <div class="taglist">
+		<span class="masthead-label">{{- with .Site.Params.relatedtext }}{{ . }}{{ else }}Index{{ end -}}</span>
+                <ul>
                 {{- range $k, $v := .Params.tags -}}
                 {{- $url := printf "/tags/%s" (. | urlize | lower) -}}
-                <a id="tag_{{ . | lower }}" href="{{ $url | absURL }}">{{ . | title }}</a>
-                {{- if lt $k (sub $tagsLen 1) }} &middot; {{ end -}}
+                <li><a id="tag_{{ . | lower }}" href="{{ $url | absURL }}">{{ . | title }}</a></li>
                 {{- end -}}
+                </ul>
         </div>
             {{- end -}}
         {{- end }}

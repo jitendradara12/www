@@ -17,7 +17,7 @@
 <body>
 {{ if .Site.Menus.main }}{{ partial "nav.html" . }}{{ end -}}
 <main>
-<header><h1 id="tag_{{ .Title }}">{{ block "title" . }}{{ end }}</h1></header>
+<header>{{ block "title" . }}{{ end }}</header>
 <article>
 {{ block "main" . }}
 {{ .Content }}
@@ -25,12 +25,15 @@
 </article>
 </main>
 {{ block "footer" . }}
-<footer>
-  {{ if .Param "nextprev" }}{{ partial "nextprev.html" . -}}{{ end -}}
-  {{ if .Param "taglist" }}{{ partial "taglist.html" . }}{{ end -}}
-  <!-- i don't need it yet -->
-	<!-- <a href="{{ .Site.BaseURL }}">{{ .Site.BaseURL }}</a> -->
-	<!-- {{- if .Param "showrss" }}<br><br><a href="/index.xml"><img src="/rss.svg" style="max-height:1.5em" alt="RSS Feed" title="Subscribe via RSS for updates."></a>{{ end }} -->
+<footer class="editorial-footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      {{ if .Param "taglist" }}{{ partial "taglist.html" . }}{{ end -}}
+    </div>
+    <div class="footer-right">
+      {{ if .Param "nextprev" }}{{ partial "nextprev.html" . -}}{{ end -}}
+    </div>
+  </div>
 </footer>
 {{ end }}
 </body>
