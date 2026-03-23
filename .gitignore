@@ -4,3 +4,4 @@
 #gitignore...
 .env
 /content/me
+/public

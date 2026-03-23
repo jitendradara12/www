@@ -8,10 +8,6 @@ theme = 'lugo'
   url = '/'
   weight = 0
 
-[[menu.main]]
-  name = "contact"
-  url = '/contact'
-  weight = 2
 
 [[menu.main]]
   name = "about"
