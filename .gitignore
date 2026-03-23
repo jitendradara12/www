@@ -3,5 +3,4 @@
 
 #gitignore...
 .env
-#or better just ignore public
-#/public/
+/content/me
