@@ -3,9 +3,5 @@
 
 #gitignore...
 .env
-/content/t/
-/content/me/
-/public/t/
-/public/me/
 #or better just ignore public
 #/public/

@@ -6,12 +6,12 @@ theme = 'lugo'
 [[menu.main]]
   name = "Home"
   url = '/'
-  weight = 999
+  weight = 0
 
 [[menu.main]]
   name = "contact"
-  url = '/t'
-  weight = 0
+  url = '/contact'
+  weight = 2
 
 [[menu.main]]
   name = "about"
