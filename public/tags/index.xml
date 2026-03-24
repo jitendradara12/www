@@ -1,20 +1,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
 	<title>Portfolio</title>
-	<link>http://localhost:1313/tags/</link>
+	<link>//localhost:1313/tags/</link>
 	<description>Recent content in Tags on Portfolio</description>
 	<generator>Hugo -- gohugo.io</generator>
 	<language>en-us</language>
     
-        <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="//localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
 	
 	
 	<item>
 		<title>Projects</title>
-		<link>http://localhost:1313/me/projects/</link>
+		<link>//localhost:1313/me/projects/</link>
 		<pubDate>Tue, 24 Mar 2026 13:57:01 +0530</pubDate>
 		
-		<guid>http://localhost:1313/me/projects/</guid>
+		<guid>//localhost:1313/me/projects/</guid>
 		<description>&lt;h2 id=&#34;carbonmanthan&#34;&gt;CarbonManthan&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Stack:&lt;/strong&gt; Django, Python, PostgreSQL, Google App Engine&lt;br&gt;
 &lt;strong&gt;Links:&lt;/strong&gt; &lt;a href=&#34;https://github.com/jitendradara12/CarbonManthan&#34;&gt;GitHub&lt;/a&gt; | &lt;a href=&#34;https://carbon-490614.el.r.appspot.com/&#34;&gt;Live&lt;/a&gt; &lt;em&gt;(Sep 2025)&lt;/em&gt;&lt;/p&gt;
@@ -26,7 +26,7 @@
 &lt;/ul&gt;
 &lt;h2 id=&#34;linux-workstation-configuration&#34;&gt;Linux Workstation Configuration&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Stack:&lt;/strong&gt; Bash, Hyprland, Lua&lt;br&gt;
-&lt;strong&gt;Links:&lt;/strong&gt; &lt;a href=&#34;https://github.com/jitendradara12/hyprdotfiles&#34;&gt;GitHub&lt;/a&gt; | &lt;a href=&#34;http://localhost:1313/writings/about-this-site&#34;&gt;About the site&lt;/a&gt; &lt;em&gt;(Nov 2025 – Present)&lt;/em&gt;&lt;/p&gt;
+&lt;strong&gt;Links:&lt;/strong&gt; &lt;a href=&#34;https://github.com/jitendradara12/hyprdotfiles&#34;&gt;GitHub&lt;/a&gt; | &lt;a href=&#34;//localhost:1313/writings/about-this-site&#34;&gt;About the site&lt;/a&gt; &lt;em&gt;(Nov 2025 – Present)&lt;/em&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Maintained a custom, highly reproducible Fedora/Wayland environment via Git, demonstrating strong Linux system-level proficiency.&lt;/li&gt;
 &lt;li&gt;Scripted automated system provisioning workflows in Bash to eliminate manual setup and reduce friction.&lt;/li&gt;
@@ -52,10 +52,10 @@
 	
 	<item>
 		<title>Contact &amp; Links</title>
-		<link>http://localhost:1313/me/contact/</link>
+		<link>//localhost:1313/me/contact/</link>
 		<pubDate>Mon, 23 Mar 2026 15:54:31 +0530</pubDate>
 		
-		<guid>http://localhost:1313/me/contact/</guid>
+		<guid>//localhost:1313/me/contact/</guid>
 		<description>&lt;p&gt;Feel free to reach out if you&amp;rsquo;re looking for a developer, want to collaborate on open source, or just want to chat about Linux or Neovim.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Email:&lt;/strong&gt; &lt;a href=&#34;mailto:jitendradara4464@gmail.com&#34;&gt;jitendradara4464@gmail.com&lt;/a&gt;&lt;/li&gt;
@@ -73,10 +73,10 @@
 	
 	<item>
 		<title>About This Site</title>
-		<link>http://localhost:1313/writings/about-this-site/</link>
+		<link>//localhost:1313/writings/about-this-site/</link>
 		<pubDate>Mon, 23 Mar 2026 15:34:03 +0530</pubDate>
 		
-		<guid>http://localhost:1313/writings/about-this-site/</guid>
+		<guid>//localhost:1313/writings/about-this-site/</guid>
 		<description>&lt;p&gt;This website is meant to be a multipurpose place for being a portfolio, digital diary and much more.
 I&amp;rsquo;ll write stuff here about the software I use, the projects I&amp;rsquo;m planning or working on, the tools I like and how I configured them and a lot more.&lt;/p&gt;
 </description>
