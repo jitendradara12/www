@@ -52,10 +52,7 @@ build tooling. Hugo is the only build tool.
 ├── hugo.toml              # Primary site config (baseURL, title, theme)
 ├── config.toml            # Secondary config (just sets theme)
 ├── content/               # Markdown content (the actual site pages)
-│   ├── _index.md          # Homepage
-│   └── t/                 # !purely experiment! this is my playground! it's where i learn and experiment!
-│       ├── first.md       # first file -purely experimental, no real sense
-│       └── second.md      # exp too
+│   └── _index.md          # Homepage
 ├── layouts/               # Project-level layout overrides (currently empty)
 │   └── partials/
 ├── static/                # Static assets served at site root

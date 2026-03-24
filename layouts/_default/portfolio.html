@@ -1,0 +1,42 @@
+{{ define "title" -}} {{- end }} {{ define "main" -}}
+<div class="portfolio-wrapper">
+  <section class="portfolio-hero">
+    <h1 class="display-lg">
+      Jitendra Dara. <br /><span class="hero-subtext">I build cool stuff.</span>
+    </h1>
+
+    <div class="hero-content">{{ .Content }}</div>
+  </section>
+
+  <section class="portfolio-projects">
+    <div class="section-header">
+      <h2 class="headline-md">Selected Work</h2>
+      <span class="label-sm">2025 — 2026</span>
+    </div>
+
+    <div class="project-list">
+      {{- range .Pages }}
+      <article class="project-row">
+        <!-- we don't need date here -->
+        <div class="project-meta">
+          <span class="label-sm">{{ .Params.year | default "Recent" }}</span>
+        </div>
+
+        <div class="project-info">
+          <h3>
+            <a href="{{ .RelPermalink }}" class="project-title">{{ .Title }}</a>
+          </h3>
+          <p class="project-summary">{{ .Summary }}</p>
+        </div>
+
+        <div class="project-action">
+          <a href="{{ .RelPermalink }}" class="btn btn-secondary btn-sm"
+            >Read In Detail→</a
+          >
+        </div>
+      </article>
+      {{- end }}
+    </div>
+  </section>
+</div>
+{{- end }}
