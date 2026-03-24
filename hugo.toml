@@ -1,12 +1,7 @@
-baseURL = '0x43.pages.dev'
+baseURL = 'https://0x43.pages.dev'
 languageCode = 'en-us'
-title = 'Portfolio'
+title = '0x43'
 theme = 'lugo'
-
-[deployment]
-  [[deployment.targets]]
-    name = 'production'
-    url = '0x43.pages.dev'
 
 [[menu.main]]
   name = "Home"
