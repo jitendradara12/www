@@ -1,4 +1,4 @@
-baseURL = 'https://www.jitendradara.workers.dev'
+baseURL = '0x43.pages.dev'
 languageCode = 'en-us'
 title = 'Portfolio'
 theme = 'lugo'
@@ -6,7 +6,7 @@ theme = 'lugo'
 [deployment]
   [[deployment.targets]]
     name = 'production'
-    url = 'www.jitendradara.workers.dev'
+    url = '0x43.pages.dev'
 
 [[menu.main]]
   name = "Home"
