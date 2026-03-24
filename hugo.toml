@@ -1,7 +1,12 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://www.jitendradara.workers.dev'
 languageCode = 'en-us'
-title = 'site'
+title = 'Portfolio'
 theme = 'lugo'
+
+[deployment]
+  [[deployment.targets]]
+    name = 'production'
+    url = 'www.jitendradara.workers.dev'
 
 [[menu.main]]
   name = "Home"

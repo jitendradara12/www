@@ -1,0 +1,87 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+	<title>Portfolio</title>
+	<link>http://localhost:1313/writings/</link>
+	<description>Recent content in Writings on Portfolio</description>
+	<generator>Hugo -- gohugo.io</generator>
+	<language>en-us</language>
+	<lastBuildDate>Mon, 23 Mar 2026 15:34:03 +0530</lastBuildDate>
+    
+        <atom:link href="http://localhost:1313/writings/index.xml" rel="self" type="application/rss+xml" />
+	
+	
+	<item>
+		<title>Projects</title>
+		<link>http://localhost:1313/me/projects/</link>
+		<pubDate>Tue, 24 Mar 2026 13:57:01 +0530</pubDate>
+		
+		<guid>http://localhost:1313/me/projects/</guid>
+		<description>&lt;h2 id=&#34;carbonmanthan&#34;&gt;CarbonManthan&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Stack:&lt;/strong&gt; Django, Python, PostgreSQL, Google App Engine&lt;br&gt;
+&lt;strong&gt;Links:&lt;/strong&gt; &lt;a href=&#34;https://github.com/jitendradara12/CarbonManthan&#34;&gt;GitHub&lt;/a&gt; | &lt;a href=&#34;https://carbon-490614.el.r.appspot.com/&#34;&gt;Live&lt;/a&gt; &lt;em&gt;(Sep 2025)&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Developed a backend MVP for a carbon credit trading platform aimed at restoring the carbon ecosystem.&lt;/li&gt;
+&lt;li&gt;Engineered secure user transaction flows using Django.&lt;/li&gt;
+&lt;li&gt;Implemented Role-Based Access Control (RBAC) to manage secure routing for Buyers, Sellers, and Admins.&lt;/li&gt;
+&lt;li&gt;Deployed the backend on Google App Engine with Cloud SQL (PostgreSQL).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;linux-workstation-configuration&#34;&gt;Linux Workstation Configuration&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Stack:&lt;/strong&gt; Bash, Hyprland, Lua&lt;br&gt;
+&lt;strong&gt;Links:&lt;/strong&gt; &lt;a href=&#34;https://github.com/jitendradara12/hyprdotfiles&#34;&gt;GitHub&lt;/a&gt; | &lt;a href=&#34;http://localhost:1313/writings/about-this-site&#34;&gt;About the site&lt;/a&gt; &lt;em&gt;(Nov 2025 – Present)&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Maintained a custom, highly reproducible Fedora/Wayland environment via Git, demonstrating strong Linux system-level proficiency.&lt;/li&gt;
+&lt;li&gt;Scripted automated system provisioning workflows in Bash to eliminate manual setup and reduce friction.&lt;/li&gt;
+&lt;li&gt;Configured a personalized Neovim IDE using Lua, integrating native LSPs and formatters.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;smart-tourist-safety-system-hackathon&#34;&gt;Smart Tourist Safety System (Hackathon)&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Role:&lt;/strong&gt; Hackathon Team Project&lt;br&gt;
+&lt;strong&gt;Links:&lt;/strong&gt; &lt;a href=&#34;https://github.com/jitendradara12/TourismSafety&#34;&gt;GitHub&lt;/a&gt; &lt;em&gt;(Nov 2025)&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Collaborated in a team of 4 to prototype a digital identity system concept for tourist safety.&lt;/li&gt;
+&lt;li&gt;Drove the product presentation and technical feasibility pitch, securing 4th place out of competing university teams.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;personal-website-digital-garden&#34;&gt;Personal Website (Digital Garden)&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Stack:&lt;/strong&gt; Hugo, Go Templates, CSS&lt;br&gt;
+&lt;strong&gt;Links:&lt;/strong&gt; &lt;a href=&#34;https://github.com/jitendradara12/www&#34;&gt;GitHub&lt;/a&gt; &lt;em&gt;(2026 – Present)&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Architecting a high-performance static environment using Hugo, focusing on a zero-JavaScript architecture.&lt;/li&gt;
+&lt;li&gt;Engineering modular site components using Go template logic, creating reusable partials for dynamic tag clouds and automated post-navigation systems.&lt;/li&gt;
+&lt;li&gt;Optimized site architecture by relying entirely on pure CSS for responsive design, maximizing load speed and minimalism.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+	</item>
+	
+	<item>
+		<title>Contact &amp; Links</title>
+		<link>http://localhost:1313/me/contact/</link>
+		<pubDate>Mon, 23 Mar 2026 15:54:31 +0530</pubDate>
+		
+		<guid>http://localhost:1313/me/contact/</guid>
+		<description>&lt;p&gt;Feel free to reach out if you&amp;rsquo;re looking for a developer, want to collaborate on open source, or just want to chat about Linux or Neovim.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Email:&lt;/strong&gt; &lt;a href=&#34;mailto:jitendradara4464@gmail.com&#34;&gt;jitendradara4464@gmail.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;LinkedIn:&lt;/strong&gt; &lt;a href=&#34;https://www.linkedin.com/in/jitendradara12&#34;&gt;jitendradara12&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;GitHub:&lt;/strong&gt; &lt;a href=&#34;https://github.com/jitendradara12&#34;&gt;jitendradara12&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Telegram:&lt;/strong&gt; &lt;a href=&#34;https://t.me/Sorrybutidonthavename&#34;&gt;@sorrybutidonthavename&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;coding-profiles&#34;&gt;Coding Profiles&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Leetcode:&lt;/strong&gt; &lt;a href=&#34;https://leetcode.com/u/sorrybutidonthaveaname/&#34;&gt;@sorrybutidonthavename&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Codolio:&lt;/strong&gt; &lt;a href=&#34;https://codolio.com/profile/sorrybutidonthaveaname&#34;&gt;@sorrybutidonthaveaname&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+	</item>
+	
+	<item>
+		<title>About This Site</title>
+		<link>http://localhost:1313/writings/about-this-site/</link>
+		<pubDate>Mon, 23 Mar 2026 15:34:03 +0530</pubDate>
+		
+		<guid>http://localhost:1313/writings/about-this-site/</guid>
+		<description>&lt;p&gt;This website is meant to be a multipurpose place for being a portfolio, digital diary and much more.
+I&amp;rsquo;ll write stuff here about the software I use, the projects I&amp;rsquo;m planning or working on, the tools I like and how I configured them and a lot more.&lt;/p&gt;
+</description>
+	</item>
+	
+	</channel>
+</rss>
