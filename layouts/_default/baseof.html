@@ -17,6 +17,10 @@
 <body>
 {{ if .Site.Menus.main }}{{ partial "nav.html" . }}{{ end -}}
 <main>
+
+{{- if and (.Param "breadcrumb") (not .IsHome) }}
+  {{ partial "breadcrumb.html" . }}
+{{ end -}}
 <header>{{ block "title" . }}{{ end }}</header>
 <article>
 {{ block "main" . }}
@@ -30,9 +34,12 @@
     <div class="footer-left">
       {{ if .Param "taglist" }}{{ partial "taglist.html" . }}{{ end -}}
     </div>
-    <div class="footer-right">
-      {{ if .Param "nextprev" }}{{ partial "nextprev.html" . -}}{{ end -}}
-    </div>
+
+    <!--     on the right side of taglist, i don't wanat nextprev -->
+    <!-- <div class="footer-right"> -->
+    <!--   {{ if .Param "nextprev" }}{{ partial "nextprev.html" . -}}{{ end -}} -->
+    <!-- </div> -->
+
   </div>
 </footer>
 {{ end }}
