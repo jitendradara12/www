@@ -2,6 +2,9 @@ baseURL = 'https://0x43.pages.dev'
 languageCode = 'en-us'
 title = '0x43'
 theme = 'lugo'
+[params]
+  nextprev = false
+  breadcrumb = true
 
 [[menu.main]]
   name = "Home"
@@ -13,5 +16,6 @@ theme = 'lugo'
   name = "about"
   url = '/me'
   weight = 1
+
 
 

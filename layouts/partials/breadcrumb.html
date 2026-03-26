@@ -1,0 +1,13 @@
+<nav class="breadcrumb">
+  <ol>
+    {{ range .Ancestors.Reverse }}
+    <li>
+      <a href="{{- .RelPermalink }}">{{- .LinkTitle }}</a>
+    </li>
+    {{ end }}
+    <!-- the current page -->
+    <li class="activea">
+      <a href="{{- .RelPermalink }}">{{- .LinkTitle }}</a>
+    </li>
+  </ol>
+</nav>
