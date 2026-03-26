@@ -35,10 +35,10 @@
       {{ if .Param "taglist" }}{{ partial "taglist.html" . }}{{ end -}}
     </div>
 
-    <!--     on the right side of taglist, i don't wanat nextprev -->
-    <!-- <div class="footer-right"> -->
-    <!--   {{ if .Param "nextprev" }}{{ partial "nextprev.html" . -}}{{ end -}} -->
-    <!-- </div> -->
+    <!--     on the right side of taglist, i don't want nextprev (set false in hugo.toml) -->
+    <div class="footer-right">
+      {{ if .Param "nextprev" }}{{ partial "nextprev.html" . -}}{{ end -}}
+    </div>
 
   </div>
 </footer>
