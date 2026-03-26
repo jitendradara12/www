@@ -210,7 +210,40 @@ ul.article-list time {
   color: var(--secondary);
 }
 
-/* Code Fragments */
+/* Tables */
+table {
+  width: 100%;
+  margin: var(--spacing-10) auto;
+  border-collapse: separate;
+  border-spacing: 0 4px; /* Space between rows instead of 1px lines */
+  text-align: left;
+}
+
+th {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--surface);
+  background: var(--on-background);
+  padding: 1rem 1.5rem;
+  font-weight: normal;
+}
+
+td {
+  padding: 1.5rem;
+  background: var(--surface-container-low);
+  color: var(--on-background);
+  font-family: var(--font-body);
+}
+
+tr:hover td {
+  background: var(--surface-container-highest);
+  color: var(--secondary);
+  transition: all 0.2s ease;
+}
+
+/* Code Fragments (Neovim Vibe) */
 pre,
 code {
   font-family: var(--font-mono);
@@ -219,16 +252,41 @@ code {
 }
 
 pre {
-  background: var(--surface-container-highest);
-  padding: 1.5rem;
+  background: #1c1b1a !important; /* Neovim dark theme */
+  color: #e3e1db !important;
+  padding: 1.5rem 2rem;
   overflow-x: auto;
-  border-left: 4px solid var(--tertiary);
-  margin: 2rem 0;
+  border-left: 4px solid var(--secondary); /* Amber accent */
+  margin: var(--spacing-10) 0;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15); /* Depth without lines */
+  position: relative;
+}
+
+code[data-lang]::before {
+  content: attr(data-lang);
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: #666562;
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 code {
   color: var(--tertiary-fixed-dim);
 }
+
+pre code {
+  background: transparent;
+  padding: 0;
+  color: #e3e1db;
+}
+
+/* Neovim-style comments and strings (basic overrides since there's no syntax highlighter) */
+pre .comment { color: #666562; font-style: italic; }
+pre .string { color: #e09f53; }
+pre .keyword { color: #6b9e89; }
 
 /* Input Fields */
 input,
@@ -417,11 +475,11 @@ mark {
   padding: 0 0.25rem;
 }
 
-article code {
+article code:not(pre code) {
   background: var(--surface-container-highest);
   padding: 0.15rem 0.35rem;
   font-size: 0.875rem;
-  color: var(--tertiary-fixed-dim);
+  color: var(--secondary-fixed-dim);
 }
 
 /* Dark Mode Variables */
