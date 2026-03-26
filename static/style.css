@@ -5,11 +5,11 @@
   --surface: #fffcf7;
   --surface-container-low: #fcf9f3;
   --surface-container-lowest: #ffffff;
-  --surface-container-highest: #e0ddd7; /* Calculated approximation based on progression */
+  --surface-container-highest: #e0ddd7;
   --surface-bright: #ffffff;
 
   --on-surface: #383831;
-  --on-background: #383831; /* Use this for text, no pure black */
+  --on-background: #383831;
 
   --primary: #5f5e5e;
   --primary-dim: #535252;
@@ -284,9 +284,16 @@ pre code {
 }
 
 /* Neovim-style comments and strings (basic overrides since there's no syntax highlighter) */
-pre .comment { color: #666562; font-style: italic; }
-pre .string { color: #e09f53; }
-pre .keyword { color: #6b9e89; }
+pre .comment {
+  color: #666562;
+  font-style: italic;
+}
+pre .string {
+  color: #e09f53;
+}
+pre .keyword {
+  color: #6b9e89;
+}
 
 /* Input Fields */
 input,
@@ -482,73 +489,6 @@ article code:not(pre code) {
   color: var(--secondary-fixed-dim);
 }
 
-/* Dark Mode Variables */
-:root[data-theme="dark"] {
-  --surface: #1c1b1a;
-  --surface-container-low: #242321;
-  --surface-container-lowest: #141312;
-  --surface-container-highest: #302f2d;
-  --surface-bright: #383734;
-
-  --on-surface: #e3e1db;
-  --on-background: #e3e1db;
-
-  --primary: #a8a6a6;
-  --primary-dim: #969494;
-  --on-primary: #1c1b1a;
-
-  --secondary: #e09f53;
-  --tertiary: #6b9e89;
-
-  --outline: rgba(227, 225, 219, 0.15);
-  --outline-variant: #666562;
-
-  --secondary-fixed-dim: #e09f53;
-  --tertiary-fixed-dim: #6b9e89;
-}
-
-:root[data-theme="dark"] nav {
-  background: rgba(28, 27, 26, 0.8);
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
-}
-
-/* Theme Toggle Button */
-#theme-toggle {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: 3rem;
-  height: 3rem;
-  background: var(--surface-container-highest);
-  color: var(--on-background);
-  border: 1px solid var(--outline);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  z-index: 1000;
-  transition:
-    background 0.3s ease,
-    color 0.3s ease,
-    border-color 0.3s ease;
-  border-radius: 0px; /* Explicitly forced sharp corners per DESIGN.md */
-}
-
-#theme-toggle:hover {
-  border-color: var(--secondary);
-  color: var(--secondary);
-  background: var(--surface-container-low);
-}
-
-/* Transition for body to make theme switching smooth */
-body {
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
-}
-
 /* PORTFOLIO LAYOUT OVERRIDES */
 
 .portfolio-wrapper {
@@ -701,4 +641,61 @@ body {
   .project-action {
     margin-top: 1rem;
   }
+}
+
+/* For BREADCRUMB.HTML */
+.breadcrumb {
+  position: relative;
+  z-index: 1; /* Stays below sticky nav (z-index: 100) */
+  margin: 0 0 1.5rem 0;
+  padding: 0;
+  box-shadow: none;
+}
+
+.breadcrumb ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: flex-start; /* Ensure strict left alignment */
+  flex-wrap: wrap;
+
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.breadcrumb li {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+nav.breadcrumb a {
+  margin: 1rem;
+  color: var(--on-background);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-size: inherit; /* Inherit the 0.65rem size from ol */
+  letter-spacing: inherit; /* Inherit the 0.15em spacing */
+}
+
+nav.breadcrumb a:hover {
+  color: var(--secondary);
+}
+
+.breadcrumb li + li::before {
+  content: "/";
+  margin: 0;
+  opacity: 0.3;
+  color: var(--on-background);
+}
+
+/* The Active Page */
+.breadcrumb .activea a {
+  color: var(--tertiary);
+  font-weight: 600;
+  pointer-events: none;
 }
