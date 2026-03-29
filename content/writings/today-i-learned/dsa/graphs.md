@@ -1,7 +1,7 @@
 +++
 date = '2026-03-27T18:40:10+05:30'
 title = 'Graphs'
-summery = 'Traversal and Seaching in Graphs'
+summary = 'Traversal and Searching in Graphs'
 +++
 
 ## DFS
