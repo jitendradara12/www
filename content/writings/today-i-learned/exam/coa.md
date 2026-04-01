@@ -54,6 +54,8 @@ To fill out trace tables accurately, you must know what each register holds:
 
 ---
 
+![Instructions cycle](/coapo.png)
+
 ## 4. The Heartbeat: The Instruction Cycle (`T_0` to `T_3`)
 
 Every single instruction goes through these exact phases. Memorize this sequence for your trace tables.
