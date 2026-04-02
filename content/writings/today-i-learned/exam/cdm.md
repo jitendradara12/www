@@ -7,6 +7,8 @@ title = 'CDM'
 >
 > This is Slop
 
+More on [Cdm-more](/writings/today-i-learned/exam/cdm-more)
+
 ## 1. Digital Marketing Metrics (Formula Cheat Sheet)
 
 Mastering these formulas is crucial for numerical questions.
