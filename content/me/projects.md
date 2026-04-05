@@ -17,7 +17,7 @@ summary = "See the projects I've worked on and currently working on..."
 ## Linux Workstation Configuration
 
 **Stack:** Bash, Hyprland, Lua  
-**Links:** [GitHub](https://github.com/jitendradara12/hyprdotfiles) | [About the site](/writings/about-this-site) _(Nov 2025 – Present)_
+**Links:** [GitHub](https://github.com/jitendradara12/hyprdotfiles) _(Nov 2025 – Present)_
 
 - Maintained a custom, highly reproducible Fedora/Wayland environment via Git, demonstrating strong Linux system-level proficiency.
 - Scripted automated system provisioning workflows in Bash to eliminate manual setup and reduce friction.
@@ -34,7 +34,7 @@ summary = "See the projects I've worked on and currently working on..."
 ## Personal Website (Digital Garden)
 
 **Stack:** Hugo, Go Templates, CSS  
-**Links:** [GitHub](https://github.com/jitendradara12/www) _(2026 – Present)_
+**Links:** [GitHub](https://github.com/jitendradara12/www)| [About the site](/writings/about-this-site) _(2026 – Present)_
 
 - Architecting a high-performance static environment using Hugo, focusing on a zero-JavaScript architecture.
 - Engineering modular site components using Go template logic, creating reusable partials for dynamic tag clouds and automated post-navigation systems.
