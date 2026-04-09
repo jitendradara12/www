@@ -4,14 +4,14 @@ title = 'Contact & Links'
 summary = 'Find me on GitHub, LinkedIn, and coding platforms.'
 +++
 
-Feel free to reach out if you're looking for a developer, want to collaborate on open source, or just want to chat about Linux or Neovim.
+Feel free to reach out.
 
-- **Email:** [jitendradara4464@gmail.com](mailto:jitendradara4464@gmail.com)
-- **LinkedIn:** [jitendradara12](https://www.linkedin.com/in/jitendradara12)
-- **GitHub:** [jitendradara12](https://github.com/jitendradara12)
-- **Telegram:** [@sorrybutidonthavename](https://t.me/Sorrybutidonthavename)
+{{<inline_img src="/logos/github.svg" >}} **GitHub:** [jitendradara12](https://github.com/jitendradara12)  
+{{<inline_img src="/logos/linkedin.svg" >}} **LinkedIn:** [jitendradara12](https://www.linkedin.com/in/jitendradara12)  
+{{<inline_img src="/logos/gmail.svg" >}} **Email:** [jitendradara4464@gmail.com](mailto:jitendradara4464@gmail.com)  
+{{<inline_img src="/logos/telegram.svg" >}} **Telegram:** [@sorrybutidonthavename](https://t.me/Sorrybutidonthavename)
 
 ### Coding Profiles
 
-- **Leetcode:** [@sorrybutidonthavename](https://leetcode.com/u/sorrybutidonthaveaname/)
-- **Codolio:** [@sorrybutidonthaveaname](https://codolio.com/profile/sorrybutidonthaveaname)
+{{<inline_img src="/logos/leetcode.svg" >}} **Leetcode:** [@sorrybutidonthavename](https://leetcode.com/u/sorrybutidonthaveaname/)  
+{{<inline_img src="/logos/code.svg" >}} **Codolio:** [@sorrybutidonthaveaname](https://codolio.com/profile/sorrybutidonthaveaname)
