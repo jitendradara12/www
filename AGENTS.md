@@ -21,14 +21,14 @@ The user is building this project by hand to escape "tutorial hell" and bridge t
 
 ## Project Overview
 
-This is a **Hugo static site** using the `lugo` theme (a minimal theme by Luke Smith).
-There is no JavaScript, no Node.js, no build pipeline, and no test framework.
-The site generates static HTML from Markdown content and Go HTML templates.
+**Hugo static site** with `lugo` theme.
+No JS, Node.js, build pipeline, or test framework.
+Generate static HTML from Markdown + Go HTML templates.
 
-- assume hugo server is always running, ik basics
+- assume hugo server running, user know basics
 - **Hugo version**: 0.152.2+extended
 - **Theme**: `lugo` (vendored in `themes/lugo/`)
-- **Config**: `hugo.toml` is the primary config; `config.toml` exists but only sets the theme
+- **Config**: `hugo.toml` primary; `config.toml` sets theme
 
 ## Build Commands
 
@@ -42,35 +42,7 @@ hugo --gc           # Clean the build cache
 ```
 ````
 
-There are no lint, test, or CI commands. No `package.json`, `Makefile`, or other
-build tooling. Hugo is the only build tool.
-
-## Project Structure
-
-```text
-.
-├── hugo.toml              # Primary site config (baseURL, title, theme)
-├── config.toml            # Secondary config (just sets theme)
-├── content/               # Markdown content (the actual site pages)
-│   └── _index.md          # Homepage
-├── layouts/               # Project-level layout overrides (currently empty)
-│   └── partials/
-├── static/                # Static assets served at site root
-│   ├── style.css          # Project CSS (overrides theme CSS)
-│   └── tmp.png
-├── archetypes/            # Templates for `hugo new` content
-│   └── default.md
-├── themes/lugo/           # Vendored theme (do not edit casually)
-│   ├── layouts/
-│   │   ├── _default/      # baseof.html, single.html, list.html, rss.xml
-│   │   ├── partials/      # nav.html, nextprev.html, taglist.html
-│   │   └── shortcodes/    # vid.html, hidvid.html, img.html, tagcloud.html
-│   └── static/            # Theme static assets (overridden by project static/)
-├── assets/                # Hugo Pipes assets (currently empty)
-├── data/                  # Data files (currently empty)
-└── i18n/                  # Internationalization (currently empty)
-
-```
+No lint, test, or CI commands. No `package.json` or `Makefile`. Hugo only build tool.
 
 ## Content Authoring
 
@@ -96,10 +68,10 @@ Body content in Markdown here...
 
 ### Creating New Content
 
-Use `hugo new t/my-new-post.md` -- this applies the archetype at `archetypes/default.md`
+Use `hugo new directry/my-new-post.md` -- this applies the archetype at `archetypes/default.md`
 which auto-fills date, title (derived from filename), and sets `draft = true`.
 
-Content lives under `content/`. The `t/` subdirectory is the primary content section.
+Content lives under `content/`.
 The homepage is `content/_index.md`. Available shortcodes from the theme:
 `{{< vid "URL" >}}`, `{{< hidvid "URL" >}}`, `{{< img src="..." >}}`, `{{< tagcloud >}}`.
 
@@ -110,66 +82,45 @@ The homepage is `content/_index.md`. Available shortcodes from the theme:
 The project's `static/style.css` **completely overrides** the theme's `static/style.css`.
 When modifying styles, edit `static/style.css` at the project root, not the theme file.
 
-### CSS Conventions
-
-- Use plain CSS (no preprocessors)
-- Use semantic selectors: element selectors for base styles, classes for components,
-  IDs for unique layout elements (e.g., `#nextprev`, `#prevart`, `#nextart`)
-- Keep `max-width: 800px` on `main` for readability
-- Component CSS sections are commented with the partial they support
-  (e.g., `/* For TAGLIST.HTML */`)
-
 ## Template / Layout Conventions
 
 ### Overriding Theme Layouts
 
-To override a theme layout, copy it to the corresponding path under the project's
-`layouts/` directory. For example:
-
-```sh
-# Override the single page template
-cp themes/lugo/layouts/_default/single.html layouts/_default/single.html
-```
-
-Hugo looks in the project `layouts/` first, then falls back to the theme.
+Hugo checks project `layouts/` first, then theme.
 
 ### Template Syntax
 
-- Templates use Go's `html/template` syntax
-- Whitespace trimming: use `{{-` and `-}}` to trim surrounding whitespace
-- Access site config: `.Site.Title`, `.Site.BaseURL`, `.Site.Params.keyname`
-- Access page params: `.Title`, `.Content`, `.Params.tags`, `.Date`
-- Conditionals: `{{ if ... }}`, `{{ with ... }}`, `{{ range ... }}`
+- Go `html/template` syntax
+- Trim whitespace: `{{-` and `-}}`
+- Site config: `.Site.Title`, `.Site.BaseURL`, `.Site.Params.keyname`
+- Page params: `.Title`, `.Content`, `.Params.tags`, `.Date`
+- Logic: `{{ if ... }}`, `{{ with ... }}`, `{{ range ... }}`
 - Partials: `{{ partial "name.html" . }}`
 
 ### Partial Naming
 
-Partials are lowercase, descriptive, and map 1:1 to a feature:
+Lowercase, map 1:1 to feature:
 
-- `nav.html` -- site navigation
-- `nextprev.html` -- previous/next article links
-- `taglist.html` -- tag display for a page
+- `nav.html` - site navigation
+- `nextprev.html` - prev/next links
+- `taglist.html` - tag display
 
 ## Configuration
 
-`hugo.toml` is the primary config. Available theme parameters (set under `[params]`):
+`hugo.toml` is primary. Theme params under `[params]`:
 
-- `relatedtext` (string): Text above tag list (default: "Related")
-- `favicon` (string): Path to favicon
-- `datesinlist` / `authorsinlist` (bool): Show dates/authors in list pages
-- `nextprev` (bool): Show next/prev links on articles
-- `taglist` (bool): Show tag list on articles
-- `showrss` (bool): Show RSS icon in footer
+- `relatedtext` (string): Text above tags (default "Related")
+- `favicon` (string): Favicon path
+- `datesinlist` / `authorsinlist` (bool): Show in list pages
+- `nextprev` (bool): Show next/prev links
+- `taglist` (bool): Show tag list
+- `showrss` (bool): Show RSS icon
 
 ## Important Notes
 
-Prefer project-level overrides in`layouts/`and`static/`.
-on every build.
-
-- **`.env` is gitignored** -- never commit environment files.
-- **`todo.md` is gitignored** -- it is a private scratchpad, not part of the site.
-- There are **two config files** (`hugo.toml` and `config.toml`). Hugo merges them
-  but `hugo.toml` takes precedence. Prefer editing `hugo.toml` for config changes.
+- Prefer project-level overrides in `layouts/` and `static/`.
+- **`.env` is gitignored** - never commit.
+- **Two config files** (`hugo.toml`, `config.toml`). Hugo merges them. `hugo.toml` has precedence. Edit `hugo.toml` for changes.
 
 ```
 
