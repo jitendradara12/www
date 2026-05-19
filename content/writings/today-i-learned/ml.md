@@ -61,3 +61,59 @@ but we don't know the landmarks so we have to take every instance as one means `
 # Gaussian RBF kernel
 
 ("svm_clf", SVC(`kernel="rbf"`, gamma=5, C=0.001))
+
+> **C** — penalty for misclassification.  
+> **γ** — **influence** of a single training point.
+
+![d](/mltemp1.png)
+
+# SVM Regression
+
+> tries to fit as many instances as possible **_on_** the street
+
+width = $\epsilon$
+
+```python
+svm_reg = LinearSVR(epsilon=1.5)
+svm_reg.fit(X, y)
+```
+
+# **DECISION TREES:**
+
+are _supervised_ learning algorithms
+
+Capable of...
+
+- regression
+- classification
+- even Multioutput
+
+Advantage:
+
+- don't require feature scaling
+- white box - we can see what's going on inside
+
+```python
+tree_clf = DecisionTreeClassifier(max_depth=2)
+tree_clf.fit(X, y)
+```
+
+# **Adaboost:**
+
+1. Make DTs
+
+2. $$
+   g = 1 - \left(\frac{c}{t}\right)^2 - \left(\frac{w}{t}\right)^2
+   $$
+
+3. $$
+   \text{weighted } g = \left(\frac{\text{yes}}{\text{total}}\right) g_1 + \left(\frac{\text{no}}{\text{total}}\right) g_2
+   $$
+
+4. $$
+   \alpha = \frac{1}{2}\log\left(\frac{1-r}{r}\right)
+   $$
+
+5. $$
+   \text{new weight} = \text{old} \cdot e^{\pm \alpha}
+   $$
