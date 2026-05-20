@@ -1,123 +1,69 @@
-```markdown
-# Design System Strategy: The Editorial Developer
-
-## 1. Overview & Creative North Star
-
-**Creative North Star: "The Digital Lithograph"**
-
-This design system rejects the "template-driven" nature of modern portfolio sites. It draws inspiration from high-end architectural monographs and legacy print journals, where code is treated as poetry and whitespace is as functional as the content itself.
-
-The system moves beyond standard UI by treating the screen as a canvas of physical layers. We achieve a "premium" feel not through decoration, but through **intentional asymmetry** and **tonal depth**. By utilizing a sophisticated typographic scale and a "No-Line" philosophy, the interface feels less like software and more like a curated exhibition of technical craft.
-
+---
+name: "0x43"
+palette_core:
+  surface: "#131317"
+  surface-dim: "#08080c"
+  primary: "#d7baff"
+  secondary: "#75d4e8"
+  tertiary: "#31e368"
+  border: "#282a36"
+typography_core:
+  headline: Space Grotesk
+  body: JetBrains Mono
+spacing_core:
+  unit: 4px
+  gutter: 24px
+  margin-mobile: 16px
 ---
 
-## 2. Colors: A Warm, Intellectual Foundation
+## Brand & Style
 
-The palette is rooted in warm neutrals that mimic archival paper (`#fffcf7`) and charcoal ink (`#383831`). Accents are used with surgical precision to denote interactivity or technical metadata.
+The design system is a high-fidelity "Terminal-Brutalist" framework built for developers who live in the CLI. The UI is built to feel native to power users running tiling window managers or highly customized Fedora setups, reflecting the precise workflows of tools like LazyVim. It prioritizes precision, technical density, and the aesthetic of advanced computing environments. The style utilizes heavy 1px borders, monospace-driven hierarchy, and translucent surfaces that mimic a sophisticated terminal emulator. The UI should evoke an emotional response of "controlled power"—complex but perfectly organized against a "Deep Void" background.
 
-### Surface Hierarchy & Nesting
+## Global Frame & Navigation
 
-To create depth without shadows, use the **Surface Tiering** method. Treat the UI as stacked sheets of fine paper:
+The entire application is framed within a simulated window or tablet bezel featuring rounded outer corners and thick grey padding. This encloses a strictly sharp-cornered internal viewport, reinforcing the brutalist aesthetic.
 
-- **Baseline:** Use `surface` (`#fffcf7`) for the primary background.
+- **Header:** The top bar displays a cyan command prompt `ROOT@PORTFOLIO:~` on the far left.
+- **Directory Navigation:** Centered navigation uses a monospaced file-path format (`~/PROJECTS`, `~/ARTICLES`, `~/ABOUT`). The active route is indicated by a primary-color underline.
+- **Right Actions:** Right-aligned icons include a terminal block `>_`, code brackets `< >`, and a rectangular ghost button labeled `[ SSH_CONNECT ]` encased in a thin border.
 
-- **Structural Nesting:** Place a `surface_container_low` (`#fcf9f3`) section to denote a secondary area. For an inner card or interactive module, use `surface_container_lowest` (`#ffffff`) to create a "highlighted" lift.
+## Textures & Backgrounds
 
-- **The "No-Line" Rule:** 1px solid borders are strictly prohibited for sectioning. Boundaries must be defined solely through background color shifts. If a visual break is needed, use a `surface_container` transition.
+The base layout transitions dynamically based on the viewport to emulate different hardware displays and maintain depth without relying on traditional drop shadows.
 
-### The Glass & Gradient Rule
+- **Desktop:** Features a subtle, low-opacity dot/graph grid overlaid on the deep void background. This grid emphasizes the "coordinate plane" structure of the application.
+- **Mobile:** Introduces prominent, high-density horizontal scanlines (linear-gradient overlays) and fine film grain. This simulates a retro CRT or raw hardware monitor feel, adding tactile depth to the flat surfaces.
 
-To prevent a "flat" appearance, apply **Glassmorphism** for floating navigation or overlays:
+## Hero Modules & Metadata
 
-- Use `surface` at 80% opacity with a `backdrop-blur` of 12px.
+Hero components utilize a flat mid-grey background and integrate structural "Metadata Tabs"—small rectangular cutouts at the corners containing strict contextual labels.
 
-- **Signature Textures:** For primary CTAs, apply a subtle linear gradient from `primary` (`#5f5e5e`) to `primary_dim` (`#535252`) at a 145-degree angle. This adds a tactile, "satin" finish to the UI.
+- **Profile Hero (Jitendra Dara):** Features a Laser Violet top-left tab reading `ID: 0x43`. The main subtitle uses a terminal prompt prefix (`> Software Engineer & Systems Architect`). The primary action button `[ \downarrow --resume ]` is solid purple with tiny `+` coordinate markers at all four corners, flanked by ghost buttons like `<> --github`.
+- **Config Hero (Neovim Setup):** Features a dark grey top-right tab reading `TYPE: CONFIG`. Lowercase cyan breadcrumbs sit above the card (`~ / projects / dotfiles`).
+- **Key-Value Lists:** Metadata is right-aligned in stacked rows with leading icons: `STATUS: STABLE` (green), `LAST_COMMIT: 2h ago` (purple), and `git://github...` (cyan link).
 
----
+## Terminal & Code Blocks
 
-## 3. Typography: The Editorial Voice
+A specialized black container nested within the UI serves as a dedicated code environment, acting as a window-within-a-window.
 
-Typography is the primary vehicle for the brand’s "Intellectual" personality. We pair the romanticism of a serif with the clinical precision of a monospaced font.
+- **Faux Header:** The top edge contains macOS-style window controls (salmon, yellow, and green circles) on the far left. The exact file path (e.g., `nvim ~/.config/nvim/init.lua`) is perfectly centered in a diminutive monospace font.
+- **Syntax Body:** Contains highly legible, syntax-highlighted code (specifically showcasing Lua bootstrap scripts for lazy-loading), flanked by dim, monospaced line numbers (1-9) on the left edge.
+- **Tags & Highlights:** Functional tags like `#lua` or `#lsp` are wrapped in thin grey outlines. Inline code references are highlighted using subtle translucent blocks.
 
-- **Display & Headlines (Newsreader):** Use these for high-level storytelling. The high contrast of the serif reflects a sophisticated, print-magazine aesthetic.
+## Directory & List Components
 
-- **Body (Inter):** Reserved for long-form reading. The clean, neutral sans-serif ensures the "Developer" side of the persona remains efficient and modern.
+Lists are strictly structured to resemble system logs, command history, or directory trees rather than traditional web lists.
 
-- **Technical Metadata (Space Grotesk):** Use for "Label" roles (dates, tech stacks, git hashes). This provides the "Terminal" feel without being heavy-handed.
+- **Section Headers:** Outlined with a minimalist open-folder icon alongside tracked-out uppercase text like `SYSTEM_RESOURCES / PROJECTS`. This is anchored by a thin, full-width separator line spanning the container.
+- **List Items:** Row elements use bracketed numerical indexing (e.g., `[01]`, `[02]`) in place of standard bullets.
+- **Tech Chips:** Programming languages and tools are displayed as comment-style syntax tags inside dark, square-cornered chips: `// C`, `// ASM`, `// LUA`, `// BASH`.
+- **Status Pings:** Live projects are marked by a solid neon green circle beside the text `ACTIVE`, cleanly right-aligned to create a rigid column across multiple rows.
 
-**The Typographic Hierarchy:**
+## Mobile Adaptations
 
-- **display-lg (3.5rem):** Reserved for Hero titles only. Use asymmetrical alignment (e.g., 15% left margin) to break the grid.
+The rigid grid reflows specifically for smaller viewports without losing the technical, brutalist edge of the desktop version.
 
-- **headline-md (1.75rem):** Section headers. Pair with a `secondary` (`#845c32`) monospace label above it for a "masthead" look.
-
-- **label-sm (0.6875rem):** All-caps, tracked out (10-15%) for technical metadata.
-
----
-
-## 4. Elevation & Depth: Tonal Layering
-
-We do not use elevation to "pop" elements; we use it to "place" them.
-
-- **The Layering Principle:** Depth is achieved by stacking. A `surface_container_highest` element should never sit directly on `surface_bright`. It must follow the natural progression: `surface` -> `low` -> `high`.
-
-- **Ambient Shadows:** Only for floating menus. Use `on_surface` at 5% opacity with a 32px blur and 16px Y-offset. This mimics natural light hitting a page.
-
-- **The "Ghost Border" Fallback:** If accessibility requires a container boundary, use `outline_variant` (`#babab0`) at **15% opacity**. This creates a "hairline" feel common in premium print.
-
-- **Linearity:** Use the `spacing-16` (5.5rem) or `spacing-24` (8.5rem) to create dramatic vertical gaps, forcing the user to focus on one "article" or "code block" at a time.
-
----
-
-## 5. Components
-
-### Buttons
-
-- **Primary:** Rectangle with `0px` radius. Background: `primary`. Text: `on_primary` (Inter, Bold).
-
-- **Secondary:** Transparent background, Ghost Border (15% opacity `outline`).
-
-- **Interactive State:** On hover, transition to `secondary` (`#845c32`) to provide a "warm" amber glow inspired by vintage terminal highlights.
-
-### Cards & Projects
-
-- **Style:** No borders, no shadows. Use `surface_container_low` as the card base.
-
-- **Separation:** Forbid dividers. Use `spacing-10` (3.5rem) between list items to let the content breathe.
-
-- **The "Code-Stamp":** Every project card should feature a `label-sm` technical tag in `tertiary` (`#3d6d5d`) to signify its "Developer" origin.
-
-### Input Fields
-
-- **Design:** A single bottom-border using `outline_variant`. The label should use `label-md` (Space Grotesk) and sit 0.5rem above the input.
-
-- **Focus:** The bottom border transitions to `secondary` (amber) with a 2px thickness.
-
-### Additional Component: The "Code Fragment"
-
-- A dedicated container for code snippets using `surface_container_highest`.
-
-- No syntax highlighting that uses neon colors. Use a custom theme based on the system colors: `secondary_fixed_dim` for strings and `tertiary_fixed_dim` for functions.
-
----
-
-## 6. Do’s and Don’ts
-
-### Do:
-
-- **Use Asymmetry:** Place a large serif headline on the left and a small monospaced paragraph on the right.
-
-- **Embrace the 0px Radius:** Everything is sharp. Sharp corners imply precision and technical rigor.
-
-- **Respect the Spacing Scale:** Use `spacing-20` for section transitions to maintain the "High-End Magazine" feel.
-
-### Don't:
-
-- **Don't use Divider Lines:** If you feel the need for a line, increase the whitespace instead.
-
-- **Don't use Rounded Corners:** No exceptions. Even buttons and tags must be strictly rectangular.
-
-- **Don't use Pure Black:** Use `on_background` (`#383831`) for text. Pure black is too harsh for the warm cream palette and breaks the "Editorial" softness.
-
-- **Don't Center-Align Everything:** Use left-aligned grids with generous, uneven gutters to create visual interest.
-```
+- **Condensed Spacing:** Container margins and heavy padding reduce drastically to maximize terminal density on smaller screens.
+- **Navigation Collapse:** The top navigation directory links (`~/PROJECTS`, etc.) disappear entirely, leaving only the primary host prompt and right-side utility icons.
+- **Stacking Logic:** Multi-column row layouts stack vertically. For example, tech tags (`// C`, `// ASM`) drop beneath the primary project description instead of trailing on the far right.
