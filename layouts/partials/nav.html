@@ -5,5 +5,9 @@
     {{ range .Site.Menus.main.ByWeight }} {{ if ne .URL "/" }}
     <a href="{{ .URL }}">{{ .Name }}</a>
     {{ end }} {{ end }}
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark mode">
+      <span class="icon-sun">☀</span>
+      <span class="icon-moon">☽</span>
+    </button>
   </div>
 </nav>
