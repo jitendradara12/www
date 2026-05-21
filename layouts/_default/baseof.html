@@ -47,19 +47,21 @@
 {{ end }}
 </article>
 </main>
-{{ block "footer" . }}
-<footer class="editorial-footer">
-  <div class="footer-inner">
-    <div class="footer-left">
-      {{ if .Param "taglist" }}{{ partial "taglist.html" . }}{{ end -}}
-    </div>
-    <!--     on the right side of taglist, i don't want nextprev (set false in hugo.toml) -->
-    <div class="footer-right">
-      {{ if .Param "nextprev" }}{{ partial "nextprev.html" . -}}{{ end -}}
-    </div>
-  </div>
-</footer>
-{{ end }}
+
+<!-- {{ block "footer" . }} -->
+<!-- <footer class="editorial-footer"> -->
+<!--   <div class="footer-inner"> -->
+<!--     <div class="footer-left"> -->
+<!--       {{ if .Param "taglist" }}{{ partial "taglist.html" . }}{{ end -}} -->
+<!--     </div> -->
+<!--     on the right side of taglist, i don't want nextprev (set false in hugo.toml) -->
+<!--     <div class="footer-right"> -->
+<!--       {{ if .Param "nextprev" }}{{ partial "nextprev.html" . -}}{{ end -}} -->
+<!--     </div> -->
+<!--   </div> -->
+<!-- </footer> -->
+<!-- {{ end }} -->
+
 <script>
 (function() {
 	var toggle = document.getElementById('theme-toggle');
