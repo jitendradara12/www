@@ -5,6 +5,12 @@
 	<link rel="canonical" href="{{ .Site.BaseURL }}">
 	<link rel='alternate' type='application/rss+xml' title="{{ .Site.Title }} RSS" href='/index.xml'>
 	<link rel='stylesheet' type='text/css' href='/style.css'>
+	<script>
+		(function() {
+			var t = localStorage.getItem('theme');
+			if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+		})();
+	</script>
 	{{ with .Site.Params.favicon }}<link rel="icon" href="{{ . }}">
 	{{ end -}}
 	<meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Summary }}{{ end }}">
@@ -13,32 +19,63 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="robots" content="index, follow">
 	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			renderMathInElement(document.body, {
+				delimiters: [
+					{left: "$$", right: "$$", display: true},
+					{left: "$", right: "$", display: false}
+				]
+			});
+		});
+	</script>
 </head>
 <body>
 {{ if .Site.Menus.main }}{{ partial "nav.html" . }}{{ end -}}
 <main>
-<header><h1 id="tag_{{ .Title }}">{{ block "title" . }}{{ end }}</h1></header>
+
+{{- if and (.Param "breadcrumb") (not .IsHome) }}
+  {{ partial "breadcrumb.html" . }}
+{{ end -}}
+<header>{{ block "title" . }}{{ end }}</header>
 <article>
 {{ block "main" . }}
 {{ .Content }}
 {{ end }}
-{{ if .Param "nextprev" }}{{ partial "nextprev.html" . -}}{{ end -}}
-{{ if .Param "taglist" }}{{ partial "taglist.html" . }}{{ end -}}
 </article>
 </main>
-<!-- {{ block "footer" . }} -->
-<!-- <footer class="site-footer"> -->
-<!--   <div class="site-footer-inner"> -->
-<!--     <div class="site-footer-meta">&copy; {{ now.Year }} {{ .Site.Title }}</div> -->
-<!--     {{ if .Site.Menus.main }} -->
-<!--     <nav class="site-footer-links" aria-label="Footer"> -->
-<!--       {{ range .Site.Menus.main }} -->
-<!--       <a href="{{ .URL }}">{{ .Name }}</a> -->
-<!--       {{ end }} -->
-<!--     </nav> -->
-<!--     {{ end }} -->
-<!--   </div> -->
-<!-- </footer> -->
-<!-- {{ end }} -->
+{{ block "footer" . }}
+<footer class="editorial-footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      {{ if .Param "taglist" }}{{ partial "taglist.html" . }}{{ end -}}
+    </div>
+    <!--     on the right side of taglist, i don't want nextprev (set false in hugo.toml) -->
+    <div class="footer-right">
+      {{ if .Param "nextprev" }}{{ partial "nextprev.html" . -}}{{ end -}}
+    </div>
+  </div>
+</footer>
+{{ end }}
+<script>
+(function() {
+	var toggle = document.getElementById('theme-toggle');
+	if (!toggle) return;
+	toggle.addEventListener('click', function() {
+		var html = document.documentElement;
+		var isLight = html.getAttribute('data-theme') === 'light';
+		if (isLight) {
+			html.removeAttribute('data-theme');
+			localStorage.setItem('theme', 'dark');
+		} else {
+			html.setAttribute('data-theme', 'light');
+			localStorage.setItem('theme', 'light');
+		}
+	});
+})();
+</script>
 </body>
 </html>
