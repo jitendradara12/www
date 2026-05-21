@@ -4,7 +4,9 @@ title = 'Hi, I am Jitendra.'
 layout = 'portfolio'
 +++
 
-Hi, I'm me...
+I live in the terminal.
+Sometimes, I touch grass too  
+I mainly work with Python and C ,Sometimes, Go. I have also worked with C++, Lua and bash.
 
 [{{<inline_img src = "/logos/file.svg">}}Resume](/resume.pdf)
 [{{<inline_img src = "/logos/linkedin.svg">}}LinkedIn](https://www.linkedin.com/in/jitendradara12)

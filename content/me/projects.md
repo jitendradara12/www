@@ -7,7 +7,7 @@ summary = "See the projects I've worked on and currently working on..."
 ## CarbonManthan
 
 **Stack:** Django, Python, PostgreSQL, Google App Engine  
-**Links:** [GitHub](https://github.com/jitendradara12/CarbonManthan) | [Live](https://carbon-490614.el.r.appspot.com/) _(Sep 2025)_
+**Links:** [GitHub](https://github.com/jitendradara12/CarbonManthan) | [~~Live~~](https://carbon-490614.el.r.appspot.com/) _(Sep 2025)_
 
 - Developed a backend MVP for a carbon credit trading platform aimed at restoring the carbon ecosystem.
 - Engineered secure user transaction flows using Django.
