@@ -1009,6 +1009,8 @@ article strong {
   gap: var(--sp-5);
   align-items: start;
   padding: var(--sp-6) var(--sp-6);
+  margin-top: 4px;
+  margin-bottom: 4px;
   background: var(--surface-raised);
   border: 1px solid var(--border);
   box-shadow: 5px 5px 0px var(--border);
@@ -1338,8 +1340,7 @@ hr {
   }
 
   .project-meta {
-    display: block;
-    order: -1;
+    display: none;
   }
 
   .project-action {
