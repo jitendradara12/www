@@ -179,30 +179,45 @@ html::after {
 html::before {
   top: -20vh;
   left: -20vw;
-  background: radial-gradient(circle, var(--primary) 0%, rgba(215, 186, 255, 0) 70%);
+  background: radial-gradient(
+    circle,
+    var(--primary) 0%,
+    rgba(215, 186, 255, 0) 70%
+  );
   animation: aurora-drift-1 35s infinite alternate ease-in-out;
 }
 
 html::after {
   bottom: -20vh;
   right: -20vw;
-  background: radial-gradient(circle, var(--secondary) 0%, rgba(117, 212, 232, 0) 70%);
+  background: radial-gradient(
+    circle,
+    var(--secondary) 0%,
+    rgba(117, 212, 232, 0) 70%
+  );
   animation: aurora-drift-2 28s infinite alternate ease-in-out;
 }
 
-[data-theme="light"] html::before,
-[data-theme="light"] html::after {
+html[data-theme="light"]::before,
+html[data-theme="light"]::after {
   opacity: 0.16;
 }
 
-[data-theme="light"] html::before {
+html[data-theme="light"]::before {
   background: radial-gradient(circle, #e6dbff 0%, rgba(230, 219, 255, 0) 70%);
 }
 
-[data-theme="light"] html::after {
+html[data-theme="light"]::after {
   background: radial-gradient(circle, #d2f0fc 0%, rgba(210, 240, 252, 0) 70%);
 }
 
+@media (prefers-reduced-motion: reduce) {                                                                                                                        █
+      html::before,                                                                                                                                                  █
+      html::after {                                                                                                                                                  █
+        animation: none;                                                                                                                                             █
+        /* Optional: you can also set opacity lower if you want to fade them out entirely */                                                                         █
+      }                                                                                                                                                              █
+}
 body {
   font-family: var(--font-body);
   font-size: 0.875rem;
@@ -457,7 +472,8 @@ h1.display-lg::after,
 }
 
 @keyframes cursor-blink {
-  from, to {
+  from,
+  to {
     opacity: 0;
   }
   50% {
@@ -570,7 +586,9 @@ ul.article-list > li::before {
 ul.article-list > li:hover {
   border-color: var(--primary);
   transform: translate(-3px, -3px);
-  box-shadow: 6px 6px 18px var(--primary-glow), 4px 4px 0px var(--primary);
+  box-shadow:
+    6px 6px 18px var(--primary-glow),
+    4px 4px 0px var(--primary);
   background-color: var(--primary-glow);
 }
 
@@ -935,7 +953,9 @@ article p {
   max-width: 680px;
   margin-left: 0;
   margin-right: auto;
-  color: var(--on-surface-dim); /* slightly softened for high contrast reading */
+  color: var(
+    --on-surface-dim
+  ); /* slightly softened for high contrast reading */
 }
 
 article ul,
@@ -1180,7 +1200,9 @@ article strong {
 .project-row:hover {
   border-color: var(--primary);
   transform: translate(-4px, -4px);
-  box-shadow: 8px 8px 20px var(--primary-glow), 5px 5px 0px var(--primary);
+  box-shadow:
+    8px 8px 20px var(--primary-glow),
+    5px 5px 0px var(--primary);
   background-color: var(--primary-glow);
 }
 
