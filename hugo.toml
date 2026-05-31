@@ -2,6 +2,13 @@ baseURL = 'https://0x43.pages.dev'
 languageCode = 'en-us'
 title = '0x43'
 theme = 'lugo'
+enableGitInfo = true
+
+[frontmatter]
+  # Tell Hugo to resolve .Lastmod by checking Git first,
+  # then the front matter 'lastmod' field, then falling back to 'date'
+  lastmod = [":git",":filemodtime" ,"lastmod", "date"]
+
 [params]
   nextprev = false
   breadcrumb = true
