@@ -4,7 +4,7 @@ title = 'Solving Leetcode'
 +++
 
 Leetcode is _mostly_ boring and not fun. But not always. Especially, when you solved over 400 of these problems.
-The most fun made me write the most bizarre of the solutions.
+The most fun ones made me write the most bizarre of the solutions.
 
 ---
 
