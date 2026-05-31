@@ -1,5 +1,4 @@
 +++
-date = '2026-03-24T14:57:01+05:30'
 title = 'Hi, I am Jitendra.'
 layout = 'portfolio'
 +++
