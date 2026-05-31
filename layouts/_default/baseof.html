@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.Language }}">
 <head>
-	<title>{{ if not .IsHome }}{{ .Title | title }} | {{ end }}{{ .Site.Title }}</title>
+	<title>{{ if not .IsHome }}{{ .Title | title }} {{ end }}</title>
 	<link rel="canonical" href="{{ .Site.BaseURL }}">
 	<link rel='alternate' type='application/rss+xml' title="{{ .Site.Title }} RSS" href='/index.xml'>
 	<link rel='stylesheet' type='text/css' href='/style.css'>
@@ -47,20 +47,6 @@
 {{ end }}
 </article>
 </main>
-
-<!-- {{ block "footer" . }} -->
-<!-- <footer class="editorial-footer"> -->
-<!--   <div class="footer-inner"> -->
-<!--     <div class="footer-left"> -->
-<!--       {{ if .Param "taglist" }}{{ partial "taglist.html" . }}{{ end -}} -->
-<!--     </div> -->
-<!--     on the right side of taglist, i don't want nextprev (set false in hugo.toml) -->
-<!--     <div class="footer-right"> -->
-<!--       {{ if .Param "nextprev" }}{{ partial "nextprev.html" . -}}{{ end -}} -->
-<!--     </div> -->
-<!--   </div> -->
-<!-- </footer> -->
-<!-- {{ end }} -->
 
 <script>
 (function() {
