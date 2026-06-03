@@ -20,9 +20,9 @@ Other than some urges to move fully to nix, I'm quite satisfied with fedora.
 [Hyprland](https://hypr.land) , The Wayland Compositor she tells you not to worry
 about, is so good that I find it unbearable to use the
 desktops for masses like Windows or MacOS now.
-Instead of having a billion windows on on the top of other, it's obvious to prefer
-something which provides dynamic tiling, is way more smoother and
-can be configured to the pixel.
+Instead of having a billion windows stacked on top of each other, 
+it makes sense to prefer something that offers dynamic tiling,
+is much smoother, and can be configured down to the pixel
 
 The configuring power is so great that it's rare to see two hyprland
 desktops looking alike.
@@ -32,7 +32,7 @@ Which I still use as base in [my dotfiles](https://github.com/jitendradara12/hyp
 
 I can spend the whole day here so let's move on to the dev specific parts.
 
-## The Editer - Neovim
+## The Editor - Neovim
 
 Barebones nvim does not look like something which
 can replace a full IDE but it does the job
@@ -46,7 +46,7 @@ why it's amazing for me over the IDEs.
 - Keyboard focused: No matter how many shortcuts you learn,
   no IDE can come close to LazyVim when it comes to
   operating from keyboard only.
-- Plugins: just googling the need will get you to a great plugin you never new existed.
+- Plugins: just googling the need will get you to a great plugin you never knew existed.
 - Fast: I remember when I had wait almost a second for VSCode to open.
   And why do I need a separate app when I already have a terminal.
   {{<fakegif "/opening-nvim.webm">}}
@@ -72,9 +72,9 @@ See [Kovid Goyal's overview](https://sw.kovidgoyal.net/kitty/) for example.
 Open source, firefox-based while also looking modern, Zen is
 the browser I use on daily basis.
 
-## FGF
+## FZF
 
-I use fgf with multiple configurations everyday. For example...
+I use fzf with multiple configurations everyday. For example...
 
 - type `ff` to fuzzily search and directly open file in nvim:
   ```.zshrc
@@ -102,7 +102,7 @@ alias lt='eza -a --tree --level=1 --icons'
 
 ## Yazi
 
-`cd` and `ls` are great but somethings when I miss the file manager, I use yazi.
+`cd` and `ls` are great but sometimes, when I miss the file manager, I use yazi.
 Yes, File manager in the terminal. Just run y coz `alias y='yazi'` is already in the `.zshrc`.
 
 ## Honorable Mentions
@@ -114,6 +114,5 @@ Yes, File manager in the terminal. Just run y coz `alias y='yazi'` is already in
   - Google Antigravity: shout out to Students' free AI pro.
   - Opencode: definitely one of my favorites.
   - Claude Code: shout out of Amazon Bedrock.
-    Can't even talk about the models as the development is moving so fast.
-    GPT 5.5 is soo 2 days old now. And opus 4.8 is 5 minutes old already?? It has become
-    unusable then. I'll wait for 6.9.
+  
+  Can't even talk about the models as the development is moving so fast. GPT 5.5 is soo 2 days old now. And opus 4.8 is 5 minutes old already?? It has become unusable then. I'll wait for 6.9.
