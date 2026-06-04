@@ -15,6 +15,9 @@
     <item>
       <title>{{ .Title }}</title>
       <link>{{ .Permalink }}</link>
+      {{ with .Params.banner }}
+        <enclosure url="{{ . | absURL }}" type="image/png" />
+      {{ end }}
       <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
       <guid>{{ .Permalink }}</guid>
       <description>{{- .Content | html -}}</description>

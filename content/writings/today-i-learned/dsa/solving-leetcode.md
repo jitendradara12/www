@@ -1,6 +1,7 @@
 +++
 date = '2026-05-31T23:13:27+05:30'
 title = 'Solving Leetcode'
+banner = '/logos/leetcode.svg'
 +++
 
 Leetcode is _mostly_ boring and not fun. But not always. Especially, when you have solved over 400 of these problems.

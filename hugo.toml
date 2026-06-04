@@ -5,9 +5,8 @@ theme = 'lugo'
 enableGitInfo = true
 
 [frontmatter]
-  # Tell Hugo to resolve .Lastmod by checking Git first,
-  # then the front matter 'lastmod' field, then falling back to 'date'
-  lastmod = [":git",":filemodtime" ,"lastmod", "date"]
+  # if 'date' is missing, resolve to other mathods
+  lastmod = ["date",":git",":filemodtime" ,"lastmod" ]
 
 [params]
   nextprev = false
