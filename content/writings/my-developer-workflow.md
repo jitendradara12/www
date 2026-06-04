@@ -1,6 +1,7 @@
 +++
 date = '2026-06-02T14:31:36+05:30'
 title = 'My Developer Workflow'
+banner = '/fastfetch-sc.png'
 +++
 
 When I have no interesting problem to work on, I just create the problem.
@@ -20,7 +21,7 @@ Other than some urges to move fully to nix, I'm quite satisfied with fedora.
 [Hyprland](https://hypr.land) , The Wayland Compositor she tells you not to worry
 about, is so good that I find it unbearable to use the
 desktops for masses like Windows or MacOS now.
-Instead of having a billion windows stacked on top of each other, 
+Instead of having a billion windows stacked on top of each other,
 it makes sense to prefer something that offers dynamic tiling,
 is much smoother, and can be configured down to the pixel
 
@@ -114,5 +115,5 @@ Yes, File manager in the terminal. Just run y coz `alias y='yazi'` is already in
   - Google Antigravity: shout out to Students' free AI pro.
   - Opencode: definitely one of my favorites.
   - Claude Code: shout out of Amazon Bedrock.
-  
+
   Can't even talk about the models as the development is moving so fast. GPT 5.5 is soo 2 days old now. And opus 4.8 is 5 minutes old already?? It has become unusable then. I'll wait for 6.9.
