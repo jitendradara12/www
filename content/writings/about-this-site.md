@@ -1,6 +1,7 @@
 +++
 date = '2026-03-23T15:34:03+05:30'
 title = 'About This Site'
+rss_exclude = true
 +++
 
 This website is meant to be a multipurpose place for being a portfolio, digital diary and much more.
