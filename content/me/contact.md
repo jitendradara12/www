@@ -7,6 +7,7 @@ rss_exclude = true
 
 Feel free to reach out.
 
+{{<inline_img src="/logos/rss.svg" >}} [RSS Feed](/index.xml)  
 {{<inline_img src="/logos/github.svg" >}} **GitHub:** [jitendradara12](https://github.com/jitendradara12)  
 {{<inline_img src="/logos/linkedin.svg" >}} **LinkedIn:** [jitendradara12](https://www.linkedin.com/in/jitendradara12)  
 {{<inline_img src="/logos/gmail.svg" >}} **Email:** [jitendradara4464@gmail.com](mailto:jitendradara4464@gmail.com)  

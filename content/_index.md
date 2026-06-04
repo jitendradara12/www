@@ -1,5 +1,5 @@
 +++
-title = '~'
+title = '~/home'
 +++
 
 Hi, Welcome to my corner of the internet. Made with [hugo](https://github.com/gohugoio/hugo),
