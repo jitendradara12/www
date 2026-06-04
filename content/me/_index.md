@@ -1,6 +1,7 @@
 +++
 title = 'Hi, I am Jitendra.'
 layout = 'portfolio'
+rss_exclude = true
 +++
 
 I live in the terminal.

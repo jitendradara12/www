@@ -2,6 +2,7 @@
 date = '2026-03-23T15:54:31+05:30'
 title = 'Contact & Links'
 summary = 'Find me on GitHub, LinkedIn, and coding platforms.'
+rss_exclude = true
 +++
 
 Feel free to reach out.
