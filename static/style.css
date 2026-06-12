@@ -6,6 +6,8 @@
   --surface-dim: #050508;
   --surface-raised: rgba(20, 20, 28, 0.55);
   --surface-overlay: rgba(10, 10, 15, 0.72);
+  --card-blur: blur(12px);
+  --label-blur: blur(8px);
 
   --primary: #d7baff;
   --primary-dim: #b08ee6;
@@ -110,6 +112,19 @@
   color-scheme: light;
 }
 
+/* ── Mobile performance overrides ── */
+@media (max-width: 768px) {
+  :root {
+    --card-blur: none;
+    --label-blur: none;
+    --surface-raised: rgba(20, 20, 28, 0.85);
+  }
+  [data-theme="light"] {
+    --surface-raised: rgba(255, 255, 255, 0.92);
+  }
+}
+
+
 /* ================================================================
    RESET & BASE
    ================================================================ */
@@ -136,15 +151,19 @@ html::before,
 html::after {
   content: "";
   position: fixed;
-  inset: 0;
   z-index: -3;
   pointer-events: none;
   opacity: 0.55;
   transition: opacity var(--duration) var(--ease-out);
+  will-change: transform;
 }
 
 /* Layer 1: 650px grid (Drifts horizontally right) */
 html::before {
+  top: 0;
+  left: -650px;
+  width: calc(100% + 650px);
+  height: 100%;
   background-image:
     radial-gradient(1px 1px at 15% 15%, var(--star-color-bright) 100%, transparent),
     radial-gradient(1px 1px at 45% 35%, var(--star-color) 100%, transparent),
@@ -159,6 +178,10 @@ html::before {
 
 /* Layer 2: 900px grid (Drifts vertically up) */
 html::after {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 900px);
   background-image:
     radial-gradient(1px 1px at 10% 60%, var(--star-color) 100%, transparent),
     radial-gradient(1.5px 1.5px at 40% 80%, var(--star-color-bright) 100%, transparent),
@@ -170,19 +193,19 @@ html::after {
 
 @keyframes star-drift-1 {
   from {
-    background-position: 0 0;
+    transform: translate3d(0, 0, 0);
   }
   to {
-    background-position: 650px 0;
+    transform: translate3d(650px, 0, 0);
   }
 }
 
 @keyframes star-drift-2 {
   from {
-    background-position: 0 0;
+    transform: translate3d(0, 0, 0);
   }
   to {
-    background-position: 0 -900px;
+    transform: translate3d(0, -900px, 0);
   }
 }
 
@@ -536,8 +559,8 @@ ul.article-list > li {
   gap: var(--sp-2) var(--sp-4);
   padding: var(--sp-4) var(--sp-6) var(--sp-4) 48px;
   background: var(--surface-raised);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: var(--card-blur);
+  -webkit-backdrop-filter: var(--card-blur);
   border: 1px solid var(--border);
   border-radius: 16px;
   box-shadow: 4px 4px 0px var(--border);
@@ -1005,8 +1028,8 @@ blockquote {
   padding: var(--sp-4) var(--sp-8);
   border-left: 3px solid var(--primary);
   background: var(--surface-raised);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: var(--card-blur);
+  -webkit-backdrop-filter: var(--card-blur);
   border-radius: 0 16px 16px 0;
   font-family: var(--font-reading);
   font-size: 1.15rem;
@@ -1162,8 +1185,8 @@ article strong {
   margin-top: 4px;
   margin-bottom: 4px;
   background: var(--surface-raised);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: var(--card-blur);
+  -webkit-backdrop-filter: var(--card-blur);
   border: 1px solid var(--border);
   border-radius: 16px;
   box-shadow: 5px 5px 0px var(--border);
@@ -1187,8 +1210,8 @@ article strong {
   /* text-transform: uppercase; */
   letter-spacing: 0.12em;
   background: var(--surface-overlay);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: var(--label-blur);
+  -webkit-backdrop-filter: var(--label-blur);
   color: var(--on-surface-faint);
   padding: 0 6px;
   border: 1px solid var(--border);
