@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap");
+/* Fonts loaded via <link> in HTML head for non-blocking fetch — see baseof.html */
 
 /* ── Dark Theme (Default) ── */
 :root {
@@ -124,7 +124,6 @@
   }
 }
 
-
 /* ================================================================
    RESET & BASE
    ================================================================ */
@@ -141,10 +140,7 @@
   background: var(--primary);
   color: var(--surface);
 }
-::-moz-selection {
-  background: var(--primary);
-  color: var(--surface);
-}
+/* ::-moz-selection removed — ::selection is unprefixed since Firefox 62 */
 
 /* ── Sparse Starfield ── */
 html::before,
@@ -165,12 +161,28 @@ html::before {
   width: calc(100% + 650px);
   height: 100%;
   background-image:
-    radial-gradient(1px 1px at 15% 15%, var(--star-color-bright) 100%, transparent),
+    radial-gradient(
+      1px 1px at 15% 15%,
+      var(--star-color-bright) 100%,
+      transparent
+    ),
     radial-gradient(1px 1px at 45% 35%, var(--star-color) 100%, transparent),
-    radial-gradient(1.5px 1.5px at 75% 20%, var(--star-color-bright) 100%, transparent),
+    radial-gradient(
+      1.5px 1.5px at 75% 20%,
+      var(--star-color-bright) 100%,
+      transparent
+    ),
     radial-gradient(1px 1px at 85% 65%, var(--star-color) 100%, transparent),
-    radial-gradient(1.5px 1.5px at 25% 75%, var(--star-color) 100%, transparent),
-    radial-gradient(1px 1px at 55% 85%, var(--star-color-bright) 100%, transparent),
+    radial-gradient(
+      1.5px 1.5px at 25% 75%,
+      var(--star-color) 100%,
+      transparent
+    ),
+    radial-gradient(
+      1px 1px at 55% 85%,
+      var(--star-color-bright) 100%,
+      transparent
+    ),
     radial-gradient(2px 2px at 65% 50%, var(--star-color) 100%, transparent);
   background-size: 650px 650px;
   animation: star-drift-1 140s linear infinite;
@@ -184,7 +196,11 @@ html::after {
   height: calc(100% + 900px);
   background-image:
     radial-gradient(1px 1px at 10% 60%, var(--star-color) 100%, transparent),
-    radial-gradient(1.5px 1.5px at 40% 80%, var(--star-color-bright) 100%, transparent),
+    radial-gradient(
+      1.5px 1.5px at 40% 80%,
+      var(--star-color-bright) 100%,
+      transparent
+    ),
     radial-gradient(1px 1px at 70% 40%, var(--star-color) 100%, transparent),
     radial-gradient(2px 2px at 95% 30%, var(--star-color) 100%, transparent);
   background-size: 900px 900px;
@@ -266,7 +282,7 @@ body::before {
   }
 }
 
-/* Layer 2: Horizontal scanlines */
+/* Layer 2: Horizontal scanlines (disabled on mobile — negligible visual impact, saves a full-viewport paint layer) */
 body::after {
   content: "";
   position: fixed;
@@ -281,6 +297,12 @@ body::after {
   );
   background-size: 100% 4px;
   pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  body::after {
+    display: none;
+  }
 }
 
 /* ================================================================
@@ -390,10 +412,9 @@ nav a:not(.site-title):not(.theme-toggle):hover::after {
 }
 
 .theme-toggle:hover {
-  border: none!;
+  border: none;
   color: var(--primary);
-  border-color: var(--primary);
-  background: var(--surface); /*var(--primary-glow);*/
+  background: var(--surface);
 }
 
 /* icon swap via CSS */
@@ -564,6 +585,7 @@ ul.article-list > li {
   border: 1px solid var(--border);
   border-radius: 16px;
   box-shadow: 4px 4px 0px var(--border);
+  contain: content;
   transition:
     border-color var(--duration) var(--ease-out),
     transform var(--duration) var(--ease-out),
@@ -643,7 +665,9 @@ ul.article-list > li a::before {
   color: var(--primary);
   opacity: 0;
   transform: translateX(-4px);
-  transition: all var(--duration) var(--ease-out);
+  transition:
+    opacity var(--duration) var(--ease-out),
+    transform var(--duration) var(--ease-out);
 }
 
 ul.article-list > li:hover a::before {
@@ -839,7 +863,6 @@ pre {
     border-color var(--duration) var(--ease-out);
 }
 
-
 code[data-lang]::before {
   content: attr(data-lang);
   display: block;
@@ -919,8 +942,6 @@ label {
 img {
   max-width: 100%;
   height: auto;
-  /* border: 1px solid var(--border); */
-  transition: border-color var(--duration) var(--ease-out);
 }
 
 .inline-icon-svg {
@@ -935,14 +956,15 @@ img {
   filter: invert(0);
 }
 
-.inline-icon{ /*everthing NOT NEEDED TO INVERT*/
+.inline-icon {
+  /*everthing NOT NEEDED TO INVERT*/
   height: 1em;
   width: auto;
   vertical-align: -0.1em;
   border: none;
 }
 
-video{
+video {
   max-width: 100%;
   height: auto;
   /* border: 1px solid var(--border); */
@@ -1191,6 +1213,7 @@ article strong {
   border-radius: 16px;
   box-shadow: 5px 5px 0px var(--border);
   position: relative;
+  contain: content;
   transition:
     transform var(--duration) var(--ease-out),
     border-color var(--duration) var(--ease-out),
@@ -1200,7 +1223,7 @@ article strong {
 
 /* Overhanging technical tab */
 .project-row::before {
-  content: "~/";
+  /* content: "~/"; */
   position: absolute;
   top: -10px;
   left: 16px;
@@ -1217,7 +1240,10 @@ article strong {
   border: 1px solid var(--border);
   border-radius: 6px;
   line-height: 1.2;
-  transition: all var(--duration) var(--ease-out);
+  transition:
+    color var(--duration) var(--ease-out),
+    border-color var(--duration) var(--ease-out),
+    background var(--duration) var(--ease-out);
   z-index: 10;
 }
 
@@ -1251,7 +1277,10 @@ article strong {
   border-radius: 6px;
   padding: var(--sp-1) var(--sp-2);
   letter-spacing: 0.05em;
-  transition: all var(--duration) var(--ease-out);
+  transition:
+    color var(--duration) var(--ease-out),
+    background var(--duration) var(--ease-out),
+    border-color var(--duration) var(--ease-out);
 }
 
 .project-row:hover .project-meta .label-sm {
@@ -1283,7 +1312,9 @@ article strong {
   color: var(--primary);
   opacity: 0;
   transform: translateX(-4px);
-  transition: all var(--duration) var(--ease-out);
+  transition:
+    opacity var(--duration) var(--ease-out),
+    transform var(--duration) var(--ease-out);
 }
 
 .project-row:hover .project-title::before {
@@ -1313,7 +1344,10 @@ article strong {
   font-size: 0.6875rem;
   letter-spacing: 0.06em;
   border-color: var(--border);
-  transition: all var(--duration) var(--ease-out);
+  transition:
+    color var(--duration) var(--ease-out),
+    border-color var(--duration) var(--ease-out),
+    background var(--duration) var(--ease-out);
 }
 
 .project-row:hover .project-action .btn {
@@ -1593,7 +1627,7 @@ hr {
 }
 
 /* Firefox */
-* {
+html {
   scrollbar-width: thin;
   scrollbar-color: var(--border) var(--surface-dim);
 }
