@@ -1,4 +1,4 @@
 +++
-summery = 'blogs...'
+summary = 'blogs...'
 title = 'Writings'
 +++
