@@ -136,8 +136,11 @@
 }
 
 ::selection {
-  background: var(--primary);
-  color: var(--surface);
+  background: rgba(92, 141, 255, 0.35);
+}
+
+[data-theme="light"] ::selection {
+  background: rgba(10, 71, 214, 0.2);
 }
 
 /* ── Sparse Starfield ── */
@@ -852,7 +855,7 @@ ul.article-list time {
 
 .btn-sm {
   padding: var(--sp-1) var(--sp-4);
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   letter-spacing: 0.06em;
 }
 
@@ -1616,6 +1619,7 @@ hr {
 
   nav:not(.breadcrumb) {
     padding: var(--sp-2) var(--margin-mobile);
+    margin: var(--sp-4) var(--margin-mobile);
   }
 
   .nav-links {
@@ -1678,7 +1682,23 @@ hr {
   .hero-content a {
     margin-right: var(--sp-2);
     padding: var(--sp-2) var(--sp-3);
-    font-size: 0.625rem;
+    font-size: 0.75rem;
+  }
+
+  /* Disable sticky hover shift on mobile touch screens */
+  .project-row:hover,
+  ul.article-list > li:hover {
+    transform: none;
+    box-shadow: 
+      5px 5px 0px var(--primary),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  [data-theme="light"] .project-row:hover,
+  [data-theme="light"] ul.article-list > li:hover {
+    box-shadow: 
+      5px 5px 0px var(--primary),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
   }
 }
 
