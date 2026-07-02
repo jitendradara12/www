@@ -64,7 +64,7 @@
   /* Grid texture */
   --grid-color: rgba(92, 141, 255, 0.05);
   --grid-size: 24px;
-  --scanline-color: rgba(92, 141, 255, 0.012);
+  --scanline-color: rgba(92, 141, 255, 0.025);
 
   /* Starfield */
   --star-color: rgba(255, 255, 255, 0.15);
@@ -103,7 +103,7 @@
   --syntax-function: #2d8e4a;
 
   --grid-color: rgba(10, 71, 214, 0.055);
-  --scanline-color: rgba(10, 71, 214, 0.015);
+  --scanline-color: rgba(10, 71, 214, 0.03);
 
   --star-color: rgba(0, 0, 0, 0.06);
   --star-color-bright: rgba(0, 0, 0, 0.12);
@@ -251,7 +251,7 @@ body {
 }
 
 /* ── Dual-Layer Background Texture ── */
-/* Layer 1: Cartesian grid */
+/* Layer 1: Cartesian grid (Only shown on hover/desktop devices to avoid mobile redundancy) */
 body::before {
   content: "";
   position: fixed;
@@ -262,27 +262,32 @@ body::before {
     linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
   background-size: var(--grid-size) var(--grid-size);
   pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-out);
 }
 
 @media (hover: hover) {
+  html:hover body::before {
+    opacity: 1;
+  }
   body::before {
     /* Mask to create interactive spotlight on the grid */
     mask-image: radial-gradient(
       circle 250px at var(--mouse-x, -9999px) var(--mouse-y, -9999px),
       rgba(0, 0, 0, 1) 0%,
       rgba(0, 0, 0, 0.4) 60%,
-      rgba(0, 0, 0, 0.15) 100%
+      transparent 100%
     );
     -webkit-mask-image: radial-gradient(
       circle 250px at var(--mouse-x, -9999px) var(--mouse-y, -9999px),
       rgba(0, 0, 0, 1) 0%,
       rgba(0, 0, 0, 0.4) 60%,
-      rgba(0, 0, 0, 0.15) 100%
+      transparent 100%
     );
   }
 }
 
-/* Layer 2: Horizontal scanlines (disabled on mobile — negligible visual impact, saves a full-viewport paint layer) */
+/* Layer 2: Horizontal scanlines (always visible on both desktop and mobile) */
 body::after {
   content: "";
   position: fixed;
@@ -297,12 +302,6 @@ body::after {
   );
   background-size: 100% 4px;
   pointer-events: none;
-}
-
-@media (max-width: 768px) {
-  body::after {
-    display: none;
-  }
 }
 
 /* ================================================================
