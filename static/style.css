@@ -152,7 +152,6 @@ html::after {
   pointer-events: none;
   opacity: 0.55;
   transition: opacity var(--duration) var(--ease-out);
-  will-change: transform;
 }
 
 /* Layer 1: 650px grid (Drifts horizontally right) */
@@ -235,8 +234,6 @@ html::after {
 
 html {
   scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   background-color: var(--surface);
   scrollbar-width: thin;
   scrollbar-color: var(--border) var(--surface-dim);
@@ -384,6 +381,11 @@ nav a:not(.site-title):not(.theme-toggle) {
   padding: var(--sp-1) 0;
   position: relative;
   transition: color var(--duration) var(--ease-out);
+}
+
+nav a:not(.site-title):not(.theme-toggle):focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }
 
 nav a:not(.site-title):not(.theme-toggle)::after {
@@ -597,7 +599,7 @@ ul.article-list > li {
   box-shadow:
     4px 4px 0px rgba(0, 0, 0, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  contain: content;
+  contain: layout style;
   transition:
     border-color var(--duration) var(--ease-out),
     transform var(--duration) var(--ease-out),
@@ -699,6 +701,11 @@ ul.article-list > li a {
   transition: color var(--duration) var(--ease-out);
 }
 
+ul.article-list > li a:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
 ul.article-list > li a::before {
   content: "❯";
   font-size: 0.6875rem;
@@ -771,6 +778,11 @@ ul.article-list time {
     border-color var(--duration) var(--ease-out),
     transform 0.1s var(--ease-out),
     box-shadow var(--duration) var(--ease-out);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }
 
 .btn:active {
@@ -914,7 +926,7 @@ code {
 }
 
 pre {
-  background: #020307 !important;
+  background: #020307 !important; /*never remove this important or the color will suck*/
   color: #e4e1e8 !important;
   padding: var(--sp-6);
   overflow-x: auto;
@@ -1057,7 +1069,7 @@ article ul,
 article ol {
   font-family: var(--font-reading);
   font-size: 1.03125rem;
-  line-height: 1.55;
+  line-height: 1.5;
   margin-bottom: 1.25em;
   max-width: 680px;
   margin-left: 0;
@@ -1107,8 +1119,6 @@ blockquote {
   );
   backdrop-filter: var(--card-blur);
   -webkit-backdrop-filter: var(--card-blur);
-  /* border: 1px solid rgba(255, 255, 255, 0.08); */
-  border-left: 3px solid var(--primary);
   border-radius: 0 16px 16px 0;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
   font-family: var(--font-reading);
@@ -1285,7 +1295,7 @@ article strong,
     5px 5px 0px rgba(0, 0, 0, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
   position: relative;
-  contain: content;
+  contain: layout style;
   transition:
     transform var(--duration) var(--ease-out),
     border-color var(--duration) var(--ease-out),
@@ -1689,14 +1699,14 @@ hr {
   .project-row:hover,
   ul.article-list > li:hover {
     transform: none;
-    box-shadow: 
+    box-shadow:
       5px 5px 0px var(--primary),
       inset 0 1px 0 rgba(255, 255, 255, 0.05);
   }
 
   [data-theme="light"] .project-row:hover,
   [data-theme="light"] ul.article-list > li:hover {
-    box-shadow: 
+    box-shadow:
       5px 5px 0px var(--primary),
       inset 0 1px 0 rgba(255, 255, 255, 0.8);
   }
