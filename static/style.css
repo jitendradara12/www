@@ -18,7 +18,7 @@
 
   --on-surface: #e4e1e8;
   --on-surface-dim: #9b9aa5;
-  --on-surface-faint: #4e4857;
+  --on-surface-faint: #888499;
 
   --border: rgba(255, 255, 255, 0.08);
   --border-hover: rgba(255, 255, 255, 0.25);
@@ -90,7 +90,7 @@
 
   --on-surface: #1e1e24;
   --on-surface-dim: #605f6b;
-  --on-surface-faint: #a2a1ad;
+  --on-surface-faint: #706f7c;
 
   --border: rgba(0, 0, 0, 0.07);
   --border-hover: rgba(0, 0, 0, 0.18);
@@ -238,6 +238,22 @@ html {
   background-color: var(--surface);
   scrollbar-width: thin;
   scrollbar-color: var(--border) var(--surface-dim);
+}
+
+/* Custom WebKit Scrollbars (Chrome/Safari/Arc) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--surface-dim);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
 }
 
 body {
@@ -633,6 +649,7 @@ ul.article-list > li::before {
   left: 14px;
   top: 50%;
   transform: translateY(-50%);
+  font-family: var(--font-code);
   font-size: 0.6875rem;
   font-weight: 500;
   color: var(--on-surface-faint);
@@ -726,8 +743,15 @@ ul.article-list > li:hover a::before {
   transform: translateX(0);
 }
 
-ul.article-list > li a:hover {
+ul.article-list > li:hover a {
   color: var(--primary);
+}
+
+ul.article-list > li a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
 }
 
 /* Shared label sizing inside article list */
@@ -884,6 +908,8 @@ table {
   border-collapse: separate;
   border-spacing: 0;
   border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
   font-size: 0.8125rem;
   transition: border-color var(--duration) var(--ease-out);
 }
@@ -1027,6 +1053,7 @@ img,
 video {
   max-width: 100%;
   height: auto;
+  border-radius: 8px;
 }
 
 /* Shared inline icon base */
@@ -1036,6 +1063,8 @@ video {
   width: auto;
   vertical-align: -0.1em;
   border: none;
+  border-radius: 0;
+  margin-right: var(--sp-2);
 }
 
 .inline-icon-svg {
@@ -1160,12 +1189,13 @@ mark {
   background: rgba(10, 71, 214, 0.12);
 }
 
-article code:not(pre code) {
+code:not(pre code) {
   background: var(--surface-dim);
   padding: 0.1em 0.35em;
   font-size: 0.8125rem;
   color: var(--secondary);
   border: 1px solid var(--border);
+  border-radius: 4px;
   transition:
     background-color var(--duration) var(--ease-out),
     border-color var(--duration) var(--ease-out),
@@ -1414,8 +1444,16 @@ article strong,
   align-items: center;
   gap: var(--sp-2);
   text-decoration: none;
+  border-bottom: none;
   color: var(--on-surface);
   transition: color var(--duration) var(--ease-out);
+}
+
+.project-title::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
 }
 
 .project-title::before {
@@ -1448,6 +1486,8 @@ article strong,
 .project-action {
   display: flex;
   align-items: center;
+  position: relative;
+  z-index: 2;
 }
 
 .project-action .btn {
@@ -1608,11 +1648,6 @@ nav.breadcrumb a:hover {
   color: var(--on-surface-dim);
 }
 
-.breadcrumb .activea a {
-  color: var(--secondary);
-  font-weight: 600;
-  pointer-events: none;
-}
 
 /* ================================================================
    HR — Horizontal rules
@@ -1629,6 +1664,11 @@ hr {
 @media (max-width: 700px) {
   main {
     padding: var(--sp-6) var(--margin-mobile) var(--sp-20);
+  }
+
+  pre {
+    padding: var(--sp-4);
+    margin: var(--sp-6) 0;
   }
 
   nav:not(.breadcrumb) {
