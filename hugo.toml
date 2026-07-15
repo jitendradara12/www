@@ -11,6 +11,7 @@ enableGitInfo = true
 [params]
   nextprev = false
   breadcrumb = true
+  datesinlist = true
 
 [[menu.main]]
   name = "Home"
