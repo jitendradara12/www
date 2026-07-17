@@ -241,21 +241,7 @@ html {
   transition: background-color var(--duration) var(--ease-out);
 }
 
-/* Custom WebKit Scrollbars (Chrome/Safari/Arc) */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-::-webkit-scrollbar-track {
-  background: var(--surface-dim);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
-}
+/* WebKit scrollbar styling is in the SCROLLBAR section near the bottom */
 
 body {
   font-family: var(--font-body);
@@ -521,6 +507,7 @@ h6 {
   margin-bottom: 0.6em;
   line-height: 1.15;
   letter-spacing: -0.03em;
+  text-wrap: balance;
   transition: color var(--duration) var(--ease-out);
 }
 
@@ -909,7 +896,7 @@ table {
   border-collapse: separate;
   border-spacing: 0;
   border: 1px solid var(--border);
-  border-radius: 12px;
+  /* border-radius: 12px; no i don't like rounded corners in table */
   overflow: hidden;
   font-size: 0.8125rem;
   transition: border-color var(--duration) var(--ease-out);
@@ -954,6 +941,7 @@ pre,
 code {
   font-family: var(--font-code);
   font-size: 0.8125rem;
+  line-height: 1.5;
 }
 
 pre {
@@ -971,6 +959,16 @@ pre {
     box-shadow var(--duration) var(--ease-out);
 }
 
+/* Hugo's Chroma syntax highlighter wraps pre in a div.highlight */
+.highlight {
+  max-width: 100%;
+  margin: var(--sp-8) 0;
+}
+
+.highlight pre {
+  margin: 0;
+}
+
 pre:hover {
   border-color: rgba(92, 141, 255, 0.35);
   box-shadow: 0 6px 24px rgba(92, 141, 255, 0.08);
@@ -984,7 +982,7 @@ code[data-lang]::before {
   content: attr(data-lang);
   display: block;
   font-size: 0.5625rem;
-  color: #4e4857;
+  color: var(--on-surface-faint);
   margin-bottom: var(--sp-3);
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1092,20 +1090,26 @@ video {
    ================================================================ */
 article a {
   color: var(--primary);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(92, 141, 255, 0.25);
+  text-decoration: underline;
+  text-decoration-color: rgba(92, 141, 255, 0.25);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
   transition:
     color var(--duration) var(--ease-out),
-    border-color var(--duration) var(--ease-out);
+    text-decoration-color var(--duration) var(--ease-out);
 }
 
 [data-theme="light"] article a {
-  border-bottom-color: rgba(10, 71, 214, 0.3);
+  text-decoration-color: rgba(10, 71, 214, 0.3);
 }
 
 article a:hover {
   color: var(--secondary);
-  border-bottom-color: var(--secondary);
+  text-decoration-color: var(--secondary);
+}
+
+article del {
+  text-decoration-color: var(--on-surface-faint);
 }
 
 /* Shared article prose styles */
@@ -1120,6 +1124,7 @@ article ol {
   margin-left: 0;
   margin-right: auto;
   color: var(--on-surface-dim);
+  text-wrap: pretty;
 }
 
 article ul,
@@ -1129,6 +1134,10 @@ article ol {
 
 article li {
   margin-bottom: 0.4em;
+}
+
+article li::marker {
+  color: var(--on-surface-faint);
 }
 
 article h2,
@@ -1151,6 +1160,11 @@ article h3 {
   font-weight: 600;
   margin-top: 1.8em;
   margin-bottom: 0.6em;
+}
+
+article em {
+  color: var(--on-surface);
+  font-style: italic;
 }
 
 blockquote {
@@ -1180,6 +1194,10 @@ blockquote {
     color var(--duration) var(--ease-out);
 }
 
+blockquote > *:last-child {
+  margin-bottom: 0;
+}
+
 [data-theme="light"] blockquote {
   background: linear-gradient(
     135deg,
@@ -1195,6 +1213,7 @@ mark {
   background: rgba(92, 141, 255, 0.12);
   color: var(--primary);
   padding: 0.1em 0.3em;
+  border-radius: 3px;
 }
 
 [data-theme="light"] mark {
@@ -1289,6 +1308,11 @@ article strong,
   color: var(--primary);
   border-color: var(--primary);
   background: var(--primary-glow);
+}
+
+.hero-content a:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }
 
 /* ================================================================
@@ -1588,6 +1612,11 @@ footer.editorial-footer {
   color: var(--primary);
 }
 
+.taglist a:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
 /* ================================================================
    NEXT / PREV NAV
    ================================================================ */
@@ -1670,8 +1699,15 @@ nav.breadcrumb a:hover {
    ================================================================ */
 hr {
   border: none;
-  border-top: 1px solid var(--border);
-  margin: var(--sp-10) 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--border-hover) 20%,
+    var(--border-hover) 80%,
+    transparent
+  );
+  margin: var(--sp-12) 0;
 }
 
 /* ================================================================
@@ -1680,6 +1716,13 @@ hr {
 @media (max-width: 700px) {
   main {
     padding: var(--sp-6) var(--margin-mobile) var(--sp-20);
+  }
+
+  table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   pre {
@@ -1800,9 +1843,10 @@ hr {
 }
 ::-webkit-scrollbar-thumb {
   background: var(--border);
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--on-surface-faint);
+  background: var(--primary);
 }
 
 /* ================================================================
