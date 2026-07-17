@@ -1718,13 +1718,6 @@ hr {
     padding: var(--sp-6) var(--margin-mobile) var(--sp-20);
   }
 
-  table {
-    display: block;
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
   pre {
     padding: var(--sp-4);
     margin: var(--sp-6) 0;
