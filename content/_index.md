@@ -3,6 +3,7 @@ title = '~/home'
 layout = 'home'
 +++
 
-Hi, Welcome to my corner of the internet. Made with [hugo](https://github.com/gohugoio/hugo),
-this website will be an all-in-one personal website for me.
-Here, I'll write, demonstrate and learn different stuff.
+hi, welcome to my corner of the internet.
+the goal of this place is to extend my 15 kilobyte memory
+about myself and my own work.  
+here's the overflow.
