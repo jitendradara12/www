@@ -1,0 +1,28 @@
+{{ define "main" }}
+<div class="home-content">
+  {{ .Content }}
+</div>
+
+<ul class="article-list">
+  {{- range .Pages }}
+  
+  <!-- Calculate date (uses newest child page date if it's a folder/section) -->
+  {{- $displayDate := .Lastmod -}}
+  {{- if .IsSection -}}
+    {{- with .RegularPagesRecursive.ByLastmod.Reverse -}}
+      {{- $displayDate = (index . 0).Lastmod -}}
+    {{- end -}}
+  {{- end -}}
+
+  <li>
+    {{- if .Param "datesinlist" }}
+    <span class="label-sm">
+      <time datetime="{{ $displayDate.Format "2006-01-02T15:04:05Z07:00" }}">{{ $displayDate.Format "2 Jan 2006" }}</time>
+    </span><br>
+    {{ end -}}
+    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+  </li>
+  
+  {{- end }}
+</ul>
+{{ end }}
