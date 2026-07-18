@@ -244,6 +244,9 @@ html {
 /* WebKit scrollbar styling is in the SCROLLBAR section near the bottom */
 
 body {
+  display:flex;
+  flex-direction: column;
+  min-height: 100vh;
   font-family: var(--font-body);
   font-size: 0.875rem;
   line-height: 1.65;
@@ -315,8 +318,11 @@ nav:not(.breadcrumb) {
   position: sticky;
   top: var(--sp-4);
   z-index: 100;
+
+  width: calc(100% - 2 * var(--margin-mobile));
   max-width: var(--max-width);
   margin: var(--sp-4) auto;
+
   padding: 0 var(--gutter);
   display: flex;
   justify-content: space-between;
@@ -481,9 +487,12 @@ nav a:not(.site-title):not(.theme-toggle):hover::after {
    MAIN LAYOUT
    ================================================================ */
 main {
+  flex-grow:1;
+  padding: var(--sp-10) var(--gutter) var(--sp-24);
+
+  width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: var(--sp-10) var(--gutter) var(--sp-24);
 }
 
 header {
@@ -1556,22 +1565,64 @@ article strong,
    FOOTER
    ================================================================ */
 footer.editorial-footer {
-  margin-top: var(--sp-24);
-  padding: var(--sp-10) 0;
-  background: var(--surface-dim);
-  border-top: 1px solid var(--border);
-  transition:
-    background-color var(--duration) var(--ease-out),
-    border-color var(--duration) var(--ease-out);
+  margin-top: var(--sp-6);   
+  background: transparent;
 }
 
 .footer-inner {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 var(--gutter);
-  display: grid;
-  grid-template-columns: 1fr 2.5fr;
-  gap: var(--sp-10);
+  padding: var(--sp-2) var(--gutter);
+  /* border-top: 1px solid var(--border); */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  /* Typography: Ultra-minimal label styling */
+  font-family: var(--font-body);   
+  font-size: 0.5875rem;       
+  color: var(--on-surface-faint);
+  /* text-transform: uppercase; */
+  letter-spacing: 0.08em;
+}
+
+/* Polishing links inside the footer */
+.footer-inner a {
+  display: inline-flex;
+  align-items: center;
+  color: var(--on-surface-faint);
+  text-decoration: none;
+  transition: color var(--duration) var(--ease-out);
+}
+
+.footer-inner a:hover {
+  color: var(--primary);
+}
+
+/* Styling for tiny social SVG logos */
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4); /* Space between icons */
+}
+
+.footer-right img {
+  width: 11px;
+  height: 11px;
+  opacity: 0.5;
+  transition: opacity var(--duration) var(--ease-out), transform var(--duration) var(--ease-out);
+  /* Invert black SVGs to white in dark mode (default) */
+  filter: invert(1);
+}
+
+.footer-right a:hover img {
+  opacity: 0.95;
+  transform: translateY(-0.5px);
+}
+
+/* Light mode override to keep icons dark */
+[data-theme="light"] .footer-right img {
+  filter: none;
 }
 
 /* ================================================================
@@ -1725,7 +1776,6 @@ hr {
 
   nav:not(.breadcrumb) {
     padding: var(--sp-2) var(--margin-mobile);
-    margin: var(--sp-4) var(--margin-mobile);
   }
 
   .nav-links {
@@ -1810,7 +1860,9 @@ hr {
 
 @media (max-width: 600px) {
   .footer-inner {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    gap: var(--sp-2);
+    text-align: center;
   }
 }
 
