@@ -38,6 +38,8 @@
 <!--     <h2 class="home-section-title">Writings</h2> -->
 <!--   </div> -->
 
+<section>
+  <h2 class="headline-md">writings</h2>
   <ul class="article-list">
     {{- range (where .Site.RegularPages "Params.rss_exclude" "!=" true).ByLastmod.Reverse }}
     {{- $displayDate := .Lastmod }}
