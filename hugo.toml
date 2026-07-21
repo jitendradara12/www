@@ -3,6 +3,7 @@ languageCode = 'en-us'
 title = '0x43'
 theme = 'lugo'
 enableGitInfo = true
+enableRobotsTXT = true
 
 [frontmatter]
   # if 'date' is missing, resolve to other mathods

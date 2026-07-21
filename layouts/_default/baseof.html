@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.Language }}">
 <head>
-	<title>{{ if not .IsHome }}{{ .Title | title }} {{ end }}</title>
-	<link rel="canonical" href="{{ .Site.BaseURL }}">
+	<meta charset="utf-8">
+	<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title | title }} · {{ .Site.Title }}{{ end }}</title>
+	<link rel="canonical" href="{{ .Permalink }}">
 	<link rel='alternate' type='application/rss+xml' title="{{ .Site.Title }} RSS" href='/index.xml'>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +22,7 @@
 	{{ end -}}
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="robots" content="index, follow">
-	<meta charset="utf-8">
+	{{ if .Params.math -}}
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
@@ -35,6 +36,7 @@
 			});
 		});
 	</script>
+	{{- end }}
 </head>
 <body>
 {{ if .Site.Menus.main }}{{ partial "nav.html" . }}{{ end -}}
