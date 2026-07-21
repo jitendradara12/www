@@ -9,6 +9,7 @@
       width="80"
       height="80"
       loading="eager"
+      title="not an anime pfp guy, this is a real photo"
     />
     <div class="home-hero-text">
       <h1 class="home-name">Jitendra Dara<span class="cursor">_</span></h1>
@@ -33,15 +34,14 @@
   </div>
 </div>
 
-<!-- <section class="home-section"> looks ugly af -->
-<!--   <div class="home-section-header"> -->
-<!--     <h2 class="home-section-title">Writings</h2> -->
-<!--   </div> -->
 
 <section>
-  <h2 class="headline-md">writings</h2>
+  <div class="section-head">
+    <h2 class="headline-md">writings</h2>
+    <a href="/writings" class="section-head-all">all &#8669</a>
+  </div>
   <ul class="article-list">
-    {{- range (where .Site.RegularPages "Params.rss_exclude" "!=" true).ByLastmod.Reverse }}
+    {{- range first 5 (where .Site.RegularPages "Params.rss_exclude" "!=" true).ByLastmod.Reverse }}
     {{- $displayDate := .Lastmod }}
     <li>
       {{- if $.Param "datesinlist" }}
