@@ -10,21 +10,43 @@
   </section>
 
   <section class="portfolio-projects">
-    <!-- <div class="section-header"> -->
-    <!--   <h2 class="headline-md">Selected Work</h2> -->
-    <!--   <span class="label-sm">2025 — 2026</span> -->
-    <!-- </div> -->
+    <div class="section-head">
+      <h2 class="headline-md">projects</h2>
+    </div>
 
-    <div>
-      {{- range .Pages }}
-      <article>
-        <div>
-          <h3>
-            <a href="{{ .RelPermalink }}" >{{ .Title }}</a>
-          </h3>
-          <p class="project-summary">{{ .Summary }}</p>
+    <div class="project-list">
+      {{- with .Site.GetPage "/me/projects" }}
+      {{- range .Pages.ByWeight }}
+      <article class="project-card">
+        <div class="project-card-head">
+          <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          {{ with .Params.year }}<span class="project-year">{{ . }}</span>{{ end }}
+        </div>
+
+        <p class="project-summary">{{ .Summary }}</p>
+
+        <div class="project-card-foot">
+          <div class="project-links">
+            {{ with .Params.github }}
+            <a href="{{ . }}" target="_blank" rel="noopener">
+              <img src="/logos/github.svg" alt="" class="inline-icon-svg" />github
+            </a>
+            {{ end }}
+            {{ with .Params.live }}
+            <a href="{{ . }}" {{ if hasPrefix . "http" }}target="_blank" rel="noopener"{{ end }}>
+              <img src="/logos/device-desktop.svg" alt="" class="inline-icon-svg" />live
+            </a>
+            {{ end }}
+            <a href="{{ .RelPermalink }}">
+              <img src="/logos/book.svg" alt="" class="inline-icon-svg" />read
+            </a>
+          </div>
+          {{ with .Params.tech }}
+          <span class="project-tech">{{ delimit . " · " }}</span>
+          {{ end }}
         </div>
       </article>
+      {{- end }}
       {{- end }}
     </div>
   </section>

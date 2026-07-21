@@ -575,6 +575,8 @@ h2.headline-md {
   color: var(--on-surface-dim);
   margin-bottom: var(--sp-6);
   margin-top: 0;
+  border-bottom: none; /* article h2 leaks a border onto section headings */
+  padding-bottom: 0;
 }
 
 h2.headline-md::before {
@@ -853,6 +855,35 @@ video {
   border-radius: 8px;
 }
 
+/* Video embeds (vid / hidvid shortcodes) — iframes get no sizing by default */
+article iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: var(--sp-6) 0;
+}
+
+/* <details> reveal (hidvid shortcode) */
+article details {
+  margin: var(--sp-6) 0;
+}
+
+article summary {
+  font-family: var(--font-headline);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: lowercase;
+  letter-spacing: 0.03em;
+  color: var(--on-surface-dim);
+  cursor: pointer;
+  transition: color var(--duration) var(--ease-out);
+}
+
+article summary:hover {
+  color: var(--primary);
+}
+
 /* Shared inline icon base */
 .inline-icon-svg,
 .inline-icon {
@@ -1092,11 +1123,135 @@ article strong,
 /* ================================================================
    PORTFOLIO — PROJECTS SECTION
    ================================================================ */
-.project-summary {
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.project-card {
+  padding: var(--sp-5) var(--sp-6);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.025) 0%,
+    rgba(255, 255, 255, 0) 55%
+  );
+  transition:
+    border-color var(--duration) var(--ease-out),
+    background var(--duration) var(--ease-out);
+}
+
+[data-theme="light"] .project-card {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 255, 255, 0) 55%
+  );
+}
+
+.project-card:hover {
+  border-color: var(--primary-dim);
+}
+
+.project-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--sp-4);
+}
+
+.project-card-head h3 {
   margin: 0;
-  font-size: 0.75rem;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.project-card-head h3 a {
+  color: var(--on-surface);
+  text-decoration: none;
+  transition: color var(--duration) var(--ease-out);
+}
+
+.project-card:hover .project-card-head h3 a,
+.project-card-head h3 a:hover {
+  color: var(--primary);
+}
+
+.project-year {
+  font-family: var(--font-code);
+  font-size: 0.625rem;
+  color: var(--on-surface-faint);
+  white-space: nowrap;
+}
+
+.project-summary {
+  margin: var(--sp-2) 0 0;
+  font-family: var(--font-reading);
+  font-size: 0.9375rem;
   color: var(--on-surface-dim);
   line-height: 1.6;
+}
+
+/* Footer row — links left, tech right, separated by a hairline */
+.project-card-foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp-2) var(--sp-4);
+  margin-top: var(--sp-4);
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--border);
+  transition: border-color var(--duration) var(--ease-out);
+}
+
+.project-tech {
+  font-family: var(--font-code);
+  font-size: 0.625rem;
+  color: var(--on-surface-faint);
+  letter-spacing: 0.02em;
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-5);
+}
+
+.project-links a {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-headline);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: lowercase;
+  letter-spacing: 0.03em;
+  color: var(--on-surface-dim);
+  text-decoration: none;
+  transition: color var(--duration) var(--ease-out);
+}
+
+.project-links a:hover {
+  color: var(--primary);
+}
+
+.project-links a:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.project-links .inline-icon-svg {
+  width: 13px;
+  height: 13px;
+  margin-right: 6px;
+  opacity: 0.7;
+}
+
+.project-links a:hover .inline-icon-svg {
+  opacity: 1;
 }
 
 /* ================================================================
@@ -1231,6 +1386,26 @@ article:has(.home-hero) > header {
   width: 12px;
   height: 12px;
   margin-right: 0;
+}
+
+/* ================================================================
+   404
+   ================================================================ */
+.notfound {
+  margin-top: var(--sp-16);
+}
+
+.notfound-msg {
+  font-family: var(--font-code);
+  font-size: 0.875rem;
+  color: var(--danger);
+  margin-bottom: var(--sp-2);
+}
+
+.notfound-sub {
+  font-size: 0.875rem;
+  color: var(--on-surface-dim);
+  margin-bottom: var(--sp-8);
 }
 
 /* ================================================================
@@ -1467,6 +1642,10 @@ hr {
   h1.display-lg {
     font-size: 2rem;
     letter-spacing: -0.03em;
+  }
+
+  .project-card {
+    padding: var(--sp-4);
   }
 
   ul.article-list > li {
