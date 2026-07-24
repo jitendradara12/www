@@ -912,6 +912,7 @@ article a {
   text-decoration-color: rgba(92, 141, 255, 0.25);
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
+  overflow-wrap: break-word;
   transition:
     color var(--duration) var(--ease-out),
     text-decoration-color var(--duration) var(--ease-out);
@@ -931,6 +932,10 @@ article del {
 }
 
 /* Shared article prose styles */
+article {
+  overflow-wrap: break-word;
+}
+
 article p,
 article ul,
 article ol {
@@ -938,7 +943,7 @@ article ol {
   font-size: 1.03125rem;
   line-height: 1.5;
   margin-bottom: 1.25em;
-    color: var(--on-surface-dim);
+  color: var(--on-surface-dim);
   text-wrap: pretty;
 }
 
@@ -993,7 +998,7 @@ blockquote {
   line-height: 1.7;
   font-style: italic;
   color: var(--on-surface-dim);
-    transition:
+  transition:
     background var(--duration) var(--ease-out),
     border-color var(--duration) var(--ease-out),
     color var(--duration) var(--ease-out);
@@ -1027,15 +1032,25 @@ mark {
 
 code:not(pre code) {
   background: var(--surface-dim);
-  padding: 0.1em 0.35em;
+  padding: 0.15em 0.4em;
   font-size: 0.8125rem;
   color: var(--secondary);
   border: 1px solid var(--border);
   border-radius: 4px;
+  display: inline-block;
+  max-width: 100%;
+  overflow-x: auto;
+  vertical-align: -0.15em;
+  white-space: nowrap;
+  scrollbar-width: none;
   transition:
     background-color var(--duration) var(--ease-out),
     border-color var(--duration) var(--ease-out),
     color var(--duration) var(--ease-out);
+}
+
+code:not(pre code)::-webkit-scrollbar {
+  display: none;
 }
 
 /* strong text — accent color */
@@ -1620,6 +1635,10 @@ hr {
 @media (max-width: 700px) {
   main {
     padding: var(--sp-6) var(--margin-mobile) var(--sp-20);
+  }
+
+  blockquote {
+    padding: var(--sp-4) var(--sp-4);
   }
 
   pre {
