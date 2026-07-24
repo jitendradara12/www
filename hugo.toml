@@ -1,4 +1,4 @@
-baseURL = 'https://0x43.pages.dev'
+baseURL = 'https://jitendra.is-a.dev'
 languageCode = 'en-us'
 title = '0x43'
 theme = 'lugo'
@@ -10,9 +10,23 @@ enableRobotsTXT = true
   lastmod = ["date",":git",":filemodtime" ,"lastmod" ]
 
 [params]
+  author = "Jitendra Dara"
+  description = "Personal website and portfolio of Jitendra Dara – software developer living in the terminal, building stuff that works."
+  avatar = "https://avatars.githubusercontent.com/u/93462792"
+  github = "https://github.com/jitendradara12"
+  linkedin = "https://www.linkedin.com/in/jitendradara12"
+  email = "jitendradara4464@gmail.com"
+  telegram = "https://t.me/Sorrybutidonthavename"
+  leetcode = "https://leetcode.com/u/sorrybutidonthaveaname/"
+  codolio = "https://codolio.com/profile/sorrybutidonthaveaname"
   nextprev = false
   breadcrumb = true
   datesinlist = true
+
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+  filename = "sitemap.xml"
 
 [[menu.main]]
   name = "Home"
@@ -24,6 +38,7 @@ enableRobotsTXT = true
   name = "about"
   url = '/me'
   weight = 1
+
 
 
 

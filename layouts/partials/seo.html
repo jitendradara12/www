@@ -1,0 +1,98 @@
+{{- $author := .Params.author | default .Site.Params.author | default "Jitendra Dara" -}}
+{{- $avatar := .Site.Params.avatar | default "https://avatars.githubusercontent.com/u/93462792" -}}
+
+{{- $desc := "" -}}
+{{- if .Description -}}
+  {{- $desc = .Description -}}
+{{- else if .Params.summary -}}
+  {{- $desc = .Params.summary -}}
+{{- else if .Summary -}}
+  {{- $desc = .Summary | plainify | htmlUnescape -}}
+{{- else -}}
+  {{- $desc = .Site.Params.description -}}
+{{- end -}}
+{{- $desc = $desc | truncate 160 -}}
+
+<!-- Primary Meta Tags -->
+<title>{{ if .IsHome }}{{ .Site.Title }} · Personal Website & Portfolio{{ else }}{{ .Title | title }} · {{ .Site.Title }}{{ end }}</title>
+<meta name="description" content="{{ $desc }}">
+<meta name="author" content="{{ $author }}">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="{{ .Permalink }}">
+
+{{ if isset .Params "tags" -}}
+<meta name="keywords" content="{{ delimit .Params.tags ", " }}">
+{{- end }}
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="{{ $avatar }}">
+{{ if .IsPage -}}
+<meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+<meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+<meta property="article:author" content="{{ $author }}">
+{{- end }}
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+<meta name="twitter:description" content="{{ $desc }}">
+<meta name="twitter:image" content="{{ $avatar }}">
+
+<!-- Schema.org JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "{{ .Site.BaseURL }}#person",
+      "name": "{{ $author }}",
+      "url": "{{ .Site.BaseURL }}",
+      "email": "{{ .Site.Params.email | default "jitendradara4464@gmail.com" }}",
+      "image": "{{ $avatar }}",
+      "sameAs": [
+        "{{ .Site.Params.github | default "https://github.com/jitendradara12" }}",
+        "{{ .Site.Params.linkedin | default "https://www.linkedin.com/in/jitendradara12" }}",
+        "{{ .Site.Params.telegram | default "https://t.me/Sorrybutidonthavename" }}",
+        "{{ .Site.Params.leetcode | default "https://leetcode.com/u/sorrybutidonthaveaname/" }}",
+        "{{ .Site.Params.codolio | default "https://codolio.com/profile/sorrybutidonthaveaname" }}"
+      ]
+    }
+    {{- if .IsHome -}},
+    {
+      "@type": "WebSite",
+      "@id": "{{ .Site.BaseURL }}#website",
+      "url": "{{ .Site.BaseURL }}",
+      "name": "{{ .Site.Title }}",
+      "description": "{{ $desc }}",
+      "author": {
+        "@id": "{{ .Site.BaseURL }}#person"
+      }
+    }
+    {{- else if .IsPage -}},
+    {
+      "@type": "BlogPosting",
+      "@id": "{{ .Permalink }}#article",
+      "headline": "{{ .Title }}",
+      "description": "{{ $desc }}",
+      "url": "{{ .Permalink }}",
+      "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+      "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ .Permalink }}"
+      },
+      "author": {
+        "@id": "{{ .Site.BaseURL }}#person"
+      }
+    }
+    {{- end }}
+  ]
+}
+</script>
