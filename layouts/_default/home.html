@@ -4,7 +4,7 @@
   <div class="home-hero-intro">
     <img
       src="https://avatars.githubusercontent.com/u/93462792"
-      alt="Jitendra Dara"
+      alt=""
       class="home-avatar"
       width="80"
       height="80"
@@ -13,16 +13,33 @@
     />
     <div class="home-hero-text">
       <h1 class="home-name">Jitendra Dara<span class="cursor">_</span></h1>
-      <p class="home-tagline">save tokens activist · idk why the loop's still running</p>
+      <p class="home-tagline">sand is now smarter than me.</p>
     </div>
   </div>
+
+  <script>
+    (function() {
+      const taglines = [
+        "sand is now smarter than me.",
+        "still deciding what belongs here",
+        "save tokens activist · idk why the loop's still running",
+        "not loops. we're doing graphs now",
+        "rebuilding NixOS and low on RAM",
+        "need infinite tokens immediately"
+      ];
+      const taglineEl = document.querySelector('.home-tagline');
+      if (taglineEl) {
+        taglineEl.textContent = taglines[Math.floor(Math.random() * taglines.length)];
+      }
+    })();
+  </script>
 
   <div class="home-bio">
     {{ .Content }}
   </div>
 
   <div class="home-actions">
-    <a href="/me/projects" class="home-link">
+    <a href="/me" class="home-link">
       <img src="/logos/code.svg" alt="" class="inline-icon-svg" />projects
     </a>
     <a href="/resume.pdf" class="home-link">
