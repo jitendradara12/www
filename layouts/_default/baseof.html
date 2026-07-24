@@ -2,8 +2,9 @@
 <html lang="{{ .Site.Language }}">
 <head>
 	<meta charset="utf-8">
-	<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title | title }} · {{ .Site.Title }}{{ end }}</title>
-	<link rel="canonical" href="{{ .Permalink }}">
+  <meta name="google-site-verification" content="bcDT0WqnUb7PFdwBCQ9n0EH4oWYRtmSdFFnl3qdeyLE" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{{ partial "seo.html" . }}
 	<link rel='alternate' type='application/rss+xml' title="{{ .Site.Title }} RSS" href='/index.xml'>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,11 +18,6 @@
 	</script>
 	{{ with .Site.Params.favicon }}<link rel="icon" href="{{ . }}">
 	{{ end -}}
-	<meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Summary }}{{ end }}">
-	{{ if isset .Params "tags" }}<meta name="keywords" content="{{ with .Params.tags }}{{ delimit . ", " }}{{ end }}">
-	{{ end -}}
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="robots" content="index, follow">
 	{{ if .Params.math -}}
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
