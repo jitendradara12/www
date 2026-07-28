@@ -77,7 +77,7 @@
       "name": {{ $author | jsonify | safeJS }},
       "url": "{{ .Site.BaseURL }}",
       "email": "{{ .Site.Params.email | default "jitendradara4464@gmail.com" }}",
-      "image": "{{ $ogImg }}",
+      "image": "{{ $avatar | absURL }}",
       "jobTitle": "Software Developer",
       "sameAs": [
         "{{ .Site.Params.github | default "https://github.com/jitendradara12" }}",
