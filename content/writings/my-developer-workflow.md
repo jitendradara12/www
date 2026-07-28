@@ -2,6 +2,8 @@
 date = '2026-06-02T14:31:36+05:30'
 title = 'My Developer Workflow'
 banner = '/fastfetch-sc.png'
+description = "A detailed breakdown of my Linux development workflow: Fedora, Hyprland, Neovim, LazyVim, Kitty, FZF, and AI tooling."
+keywords = ["Developer Workflow", "Neovim", "LazyVim", "Hyprland", "Linux", "Kitty", "FZF", "Fedora"]
 +++
 
 When I have no interesting problem to work on, I just create the problem.
@@ -59,7 +61,7 @@ why it's amazing for me over the IDEs.
 2. [Telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 3. [Kulala.nvim](https://github.com/mistweaverco/kulala.nvim)
 
-# Apps and Packages
+## Apps and Packages
 
 ## Kitty - The Terminal
 
