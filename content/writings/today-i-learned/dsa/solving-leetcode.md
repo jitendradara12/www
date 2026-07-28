@@ -2,6 +2,8 @@
 date = '2026-05-31T23:13:27+05:30'
 title = 'Solving Leetcode'
 banner = '/logos/leetcode.svg'
+description = "My experiences and code solutions for interesting LeetCode problems (Integer to English Words, Container With Most Water)."
+keywords = ["LeetCode", "Python", "C", "Algorithms", "Problem Solving", "Data Structures"]
 +++
 
 Leetcode is _mostly_ boring and not fun. But not always. Especially, when you have solved over 400 of these problems.
