@@ -6,7 +6,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="referrer" content="strict-origin-when-cross-origin">
 	<meta name="theme-color" content="#0f1419">
-	{{ partial "seo.html" . }}
+	<!-- IndieWeb Authentication & Micropub Endpoints -->
+	<link rel="authorization_endpoint" href="https://indieauth.com/auth" />
+	<link rel="token_endpoint" href="https://tokens.indieauth.com/token" />
+	<link rel="micropub" href="https://micropub-to-github.com/micropub" />
 	<link rel="webmention" href="https://webmention.io/jitendra.is-a.dev/webmention" />
 	<link rel="pingback" href="https://webmention.io/jitendra.is-a.dev/xmlrpc" />
 	<link rel="icon" href="{{ .Site.Params.favicon | default "/favicon.ico" }}" sizes="any">
