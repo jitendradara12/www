@@ -1,11 +1,11 @@
 {{ define "title" }}{{ end }}
 {{ define "main" }}
-<div class="home-hero">
+<div class="home-hero h-card">
   <div class="home-hero-intro">
     <img
       src="https://avatars.githubusercontent.com/u/93462792?s=160"
       alt="Jitendra Dara"
-      class="home-avatar"
+      class="home-avatar u-photo"
       width="80"
       height="80"
       loading="eager"
@@ -13,10 +13,10 @@
       title="not an anime pfp guy, this is a real photo"
     />
     <div class="home-hero-text">
-      <h1 class="home-name h-card">
+      <h1 class="home-name">
         <span class="p-name">Jitendra Dara</span><span class="cursor">_</span>
-        <a href="https://jitendra.is-a.dev/" class="u-url" style="display:none"></a>
-      </h1>     <p class="home-tagline">sand is now smarter than me.</p>
+        <a href="{{ .Site.BaseURL }}/" class="u-url" style="display:none"></a>
+      </h1>     <p class="home-tagline p-note">sand is now smarter than me.</p>
     </div>
   </div>
 
