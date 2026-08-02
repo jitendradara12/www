@@ -512,7 +512,8 @@ h6 {
 }
 
 h1.display-lg {
-  font-size: clamp(2.25rem, 5vw + 1rem, 4rem);
+  /* font-size: clamp(2.25rem, 5vw + 1rem, 4rem); */
+  font-size: 1.69rem;
   line-height: 1;
   letter-spacing: -0.04em;
   margin-top: 0;
@@ -855,6 +856,14 @@ video {
   border-radius: 8px;
 }
 
+/* GIFs and images in projects section have no border-radius */
+img[src$=".gif"],
+img[src*="/gifs/"],
+.portfolio-projects img,
+.project-card img {
+  border-radius: 0;
+}
+
 /* Video embeds (vid / hidvid shortcodes) — iframes get no sizing by default */
 article iframe {
   width: 100%;
@@ -1096,7 +1105,7 @@ article strong,
 }
 
 .hero-content p {
-  margin-bottom: 1.5em;
+  /* margin-bottom: 1.5em; */
 }
 
 /* .hero-content strong — merged with article strong above */
@@ -1659,7 +1668,7 @@ hr {
   }
 
   h1.display-lg {
-    font-size: 2rem;
+    font-size: 1.69rem;
     letter-spacing: -0.03em;
   }
 
