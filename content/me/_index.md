@@ -9,3 +9,5 @@ rss_exclude = true
 > I live in the terminal.
 > sometimes, I touch grass too.  
 > I build a lot of stuff and some of it actually works.
+
+![nvim](/gifs/neovim.png) ![nixos](/gifs/nix.gif) ![tailscale](/gifs/tailscale.png) ![linux](/gifs/linux-now.gif)
