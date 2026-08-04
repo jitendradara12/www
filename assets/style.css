@@ -1481,6 +1481,7 @@ footer.editorial-footer {
   width: 11px;
   height: 11px;
   opacity: 0.5;
+  border-radius: 0px;
   transition: opacity var(--duration) var(--ease-out), transform var(--duration) var(--ease-out);
   /* Invert black SVGs to white in dark mode (default) */
   filter: invert(1);
