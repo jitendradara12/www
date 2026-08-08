@@ -1,10 +1,4 @@
-<!--
-	class: class of the figure
-	link: url the image directs to
-	alt: alternative text
-	caption: caption
-	mouse: what the image says when moused over ("title" in HTML)
--->
+{{- /* img: Standard article image figure with optional caption, link, alt, and title. Usage: {{< img src="/pic.png" caption="Text" >}} */ -}}
 <figure {{ with .Get "class" }}class="{{.}}"{{ end -}}>
 	{{- with .Get "link"}}<a href="{{.}}">{{ end -}}
 	<img src="{{ .Get "src" }}"
