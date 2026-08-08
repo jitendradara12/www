@@ -61,7 +61,7 @@
     <a href="/writings" class="section-head-all">all &#8669</a>
   </div>
   <ul class="article-list">
-    {{- range first 5 (where .Site.RegularPages "Params.rss_exclude" "!=" true).ByLastmod.Reverse }}
+    {{- range first 5 (where (where .Site.RegularPages "Params.rss_exclude" "!=" true) "Section" "!=" "photography").ByLastmod.Reverse }}
     {{- $displayDate := .Lastmod }}
     <li>
       {{- if $.Param "datesinlist" }}

@@ -1,0 +1,34 @@
+{{ define "title" }}
+<h1 class="headline-md">{{ .Title }}</h1>
+<time class="dt-published photo-date" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "02 Jan 2006" }}</time>
+{{ end }}
+
+{{ define "main" }}
+{{ $image := .Resources.GetMatch (.Params.cover | default "*") }}
+{{ $imgSrc := "" }}
+{{ if $image }}{{ $imgSrc = $image.RelPermalink }}{{ else if .Params.cover }}{{ $imgSrc = .Params.cover }}{{ end }}
+
+<article class="h-entry photo-single">
+  {{ if $imgSrc }}
+  <img src="{{ $imgSrc }}" alt="{{ .Title }}" class="u-photo photo-img" />
+  {{ end }}
+
+  {{ with .Params.caption }}<p class="photo-caption">{{ . }}</p>{{ end }}
+
+  <div class="e-content">{{ .Content }}</div>
+
+  {{ with .Params.exif }}
+  <details class="exif-single-box">
+    <summary>camera details</summary>
+    <div class="exif-grid">
+      {{ with .camera }}<div class="exif-item"><span class="exif-label">Camera</span><span class="exif-value">{{ . }}</span></div>{{ end }}
+      {{ with .lens }}<div class="exif-item"><span class="exif-label">Lens</span><span class="exif-value">{{ . }}</span></div>{{ end }}
+      {{ with .aperture }}<div class="exif-item"><span class="exif-label">Aperture</span><span class="exif-value">{{ . }}</span></div>{{ end }}
+      {{ with .shutter }}<div class="exif-item"><span class="exif-label">Shutter</span><span class="exif-value">{{ . }}</span></div>{{ end }}
+      {{ with .iso }}<div class="exif-item"><span class="exif-label">ISO</span><span class="exif-value">{{ . }}</span></div>{{ end }}
+      {{ with $.Params.location }}<div class="exif-item"><span class="exif-label">Location</span><span class="exif-value">{{ . }}</span></div>{{ end }}
+    </div>
+  </details>
+  {{ end }}
+</article>
+{{ end }}
