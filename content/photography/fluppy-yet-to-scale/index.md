@@ -1,5 +1,5 @@
 ---
-title: "a tini Red Velvet Mite running"
+title: "A Tiny Red Velvet Mite Running"
 date: 2024-06-27T13:01:00+05:30
 cover: "https://pub-31d0c0a2113b48878471392e0af84455.r2.dev/photography%20/fluppyyettoscale.avif"
 exif:
@@ -9,4 +9,4 @@ exif:
   shutter: "1/340s"
 ---
 
-a close up shot of a Red Velvet Mite, also known as true velvet mite or rain bug.
+A close up shot of a Red Velvet Mite, also known as true velvet mite or rain bug.

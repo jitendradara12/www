@@ -1,5 +1,5 @@
 ---
-title: "vibrant yellow mustard flowers"
+title: "Vibrant Yellow Mustard Flowers"
 date: 2022-01-13T17:45:34+05:30
 cover: "https://pub-31d0c0a2113b48878471392e0af84455.r2.dev/photography%20/phdone.avif"
 exif:
@@ -10,4 +10,4 @@ exif:
   iso: "149"
 ---
 
-ask me for high-res image and set this as your windows wallpaper
+Ask me for high-res image and set this as your windows wallpaper.

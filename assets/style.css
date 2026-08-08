@@ -1781,10 +1781,10 @@ ul.article-list {
   margin-top: var(--sp-6);
 }
 
-.photo-card {
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--surface-dim);
+.photo-link {
+  display: block;
+  text-decoration: none;
+  border-radius: 8px;
   overflow: hidden;
 }
 
@@ -1792,72 +1792,7 @@ ul.article-list {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 0;
-}
-
-.photo-meta {
-  padding: var(--sp-4) var(--sp-5);
-}
-
-.photo-meta-main {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--sp-4);
-  flex-wrap: wrap;
-}
-
-.photo-title {
-  font-family: var(--font-headline);
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--on-surface);
-  text-decoration: none;
-}
-
-.photo-title:hover { color: var(--primary); }
-
-.photo-meta-right {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-3);
-}
-
-.photo-date {
-  font-family: var(--font-code);
-  font-size: 0.6875rem;
-  color: var(--on-surface-faint);
-}
-
-.exif-btn {
-  display: inline-flex;
-  padding: 2px 5px;
-  background: transparent;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  color: var(--on-surface-dim);
-  cursor: pointer;
-  transition: color var(--duration) var(--ease-out), border-color var(--duration) var(--ease-out);
-}
-
-.exif-btn:hover, .exif-btn.active {
-  color: var(--primary);
-  border-color: var(--primary);
-}
-
-.photo-caption {
-  font-family: var(--font-reading);
-  font-size: 0.875rem;
-  color: var(--on-surface-dim);
-  margin-top: var(--sp-2);
-  margin-bottom: 0;
-}
-
-.exif-drawer {
-  margin-top: var(--sp-3);
-  padding: var(--sp-3);
-  border: 1px dashed var(--border);
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
 .exif-grid {
@@ -1897,6 +1832,7 @@ ul.article-list {
 .exif-single-box .exif-grid {
   margin-top: var(--sp-3);
 }
+
 
 /* Photo & Photoset shortcodes */
 .photo-embed {

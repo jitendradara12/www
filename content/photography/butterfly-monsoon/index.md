@@ -1,5 +1,5 @@
 ---
-title: "a wild butterfly in monsoon"
+title: "A Wild Butterfly in Monsoon"
 date: 2024-07-04T14:16:52+05:30
 cover: "https://pub-31d0c0a2113b48878471392e0af84455.r2.dev/photography%20/finalbutterflyyy.avif"
 exif:

@@ -1,5 +1,5 @@
 ---
-title: "A black Ant in a macro side-profile view"
+title: "A Black Ant in Macro Side-Profile View"
 date: 2024-06-28T12:53:41+05:30
 cover: "https://pub-31d0c0a2113b48878471392e0af84455.r2.dev/photography%20/finalmakoda.avif"
 exif:
