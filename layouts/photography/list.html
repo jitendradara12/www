@@ -12,50 +12,11 @@
   {{ $imgSrc := "" }}
   {{ if $image }}{{ $imgSrc = $image.RelPermalink }}{{ else if .Params.cover }}{{ $imgSrc = .Params.cover }}{{ end }}
 
-  <article class="h-entry photo-card">
-    {{ if $imgSrc }}
+  {{ if $imgSrc }}
+  <a href="{{ .RelPermalink }}" class="photo-link" title="{{ .Title }}">
     <img src="{{ $imgSrc }}" alt="{{ .Title }}" class="u-photo photo-img" loading="lazy" />
-    {{ end }}
-
-    <div class="photo-meta">
-      <div class="photo-meta-main">
-        <a href="{{ .RelPermalink }}" class="p-name photo-title">{{ .Title }}</a>
-        <div class="photo-meta-right">
-          <time class="dt-published photo-date" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "02 Jan 2006" }}</time>
-          {{ if .Params.exif }}
-          <button type="button" class="exif-btn" aria-label="Toggle metadata" title="Show camera details">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-          </button>
-          {{ end }}
-        </div>
-      </div>
-      {{ with .Params.caption }}<p class="photo-caption">{{ . }}</p>{{ end }}
-
-      {{ with .Params.exif }}
-      <div class="exif-drawer" hidden>
-        <div class="exif-grid">
-          {{ with .camera }}<div class="exif-item"><span class="exif-label">Camera</span><span class="exif-value">{{ . }}</span></div>{{ end }}
-          {{ with .lens }}<div class="exif-item"><span class="exif-label">Lens</span><span class="exif-value">{{ . }}</span></div>{{ end }}
-          {{ with .aperture }}<div class="exif-item"><span class="exif-label">Aperture</span><span class="exif-value">{{ . }}</span></div>{{ end }}
-          {{ with .shutter }}<div class="exif-item"><span class="exif-label">Shutter</span><span class="exif-value">{{ . }}</span></div>{{ end }}
-          {{ with .iso }}<div class="exif-item"><span class="exif-label">ISO</span><span class="exif-value">{{ . }}</span></div>{{ end }}
-          {{ with $.Params.location }}<div class="exif-item"><span class="exif-label">Location</span><span class="exif-value">{{ . }}</span></div>{{ end }}
-        </div>
-      </div>
-      {{ end }}
-    </div>
-  </article>
+  </a>
+  {{ end }}
   {{ end }}
 </div>
-
-<script>
-document.addEventListener('click', function(e) {
-  var btn = e.target.closest('.exif-btn');
-  if (!btn) return;
-  var drawer = btn.closest('.photo-meta').querySelector('.exif-drawer');
-  if (!drawer) return;
-  drawer.toggleAttribute('hidden');
-  btn.classList.toggle('active');
-});
-</script>
 {{ end }}
