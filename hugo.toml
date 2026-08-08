@@ -13,20 +13,25 @@ enableRobotsTXT = true
 [params]
   author = "Jitendra Dara"
   description = "Personal website and portfolio of Jitendra Dara – software developer living in the terminal, building stuff that works."
+
+  nextprev = false
+  breadcrumb = true
+  datesinlist = true
+
   avatar = "https://avatars.githubusercontent.com/u/93462792?s=160"
+
   favicon = "/favicon.ico"
   appleTouchIcon = "/apple-touch-icon.png"
   manifest = "/site.webmanifest"
   keywords = ["Jitendra Dara", "Software Developer", "Portfolio", "Linux", "Neovim", "Hugo", "Python", "Full Stack"]
+
   github = "https://github.com/jitendradara12"
   linkedin = "https://www.linkedin.com/in/jitendradara12"
   email = "jitendradara4464@gmail.com"
   telegram = "https://t.me/Sorrybutidonthavename"
   leetcode = "https://leetcode.com/u/sorrybutidonthaveaname/"
   codolio = "https://codolio.com/profile/sorrybutidonthaveaname"
-  nextprev = false
-  breadcrumb = true
-  datesinlist = true
+
 
 [sitemap]
   changefreq = "weekly"
