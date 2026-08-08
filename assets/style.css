@@ -1764,4 +1764,173 @@ ul.article-list {
   animation: fadeInUp 0.4s var(--ease-out) 0.1s both;
 }
 
+/* ================================================================
+   PHOTOGRAPHY — IndieWeb Photoblog Stream
+   ================================================================ */
+.photo-header-desc {
+  font-family: var(--font-reading);
+  color: var(--on-surface-dim);
+  font-size: 0.9375rem;
+  margin-top: var(--sp-2);
+}
+
+.photo-feed {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-12);
+  margin-top: var(--sp-6);
+}
+
+.photo-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface-dim);
+  overflow: hidden;
+}
+
+.photo-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0;
+}
+
+.photo-meta {
+  padding: var(--sp-4) var(--sp-5);
+}
+
+.photo-meta-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+}
+
+.photo-title {
+  font-family: var(--font-headline);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--on-surface);
+  text-decoration: none;
+}
+
+.photo-title:hover { color: var(--primary); }
+
+.photo-meta-right {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.photo-date {
+  font-family: var(--font-code);
+  font-size: 0.6875rem;
+  color: var(--on-surface-faint);
+}
+
+.exif-btn {
+  display: inline-flex;
+  padding: 2px 5px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--on-surface-dim);
+  cursor: pointer;
+  transition: color var(--duration) var(--ease-out), border-color var(--duration) var(--ease-out);
+}
+
+.exif-btn:hover, .exif-btn.active {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.photo-caption {
+  font-family: var(--font-reading);
+  font-size: 0.875rem;
+  color: var(--on-surface-dim);
+  margin-top: var(--sp-2);
+  margin-bottom: 0;
+}
+
+.exif-drawer {
+  margin-top: var(--sp-3);
+  padding: var(--sp-3);
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+}
+
+.exif-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: var(--sp-2) var(--sp-4);
+}
+
+.exif-item { display: flex; flex-direction: column; }
+
+.exif-label {
+  font-family: var(--font-code);
+  font-size: 0.5625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--on-surface-faint);
+}
+
+.exif-value {
+  font-family: var(--font-code);
+  font-size: 0.6875rem;
+  color: var(--on-surface);
+  margin-top: 1px;
+}
+
+.exif-single-box {
+  margin-top: var(--sp-6);
+  padding: var(--sp-4);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.exif-single-box summary {
+  cursor: pointer;
+}
+
+.exif-single-box .exif-grid {
+  margin-top: var(--sp-3);
+}
+
+/* Photo & Photoset shortcodes */
+.photo-embed {
+  margin: var(--sp-8) 0;
+}
+
+.photo-embed img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.photo-embed figcaption {
+  margin-top: var(--sp-2);
+}
+
+.photo-embed .photo-caption {
+  font-family: var(--font-reading);
+  font-size: 0.8125rem;
+  color: var(--on-surface-dim);
+}
+
+.exif-inline {
+  margin-top: var(--sp-2);
+}
+
+.exif-inline summary {
+  cursor: pointer;
+  font-size: 0.75rem;
+  color: var(--on-surface-faint);
+}
+
+.exif-inline .exif-grid {
+  margin-top: var(--sp-2);
+}
 
