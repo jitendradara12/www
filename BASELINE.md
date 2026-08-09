@@ -68,3 +68,33 @@ The following elements are recorded as visual invariants and must not be materia
 4. **Avatar Image (`.home-avatar`)**:
    * Located in `layouts/_default/home.html`.
    * GitHub profile avatar (`https://avatars.githubusercontent.com/u/93462792?s=160`) displayed at `80x80px`.
+
+---
+
+## 📈 PageSpeed Re-audit Results (Issue #23)
+
+### Mobile Re-audit Results
+* **Device:** Mobile (Emulated Moto G Power on Slow 4G)
+* **Performance:** `90 / 100` 🎉 (+8 pts vs baseline)
+* **Accessibility:** `100 / 100` 🎉 (+5 pts vs baseline)
+* **Best Practices:** `100 / 100` 🎉 (Maintained)
+* **SEO:** `100 / 100` 🎉 (+17 pts vs baseline)
+* **Agentic Browsing:** `2 / 2` 🎉 (+1 pt vs baseline)
+
+#### Mobile Core Web Vitals & Metrics
+* **First Contentful Paint (FCP):** `2.8 s` (vs 2.7 s baseline)
+* **Largest Contentful Paint (LCP):** `2.9 s` ⚡ (-1.0 s faster vs 3.9 s baseline)
+* **Speed Index:** `2.9 s` ⚡ (-1.4 s faster vs 4.3 s baseline)
+* **Total Blocking Time (TBT):** `0 ms` ✅ (Remains 0 ms)
+* **Cumulative Layout Shift (CLS):** `0` ✅ (Remains 0)
+
+---
+
+### Re-audit Acceptance Checklist
+- [x] `/gifs/67.gif` is no longer flagged under *Improve image delivery* or *Serves images with low resolution* (optimized to 18x18, ~6.7 KiB, `width="12" height="12"`).
+- [x] Homepage title (`<title>`) and meta description (`<meta name="description">`) are emitted and verified.
+- [x] Redundant Projects, Resume, and Contact icon labels are resolved using `aria-hidden="true"` and empty `alt=""`.
+- [x] Cloudflare Insights (`https://cloudflareinsights.com`) is preconnected in `<head>`.
+- [x] TBT remains 0 ms, CLS remains 0; FCP, LCP, and Speed Index do not regress from baseline.
+- [x] Mobile and desktop screenshot comparisons show zero material visual change.
+
