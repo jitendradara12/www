@@ -2,6 +2,7 @@
 <html lang="{{ .Site.Language.Lang | default "en-us" }}">
 <head>
 	<meta charset="utf-8">
+	{{ partial "seo.html" . }}
 	<meta name="google-site-verification" content="bcDT0WqnUb7PFdwBCQ9n0EH4oWYRtmSdFFnl3qdeyLE" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="referrer" content="strict-origin-when-cross-origin">
@@ -19,6 +20,7 @@
 	<link rel='alternate' type='application/rss+xml' title="{{ .Site.Title }} RSS" href='/index.xml'>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="preconnect" href="https://cloudflareinsights.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" media="print" onload="this.media='all'">
 	<noscript>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
