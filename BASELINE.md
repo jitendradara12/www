@@ -91,7 +91,7 @@ The following elements are recorded as visual invariants and must not be materia
 ---
 
 ### Re-audit Acceptance Checklist
-- [x] `/gifs/67.gif` is no longer flagged under *Improve image delivery* or *Serves images with low resolution* (optimized to 18x18, ~6.7 KiB, `width="12" height="12"`).
+- [x] `/gifs/67.gif` restored to high-resolution 48x48 version (43 KiB) for crisp rendering per user preference.
 - [x] Homepage title (`<title>`) and meta description (`<meta name="description">`) are emitted and verified.
 - [x] Redundant Projects, Resume, and Contact icon labels are resolved using `aria-hidden="true"` and empty `alt=""`.
 - [x] Cloudflare Insights (`https://cloudflareinsights.com`) is preconnected in `<head>`.
