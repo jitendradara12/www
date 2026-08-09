@@ -10,8 +10,7 @@
     {{ with .OutputFormats.Get "RSS" }}
         {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
 	{{ end }}
-	{{ range .Site.RegularPages }}
-    {{ if not .Params.rss_exclude }}
+	{{ range where (where .Site.RegularPages "Params.rss_exclude" "!=" true) "Section" "!=" "photography" }}
     <item>
       <title>{{ .Title }}</title>
       <link>{{ .Permalink }}</link>
@@ -23,6 +22,5 @@
       <description>{{- .Content | html -}}</description>
     </item>
     {{ end }}
-	{{ end }}
 	</channel>
 </rss>
