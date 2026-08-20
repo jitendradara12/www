@@ -1,5 +1,4 @@
 baseURL = 'https://jitendra.is-a.dev'
-languageCode = 'en-us'
 locale = 'en-us'
 title = '0x43'
 theme = 'lugo'
@@ -7,12 +6,12 @@ enableGitInfo = true
 enableRobotsTXT = true
 
 [frontmatter]
-  # if 'date' is missing, resolve to other mathods
-  lastmod = ["date",":git",":filemodtime" ,"lastmod" ]
+  # if 'date' is missing, resolve to other methods
+  lastmod = ["date", ":git", ":filemodtime", "lastmod"]
 
 [params]
   author = "Jitendra Dara"
-  description = "Personal website and portfolio of Jitendra Dara – software developer living in the terminal, building stuff that works."
+  description = "Personal website and portfolio of Jitendra Dara. Software developer living in the terminal, building stuff that works."
 
   nextprev = false
   breadcrumb = true
