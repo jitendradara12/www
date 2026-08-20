@@ -99,6 +99,29 @@
 		document.documentElement.style.setProperty('--mouse-y', e.clientY + 'px');
 	}, { passive: true });
 })();
+(function() {
+	if (!navigator.clipboard) return;
+	document.querySelectorAll('pre').forEach(function(pre) {
+		var btn = document.createElement('button');
+		btn.className = 'code-copy-btn';
+		btn.type = 'button';
+		btn.setAttribute('aria-label', 'Copy code to clipboard');
+		btn.textContent = 'copy';
+		btn.addEventListener('click', function() {
+			var code = pre.querySelector('code');
+			var text = (code ? code.innerText : pre.innerText).trim();
+			navigator.clipboard.writeText(text).then(function() {
+				btn.textContent = 'copied!';
+				btn.classList.add('copied');
+				setTimeout(function() {
+					btn.textContent = 'copy';
+					btn.classList.remove('copied');
+				}, 2000);
+			});
+		});
+		pre.appendChild(btn);
+	});
+})();
 </script>
 </body>
 </html>
