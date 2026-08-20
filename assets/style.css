@@ -401,12 +401,14 @@ nav:not(.breadcrumb) a:not(.site-title):not(.theme-toggle)::after {
   transition: transform 0.35s var(--ease-out);
 }
 
-nav:not(.breadcrumb) a:not(.site-title):not(.theme-toggle):hover {
+nav:not(.breadcrumb) a:not(.site-title):not(.theme-toggle):hover,
+nav:not(.breadcrumb) a:not(.site-title):not(.theme-toggle).active {
   color: var(--primary);
   text-shadow: 0 0 8px var(--primary-glow);
 }
 
-nav:not(.breadcrumb) a:not(.site-title):not(.theme-toggle):hover::after {
+nav:not(.breadcrumb) a:not(.site-title):not(.theme-toggle):hover::after,
+nav:not(.breadcrumb) a:not(.site-title):not(.theme-toggle).active::after {
   transform: scaleX(1);
 }
 
