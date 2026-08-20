@@ -1,6 +1,18 @@
 {{ define "title" -}}
-
-<!-- <span class="masthead-label">Article</span> -->
-
 <h1 class="display-lg p-name">{{ .Title }}</h1>
+{{- if and (ne .Section "me") (or .Date .ReadingTime) }}
+<div class="post-meta">
+  {{- with .Date }}
+  <time class="post-date" datetime="{{ .Format "2006-01-02T15:04:05Z07:00" }}">{{ .Format "2 Jan 2006" }}</time>
+  {{- end }}
+  {{- if and .Date .ReadingTime }}<span class="meta-sep">·</span>{{ end }}
+  {{- with .ReadingTime }}
+  <span class="reading-time">{{ . }} min read</span>
+  {{- end }}
+  {{- if and .Lastmod (ne .Lastmod.YearDay .Date.YearDay) }}
+  <span class="meta-sep">·</span>
+  <span class="updated-date">updated {{ .Lastmod.Format "2 Jan 2006" }}</span>
+  {{- end }}
+</div>
+{{- end }}
 {{- end }}

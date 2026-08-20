@@ -541,6 +541,29 @@ h1.display-lg::after {
   }
 }
 
+.post-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  font-family: var(--font-code);
+  font-size: 0.6875rem;
+  color: var(--on-surface-faint);
+  margin-top: calc(-1 * var(--sp-3));
+  margin-bottom: var(--sp-6);
+  letter-spacing: 0.02em;
+}
+
+.post-meta time,
+.post-meta .reading-time,
+.post-meta .updated-date {
+  color: var(--on-surface-faint);
+}
+
+.post-meta .meta-sep {
+  opacity: 0.35;
+}
+
 /* Section head row — heading left, "all →" link right */
 .section-head {
   display: flex;
