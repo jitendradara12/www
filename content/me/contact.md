@@ -1,6 +1,6 @@
 +++
 date = '2026-03-23T15:54:31+05:30'
-title = 'Contact & Links'
+title = 'contact & links'
 summary = 'Find me on GitHub, LinkedIn, and coding platforms.'
 description = 'Get in touch with Jitendra Dara via GitHub, LinkedIn, Email, Telegram, LeetCode, or Codolio.'
 keywords = ["Jitendra Dara Contact", "GitHub", "LinkedIn", "LeetCode", "Codolio", "Telegram"]

@@ -1,6 +1,6 @@
 +++
 date = '2026-05-31T23:13:27+05:30'
-title = 'Solving Leetcode'
+title = 'solving LeetCode'
 banner = '/logos/leetcode.svg'
 description = "My experiences and code solutions for interesting LeetCode problems (Integer to English Words, Container With Most Water)."
 keywords = ["LeetCode", "Python", "C", "Algorithms", "Problem Solving", "Data Structures"]

@@ -6,7 +6,7 @@ tech = ['django']
 github = 'https://github.com/jitendradara12/CarbonManthan'
 year = 'sep 2025'
 live = 'https://carbonmanthan.ddns.net/'
-weight = 3
+weight = 18
 +++
 
 - Developed the backend MVP for a carbon credit trading platform.

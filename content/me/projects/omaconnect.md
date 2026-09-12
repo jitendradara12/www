@@ -6,7 +6,7 @@ tech = ['Bash', 'Python', 'D-Bus']
 github = 'https://github.com/jitendradara12/omaconnect'
 live = 'https://omarchyplugins.com/plugin.html?id=omaconnect'
 year = 'Aug. 2026'
-weight = 3
+weight = 12
 +++
 
 ### screenshot

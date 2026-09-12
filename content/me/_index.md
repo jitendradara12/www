@@ -1,5 +1,5 @@
 +++
-title = 'Portfolio'
+title = 'portfolio'
 layout = 'portfolio'
 description = "Portfolio and projects of Jitendra Dara – CS student and software developer building Linux tools, web backends, and data pipelines."
 keywords = ["Jitendra Dara", "Portfolio", "Projects", "Software Developer", "Computer Science"]
