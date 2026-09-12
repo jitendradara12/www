@@ -518,7 +518,7 @@ h1.display-lg {
   letter-spacing: -0.04em;
   margin-top: 0;
   margin-bottom: var(--sp-6);
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   text-shadow: 0 0 40px var(--primary-glow);
 }
 
