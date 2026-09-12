@@ -1,6 +1,6 @@
 +++
 date = '2026-06-02T14:31:36+05:30'
-title = 'My Developer Workflow'
+title = 'my developer workflow'
 banner = '/fastfetch-sc.png'
 description = "A detailed breakdown of my Linux development workflow: Fedora, Hyprland, Neovim, LazyVim, Kitty, FZF, and AI tooling."
 keywords = ["Developer Workflow", "Neovim", "LazyVim", "Hyprland", "Linux", "Kitty", "FZF", "Fedora"]

@@ -1,6 +1,6 @@
 +++
 date = '2026-03-27T18:40:10+05:30'
-title = 'Graphs'
+title = 'graphs'
 summary = 'Traversal and Searching in Graphs'
 description = 'Quick reference notes on Graph traversal algorithms: DFS, BFS, and Dijkstra’s Shortest Path.'
 keywords = ["Graphs", "DFS", "BFS", "Dijkstra", "Graph Traversal", "Shortest Path"]

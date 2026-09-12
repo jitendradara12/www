@@ -1,12 +1,12 @@
 +++
 date = '2026-06-01T00:00:00+05:30'
-title = 'Grid-Load Forecast'
+title = 'grid-load forecast'
 summary = "daily electricity demand dataset and rolling 48-hour forecast dashboard"
 tech = ['python', 'github actions']
 github = 'https://github.com/jitendradara12/grid-load'
 live = 'https://grid-load.indevs.in/'
 year = 'jun 2026'
-weight = 2
+weight = 9
 +++
 
 ### workflow

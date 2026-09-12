@@ -1,5 +1,5 @@
 +++
-title = 'Projects'
+title = 'projects'
 summary = "See the projects I've worked on and currently working on..."
 rss_exclude = true
 [cascade]
