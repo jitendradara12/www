@@ -1,13 +1,13 @@
-<nav class="breadcrumb">
+<nav class="breadcrumb" aria-label="Breadcrumb">
   <ol>
     {{ range .Ancestors.Reverse }}
     <li>
-      <a href="{{- .RelPermalink }}">{{- .LinkTitle }}</a>
+      <a href="{{- .RelPermalink }}" title="{{- .LinkTitle }}">{{- .LinkTitle }}</a>
     </li>
     {{ end }}
-    <!-- the current page -->
+    <!-- the current page (not a link) -->
     <li class="active">
-      <a href="{{- .RelPermalink }}">{{- .LinkTitle }}</a>
+      <span aria-current="page" title="{{- .LinkTitle }}">{{- .LinkTitle }}</span>
     </li>
   </ol>
 </nav>
