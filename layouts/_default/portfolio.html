@@ -37,7 +37,7 @@
               <img src="/logos/device-desktop.svg" alt="" class="inline-icon-svg" />live
             </a>
             {{ end }}
-            <a href="{{ .RelPermalink }}">
+            <a href="{{ .Params.read | default .RelPermalink }}">
               <img src="/logos/book.svg" alt="" class="inline-icon-svg" />read
             </a>
           </div>
