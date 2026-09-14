@@ -2,12 +2,12 @@
   <ol>
     {{ range .Ancestors.Reverse }}
     <li>
-      <a href="{{- .RelPermalink }}">{{- .LinkTitle }}</a>
+      <a href="{{- .RelPermalink }}" title="{{- .LinkTitle }}">{{- .LinkTitle }}</a>
     </li>
     {{ end }}
-    <!-- the current page -->
-    <li class="active" aria-current="page">
-      <a href="{{- .RelPermalink }}">{{- .LinkTitle }}</a>
+    <!-- the current page (not a link) -->
+    <li class="active">
+      <span aria-current="page" title="{{- .LinkTitle }}">{{- .LinkTitle }}</span>
     </li>
   </ol>
 </nav>

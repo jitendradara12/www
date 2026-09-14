@@ -1,11 +1,11 @@
 +++
 date = '2025-11-01T00:00:00+05:30'
-title = 'Linux Workstation Configuration'
+title = 'Linux workstation configuration'
 summary = 'reproducible hyprland environment, scripted end to end'
 tech = ['bash', 'lua']
 github = 'https://github.com/jitendradara12/hyprdotfiles'
 year = 'nov 2025 – present'
-weight = 6
+weight = 22
 +++
 
 - Maintained a custom, highly reproducible Fedora/Wayland environment via Git, demonstrating strong Linux system-level proficiency.

@@ -1,6 +1,6 @@
 +++
 date = '2026-03-23T15:34:03+05:30'
-title = 'About This Site'
+title = 'about this site'
 summary = 'Multipurpose portfolio, digital diary, and documentation space.'
 description = 'Learn about the design, tools, and purpose behind Jitendra Dara’s personal website and digital diary.'
 keywords = ["About This Site", "Hugo", "Digital Garden", "Portfolio", "Personal Website"]
