@@ -1042,24 +1042,21 @@ mark {
 code:not(pre code) {
   background: var(--surface-dim);
   padding: 0.15em 0.4em;
-  font-size: 0.8125rem;
+  font-size: 0.85em;
+  line-height: 1;
   color: var(--secondary);
   border: 1px solid var(--border);
   border-radius: 4px;
-  display: inline-block;
-  max-width: 100%;
-  overflow-x: auto;
-  vertical-align: -0.15em;
-  white-space: nowrap;
-  scrollbar-width: none;
+  display: inline;
+  vertical-align: baseline;
+  white-space: normal;
+  overflow-wrap: break-word;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
   transition:
     background-color var(--duration) var(--ease-out),
     border-color var(--duration) var(--ease-out),
     color var(--duration) var(--ease-out);
-}
-
-code:not(pre code)::-webkit-scrollbar {
-  display: none;
 }
 
 /* strong text — accent color */
