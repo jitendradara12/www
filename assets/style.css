@@ -215,13 +215,6 @@ html::after {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html::before,
-  html::after {
-    animation: none !important;
-  }
-}
-
 html {
   scroll-behavior: smooth;
   background-color: var(--surface);
@@ -1907,5 +1900,27 @@ ul.article-list {
 
 .exif-inline .exif-grid {
   margin-top: var(--sp-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  ul.article-list > li:hover a,
+  .footer-right a:hover img,
+  .theme-toggle .icon-sun,
+  .theme-toggle .icon-moon {
+    transform: none !important;
+  }
+
+  /* The grid spotlight follows the pointer. */
+  body::before {
+    display: none;
+  }
 }
 
