@@ -599,6 +599,7 @@ h2.headline-md::before {
 
 /* Shared small-label base */
 .label-sm,
+.photo-date,
 .masthead-label {
   font-family: var(--font-code);
   font-size: 0.6875rem;
@@ -608,7 +609,8 @@ h2.headline-md::before {
   transition: color var(--duration) var(--ease-out);
 }
 
-.label-sm {
+.label-sm,
+.photo-date {
   color: var(--on-surface-faint);
 }
 
@@ -1881,11 +1883,13 @@ ul.article-list {
   border-radius: 8px;
 }
 
-.photo-embed figcaption {
+.photo-embed figcaption,
+.photo-single > .photo-caption {
   margin-top: var(--sp-2);
 }
 
-.photo-embed .photo-caption {
+.photo-embed .photo-caption,
+.photo-single > .photo-caption {
   font-family: var(--font-reading);
   font-size: 0.8125rem;
   color: var(--on-surface-dim);
