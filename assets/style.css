@@ -491,6 +491,10 @@ header {
   margin-bottom: var(--sp-6);
 }
 
+main > header:empty {
+  display: none;
+}
+
 /* ================================================================
    TYPOGRAPHY
    ================================================================ */
@@ -1363,11 +1367,6 @@ article strong,
   font-family: var(--font-reading);
   font-size: 0.9375rem;
   color: var(--on-surface-dim);
-}
-
-/* Hide the empty header on the homepage */
-article:has(.home-hero) > header {
-  display: none;
 }
 
 /* Action links — reuses hero-content button style */
