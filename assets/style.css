@@ -567,6 +567,12 @@ h1.display-lg::after {
   color: var(--primary);
 }
 
+h1.headline-md {
+  font-size: 1.69rem;
+  margin-top: 0;
+  margin-bottom: var(--sp-6);
+}
+
 h2.headline-md {
   font-family: var(--font-headline);
   font-size: 0.8125rem;
