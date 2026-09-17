@@ -923,17 +923,13 @@ article summary:hover {
 article a {
   color: var(--primary);
   text-decoration: underline;
-  text-decoration-color: rgba(92, 141, 255, 0.25);
+  text-decoration-color: currentColor;
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
   overflow-wrap: break-word;
   transition:
     color var(--duration) var(--ease-out),
     text-decoration-color var(--duration) var(--ease-out);
-}
-
-[data-theme="light"] article a {
-  text-decoration-color: rgba(10, 71, 214, 0.3);
 }
 
 article a:focus-visible,
