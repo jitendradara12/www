@@ -125,6 +125,13 @@
   border-radius: 0;
 }
 
+/* Suppress the mobile tap flash without changing text selection or focus outlines. */
+a,
+button,
+summary {
+  -webkit-tap-highlight-color: transparent;
+}
+
 ::selection {
   background: rgba(92, 141, 255, 0.35);
 }
