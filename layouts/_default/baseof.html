@@ -6,7 +6,7 @@
 	<meta name="google-site-verification" content="bcDT0WqnUb7PFdwBCQ9n0EH4oWYRtmSdFFnl3qdeyLE" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="referrer" content="strict-origin-when-cross-origin">
-	<meta name="theme-color" content="#0f1419">
+	<meta name="theme-color" content="#060814">
 	<!-- IndieWeb Authentication Endpoints -->
 	<link rel="authorization_endpoint" href="https://indieauth.com/auth" />
 	<link rel="token_endpoint" href="https://tokens.indieauth.com/token" />
@@ -29,7 +29,10 @@
 	<script>
 		(function() {
 			var t = localStorage.getItem('theme');
-			if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+			if (t === 'light') {
+				document.documentElement.setAttribute('data-theme', 'light');
+				document.querySelector('meta[name="theme-color"]').content = '#f7f6f3';
+			}
 		})();
 	</script>
 	{{ if .Params.math -}}
@@ -83,6 +86,7 @@
 	toggle.addEventListener('click', function() {
 		var html = document.documentElement;
 		var isLight = html.getAttribute('data-theme') === 'light';
+		document.querySelector('meta[name="theme-color"]').content = isLight ? '#060814' : '#f7f6f3';
 		if (isLight) {
 			html.removeAttribute('data-theme');
 			localStorage.setItem('theme', 'dark');
