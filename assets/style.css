@@ -627,7 +627,7 @@ ul.article-list > li {
   align-items: baseline;
   gap: var(--sp-5);
   padding: var(--sp-3) var(--sp-1);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px dotted var(--border);
   transition: border-color var(--duration) var(--ease-out);
 }
 
