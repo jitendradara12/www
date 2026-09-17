@@ -936,6 +936,12 @@ article a {
   text-decoration-color: rgba(10, 71, 214, 0.3);
 }
 
+article a:focus-visible,
+article summary:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
 article a:hover {
   color: var(--secondary);
   text-decoration-color: var(--secondary);
