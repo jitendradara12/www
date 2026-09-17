@@ -17,7 +17,7 @@
     {{- with $caption }}<span class="photo-caption">{{ . }}</span>{{ end -}}
     {{- if $hasExif }}
     <details class="exif-inline">
-      <summary>ⓘ</summary>
+      <summary aria-label="Camera details">ⓘ</summary>
       <div class="exif-grid">
         {{ with $camera }}<div class="exif-item"><span class="exif-label">Camera</span><span class="exif-value">{{ . }}</span></div>{{ end }}
         {{ with $lens }}<div class="exif-item"><span class="exif-label">Lens</span><span class="exif-value">{{ . }}</span></div>{{ end }}
