@@ -1664,6 +1664,295 @@ nav.breadcrumb a:hover {
 
 
 /* ================================================================
+   /NOW PAGE — Live stats + manual fields
+   ================================================================ */
+.now-page {
+  margin-top: var(--sp-2);
+}
+
+.now-hero {
+  margin-bottom: var(--sp-10);
+}
+
+.now-prose {
+  font-family: var(--font-reading);
+  font-size: 0.9375rem;
+  color: var(--on-surface-dim);
+  line-height: 1.65;
+}
+
+.now-prose p {
+  margin-bottom: 1em;
+}
+
+.now-prose a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color var(--duration) var(--ease-out);
+}
+
+.now-prose a:hover {
+  color: var(--secondary);
+}
+
+/* Manual fields (location, building, reading) */
+.now-manual {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-10);
+  padding: var(--sp-5) var(--sp-6);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.025) 0%, rgba(255,255,255,0) 55%);
+  transition: border-color var(--duration) var(--ease-out);
+}
+
+[data-theme="light"] .now-manual {
+  background: linear-gradient(180deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 55%);
+}
+
+.now-field {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-4);
+}
+
+.now-field-label {
+  font-family: var(--font-code);
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: lowercase;
+  letter-spacing: 0.08em;
+  color: var(--on-surface-faint);
+  min-width: 6em;
+  flex-shrink: 0;
+}
+
+.now-field-label::before {
+  content: "› ";
+  color: var(--primary);
+}
+
+.now-field-value {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--on-surface);
+}
+
+/* Section cards */
+.now-section {
+  margin-bottom: var(--sp-10);
+}
+
+.now-card {
+  padding: var(--sp-4) var(--sp-5);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  min-height: 48px;
+  transition: border-color var(--duration) var(--ease-out);
+}
+
+.now-loading {
+  font-family: var(--font-code);
+  font-size: 0.6875rem;
+  color: var(--on-surface-faint);
+  animation: cursor-blink 1.2s step-end infinite;
+}
+
+.now-empty {
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+  color: var(--on-surface-faint);
+}
+
+/* Commit display */
+.now-commit-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-2);
+}
+
+.now-commit-sha {
+  font-family: var(--font-code);
+  font-size: 0.6875rem;
+  color: var(--primary);
+  flex-shrink: 0;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.now-commit-msg {
+  font-family: var(--font-headline);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--on-surface);
+}
+
+.now-commit-meta {
+  display: flex;
+  gap: var(--sp-3);
+  font-family: var(--font-code);
+  font-size: 0.625rem;
+  color: var(--on-surface-faint);
+}
+
+/* Wakatime language bars */
+.now-wt-langs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.now-wt-row {
+  display: grid;
+  grid-template-columns: 6em 1fr 3.5em;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.now-wt-name {
+  font-family: var(--font-code);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--on-surface);
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.now-wt-bar-track {
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.now-wt-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: 2px;
+  transition: width 0.6s var(--ease-out);
+}
+
+.now-wt-pct {
+  font-family: var(--font-code);
+  font-size: 0.625rem;
+  color: var(--on-surface-faint);
+  text-align: right;
+}
+
+/* Repo list */
+.now-repos {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.now-repo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--sp-3) var(--sp-4);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color var(--duration) var(--ease-out);
+}
+
+.now-repo:hover {
+  border-color: var(--primary-dim);
+}
+
+.now-repo a {
+  font-family: var(--font-headline);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--on-surface);
+  text-decoration: none;
+  transition: color var(--duration) var(--ease-out);
+}
+
+.now-repo:hover a {
+  color: var(--primary);
+}
+
+.now-repo-desc {
+  font-size: 0.75rem;
+  color: var(--on-surface-dim);
+  line-height: 1.4;
+}
+
+.now-repo-meta {
+  display: flex;
+  gap: var(--sp-3);
+  font-family: var(--font-code);
+  font-size: 0.5625rem;
+  color: var(--on-surface-faint);
+  margin-top: 2px;
+}
+
+.now-repo-lang {
+  color: var(--secondary);
+}
+
+/* ── Homepage /now widget ── */
+.now-widget {
+  margin-top: var(--sp-8);
+}
+
+.now-widget-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-3);
+}
+
+.now-widget-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--sp-3) var(--sp-4);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color var(--duration) var(--ease-out);
+}
+
+.now-widget-card:hover {
+  border-color: var(--border-hover);
+}
+
+.now-widget-label {
+  font-family: var(--font-code);
+  font-size: 0.5625rem;
+  font-weight: 600;
+  text-transform: lowercase;
+  letter-spacing: 0.08em;
+  color: var(--on-surface-faint);
+}
+
+.now-widget-val {
+  font-family: var(--font-headline);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--on-surface);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.now-widget-sub {
+  font-family: var(--font-code);
+  font-size: 0.5625rem;
+  color: var(--on-surface-faint);
+}
+
+/* ================================================================
    HR — Horizontal rules
    ================================================================ */
 hr {
@@ -1751,6 +2040,20 @@ hr {
 
   .home-actions {
     gap: var(--sp-2);
+  }
+
+  /* /now widget mobile */
+  .now-widget-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .now-field {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .now-wt-row {
+    grid-template-columns: 5em 1fr 3em;
   }
 }
 

@@ -75,4 +75,74 @@
   </ul>
 </section>
 
+<section class="now-widget">
+  <div class="section-head">
+    <h2 class="headline-md">now</h2>
+    <a href="/now" class="section-head-all">full /now &#8669</a>
+  </div>
+  <div class="now-widget-grid">
+    <div class="now-widget-card" id="hw-commit">
+      <span class="now-widget-label">last commit</span>
+      <span class="now-widget-val now-loading">…</span>
+    </div>
+    <div class="now-widget-card" id="hw-lang">
+      <span class="now-widget-label">top language</span>
+      <span class="now-widget-val now-loading">…</span>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  var ce = document.getElementById('hw-commit');
+  var le = document.getElementById('hw-lang');
+  fetch('https://api.github.com/users/jitendradara12/events?per_page=10')
+    .then(function(r) { return r.json(); })
+    .then(function(events) {
+      for (var i = 0; i < events.length; i++) {
+        if (events[i].type === 'PushEvent' && events[i].payload && events[i].payload.commits && events[i].payload.commits.length) {
+          var c = events[i].payload.commits[events[i].payload.commits.length - 1];
+          var msg = c.message.split('\n')[0];
+          if (msg.length > 50) msg = msg.substring(0, 47) + '…';
+          var repo = events[i].repo.name.split('/')[1];
+          ce.querySelector('.now-widget-val').textContent = msg;
+          ce.querySelector('.now-widget-val').classList.remove('now-loading');
+          ce.insertAdjacentHTML('beforeend', '<span class="now-widget-sub">' + repo + '</span>');
+          return;
+        }
+      }
+      ce.querySelector('.now-widget-val').textContent = 'no recent pushes';
+      ce.querySelector('.now-widget-val').classList.remove('now-loading');
+    })
+    .catch(function() {
+      ce.querySelector('.now-widget-val').textContent = '—';
+      ce.querySelector('.now-widget-val').classList.remove('now-loading');
+    });
+
+  var cb = '_hwt_' + Date.now();
+  window[cb] = function(response) {
+    delete window[cb];
+    var el = document.getElementById('hwt-s');
+    if (el) el.remove();
+    if (response && response.data && response.data.length) {
+      le.querySelector('.now-widget-val').textContent = response.data[0].name;
+      le.querySelector('.now-widget-val').classList.remove('now-loading');
+      le.insertAdjacentHTML('beforeend', '<span class="now-widget-sub">' + response.data[0].percent.toFixed(1) + '% of coding time</span>');
+    } else {
+      le.querySelector('.now-widget-val').textContent = '—';
+      le.querySelector('.now-widget-val').classList.remove('now-loading');
+    }
+  };
+  var s = document.createElement('script');
+  s.id = 'hwt-s';
+  s.src = 'https://wakatime.com/share/@30152bb0-ef36-4e24-8a98-6d8ba211f7fd/dd5c3ecd-923e-4586-b4fc-af1f02b63824.json?callback=' + cb;
+  s.onerror = function() {
+    le.querySelector('.now-widget-val').textContent = '—';
+    le.querySelector('.now-widget-val').classList.remove('now-loading');
+    delete window[cb];
+  };
+  document.body.appendChild(s);
+})();
+</script>
+
 {{ end }}

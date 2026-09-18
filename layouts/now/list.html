@@ -1,0 +1,174 @@
+{{ define "title" }}{{ end }}
+{{ define "main" }}
+
+{{/* ── Build-time: Fetch top GitHub repos ── */}}
+{{- $ghUser := "jitendradara12" -}}
+{{- $repos := slice -}}
+{{- $ghURL := printf "https://api.github.com/users/%s/repos?sort=pushed&per_page=5" $ghUser -}}
+{{- $result := try (resources.GetRemote $ghURL) -}}
+{{- with $result -}}
+  {{- if not .Err -}}
+    {{- $repos = .Value.Content | transform.Unmarshal -}}
+  {{- end -}}
+{{- end -}}
+
+<div class="now-page">
+  <section class="now-hero">
+    <h1 class="headline-md">now</h1>
+    <div class="now-prose">{{ .Content }}</div>
+  </section>
+
+  {{/* ── Manual sections ── */}}
+  {{ if or .Params.location .Params.building .Params.reading }}
+  <section class="now-manual">
+    {{ with .Params.location }}
+    <div class="now-field">
+      <span class="now-field-label">location</span>
+      <span class="now-field-value">{{ . }}</span>
+    </div>
+    {{ end }}
+    {{ with .Params.building }}
+    <div class="now-field">
+      <span class="now-field-label">building</span>
+      <span class="now-field-value">{{ . }}</span>
+    </div>
+    {{ end }}
+    {{ with .Params.reading }}
+    <div class="now-field">
+      <span class="now-field-label">reading</span>
+      <span class="now-field-value">{{ . }}</span>
+    </div>
+    {{ end }}
+  </section>
+  {{ end }}
+
+  {{/* ── Last commit (client-side) ── */}}
+  <section class="now-section">
+    <h2 class="headline-md">last commit</h2>
+    <div id="now-commit" class="now-card">
+      <span class="now-loading">fetching…</span>
+    </div>
+  </section>
+
+  {{/* ── Wakatime coding stats (client-side) ── */}}
+  <section class="now-section">
+    <h2 class="headline-md">coding stats</h2>
+    <div id="now-wakatime" class="now-card">
+      <span class="now-loading">fetching…</span>
+    </div>
+  </section>
+
+  {{/* ── Top repos (build-time) ── */}}
+  {{ if gt (len $repos) 0 }}
+  <section class="now-section">
+    <h2 class="headline-md">active repos</h2>
+    <ul class="now-repos">
+      {{- range $repos }}
+      <li class="now-repo">
+        <a href="{{ .html_url }}" target="_blank" rel="noopener">{{ .name }}</a>
+        {{ with .description }}<span class="now-repo-desc">{{ . | truncate 80 }}</span>{{ end }}
+        <span class="now-repo-meta">
+          {{ with .language }}<span class="now-repo-lang">{{ . }}</span>{{ end }}
+          ★ {{ .stargazers_count }}
+        </span>
+      </li>
+      {{- end }}
+    </ul>
+  </section>
+  {{ end }}
+</div>
+
+<script>
+(function() {
+  /* ── GitHub last commit ── */
+  var commitEl = document.getElementById('now-commit');
+  fetch('https://api.github.com/users/{{ $ghUser }}/events?per_page=15')
+    .then(function(r) { return r.json(); })
+    .then(function(events) {
+      var push = null;
+      for (var i = 0; i < events.length; i++) {
+        if (events[i].type === 'PushEvent' && events[i].payload && events[i].payload.commits && events[i].payload.commits.length) {
+          push = events[i];
+          break;
+        }
+      }
+      if (!push) {
+        commitEl.innerHTML = '<span class="now-empty">no recent pushes</span>';
+        return;
+      }
+      var commit = push.payload.commits[push.payload.commits.length - 1];
+      var repo = push.repo.name.split('/')[1];
+      var sha = commit.sha.substring(0, 7);
+      var msg = commit.message.split('\n')[0];
+      if (msg.length > 72) msg = msg.substring(0, 69) + '…';
+      var date = new Date(push.created_at);
+      var ago = timeAgo(date);
+      commitEl.innerHTML =
+        '<div class="now-commit-row">' +
+          '<code class="now-commit-sha">' + sha + '</code>' +
+          '<span class="now-commit-msg">' + escapeHtml(msg) + '</span>' +
+        '</div>' +
+        '<div class="now-commit-meta">' +
+          '<span>' + escapeHtml(repo) + '</span>' +
+          '<time datetime="' + push.created_at + '">' + ago + '</time>' +
+        '</div>';
+    })
+    .catch(function() {
+      commitEl.innerHTML = '<span class="now-empty">couldn\'t reach github</span>';
+    });
+
+  /* ── Wakatime stats (JSONP via script tag) ── */
+  var wtEl = document.getElementById('now-wakatime');
+  var cbName = '_wt_' + Date.now();
+  window[cbName] = function(response) {
+    delete window[cbName];
+    if (document.getElementById('wt-jsonp')) document.getElementById('wt-jsonp').remove();
+    if (!response || !response.data || !response.data.length) {
+      wtEl.innerHTML = '<span class="now-empty">no wakatime data</span>';
+      return;
+    }
+    var langs = response.data.slice(0, 6);
+    var html = '<div class="now-wt-langs">';
+    for (var i = 0; i < langs.length; i++) {
+      var l = langs[i];
+      html +=
+        '<div class="now-wt-row">' +
+          '<span class="now-wt-name">' + escapeHtml(l.name) + '</span>' +
+          '<div class="now-wt-bar-track">' +
+            '<div class="now-wt-bar-fill" style="width:' + l.percent + '%"></div>' +
+          '</div>' +
+          '<span class="now-wt-pct">' + l.percent.toFixed(1) + '%</span>' +
+        '</div>';
+    }
+    html += '</div>';
+    wtEl.innerHTML = html;
+  };
+  var s = document.createElement('script');
+  s.id = 'wt-jsonp';
+  s.src = 'https://wakatime.com/share/@30152bb0-ef36-4e24-8a98-6d8ba211f7fd/dd5c3ecd-923e-4586-b4fc-af1f02b63824.json?callback=' + cbName;
+  s.onerror = function() {
+    wtEl.innerHTML = '<span class="now-empty">couldn\'t reach wakatime</span>';
+    delete window[cbName];
+  };
+  document.body.appendChild(s);
+
+  /* ── Helpers ── */
+  function timeAgo(date) {
+    var s = Math.floor((Date.now() - date.getTime()) / 1000);
+    if (s < 60) return 'just now';
+    var m = Math.floor(s / 60);
+    if (m < 60) return m + 'm ago';
+    var h = Math.floor(m / 60);
+    if (h < 24) return h + 'h ago';
+    var d = Math.floor(h / 24);
+    if (d < 30) return d + 'd ago';
+    return date.toLocaleDateString();
+  }
+  function escapeHtml(t) {
+    var d = document.createElement('div');
+    d.appendChild(document.createTextNode(t));
+    return d.innerHTML;
+  }
+})();
+</script>
+{{ end }}
