@@ -78,7 +78,7 @@
 <section class="now-widget">
   <div class="section-head">
     <h2 class="headline-md">now</h2>
-    <a href="/now" class="section-head-all">full /now &#8669</a>
+    <a href="/now" class="section-head-all">all &#8669</a>
   </div>
   <div class="now-widget-grid">
     <a href="/now" class="now-widget-card" id="hw-commit">
@@ -87,7 +87,7 @@
       <span class="now-widget-sub" style="display:none"></span>
     </a>
     <a href="/now" class="now-widget-card" id="hw-waka">
-      <span class="now-widget-label"><span class="pulse-dot"></span> wakatime today</span>
+      <span class="now-widget-label">wakatime today</span>
       <span class="now-widget-val">{{ with site.Data.wakatime }}{{ .total_today }}{{ else }}active{{ end }}</span>
       <span class="now-widget-sub">{{ with site.Data.wakatime }}{{ with .projects }}{{ (index . 0).name }} · {{ (index . 0).text }}{{ end }}{{ else }}logged today{{ end }}</span>
     </a>

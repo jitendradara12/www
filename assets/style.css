@@ -1596,6 +1596,16 @@ nav.breadcrumb a:hover {
   margin-top: var(--sp-2);
 }
 
+/* Staggered fade-in for all direct children */
+.now-page > * {
+  animation: fadeInUp 0.5s var(--ease-out) both;
+}
+.now-page > *:nth-child(2) { animation-delay: 0.06s; }
+.now-page > *:nth-child(3) { animation-delay: 0.12s; }
+.now-page > *:nth-child(4) { animation-delay: 0.18s; }
+.now-page > *:nth-child(5) { animation-delay: 0.24s; }
+.now-page > *:nth-child(6) { animation-delay: 0.3s; }
+
 .now-hero {
   margin-bottom: var(--sp-10);
 }
@@ -1673,26 +1683,8 @@ nav.breadcrumb a:hover {
   margin-bottom: var(--sp-10);
 }
 
-.now-section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: var(--sp-2);
-}
-
-.now-section-header .headline-md {
-  margin: 0;
-}
-
-.now-stats-badge {
-  font-family: var(--font-code);
-  font-size: 0.5625rem;
-  color: var(--on-surface-faint);
-  text-transform: lowercase;
-  letter-spacing: 0.04em;
-  padding: 2px 6px;
-  border: 1px solid var(--border);
-  border-radius: 4px;
+.now-section > .headline-md {
+  margin-bottom: var(--sp-3);
 }
 
 .now-card {
@@ -1700,7 +1692,12 @@ nav.breadcrumb a:hover {
   border: 1px solid var(--border);
   border-radius: 12px;
   min-height: 48px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.025) 0%, rgba(255,255,255,0) 55%);
   transition: border-color var(--duration) var(--ease-out);
+}
+
+[data-theme="light"] .now-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 55%);
 }
 
 .now-loading {
@@ -1716,7 +1713,7 @@ nav.breadcrumb a:hover {
   color: var(--on-surface-faint);
 }
 
-/* Commit display */
+/* ── Commit display ── */
 .now-commit-row {
   display: flex;
   align-items: baseline;
@@ -1774,152 +1771,129 @@ nav.breadcrumb a:hover {
   color: var(--primary-dim);
 }
 
-/* Wakatime summary & language bars */
-.now-wt-summary {
+/* ── Wakatime compact stats card ── */
+.now-wt-hero {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: var(--sp-3);
+  align-items: baseline;
+  margin-bottom: var(--sp-4);
 }
 
 .now-wt-total {
   font-family: var(--font-headline);
-  font-size: 0.9375rem;
-  font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: 700;
   color: var(--on-surface);
-  display: inline-flex;
-  align-items: center;
-  gap: var(--sp-2);
-}
-
-.pulse-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #10b981;
-  display: inline-block;
-  box-shadow: 0 0 8px rgba(16, 185, 129, 0.7);
-  animation: pulseGlow 2s ease-in-out infinite;
-}
-
-@keyframes pulseGlow {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.3); opacity: 0.7; }
+  letter-spacing: -0.02em;
 }
 
 .now-wt-os {
   font-family: var(--font-code);
-  font-size: 0.625rem;
+  font-size: 0.5625rem;
   color: var(--on-surface-faint);
+  text-transform: lowercase;
 }
 
-.now-wt-meta {
+.now-wt-projects {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+
+.now-wt-project {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.now-wt-pname {
   font-family: var(--font-code);
-  font-size: 0.625rem;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--on-surface);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.now-wt-ptime {
+  font-family: var(--font-code);
+  font-size: 0.6875rem;
+  color: var(--on-surface-faint);
+  flex-shrink: 0;
+  margin-left: var(--sp-4);
+}
+
+.now-wt-editors {
+  font-family: var(--font-code);
+  font-size: 0.5625rem;
   color: var(--on-surface-faint);
   margin-top: var(--sp-3);
   padding-top: var(--sp-2);
   border-top: 1px solid var(--border);
 }
 
-.now-wt-langs {
+/* ── Stacked language bar (GitHub-style) ── */
+.now-lang-bar {
   display: flex;
-  flex-direction: column;
-  gap: var(--sp-2);
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  gap: 2px;
 }
 
-.now-wt-row {
-  display: grid;
-  grid-template-columns: 6em 1fr 3.5em;
-  align-items: center;
-  gap: var(--sp-3);
+.now-lang-seg {
+  flex-shrink: 0;
+  flex-basis: 0;
+  min-width: 3px;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: opacity var(--duration) var(--ease-out);
 }
 
-.now-wt-name {
+/* Dim non-hovered segments for focus */
+.now-lang-bar:hover .now-lang-seg:not(:hover) {
+  opacity: 0.35;
+}
+
+/* ── Language legend (GitHub-style compact breakdown) ── */
+.now-lang-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-5);
+  margin-top: var(--sp-3);
   font-family: var(--font-code);
   font-size: 0.6875rem;
-  font-weight: 500;
+}
+
+.now-lang-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   color: var(--on-surface);
-  text-align: right;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
-.now-wt-bar-track {
-  height: 4px;
-  background: var(--border);
-  border-radius: 2px;
-  overflow: hidden;
+.now-lang-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
-.now-wt-bar-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
-  border-radius: 2px;
-  transition: width 0.6s var(--ease-out);
-}
-
-.now-wt-pct {
-  font-family: var(--font-code);
-  font-size: 0.625rem;
+.now-lang-pct {
   color: var(--on-surface-faint);
-  text-align: right;
+  font-size: 0.625rem;
 }
 
-/* Repo list */
-.now-repos {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-3);
-}
-
-.now-repo {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding: var(--sp-3) var(--sp-4);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  transition: border-color var(--duration) var(--ease-out);
-}
-
-.now-repo:hover {
-  border-color: var(--primary-dim);
-}
-
-.now-repo a {
-  font-family: var(--font-headline);
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--on-surface);
-  text-decoration: none;
-  transition: color var(--duration) var(--ease-out);
-}
-
-.now-repo:hover a {
-  color: var(--primary);
-}
-
-.now-repo-desc {
-  font-size: 0.75rem;
-  color: var(--on-surface-dim);
-  line-height: 1.4;
-}
-
-.now-repo-meta {
-  display: flex;
-  gap: var(--sp-3);
+/* ── Page footer ── */
+.now-footer {
   font-family: var(--font-code);
   font-size: 0.5625rem;
   color: var(--on-surface-faint);
-  margin-top: 2px;
-}
-
-.now-repo-lang {
-  color: var(--secondary);
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--border);
 }
 
 /* ── Homepage /now widget ── */
@@ -1930,24 +1904,34 @@ nav.breadcrumb a:hover {
 .now-widget-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--sp-3);
+  gap: var(--sp-4);
 }
 
 .now-widget-card {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  padding: var(--sp-3) var(--sp-4);
+  padding: var(--sp-4) var(--sp-5);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 12px;
   text-decoration: none;
   color: inherit;
-  transition: border-color var(--duration) var(--ease-out), transform var(--duration) var(--ease-out);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.025) 0%, rgba(255, 255, 255, 0) 55%);
+  transition:
+    border-color var(--duration) var(--ease-out),
+    background var(--duration) var(--ease-out),
+    transform var(--duration) var(--ease-out),
+    box-shadow var(--duration) var(--ease-out);
+}
+
+[data-theme="light"] .now-widget-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 55%);
 }
 
 .now-widget-card:hover {
-  border-color: var(--border-hover);
-  transform: translateY(-1px);
+  border-color: var(--primary-dim);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px var(--primary-glow);
 }
 
 .now-widget-card:hover .now-widget-val {
@@ -1956,27 +1940,35 @@ nav.breadcrumb a:hover {
 
 .now-widget-label {
   font-family: var(--font-code);
-  font-size: 0.5625rem;
+  font-size: 0.625rem;
   font-weight: 600;
   text-transform: lowercase;
   letter-spacing: 0.08em;
   color: var(--on-surface-faint);
 }
 
+.now-widget-label::before {
+  content: "› ";
+  color: var(--primary);
+}
+
 .now-widget-val {
   font-family: var(--font-headline);
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   font-weight: 600;
   color: var(--on-surface);
+  margin-top: var(--sp-1);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  transition: color var(--duration) var(--ease-out);
 }
 
 .now-widget-sub {
   font-family: var(--font-code);
-  font-size: 0.5625rem;
+  font-size: 0.625rem;
   color: var(--on-surface-faint);
+  margin-top: 2px;
 }
 
 /* ================================================================
@@ -2077,10 +2069,6 @@ hr {
   .now-field {
     flex-direction: column;
     gap: 2px;
-  }
-
-  .now-wt-row {
-    grid-template-columns: 5em 1fr 3em;
   }
 }
 

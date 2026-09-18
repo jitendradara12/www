@@ -1,36 +1,23 @@
 {{ define "title" }}{{ end }}
 {{ define "main" }}
 
-{{/* ── Build-time: Fetch top GitHub repos & compute curated list ── */}}
-{{- $ghUser := "jitendradara12" -}}
-{{- $repos := slice -}}
-{{- $rawRepos := slice -}}
-{{- $ghURL := printf "https://api.github.com/users/%s/repos?sort=pushed&per_page=30" $ghUser -}}
-{{- $result := try (resources.GetRemote $ghURL) -}}
-{{- with $result -}}
-  {{- if not .Err -}}
-    {{- $rawRepos = .Value.Content | transform.Unmarshal -}}
-  {{- end -}}
-{{- end -}}
-
-{{- if gt (len $rawRepos) 0 -}}
-  {{- range $rawRepos -}}
-    {{- if and (not .fork) (ne .name $ghUser) (lt (len $repos) 5) -}}
-      {{- $repos = $repos | append . -}}
-    {{- end -}}
-  {{- end -}}
-{{- end -}}
-
-{{/* Curated fallback if GitHub API was unreachable or rate-limited at build time */}}
-{{- if eq (len $repos) 0 -}}
-  {{- $repos = slice
-    (dict "name" "www" "html_url" "https://github.com/jitendradara12/www" "description" "My corner of the Internet" "language" "CSS" "stargazers_count" 0)
-    (dict "name" "goodix-5e0a" "html_url" "https://github.com/jitendradara12/goodix-5e0a" "description" "Linux libfprint driver & reverse-engineered specs for Goodix 27c6:5e0a fingerprint sensor" "language" "C" "stargazers_count" 0)
-    (dict "name" "NixOS-Hyprland" "html_url" "https://github.com/jitendradara12/NixOS-Hyprland" "description" "Personal NixOS and Hyprland desktop environment configuration" "language" "Nix" "stargazers_count" 0)
-    (dict "name" "grid-load" "html_url" "https://github.com/jitendradara12/grid-load" "description" "Automated load forecasting of the Indian Grid" "language" "Python" "stargazers_count" 3)
-    (dict "name" "omaconnect" "html_url" "https://github.com/jitendradara12/omaconnect" "description" "Omarchy plugin for native kde-connect integration" "language" "QML" "stargazers_count" 28)
-  -}}
-{{- end -}}
+{{/* ── Language color palette (curated to harmonize with site theme) ── */}}
+{{- $langColors := dict
+  "Python" "#4B8BBE"
+  "C" "#7c8a97"
+  "Nix" "#7e7eff"
+  "QML" "#a855f7"
+  "JavaScript" "#f0db4f"
+  "CSS" "#06b6d4"
+  "Go" "#00ADD8"
+  "TypeScript" "#3178c6"
+  "Shell" "#4EAA25"
+  "HTML" "#e34c26"
+  "Rust" "#dea584"
+  "Lua" "#4a7ebf"
+  "Ruby" "#CC342D"
+  "Java" "#b07219"
+-}}
 
 {{/* Language distribution baseline from personal repositories */}}
 {{- $defaultLangs := slice
@@ -74,10 +61,7 @@
 
   {{/* ── Last commit (client-side with SWR) ── */}}
   <section class="now-section">
-    <div class="now-section-header">
-      <h2 class="headline-md">last commit</h2>
-      <span id="now-commit-badge" class="now-stats-badge" style="display:none">live</span>
-    </div>
+    <h2 class="headline-md">last commit</h2>
     <div id="now-commit" class="now-card">
       <span class="now-loading">fetching recent commit…</span>
     </div>
@@ -86,104 +70,87 @@
   {{/* ── Wakatime coding stats ── */}}
   {{ with site.Data.wakatime }}
   <section class="now-section">
-    <div class="now-section-header">
-      <h2 class="headline-md">wakatime today</h2>
-      <span class="now-stats-badge"><span class="pulse-dot"></span> live tracked</span>
-    </div>
+    <h2 class="headline-md">wakatime today</h2>
     <div class="now-card">
-      <div class="now-wt-summary">
-        <span class="now-wt-total">{{ .total_today }} logged today</span>
+      <div class="now-wt-hero">
+        <span class="now-wt-total">{{ .total_today }}</span>
         {{ with .operating_systems }}
         <span class="now-wt-os">{{ (index . 0).name }}</span>
         {{ end }}
       </div>
 
       {{ if gt (len .projects) 0 }}
-      <div class="now-wt-langs">
+      <div class="now-wt-projects">
         {{ range .projects }}
-        <div class="now-wt-row">
-          <span class="now-wt-name">{{ .name }}</span>
-          <div class="now-wt-bar-track">
-            <div class="now-wt-bar-fill" style="width:{{ .percent }}%"></div>
-          </div>
-          <span class="now-wt-pct">{{ .text }}</span>
+        <div class="now-wt-project">
+          <span class="now-wt-pname">{{ .name }}</span>
+          <span class="now-wt-ptime">{{ .text }}</span>
         </div>
         {{ end }}
       </div>
       {{ end }}
 
       {{ if gt (len .editors) 0 }}
-      <div class="now-wt-meta">
-        <span>editors: {{ range $i, $e := .editors }}{{ if gt $i 0 }} · {{ end }}{{ $e.name }} ({{ printf "%.0f%%" $e.percent }}){{ end }}</span>
+      <div class="now-wt-editors">
+        {{ range $i, $e := .editors }}{{ if gt $i 0 }} · {{ end }}{{ $e.name }} ({{ printf "%.0f%%" $e.percent }}){{ end }}
       </div>
       {{ end }}
     </div>
   </section>
   {{ end }}
 
-  {{/* ── Languages (GitHub repositories) ── */}}
+  {{/* ── Languages (stacked bar + legend) ── */}}
   <section class="now-section">
-    <div class="now-section-header">
-      <h2 class="headline-md">languages</h2>
-      <span class="now-stats-badge">via github repos</span>
-    </div>
+    <h2 class="headline-md">languages</h2>
     <div class="now-card">
-      <div class="now-wt-langs" id="now-langs-list">
+      <div class="now-lang-bar" id="now-langs-bar">
         {{- range $defaultLangs }}
-        <div class="now-wt-row">
-          <span class="now-wt-name">{{ .name }}</span>
-          <div class="now-wt-bar-track">
-            <div class="now-wt-bar-fill" style="width:{{ .percent }}%"></div>
-          </div>
-          <span class="now-wt-pct">{{ printf "%.0f%%" .percent }}</span>
-        </div>
+        {{- $color := index $langColors .name | default "#6E7681" }}
+        <div class="now-lang-seg"
+             style="flex-grow: {{ .percent }}; background: {{ $color }}"
+             title="{{ .name }} ({{ printf "%.0f%%" .percent }})"></div>
+        {{- end }}
+      </div>
+      <div class="now-lang-legend" id="now-langs-legend">
+        {{- range $defaultLangs }}
+        {{- $color := index $langColors .name | default "#6E7681" }}
+        <span class="now-lang-item">
+          <span class="now-lang-dot" style="background: {{ $color }}"></span>
+          {{ .name }} <span class="now-lang-pct">{{ printf "%.0f%%" .percent }}</span>
+        </span>
         {{- end }}
       </div>
     </div>
   </section>
 
-  {{/* ── Top repos (build-time) ── */}}
-  {{ if gt (len $repos) 0 }}
-  <section class="now-section">
-    <div class="now-section-header">
-      <h2 class="headline-md">active repos</h2>
-      <span class="now-stats-badge">recently pushed</span>
-    </div>
-    <ul class="now-repos">
-      {{- range $repos }}
-      {{- $desc := .description -}}
-      {{- if not $desc -}}
-        {{- if eq .name "NixOS-Hyprland" -}}
-          {{- $desc = "Personal NixOS and Hyprland desktop environment configuration" -}}
-        {{- end -}}
-      {{- end -}}
-      <li class="now-repo">
-        <a href="{{ .html_url }}" target="_blank" rel="noopener">{{ .name }}</a>
-        {{ with $desc }}<span class="now-repo-desc">{{ . | truncate 90 }}</span>{{ end }}
-        <span class="now-repo-meta">
-          {{ with .language }}<span class="now-repo-lang">{{ . }}</span>{{ end }}
-          ★ {{ .stargazers_count }}
-        </span>
-      </li>
-      {{- end }}
-    </ul>
-  </section>
+  {{/* ── Last refreshed (IST) ── */}}
+  {{ with site.Data.wakatime }}
+  <footer class="now-footer">
+    {{- $t := (time.AsTime .last_updated).Add (time.ParseDuration "5h30m") -}}
+    last refreshed · {{ time.Format "2 Jan 2006, 15:04" $t | lower }} IST
+  </footer>
   {{ end }}
 </div>
 
 <script>
 (function() {
-  var GH_USER = '{{ $ghUser }}';
-  var CACHE_TTL = 10 * 60 * 1000; // 10 minutes
+  var GH_USER = 'jitendradara12';
+  var CACHE_TTL = 10 * 60 * 1000;
   var COMMIT_KEY = 'now_commit_v1';
   var WT_KEY = 'now_wt_v1';
 
   var commitEl = document.getElementById('now-commit');
-  var commitBadge = document.getElementById('now-commit-badge');
-  var statsBadge = document.getElementById('now-stats-badge');
-  var langsList = document.getElementById('now-langs-list');
+  var langsBar = document.getElementById('now-langs-bar');
+  var langsLegend = document.getElementById('now-langs-legend');
 
-  /* ── 1. Render Helpers ── */
+  var LANG_COLORS = {
+    'Python':'#4B8BBE','C':'#7c8a97','Nix':'#7e7eff','QML':'#a855f7',
+    'JavaScript':'#f0db4f','CSS':'#06b6d4','Go':'#00ADD8','TypeScript':'#3178c6',
+    'Shell':'#4EAA25','HTML':'#e34c26','Rust':'#dea584','Lua':'#4a7ebf',
+    'Ruby':'#CC342D','Java':'#b07219','Bash':'#4EAA25','JSON':'#6E7681'
+  };
+
+  /* ── Render Helpers ── */
   function escapeHtml(t) {
     var d = document.createElement('div');
     d.appendChild(document.createTextNode(t || ''));
@@ -221,51 +188,39 @@
         (data.branch ? '<span class="now-commit-branch">' + escapeHtml(data.branch) + '</span>' : '') +
         (date ? '<time datetime="' + data.date + '">' + ago + '</time>' : '') +
       '</div>';
-
-    if (commitBadge) commitBadge.style.display = 'inline-block';
   }
 
-  function renderLanguages(langs, sourceName) {
-    if (!langsList || !langs || !langs.length) return;
-    var html = '';
+  function renderLanguages(langs) {
+    if (!langsBar || !langs || !langs.length) return;
+    var barHtml = '';
+    var legHtml = '';
     for (var i = 0; i < langs.length; i++) {
       var l = langs[i];
+      var color = LANG_COLORS[l.name] || '#6E7681';
       var pct = typeof l.percent === 'number' ? l.percent.toFixed(0) : l.percent;
-      html +=
-        '<div class="now-wt-row">' +
-          '<span class="now-wt-name">' + escapeHtml(l.name) + '</span>' +
-          '<div class="now-wt-bar-track">' +
-            '<div class="now-wt-bar-fill" style="width:' + l.percent + '%"></div>' +
-          '</div>' +
-          '<span class="now-wt-pct">' + pct + '%</span>' +
-        '</div>';
+      barHtml += '<div class="now-lang-seg" style="flex-grow:' + l.percent + ';background:' + color + '" title="' + escapeHtml(l.name) + ' (' + pct + '%)"></div>';
+      legHtml += '<span class="now-lang-item"><span class="now-lang-dot" style="background:' + color + '"></span>' + escapeHtml(l.name) + ' <span class="now-lang-pct">' + pct + '%</span></span>';
     }
-    langsList.innerHTML = html;
-    if (statsBadge && sourceName) statsBadge.textContent = sourceName;
+    langsBar.innerHTML = barHtml;
+    if (langsLegend) langsLegend.innerHTML = legHtml;
   }
 
-  /* ── 2. SWR: Load Cached Commit & Stats ── */
+  /* ── SWR: Load cached data ── */
   var cachedCommit = null;
   try {
     var raw = localStorage.getItem(COMMIT_KEY);
     if (raw) cachedCommit = JSON.parse(raw);
   } catch(e) {}
-
-  if (cachedCommit && cachedCommit.data) {
-    renderCommit(cachedCommit.data);
-  }
+  if (cachedCommit && cachedCommit.data) renderCommit(cachedCommit.data);
 
   var cachedWt = null;
   try {
     var rawWt = localStorage.getItem(WT_KEY);
     if (rawWt) cachedWt = JSON.parse(rawWt);
   } catch(e) {}
+  if (cachedWt && cachedWt.langs && cachedWt.langs.length) renderLanguages(cachedWt.langs);
 
-  if (cachedWt && cachedWt.langs && cachedWt.langs.length) {
-    renderLanguages(cachedWt.langs, 'via wakatime');
-  }
-
-  /* ── 3. GitHub Commit Fetching (Resilient & Head SHA Resolution) ── */
+  /* ── GitHub commit fetch ── */
   var shouldFetchCommit = !cachedCommit || (Date.now() - cachedCommit.time > CACHE_TTL);
   if (shouldFetchCommit) {
     fetch('https://api.github.com/users/' + GH_USER + '/events?per_page=15', { priority: 'low' })
@@ -278,15 +233,14 @@
         var push = null;
         for (var i = 0; i < events.length; i++) {
           var ev = events[i];
-          if (ev.type === 'PushEvent' && ev.payload && (ev.payload.head || (ev.payload.commits && ev.payload.commits.length))) {
+          if (ev.type === 'PushEvent' && ev.payload &&
+              (ev.payload.head || (ev.payload.commits && ev.payload.commits.length))) {
             push = ev;
             break;
           }
         }
         if (!push) {
-          if (!cachedCommit) {
-            commitEl.innerHTML = '<span class="now-empty">no recent public pushes</span>';
-          }
+          if (!cachedCommit) commitEl.innerHTML = '<span class="now-empty">no recent public pushes</span>';
           return;
         }
 
@@ -295,66 +249,49 @@
         var headSha = push.payload.head || (push.payload.commits && push.payload.commits[push.payload.commits.length - 1].sha);
         var branch = (push.payload.ref || '').replace('refs/heads/', '');
         var createdAt = push.created_at;
-
-        // Message directly in payload?
         var commitMsg = null;
         if (push.payload.commits && push.payload.commits.length) {
           commitMsg = push.payload.commits[push.payload.commits.length - 1].message;
         }
 
         var commitData = {
-          sha: headSha,
-          repo: repoFull,
-          repoName: repoName,
-          branch: branch,
+          sha: headSha, repo: repoFull, repoName: repoName, branch: branch,
           message: commitMsg ? commitMsg.split('\n')[0] : ('push to ' + (branch || 'main')),
           date: createdAt,
           commitUrl: 'https://github.com/' + repoFull + '/commit/' + headSha,
           repoUrl: 'https://github.com/' + repoFull
         };
 
-        // If message was not in push payload, fetch commit info
         if (!commitMsg && headSha) {
           fetch('https://api.github.com/repos/' + repoFull + '/commits/' + headSha, { priority: 'low' })
             .then(function(r) { return r.ok ? r.json() : null; })
             .then(function(details) {
               if (details && details.commit && details.commit.message) {
                 commitData.message = details.commit.message.split('\n')[0];
-                if (details.commit.author && details.commit.author.date) {
-                  commitData.date = details.commit.author.date;
-                }
+                if (details.commit.author && details.commit.author.date) commitData.date = details.commit.author.date;
               }
               finalizeCommit(commitData);
             })
-            .catch(function() {
-              finalizeCommit(commitData);
-            });
+            .catch(function() { finalizeCommit(commitData); });
         } else {
           finalizeCommit(commitData);
         }
       })
-      .catch(function(err) {
-        if (!cachedCommit) {
-          commitEl.innerHTML = '<span class="now-empty">couldn\'t reach github</span>';
-        }
+      .catch(function() {
+        if (!cachedCommit) commitEl.innerHTML = '<span class="now-empty">couldn\'t reach github</span>';
       });
   }
 
   function finalizeCommit(data) {
-    if (data.message && data.message.length > 72) {
-      data.message = data.message.substring(0, 69) + '…';
-    }
-    try {
-      localStorage.setItem(COMMIT_KEY, JSON.stringify({ time: Date.now(), data: data }));
-    } catch(e) {}
+    if (data.message && data.message.length > 72) data.message = data.message.substring(0, 69) + '…';
+    try { localStorage.setItem(COMMIT_KEY, JSON.stringify({ time: Date.now(), data: data })); } catch(e) {}
     renderCommit(data);
   }
 
-  /* ── 4. WakaTime Fetching with Graceful Fallback ── */
+  /* ── WakaTime language fetch ── */
   var shouldFetchWt = !cachedWt || (Date.now() - cachedWt.time > CACHE_TTL);
   if (shouldFetchWt) {
-    var wtUrl = 'https://wakatime.com/share/@30152bb0-ef36-4e24-8a98-6d8ba211f7fd/dd5c3ecd-923e-4586-b4fc-af1f02b63824.json';
-    fetch(wtUrl, { priority: 'low' })
+    fetch('https://wakatime.com/share/@30152bb0-ef36-4e24-8a98-6d8ba211f7fd/dd5c3ecd-923e-4586-b4fc-af1f02b63824.json', { priority: 'low' })
       .then(function(r) {
         if (!r.ok) throw new Error('HTTP ' + r.status);
         return r.json();
@@ -362,15 +299,11 @@
       .then(function(resp) {
         if (resp && Array.isArray(resp.data) && resp.data.length > 0) {
           var langs = resp.data.slice(0, 6);
-          try {
-            localStorage.setItem(WT_KEY, JSON.stringify({ time: Date.now(), langs: langs }));
-          } catch(e) {}
-          renderLanguages(langs, 'via wakatime');
+          try { localStorage.setItem(WT_KEY, JSON.stringify({ time: Date.now(), langs: langs })); } catch(e) {}
+          renderLanguages(langs);
         }
       })
-      .catch(function() {
-        // Build-time GitHub stats remain active without interruption
-      });
+      .catch(function() { /* build-time defaults remain */ });
   }
 })();
 </script>
