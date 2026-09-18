@@ -120,6 +120,21 @@
 		observer.observe(el);
 	});
 })();
+(function() {
+	if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+	var ticking = false;
+	window.addEventListener('scroll', function() {
+		if (!ticking) {
+			window.requestAnimationFrame(function() {
+				var st = window.scrollY || document.documentElement.scrollTop;
+				var opacity = Math.max(0.2, 0.55 - (st / 600) * 0.35);
+				document.documentElement.style.setProperty('--star-opacity', opacity.toFixed(2));
+				ticking = false;
+			});
+			ticking = true;
+		}
+	}, { passive: true });
+})();
 </script>
 </body>
 </html>

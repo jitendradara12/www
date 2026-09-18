@@ -137,7 +137,7 @@ html::after {
   position: fixed;
   z-index: -3;
   pointer-events: none;
-  opacity: 0.55;
+  opacity: var(--star-opacity, 0.55);
   transition: opacity var(--duration) var(--ease-out);
 }
 
