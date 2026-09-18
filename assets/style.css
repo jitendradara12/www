@@ -1673,6 +1673,28 @@ nav.breadcrumb a:hover {
   margin-bottom: var(--sp-10);
 }
 
+.now-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: var(--sp-2);
+}
+
+.now-section-header .headline-md {
+  margin: 0;
+}
+
+.now-stats-badge {
+  font-family: var(--font-code);
+  font-size: 0.5625rem;
+  color: var(--on-surface-faint);
+  text-transform: lowercase;
+  letter-spacing: 0.04em;
+  padding: 2px 6px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
 .now-card {
   padding: var(--sp-4) var(--sp-5);
   border: 1px solid var(--border);
@@ -1710,6 +1732,11 @@ nav.breadcrumb a:hover {
   background: transparent;
   border: none;
   padding: 0;
+  text-decoration: none;
+}
+
+.now-commit-sha:hover {
+  text-decoration: underline;
 }
 
 .now-commit-msg {
@@ -1721,13 +1748,80 @@ nav.breadcrumb a:hover {
 
 .now-commit-meta {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--sp-3);
   font-family: var(--font-code);
   font-size: 0.625rem;
   color: var(--on-surface-faint);
 }
 
-/* Wakatime language bars */
+.now-commit-repo {
+  color: var(--primary-dim);
+  text-decoration: none;
+}
+
+.now-commit-repo:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.now-commit-branch {
+  color: var(--on-surface-faint);
+}
+
+.now-commit-branch::before {
+  content: "› ";
+  color: var(--primary-dim);
+}
+
+/* Wakatime summary & language bars */
+.now-wt-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--sp-3);
+}
+
+.now-wt-total {
+  font-family: var(--font-headline);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--on-surface);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  display: inline-block;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.7);
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.7; }
+}
+
+.now-wt-os {
+  font-family: var(--font-code);
+  font-size: 0.625rem;
+  color: var(--on-surface-faint);
+}
+
+.now-wt-meta {
+  font-family: var(--font-code);
+  font-size: 0.625rem;
+  color: var(--on-surface-faint);
+  margin-top: var(--sp-3);
+  padding-top: var(--sp-2);
+  border-top: 1px solid var(--border);
+}
+
 .now-wt-langs {
   display: flex;
   flex-direction: column;
@@ -1846,11 +1940,18 @@ nav.breadcrumb a:hover {
   padding: var(--sp-3) var(--sp-4);
   border: 1px solid var(--border);
   border-radius: 8px;
-  transition: border-color var(--duration) var(--ease-out);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color var(--duration) var(--ease-out), transform var(--duration) var(--ease-out);
 }
 
 .now-widget-card:hover {
   border-color: var(--border-hover);
+  transform: translateY(-1px);
+}
+
+.now-widget-card:hover .now-widget-val {
+  color: var(--primary);
 }
 
 .now-widget-label {

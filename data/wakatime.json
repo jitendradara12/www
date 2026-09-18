@@ -1,0 +1,56 @@
+{
+  "total_today": "1 hr 55 mins",
+  "total_seconds": 6903.71,
+  "projects": [
+    {
+      "name": "desktop-wakatime",
+      "text": "42 mins",
+      "percent": 36.7
+    },
+    {
+      "name": "goodix",
+      "text": "37 mins",
+      "percent": 32.7
+    },
+    {
+      "name": "www",
+      "text": "27 mins",
+      "percent": 23.8
+    },
+    {
+      "name": "goodix-5e0a",
+      "text": "6 mins",
+      "percent": 5.4
+    },
+    {
+      "name": "libfprint",
+      "text": "59 secs",
+      "percent": 0.9
+    }
+  ],
+  "editors": [
+    {
+      "name": "Firefox",
+      "text": "1 hr 39 mins",
+      "percent": 86.3
+    },
+    {
+      "name": "Antigravity Desktop",
+      "text": "13 mins",
+      "percent": 11.8
+    },
+    {
+      "name": "Antigravity",
+      "text": "2 mins",
+      "percent": 1.9
+    }
+  ],
+  "operating_systems": [
+    {
+      "name": "Linux",
+      "text": "1 hr 55 mins",
+      "percent": 100.0
+    }
+  ],
+  "last_updated": "2026-09-18T07:34:59Z"
+}
