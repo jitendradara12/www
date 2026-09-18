@@ -199,7 +199,7 @@ def sync_github():
 
     try:
         events = fetch_json(
-            f'https://api.github.com/users/{GH_USER}/events?per_page=15',
+            f'https://api.github.com/users/{GH_USER}/events?per_page=30',
             headers
         )
     except Exception as e:
@@ -210,15 +210,18 @@ def sync_github():
         print("[github] Unexpected events response structure.")
         return
 
-    push = None
-    for ev in events:
-        if ev.get('type') == 'PushEvent' and ev.get('payload'):
-            push = ev
-            break
-
-    if not push:
+    pushes = [
+        ev for ev in events
+        if ev.get('type') == 'PushEvent' and ev.get('payload')
+    ]
+    if not pushes:
         print("[github] No recent PushEvent found.")
         return
+
+    # GitHub Events API is not guaranteed to be strictly chronological.
+    # Sort descending by created_at so the newest push is always selected.
+    pushes.sort(key=lambda e: e.get('created_at', ''), reverse=True)
+    push = pushes[0]
 
     payload = push.get('payload', {})
     repo_full = push['repo']['name']

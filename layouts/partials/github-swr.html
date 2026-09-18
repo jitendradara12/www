@@ -2,7 +2,7 @@
 <script>
 (function() {
   var USER = 'jitendradara12';
-  var KEY = 'gh_commit_swr_v2';
+  var KEY = 'gh_commit_swr_v3';
   var TTL = 15 * 60 * 1000;
 
   function timeAgo(date) {
@@ -69,18 +69,22 @@
   if (cached && cached.data) updateDOM(cached.data);
 
   if (!cached || (Date.now() - cached.time > TTL)) {
-    fetch('https://api.github.com/users/' + USER + '/events?per_page=5', { priority: 'low' })
+    fetch('https://api.github.com/users/' + USER + '/events?per_page=15', { priority: 'low' })
       .then(function(r) { return r.ok ? r.json() : null; })
       .then(function(events) {
         if (!Array.isArray(events)) return;
-        var push = null;
+        var pushes = [];
         for (var i = 0; i < events.length; i++) {
           if (events[i].type === 'PushEvent' && events[i].payload) {
-            push = events[i];
-            break;
+            pushes.push(events[i]);
           }
         }
-        if (!push) return;
+        if (!pushes.length) return;
+
+        pushes.sort(function(a, b) {
+          return new Date(b.created_at) - new Date(a.created_at);
+        });
+        var push = pushes[0];
 
         var repoFull = push.repo.name;
         var repoName = repoFull.split('/')[1] || repoFull;
