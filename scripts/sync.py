@@ -303,8 +303,33 @@ def sync_github():
     print(f"[github] Updated data/github.json: {repo_name}@{short_sha} ('{commit_msg}') {relative_time}")
 
 
+# ── Avatar Sync ──
+
+def sync_avatar():
+    avatar_file = os.path.join(ROOT_DIR, 'static', 'avatar.jpg')
+    url = 'https://avatars.githubusercontent.com/u/93462792?s=160'
+    try:
+        req = urllib.request.Request(url, headers={'User-Agent': f'{GH_USER}-stats-sync/1.0'})
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            new_data = resp.read()
+
+        if os.path.exists(avatar_file):
+            with open(avatar_file, 'rb') as f:
+                existing = f.read()
+            if existing == new_data:
+                print("[avatar] static/avatar.jpg is already up to date.")
+                return
+
+        with open(avatar_file, 'wb') as f:
+            f.write(new_data)
+        print(f"[avatar] Updated static/avatar.jpg ({len(new_data)} bytes).")
+    except Exception as e:
+        print(f"[avatar] Notice: avatar sync skipped ({e})")
+
+
 if __name__ == '__main__':
     print("── Syncing data for www ──")
     sync_wakatime()
     sync_github()
+    sync_avatar()
     print("── Done ──")

@@ -1,27 +1,32 @@
 {
-  "total_today": "6 hrs 54 mins",
-  "total_seconds": 24883.964,
+  "total_today": "7 hrs 17 mins",
+  "total_seconds": 26238.799001,
   "is_resting": false,
   "projects": [
     {
       "name": "goodix",
       "text": "3 hrs 9 mins",
-      "percent": 45.7
+      "percent": 43.4
     },
     {
       "name": "www",
-      "text": "2 hrs 51 mins",
-      "percent": 41.4
+      "text": "3 hrs 9 mins",
+      "percent": 43.3
     },
     {
       "name": "desktop-wakatime",
       "text": "34 mins",
-      "percent": 8.3
+      "percent": 7.8
     },
     {
       "name": "goodix-5e0a",
       "text": "15 mins",
-      "percent": 3.9
+      "percent": 3.6
+    },
+    {
+      "name": "omaconnect",
+      "text": "4 mins",
+      "percent": 1.1
     },
     {
       "name": "sastauser",
@@ -42,23 +47,23 @@
   "editors": [
     {
       "name": "Firefox",
-      "text": "3 hrs 7 mins",
-      "percent": 45.1
+      "text": "3 hrs 25 mins",
+      "percent": 47.0
     },
     {
       "name": "Antigravity",
       "text": "1 hr 55 mins",
-      "percent": 27.7
+      "percent": 26.3
     },
     {
       "name": "Antigravity Desktop",
-      "text": "1 hr 48 mins",
-      "percent": 26.2
+      "text": "1 hr 51 mins",
+      "percent": 25.5
     },
     {
       "name": "Neovim",
-      "text": "3 mins",
-      "percent": 0.9
+      "text": "5 mins",
+      "percent": 1.2
     },
     {
       "name": "Zed",
@@ -69,36 +74,36 @@
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "6 hrs 54 mins",
+      "text": "7 hrs 17 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "Python",
-      "percent": 42.6
+      "percent": 39.5
     },
     {
       "name": "C",
-      "percent": 34.3
+      "percent": 31.8
     },
     {
       "name": "HTML",
-      "percent": 11.5
+      "percent": 18.1
     },
     {
       "name": "Nix",
-      "percent": 6.9
+      "percent": 6.4
     },
     {
       "name": "Bash",
-      "percent": 4.7
+      "percent": 4.3
     }
   ],
   "rollup_7d": {
-    "total": "20 hrs 8 mins",
-    "daily_average": "25 mins",
-    "total_seconds": 72510.964
+    "total": "20 hrs 31 mins",
+    "daily_average": "26 mins",
+    "total_seconds": 73865.799001
   },
-  "last_updated": "2026-09-18T14:32:52Z"
+  "last_updated": "2026-09-18T14:56:40Z"
 }

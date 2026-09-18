@@ -1,5 +1,5 @@
 {{- $author := .Params.author | default .Site.Params.author | default "Jitendra Dara" -}}
-{{- $avatar := .Site.Params.avatar | default "https://avatars.githubusercontent.com/u/93462792?s=160" -}}
+{{- $avatar := .Site.Params.avatar | default "/avatar.jpg" -}}
 
 {{- $desc := .Params.description | default .Description | default .Params.summary | default .Summary | default .Site.Params.description -}}
 {{- $desc = $desc | plainify | htmlUnescape | truncate 160 -}}

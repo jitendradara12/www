@@ -19,7 +19,7 @@ enableRobotsTXT = true
   breadcrumb = true
   datesinlist = true
 
-  avatar = "https://avatars.githubusercontent.com/u/93462792?s=160"
+  avatar = "/avatar.jpg"
 
   favicon = "/favicon.ico"
   appleTouchIcon = "/apple-touch-icon.png"
