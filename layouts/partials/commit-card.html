@@ -1,0 +1,15 @@
+<div id="now-commit" class="now-card">
+  {{ with hugo.Data.github }}
+  <div class="now-commit-row">
+    <a href="{{ .commit_url }}" target="_blank" rel="noopener" class="now-commit-sha"><code>{{ .short_sha }}</code></a>
+    <span class="now-commit-msg">{{ .message }}</span>
+  </div>
+  <div class="now-commit-meta">
+    <a href="{{ .repo_url }}" target="_blank" rel="noopener" class="now-commit-repo">{{ .repo_name }}</a>
+    {{ with .branch }}<span class="now-commit-branch">{{ . }}</span>{{ end }}
+    {{ with .date }}<time datetime="{{ . }}">{{ hugo.Data.github.relative_time }}</time>{{ end }}
+  </div>
+  {{ else }}
+  <span class="now-empty">no recent commits</span>
+  {{ end }}
+</div>

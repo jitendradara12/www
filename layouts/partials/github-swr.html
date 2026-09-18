@@ -22,18 +22,7 @@
     if (!d || !d.sha) return;
     var ago = d.date ? timeAgo(new Date(d.date)) : '';
 
-    // 1. Homepage widget
-    var hwVal = document.querySelector('#hw-commit .now-widget-val');
-    var hwSub = document.querySelector('#hw-commit .now-widget-sub');
-    if (hwVal && d.message) {
-      hwVal.textContent = d.message.length > 50 ? d.message.substring(0, 47) + '…' : d.message;
-    }
-    if (hwSub && d.repo_name) {
-      hwSub.textContent = d.repo_name + (ago ? ' · ' + ago : '');
-      hwSub.style.display = 'block';
-    }
-
-    // 2. /now commit card
+    // Commit card (shared by homepage and /now)
     var nowCard = document.getElementById('now-commit');
     if (nowCard) {
       var shaEl = nowCard.querySelector('.now-commit-sha');
@@ -127,7 +116,6 @@
   }
 
   function saveAndApply(data) {
-    if (data.message && data.message.length > 72) data.message = data.message.substring(0, 69) + '…';
     try { localStorage.setItem(KEY, JSON.stringify({ time: Date.now(), data: data })); } catch(e) {}
     updateDOM(data);
   }

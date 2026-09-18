@@ -1896,79 +1896,10 @@ nav.breadcrumb a:hover {
   border-top: 1px solid var(--border);
 }
 
-/* ── Homepage /now widget ── */
-.now-widget {
-  margin-top: var(--sp-8);
-}
-
-.now-widget-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--sp-4);
-}
-
-.now-widget-card {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding: var(--sp-4) var(--sp-5);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  text-decoration: none;
-  color: inherit;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.025) 0%, rgba(255, 255, 255, 0) 55%);
-  transition:
-    border-color var(--duration) var(--ease-out),
-    background var(--duration) var(--ease-out),
-    transform var(--duration) var(--ease-out),
-    box-shadow var(--duration) var(--ease-out);
-}
-
-[data-theme="light"] .now-widget-card {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 55%);
-}
-
-.now-widget-card:hover {
-  border-color: var(--primary-dim);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 20px var(--primary-glow);
-}
-
-.now-widget-card:hover .now-widget-val {
-  color: var(--primary);
-}
-
-.now-widget-label {
-  font-family: var(--font-code);
-  font-size: 0.625rem;
-  font-weight: 600;
-  text-transform: lowercase;
-  letter-spacing: 0.08em;
-  color: var(--on-surface-faint);
-}
-
-.now-widget-label::before {
-  content: "› ";
-  color: var(--primary);
-}
-
-.now-widget-val {
-  font-family: var(--font-headline);
-  font-size: 0.9375rem;
-  font-weight: 600;
-  color: var(--on-surface);
-  margin-top: var(--sp-1);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  transition: color var(--duration) var(--ease-out);
-}
-
-.now-widget-sub {
-  font-family: var(--font-code);
-  font-size: 0.625rem;
-  color: var(--on-surface-faint);
-  margin-top: 2px;
+/* ── Homepage sections share one rhythm ── */
+#now,
+.home-hero ~ section + section {
+  margin-top: var(--sp-16);
 }
 
 /* ================================================================
@@ -2061,10 +1992,6 @@ hr {
     gap: var(--sp-2);
   }
 
-  /* /now widget mobile */
-  .now-widget-grid {
-    grid-template-columns: 1fr;
-  }
 
   .now-field {
     flex-direction: column;
