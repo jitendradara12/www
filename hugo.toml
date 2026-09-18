@@ -1,9 +1,7 @@
 baseURL = 'https://jitendra.is-a.dev'
-languageCode = 'en-us'
 locale = 'en-us'
 title = '0x43'
 timeZone = 'Asia/Kolkata'
-theme = 'lugo'
 enableGitInfo = true
 enableRobotsTXT = true
 

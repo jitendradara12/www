@@ -83,7 +83,7 @@
   <div class="now-widget-grid">
     <a href="/now" class="now-widget-card" id="hw-commit">
       <span class="now-widget-label">last commit</span>
-      {{ with site.Data.github }}
+      {{ with hugo.Data.github }}
       <span class="now-widget-val">{{ .message | truncate 50 }}</span>
       <span class="now-widget-sub">{{ .repo_name }}{{ with .relative_time }} · {{ . }}{{ end }}</span>
       {{ else }}
@@ -92,9 +92,9 @@
       {{ end }}
     </a>
     <a href="/now" class="now-widget-card" id="hw-waka">
-      <span class="now-widget-label">{{ if and site.Data.wakatime site.Data.wakatime.is_resting }}wakatime 7d{{ else }}wakatime today{{ end }}</span>
-      <span class="now-widget-val">{{ with site.Data.wakatime }}{{ if .is_resting }}{{ .rollup_7d.total }}{{ else }}{{ .total_today }}{{ end }}{{ else }}active{{ end }}</span>
-      <span class="now-widget-sub">{{ with site.Data.wakatime }}{{ if .is_resting }}daily avg: {{ .rollup_7d.daily_average }}{{ else }}{{ with .projects }}{{ (index . 0).name }} · {{ (index . 0).text }}{{ end }}{{ end }}{{ else }}logged recently{{ end }}</span>
+      <span class="now-widget-label">{{ if and hugo.Data.wakatime hugo.Data.wakatime.is_resting }}wakatime 7d{{ else }}wakatime today{{ end }}</span>
+      <span class="now-widget-val">{{ with hugo.Data.wakatime }}{{ if .is_resting }}{{ .rollup_7d.total }}{{ else }}{{ .total_today }}{{ end }}{{ else }}active{{ end }}</span>
+      <span class="now-widget-sub">{{ with hugo.Data.wakatime }}{{ if .is_resting }}daily avg: {{ .rollup_7d.daily_average }}{{ else }}{{ with .projects }}{{ (index . 0).name }} · {{ (index . 0).text }}{{ end }}{{ end }}{{ else }}logged recently{{ end }}</span>
     </a>
   </div>
 </section>

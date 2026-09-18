@@ -21,7 +21,7 @@
 
 {{/* Languages from Wakatime 7-day aggregation */}}
 {{- $languages := slice -}}
-{{- with site.Data.wakatime.languages -}}
+{{- with hugo.Data.wakatime.languages -}}
   {{- $languages = . -}}
 {{- end -}}
 
@@ -60,7 +60,7 @@
   <section class="now-section">
     <h2 class="headline-md">last commit</h2>
     <div id="now-commit" class="now-card">
-      {{ with site.Data.github }}
+      {{ with hugo.Data.github }}
       <div class="now-commit-row">
         <a href="{{ .commit_url }}" target="_blank" rel="noopener" class="now-commit-sha"><code>{{ .short_sha }}</code></a>
         <span class="now-commit-msg">{{ .message }}</span>
@@ -68,7 +68,7 @@
       <div class="now-commit-meta">
         <a href="{{ .repo_url }}" target="_blank" rel="noopener" class="now-commit-repo">{{ .repo_name }}</a>
         {{ with .branch }}<span class="now-commit-branch">{{ . }}</span>{{ end }}
-        {{ with .date }}<time datetime="{{ . }}">{{ site.Data.github.relative_time }}</time>{{ end }}
+        {{ with .date }}<time datetime="{{ . }}">{{ hugo.Data.github.relative_time }}</time>{{ end }}
       </div>
       {{ else }}
       <span class="now-empty">no recent commits</span>
@@ -77,14 +77,14 @@
   </section>
 
   {{/* ── Wakatime coding stats ── */}}
-  {{ with site.Data.wakatime }}
+  {{ with hugo.Data.wakatime }}
   <section class="now-section">
     <h2 class="headline-md">{{ if .is_resting }}wakatime (past 7 days){{ else }}wakatime today{{ end }}</h2>
     <div class="now-card">
       <div class="now-wt-hero">
         <span class="now-wt-total">{{ if .is_resting }}{{ .rollup_7d.total }}{{ else }}{{ .total_today }}{{ end }}</span>
         {{ with .operating_systems }}
-        <span class="now-wt-os">{{ (index . 0).name }}{{ if site.Data.wakatime.is_resting }} · daily avg: {{ site.Data.wakatime.rollup_7d.daily_average }}{{ end }}</span>
+        <span class="now-wt-os">{{ (index . 0).name }}{{ if hugo.Data.wakatime.is_resting }} · daily avg: {{ hugo.Data.wakatime.rollup_7d.daily_average }}{{ end }}</span>
         {{ end }}
       </div>
 
@@ -135,7 +135,7 @@
   {{ end }}
 
   {{/* ── Last refreshed (IST) ── */}}
-  {{ with site.Data.wakatime }}
+  {{ with hugo.Data.wakatime }}
   <footer class="now-footer">
     {{- $t := (time.AsTime .last_updated).Add (time.ParseDuration "5h30m") -}}
     last refreshed · {{ time.Format "2 Jan 2006, 15:04" $t | lower }} IST

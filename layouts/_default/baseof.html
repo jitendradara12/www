@@ -52,7 +52,7 @@
 	{{- end }}
 </head>
 <body>
-{{ if .Site.Menus.main }}{{ partial "nav.html" . }}{{ end -}}
+{{ if .Site.Menus.main }}{{ partialCached "nav.html" . }}{{ end -}}
 <main>
 
 {{- if and (.Param "breadcrumb") (not .IsHome) }}
@@ -78,7 +78,7 @@
 </article>
 </main>
 
-{{partial "footer.html" .}}
+{{ partialCached "footer.html" . }}
 <script>
 (function() {
 	var toggle = document.getElementById('theme-toggle');
