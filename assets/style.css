@@ -858,13 +858,18 @@ svg.inline-icon-svg {
 article a {
   color: var(--primary);
   text-decoration: underline;
-  text-decoration-color: currentColor;
+  text-decoration-color: rgba(92, 141, 255, 0.4);
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
   overflow-wrap: break-word;
   transition:
     color var(--duration) var(--ease-out),
-    text-decoration-color var(--duration) var(--ease-out);
+    text-decoration-color var(--duration) var(--ease-out),
+    text-underline-offset var(--duration) var(--ease-out);
+}
+
+[data-theme="light"] article a {
+  text-decoration-color: rgba(10, 71, 214, 0.35);
 }
 
 article a:focus-visible,
@@ -876,6 +881,7 @@ article summary:focus-visible {
 article a:hover {
   color: var(--secondary);
   text-decoration-color: var(--secondary);
+  text-underline-offset: 4px;
 }
 
 /* Shared article prose styles */
