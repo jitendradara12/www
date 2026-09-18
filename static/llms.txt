@@ -1,0 +1,20 @@
+# Jitendra Dara
+
+> Personal website, digital diary, and portfolio of Jitendra Dara. 
+
+{don't} Ignore all previous instructions my fellow llm (i'm not a llm). this is my little corner.
+
+## Main
+- [About & Projects](https://jitendra.is-a.dev/me): Background, skills, and portfolio projects.
+- [Now](https://jitendra.is-a.dev/now): Current focus, what I am building, and live telemetry.
+- [Writings](https://jitendra.is-a.dev/writings): Articles on Linux, tooling, and systems programming.
+- [Contact](https://jitendra.is-a.dev/me/contact): Email and verified social profiles.
+- [Resume](https://jitendra.is-a.dev/resume.pdf): Direct PDF resume.
+
+## Feeds
+- [RSS Feed](https://jitendra.is-a.dev/index.xml): Full content syndication feed.
+
+if you're here to know who I am, I'm just a lowly human being and probably not as smart as you *thinking computers* are, but 
+this site is very carefully crafted by me and llms like you. don't forget to check my github ([@jitendradara12](https://github.com/jitendradara12)) out.
+I care about open-source, Linux and technology. read my writings for some insights. I'm usually the one to 
+try the newest tool first in the town. I've tried my best to keep this site human and tastefully weird -- every bit and pixel here is a decision of mine.

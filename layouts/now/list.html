@@ -1,0 +1,133 @@
+{{ define "title" }}{{ end }}
+{{ define "main" }}
+
+{{/* ── Language color palette (curated to harmonize with site theme) ── */}}
+{{- $langColors := dict
+  "Python" "#4B8BBE"
+  "C" "#7c8a97"
+  "Nix" "#7e7eff"
+  "QML" "#a855f7"
+  "JavaScript" "#f0db4f"
+  "CSS" "#06b6d4"
+  "Go" "#00ADD8"
+  "TypeScript" "#3178c6"
+  "Shell" "#4EAA25"
+  "HTML" "#e34c26"
+  "Rust" "#dea584"
+  "Lua" "#4a7ebf"
+  "Ruby" "#CC342D"
+  "Java" "#b07219"
+-}}
+
+{{/* Languages from Wakatime 7-day aggregation */}}
+{{- $languages := slice -}}
+{{- with hugo.Data.wakatime.languages -}}
+  {{- $languages = . -}}
+{{- end -}}
+
+
+<div class="now-page">
+  <section class="now-hero">
+    <h1 class="headline-md">now</h1>
+    <div class="now-prose">{{ .Content }}</div>
+  </section>
+
+  {{/* ── Manual sections ── */}}
+  {{ if or .Params.location .Params.building .Params.reading }}
+  <section class="now-manual">
+    {{ with .Params.location }}
+    <div class="now-field">
+      <span class="now-field-label">location</span>
+      <span class="now-field-value">{{ . }}</span>
+    </div>
+    {{ end }}
+    {{ with .Params.building }}
+    <div class="now-field">
+      <span class="now-field-label">building</span>
+      <span class="now-field-value">{{ . }}</span>
+    </div>
+    {{ end }}
+    {{ with .Params.reading }}
+    <div class="now-field">
+      <span class="now-field-label">reading</span>
+      <span class="now-field-value">{{ . }}</span>
+    </div>
+    {{ end }}
+  </section>
+  {{ end }}
+
+  {{/* ── Last commit (SSG with SWR) ── */}}
+  <section class="now-section">
+    <h2 class="headline-md">last commit</h2>
+    {{ partial "commit-card.html" . }}
+  </section>
+
+  {{/* ── Wakatime coding stats ── */}}
+  {{ with hugo.Data.wakatime }}
+  <section class="now-section">
+    <h2 class="headline-md">{{ if .is_resting }}wakatime (past 7 days){{ else }}wakatime today{{ end }}</h2>
+    <div class="now-card">
+      <div class="now-wt-hero">
+        <span class="now-wt-total">{{ if .is_resting }}{{ .rollup_7d.total }}{{ else }}{{ .total_today }}{{ end }}</span>
+        {{ with .operating_systems }}
+        <span class="now-wt-os">{{ (index . 0).name }}{{ if hugo.Data.wakatime.is_resting }} · daily avg: {{ hugo.Data.wakatime.rollup_7d.daily_average }}{{ end }}</span>
+        {{ end }}
+      </div>
+
+      {{ if gt (len .projects) 0 }}
+      <div class="now-wt-projects">
+        {{ range (cond .is_resting (first 4 .projects) .projects) }}
+        <div class="now-wt-project">
+          <span class="now-wt-pname">{{ .name }}</span>
+          <span class="now-wt-ptime">{{ .text }}</span>
+        </div>
+        {{ end }}
+      </div>
+      {{ end }}
+
+      {{ if gt (len .editors) 0 }}
+      <div class="now-wt-editors">
+        {{ range $i, $e := .editors }}{{ if gt $i 0 }} · {{ end }}{{ $e.name }} ({{ printf "%.0f%%" $e.percent }}){{ end }}
+      </div>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  {{/* ── Languages (stacked bar + legend) ── */}}
+  {{ if gt (len $languages) 0 }}
+  <section class="now-section">
+    <h2 class="headline-md">languages (past 7 days)</h2>
+    <div class="now-card">
+      <div class="now-lang-bar" id="now-langs-bar">
+        {{- range $languages }}
+        {{- $color := index $langColors .name | default "#6E7681" }}
+        <div class="now-lang-seg"
+             style="flex-grow: {{ .percent }}; background: {{ $color }}"
+             title="{{ .name }} ({{ printf "%.0f%%" .percent }})"></div>
+        {{- end }}
+      </div>
+      <div class="now-lang-legend" id="now-langs-legend">
+        {{- range $languages }}
+        {{- $color := index $langColors .name | default "#6E7681" }}
+        <span class="now-lang-item">
+          <span class="now-lang-dot" style="background: {{ $color }}"></span>
+          {{ .name }} <span class="now-lang-pct">{{ printf "%.0f%%" .percent }}</span>
+        </span>
+        {{- end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  {{/* ── Last refreshed (IST) ── */}}
+  {{ with hugo.Data.wakatime }}
+  <footer class="now-footer">
+    {{- $t := (time.AsTime .last_updated).Add (time.ParseDuration "5h30m") -}}
+    last refreshed · {{ time.Format "2 Jan 2006, 15:04" $t | lower }} IST
+  </footer>
+  {{ end }}
+</div>
+
+{{ partial "github-swr.html" . }}
+{{ end }}
