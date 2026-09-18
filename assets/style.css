@@ -1217,7 +1217,7 @@ article strong,
    HOMEPAGE — Landing hero + section previews
    ================================================================ */
 .home-hero {
-  margin-bottom: var(--sp-16);
+  margin-bottom: var(--sp-12);
   animation: fadeInUp 0.5s var(--ease-out) both;
 }
 
@@ -1367,7 +1367,7 @@ article strong,
    FOOTER
    ================================================================ */
 footer.editorial-footer {
-  margin-top: var(--sp-6);   
+  margin-top: var(--sp-12);   
   background: transparent;
   content-visibility: auto;
   contain-intrinsic-size: auto 60px;
@@ -1692,12 +1692,21 @@ nav.breadcrumb a:hover {
   border: 1px solid var(--border);
   border-radius: 12px;
   min-height: 48px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.025) 0%, rgba(255,255,255,0) 55%);
-  transition: border-color var(--duration) var(--ease-out);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.025) 0%, rgba(255, 255, 255, 0) 55%);
+  transition:
+    border-color var(--duration) var(--ease-out),
+    transform var(--duration) var(--ease-out),
+    box-shadow var(--duration) var(--ease-out);
+}
+
+.now-card:hover {
+  border-color: var(--primary-dim);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px var(--primary-glow);
 }
 
 [data-theme="light"] .now-card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 55%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 55%);
 }
 
 .now-loading {
@@ -1713,48 +1722,90 @@ nav.breadcrumb a:hover {
   color: var(--on-surface-faint);
 }
 
-/* ── Commit display ── */
-.now-commit-row {
+/* ── Commit card (shared by homepage and /now) ── */
+#now-commit {
   display: flex;
   align-items: baseline;
-  gap: var(--sp-3);
-  margin-bottom: var(--sp-2);
+  gap: var(--sp-4);
+}
+
+.now-commit-time {
+  flex-shrink: 0;
+  width: 5.5em;
+  color: var(--on-surface-faint);
+  font-family: var(--font-code);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  transition: color var(--duration) var(--ease-out);
+}
+
+.now-commit-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.now-commit-msg {
+  font-family: var(--font-headline);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--on-surface);
+  text-decoration: none;
+  line-height: 1.4;
+  word-break: break-word;
+  transition: color var(--duration) var(--ease-out);
+}
+
+#now-commit:hover .now-commit-msg,
+a.now-commit-msg:hover {
+  color: var(--primary);
+}
+
+#now-commit:hover .now-commit-time {
+  color: var(--on-surface-dim);
 }
 
 .now-commit-sha {
   font-family: var(--font-code);
   font-size: 0.6875rem;
-  color: var(--primary);
+  color: var(--secondary);
   flex-shrink: 0;
   background: transparent;
   border: none;
   padding: 0;
   text-decoration: none;
+  transition: color var(--duration) var(--ease-out);
 }
 
 .now-commit-sha:hover {
   text-decoration: underline;
-}
-
-.now-commit-msg {
-  font-family: var(--font-headline);
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--on-surface);
+  color: var(--primary);
 }
 
 .now-commit-meta {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
-  gap: var(--sp-3);
+  gap: var(--sp-2);
   font-family: var(--font-code);
-  font-size: 0.625rem;
+  font-size: 0.6875rem;
   color: var(--on-surface-faint);
+  margin-top: 2px;
+}
+
+.now-commit-meta .meta-sep {
+  color: var(--on-surface-faint);
+  opacity: 0.45;
+  user-select: none;
 }
 
 .now-commit-repo {
   color: var(--primary-dim);
   text-decoration: none;
+  transition: color var(--duration) var(--ease-out);
 }
 
 .now-commit-repo:hover {
@@ -1763,7 +1814,7 @@ nav.breadcrumb a:hover {
 }
 
 .now-commit-branch {
-  color: var(--on-surface-faint);
+  color: var(--on-surface-dim);
 }
 
 .now-commit-branch::before {
@@ -1899,7 +1950,7 @@ nav.breadcrumb a:hover {
 /* ── Homepage sections share one rhythm ── */
 #now,
 .home-hero ~ section + section {
-  margin-top: var(--sp-16);
+  margin-top: var(--sp-12);
 }
 
 /* ================================================================
@@ -1965,6 +2016,29 @@ hr {
   ul.article-list > li > .label-sm:first-of-type {
     width: auto;
     font-size: 0.625rem;
+  }
+
+  #now-commit {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .now-commit-time {
+    width: auto;
+    font-size: 0.625rem;
+  }
+
+  .home-hero {
+    margin-bottom: var(--sp-8);
+  }
+
+  #now,
+  .home-hero ~ section + section {
+    margin-top: var(--sp-8);
+  }
+
+  footer.editorial-footer {
+    margin-top: var(--sp-8);
   }
 
   .hero-content a {

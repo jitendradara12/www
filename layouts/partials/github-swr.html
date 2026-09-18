@@ -35,8 +35,14 @@
         shaEl.href = d.commit_url || ('https://github.com/' + d.repo + '/commit/' + d.sha);
         var code = shaEl.querySelector('code');
         if (code) code.textContent = d.short_sha;
+        else shaEl.textContent = d.short_sha;
       }
-      if (msgEl && d.message) msgEl.textContent = d.message;
+      if (msgEl && d.message) {
+        msgEl.textContent = d.message;
+        if (d.commit_url && msgEl.tagName === 'A') {
+          msgEl.href = d.commit_url;
+        }
+      }
       if (repoEl && d.repo_name) {
         repoEl.href = d.repo_url || ('https://github.com/' + d.repo);
         repoEl.textContent = d.repo_name;
