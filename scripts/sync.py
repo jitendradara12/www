@@ -168,6 +168,21 @@ def sync_wakatime():
     # Resting status if logged under 30 minutes today
     is_resting = total_seconds < 1800
 
+    # Idempotency guard: skip write if core stats haven't changed
+    if os.path.exists(out_file):
+        try:
+            with open(out_file, 'r', encoding='utf-8') as f:
+                old = json.load(f)
+            if (old.get('total_today') == total_today and
+                old.get('is_resting') == is_resting and
+                old.get('projects') == projects and
+                old.get('languages') == languages and
+                old.get('rollup_7d') == rollup_7d):
+                print(f"[wakatime] Stats unchanged ({total_today}). Skipping file write.")
+                return
+        except Exception:
+            pass
+
     payload = {
         'total_today': total_today,
         'total_seconds': total_seconds,
@@ -282,6 +297,17 @@ def sync_github():
     short_sha = head_sha[:7] if head_sha else ''
     commit_url = f"https://github.com/{repo_full}/commit/{head_sha}"
     repo_url = f"https://github.com/{repo_full}"
+
+    # Idempotency guard: skip write if commit has not changed
+    if os.path.exists(out_file):
+        try:
+            with open(out_file, 'r', encoding='utf-8') as f:
+                old = json.load(f)
+            if old.get('sha') == head_sha and old.get('message') == commit_msg:
+                print(f"[github] Commit unchanged ({repo_name}@{short_sha}). Skipping file write.")
+                return
+        except Exception:
+            pass
 
     github_data = {
         'sha': head_sha,

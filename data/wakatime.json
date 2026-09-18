@@ -1,22 +1,22 @@
 {
-  "total_today": "7 hrs 17 mins",
-  "total_seconds": 26238.799001,
+  "total_today": "7 hrs 24 mins",
+  "total_seconds": 26646.130001,
   "is_resting": false,
   "projects": [
     {
-      "name": "goodix",
-      "text": "3 hrs 9 mins",
-      "percent": 43.4
+      "name": "www",
+      "text": "3 hrs 15 mins",
+      "percent": 44.1
     },
     {
-      "name": "www",
+      "name": "goodix",
       "text": "3 hrs 9 mins",
-      "percent": 43.3
+      "percent": 42.7
     },
     {
       "name": "desktop-wakatime",
       "text": "34 mins",
-      "percent": 7.8
+      "percent": 7.7
     },
     {
       "name": "goodix-5e0a",
@@ -47,23 +47,23 @@
   "editors": [
     {
       "name": "Firefox",
-      "text": "3 hrs 25 mins",
-      "percent": 47.0
+      "text": "3 hrs 26 mins",
+      "percent": 46.4
+    },
+    {
+      "name": "Antigravity Desktop",
+      "text": "1 hr 57 mins",
+      "percent": 26.5
     },
     {
       "name": "Antigravity",
       "text": "1 hr 55 mins",
-      "percent": 26.3
-    },
-    {
-      "name": "Antigravity Desktop",
-      "text": "1 hr 51 mins",
-      "percent": 25.5
+      "percent": 25.9
     },
     {
       "name": "Neovim",
       "text": "5 mins",
-      "percent": 1.2
+      "percent": 1.1
     },
     {
       "name": "Zed",
@@ -74,22 +74,22 @@
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "7 hrs 17 mins",
+      "text": "7 hrs 24 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "Python",
-      "percent": 39.5
+      "percent": 39.4
     },
     {
       "name": "C",
-      "percent": 31.8
+      "percent": 31.7
     },
     {
       "name": "HTML",
-      "percent": 18.1
+      "percent": 18.2
     },
     {
       "name": "Nix",
@@ -101,9 +101,9 @@
     }
   ],
   "rollup_7d": {
-    "total": "20 hrs 31 mins",
+    "total": "20 hrs 37 mins",
     "daily_average": "26 mins",
-    "total_seconds": 73865.799001
+    "total_seconds": 74273.130001
   },
-  "last_updated": "2026-09-18T14:56:40Z"
+  "last_updated": "2026-09-18T15:00:17Z"
 }

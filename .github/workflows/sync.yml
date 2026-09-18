@@ -34,7 +34,7 @@ jobs:
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           if [ -n "$(git status --porcelain data/ static/avatar.jpg)" ]; then
             git add data/ static/avatar.jpg
-            git commit -m "chore: auto-sync stats and avatar [skip ci]"
+            git commit -m "chore(data): auto-sync stats and avatar"
             git push
           else
             echo "No data changes detected. Everything up to date."
