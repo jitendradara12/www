@@ -4,16 +4,12 @@
 :root {
   --surface: #060814;
   --surface-dim: #020307;
-  --surface-raised: rgba(13, 19, 39, 0.55);
-  --surface-overlay: rgba(6, 8, 20, 0.75);
   --card-blur: blur(12px);
-  --label-blur: blur(8px);
 
   --primary: #5c8dff;
   --primary-dim: #2c60df;
   --primary-glow: rgba(92, 141, 255, 0.18);
   --secondary: #00f2fe;
-  --secondary-glow: rgba(0, 242, 254, 0.15);
   --tertiary: #00f5a0;
 
   --on-surface: #e4e1e8;
@@ -22,7 +18,6 @@
 
   --border: rgba(255, 255, 255, 0.08);
   --border-hover: rgba(255, 255, 255, 0.25);
-  --border-accent: var(--primary);
 
   --danger: #ff6b6b;
 
@@ -53,7 +48,6 @@
 
   /* Transitions */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
   --duration: 0.25s;
 
   /* Grid texture */
@@ -72,14 +66,11 @@
 [data-theme="light"] {
   --surface: #f7f6f3;
   --surface-dim: #edebe6;
-  --surface-raised: rgba(255, 255, 255, 0.65);
-  --surface-overlay: rgba(247, 246, 243, 0.8);
 
   --primary: #0a47d6;
   --primary-dim: #0735a3;
   --primary-glow: rgba(10, 71, 214, 0.08);
   --secondary: #1a8a9e;
-  --secondary-glow: rgba(26, 138, 158, 0.08);
   --tertiary: #1a9e4a;
 
   --on-surface: #1e1e24;
@@ -88,7 +79,6 @@
 
   --border: rgba(0, 0, 0, 0.07);
   --border-hover: rgba(0, 0, 0, 0.18);
-  --border-accent: var(--primary);
 
   --danger: #d94040;
 
@@ -105,11 +95,6 @@
 @media (max-width: 768px) {
   :root {
     --card-blur: none;
-    --label-blur: none;
-    --surface-raised: rgba(13, 19, 39, 0.85);
-  }
-  [data-theme="light"] {
-    --surface-raised: rgba(255, 255, 255, 0.92);
   }
 }
 
@@ -449,29 +434,27 @@ nav:not(.breadcrumb) a:not(.site-title):not(.theme-toggle):hover::after {
   transition:
     opacity var(--duration) var(--ease-out),
     transform var(--duration) var(--ease-out),
-    filter var(--duration) var(--ease-out);
+    color var(--duration) var(--ease-out);
 }
 
 :root .theme-toggle .icon-sun {
   opacity: 1;
   transform: scale(1) rotate(0deg);
-  filter: invert(1);
+  color: var(--on-surface);
 }
 :root .theme-toggle .icon-moon {
   opacity: 0;
   transform: scale(0.7) rotate(-90deg);
-  filter: invert(1);
+  color: var(--on-surface);
 }
 
 [data-theme="light"] .theme-toggle .icon-sun {
   opacity: 0;
   transform: scale(0.7) rotate(90deg);
-  filter: none;
 }
 [data-theme="light"] .theme-toggle .icon-moon {
   opacity: 1;
   transform: scale(1) rotate(0deg);
-  filter: none;
 }
 
 /* ================================================================
@@ -651,14 +634,6 @@ ul.article-list > li > .label-sm:first-of-type {
   transition: color var(--duration) var(--ease-out);
 }
 
-/* Author badge (when shown) */
-ul.article-list > li > .label-sm:not(:first-of-type) {
-  color: var(--on-surface-dim);
-  background: var(--surface-dim);
-  border: 1px solid var(--border);
-  padding: 1px 6px;
-}
-
 ul.article-list > li a {
   text-decoration: underline;
   color: var(--on-surface);
@@ -686,10 +661,6 @@ ul.article-list > li a::after {
   position: absolute;
   inset: 0;
   z-index: 1;
-}
-
-ul.article-list > li:hover {
-  /* border-color: var(--border-hover); looks bad */
 }
 
 ul.article-list > li:hover a {
@@ -795,16 +766,6 @@ pre:hover {
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
-code[data-lang]::before {
-  content: attr(data-lang);
-  display: block;
-  font-size: 0.5625rem;
-  color: var(--on-surface-faint);
-  margin-bottom: var(--sp-3);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
 code {
   color: var(--secondary);
   transition: color var(--duration) var(--ease-out);
@@ -814,48 +775,6 @@ pre code {
   background: transparent;
   padding: 0;
   color: #e4e1e8;
-}
-
-/* ================================================================
-   FORMS & INPUTS
-   ================================================================ */
-input,
-textarea {
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid var(--border);
-  padding: var(--sp-2) 0;
-  font-family: var(--font-body);
-  font-size: 0.8125rem;
-  color: var(--on-surface);
-  width: 100%;
-  margin-bottom: var(--sp-6);
-  transition:
-    border-color var(--duration) var(--ease-out),
-    color var(--duration) var(--ease-out);
-}
-
-input::placeholder,
-textarea::placeholder {
-  color: var(--on-surface-dim);
-  opacity: 0.8;
-}
-
-input:focus,
-textarea:focus {
-  outline: none;
-  border-bottom-color: var(--primary);
-  box-shadow: 0 1px 0 var(--primary);
-}
-
-label {
-  font-size: 0.6875rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--on-surface-dim);
-  display: block;
-  margin-bottom: var(--sp-2);
 }
 
 /* ================================================================
@@ -917,11 +836,20 @@ article summary:hover {
 }
 
 .inline-icon-svg {
-  filter: invert(1); /* default: white svgs in dark mode */
+  filter: invert(1); /* default: white svgs in dark mode (for img elements) */
+}
+
+/* Inline SVGs use currentColor — no filter needed */
+svg.inline-icon-svg {
+  filter: none;
 }
 
 [data-theme="light"] .inline-icon-svg {
   filter: invert(0);
+}
+
+[data-theme="light"] svg.inline-icon-svg {
+  filter: none;
 }
 
 /* ================================================================
@@ -948,10 +876,6 @@ article summary:focus-visible {
 article a:hover {
   color: var(--secondary);
   text-decoration-color: var(--secondary);
-}
-
-article del {
-  text-decoration-color: var(--on-surface-faint);
 }
 
 /* Shared article prose styles */
@@ -1042,17 +966,6 @@ blockquote > *:last-child {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
-mark {
-  background: rgba(92, 141, 255, 0.12);
-  color: var(--primary);
-  padding: 0.1em 0.3em;
-  border-radius: 3px;
-}
-
-[data-theme="light"] mark {
-  background: rgba(10, 71, 214, 0.12);
-}
-
 code:not(pre code) {
   background: var(--surface-dim);
   padding: 0.15em 0.4em;
@@ -1113,10 +1026,6 @@ article strong,
   font-size: 0.875rem;
   line-height: 1.75;
   color: var(--on-surface-dim);
-}
-
-.hero-content p {
-  /* margin-bottom: 1.5em; */
 }
 
 /* .hero-content strong — merged with article strong above */
@@ -1445,6 +1354,8 @@ article strong,
 footer.editorial-footer {
   margin-top: var(--sp-6);   
   background: transparent;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 60px;
 }
 
 .footer-inner {
