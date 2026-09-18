@@ -19,15 +19,12 @@
   "Java" "#b07219"
 -}}
 
-{{/* Language distribution baseline from personal repositories */}}
-{{- $defaultLangs := slice
-  (dict "name" "Python" "percent" 40.0)
-  (dict "name" "C" "percent" 15.0)
-  (dict "name" "Nix" "percent" 15.0)
-  (dict "name" "QML" "percent" 15.0)
-  (dict "name" "JavaScript" "percent" 10.0)
-  (dict "name" "CSS" "percent" 5.0)
--}}
+{{/* Languages from Wakatime 7-day aggregation */}}
+{{- $languages := slice -}}
+{{- with site.Data.wakatime.languages -}}
+  {{- $languages = . -}}
+{{- end -}}
+
 
 <div class="now-page">
   <section class="now-hero">
@@ -59,29 +56,41 @@
   </section>
   {{ end }}
 
-  {{/* ── Last commit (client-side with SWR) ── */}}
+  {{/* ── Last commit (SSG with SWR) ── */}}
   <section class="now-section">
     <h2 class="headline-md">last commit</h2>
     <div id="now-commit" class="now-card">
-      <span class="now-loading">fetching recent commit…</span>
+      {{ with site.Data.github }}
+      <div class="now-commit-row">
+        <a href="{{ .commit_url }}" target="_blank" rel="noopener" class="now-commit-sha"><code>{{ .short_sha }}</code></a>
+        <span class="now-commit-msg">{{ .message }}</span>
+      </div>
+      <div class="now-commit-meta">
+        <a href="{{ .repo_url }}" target="_blank" rel="noopener" class="now-commit-repo">{{ .repo_name }}</a>
+        {{ with .branch }}<span class="now-commit-branch">{{ . }}</span>{{ end }}
+        {{ with .date }}<time datetime="{{ . }}">{{ site.Data.github.relative_time }}</time>{{ end }}
+      </div>
+      {{ else }}
+      <span class="now-empty">no recent commits</span>
+      {{ end }}
     </div>
   </section>
 
   {{/* ── Wakatime coding stats ── */}}
   {{ with site.Data.wakatime }}
   <section class="now-section">
-    <h2 class="headline-md">wakatime today</h2>
+    <h2 class="headline-md">{{ if .is_resting }}wakatime (past 7 days){{ else }}wakatime today{{ end }}</h2>
     <div class="now-card">
       <div class="now-wt-hero">
-        <span class="now-wt-total">{{ .total_today }}</span>
+        <span class="now-wt-total">{{ if .is_resting }}{{ .rollup_7d.total }}{{ else }}{{ .total_today }}{{ end }}</span>
         {{ with .operating_systems }}
-        <span class="now-wt-os">{{ (index . 0).name }}</span>
+        <span class="now-wt-os">{{ (index . 0).name }}{{ if site.Data.wakatime.is_resting }} · daily avg: {{ site.Data.wakatime.rollup_7d.daily_average }}{{ end }}</span>
         {{ end }}
       </div>
 
       {{ if gt (len .projects) 0 }}
       <div class="now-wt-projects">
-        {{ range .projects }}
+        {{ range (cond .is_resting (first 4 .projects) .projects) }}
         <div class="now-wt-project">
           <span class="now-wt-pname">{{ .name }}</span>
           <span class="now-wt-ptime">{{ .text }}</span>
@@ -100,11 +109,12 @@
   {{ end }}
 
   {{/* ── Languages (stacked bar + legend) ── */}}
+  {{ if gt (len $languages) 0 }}
   <section class="now-section">
-    <h2 class="headline-md">languages</h2>
+    <h2 class="headline-md">languages (past 7 days)</h2>
     <div class="now-card">
       <div class="now-lang-bar" id="now-langs-bar">
-        {{- range $defaultLangs }}
+        {{- range $languages }}
         {{- $color := index $langColors .name | default "#6E7681" }}
         <div class="now-lang-seg"
              style="flex-grow: {{ .percent }}; background: {{ $color }}"
@@ -112,7 +122,7 @@
         {{- end }}
       </div>
       <div class="now-lang-legend" id="now-langs-legend">
-        {{- range $defaultLangs }}
+        {{- range $languages }}
         {{- $color := index $langColors .name | default "#6E7681" }}
         <span class="now-lang-item">
           <span class="now-lang-dot" style="background: {{ $color }}"></span>
@@ -122,6 +132,7 @@
       </div>
     </div>
   </section>
+  {{ end }}
 
   {{/* ── Last refreshed (IST) ── */}}
   {{ with site.Data.wakatime }}
@@ -132,179 +143,5 @@
   {{ end }}
 </div>
 
-<script>
-(function() {
-  var GH_USER = 'jitendradara12';
-  var CACHE_TTL = 10 * 60 * 1000;
-  var COMMIT_KEY = 'now_commit_v1';
-  var WT_KEY = 'now_wt_v1';
-
-  var commitEl = document.getElementById('now-commit');
-  var langsBar = document.getElementById('now-langs-bar');
-  var langsLegend = document.getElementById('now-langs-legend');
-
-  var LANG_COLORS = {
-    'Python':'#4B8BBE','C':'#7c8a97','Nix':'#7e7eff','QML':'#a855f7',
-    'JavaScript':'#f0db4f','CSS':'#06b6d4','Go':'#00ADD8','TypeScript':'#3178c6',
-    'Shell':'#4EAA25','HTML':'#e34c26','Rust':'#dea584','Lua':'#4a7ebf',
-    'Ruby':'#CC342D','Java':'#b07219','Bash':'#4EAA25','JSON':'#6E7681'
-  };
-
-  /* ── Render Helpers ── */
-  function escapeHtml(t) {
-    var d = document.createElement('div');
-    d.appendChild(document.createTextNode(t || ''));
-    return d.innerHTML;
-  }
-
-  function timeAgo(date) {
-    var s = Math.floor((Date.now() - date.getTime()) / 1000);
-    if (s < 60) return 'just now';
-    var m = Math.floor(s / 60);
-    if (m < 60) return m + 'm ago';
-    var h = Math.floor(m / 60);
-    if (h < 24) return h + 'h ago';
-    var d = Math.floor(h / 24);
-    if (d < 30) return d + 'd ago';
-    return date.toLocaleDateString();
-  }
-
-  function renderCommit(data) {
-    if (!commitEl || !data) return;
-    var shortSha = data.sha ? data.sha.substring(0, 7) : '';
-    var commitUrl = data.commitUrl || (data.repo && data.sha ? 'https://github.com/' + data.repo + '/commit/' + data.sha : '#');
-    var repoUrl = data.repoUrl || (data.repo ? 'https://github.com/' + data.repo : '#');
-    var repoName = data.repoName || (data.repo ? data.repo.split('/')[1] || data.repo : '');
-    var date = data.date ? new Date(data.date) : null;
-    var ago = date ? timeAgo(date) : '';
-
-    commitEl.innerHTML =
-      '<div class="now-commit-row">' +
-        (shortSha ? '<a href="' + commitUrl + '" target="_blank" rel="noopener" class="now-commit-sha"><code>' + shortSha + '</code></a>' : '') +
-        '<span class="now-commit-msg">' + escapeHtml(data.message || 'Latest commit') + '</span>' +
-      '</div>' +
-      '<div class="now-commit-meta">' +
-        (repoName ? '<a href="' + repoUrl + '" target="_blank" rel="noopener" class="now-commit-repo">' + escapeHtml(repoName) + '</a>' : '') +
-        (data.branch ? '<span class="now-commit-branch">' + escapeHtml(data.branch) + '</span>' : '') +
-        (date ? '<time datetime="' + data.date + '">' + ago + '</time>' : '') +
-      '</div>';
-  }
-
-  function renderLanguages(langs) {
-    if (!langsBar || !langs || !langs.length) return;
-    var barHtml = '';
-    var legHtml = '';
-    for (var i = 0; i < langs.length; i++) {
-      var l = langs[i];
-      var color = LANG_COLORS[l.name] || '#6E7681';
-      var pct = typeof l.percent === 'number' ? l.percent.toFixed(0) : l.percent;
-      barHtml += '<div class="now-lang-seg" style="flex-grow:' + l.percent + ';background:' + color + '" title="' + escapeHtml(l.name) + ' (' + pct + '%)"></div>';
-      legHtml += '<span class="now-lang-item"><span class="now-lang-dot" style="background:' + color + '"></span>' + escapeHtml(l.name) + ' <span class="now-lang-pct">' + pct + '%</span></span>';
-    }
-    langsBar.innerHTML = barHtml;
-    if (langsLegend) langsLegend.innerHTML = legHtml;
-  }
-
-  /* ── SWR: Load cached data ── */
-  var cachedCommit = null;
-  try {
-    var raw = localStorage.getItem(COMMIT_KEY);
-    if (raw) cachedCommit = JSON.parse(raw);
-  } catch(e) {}
-  if (cachedCommit && cachedCommit.data) renderCommit(cachedCommit.data);
-
-  var cachedWt = null;
-  try {
-    var rawWt = localStorage.getItem(WT_KEY);
-    if (rawWt) cachedWt = JSON.parse(rawWt);
-  } catch(e) {}
-  if (cachedWt && cachedWt.langs && cachedWt.langs.length) renderLanguages(cachedWt.langs);
-
-  /* ── GitHub commit fetch ── */
-  var shouldFetchCommit = !cachedCommit || (Date.now() - cachedCommit.time > CACHE_TTL);
-  if (shouldFetchCommit) {
-    fetch('https://api.github.com/users/' + GH_USER + '/events?per_page=15', { priority: 'low' })
-      .then(function(r) {
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        return r.json();
-      })
-      .then(function(events) {
-        if (!Array.isArray(events)) throw new Error('Invalid events');
-        var push = null;
-        for (var i = 0; i < events.length; i++) {
-          var ev = events[i];
-          if (ev.type === 'PushEvent' && ev.payload &&
-              (ev.payload.head || (ev.payload.commits && ev.payload.commits.length))) {
-            push = ev;
-            break;
-          }
-        }
-        if (!push) {
-          if (!cachedCommit) commitEl.innerHTML = '<span class="now-empty">no recent public pushes</span>';
-          return;
-        }
-
-        var repoFull = push.repo.name;
-        var repoName = repoFull.split('/')[1] || repoFull;
-        var headSha = push.payload.head || (push.payload.commits && push.payload.commits[push.payload.commits.length - 1].sha);
-        var branch = (push.payload.ref || '').replace('refs/heads/', '');
-        var createdAt = push.created_at;
-        var commitMsg = null;
-        if (push.payload.commits && push.payload.commits.length) {
-          commitMsg = push.payload.commits[push.payload.commits.length - 1].message;
-        }
-
-        var commitData = {
-          sha: headSha, repo: repoFull, repoName: repoName, branch: branch,
-          message: commitMsg ? commitMsg.split('\n')[0] : ('push to ' + (branch || 'main')),
-          date: createdAt,
-          commitUrl: 'https://github.com/' + repoFull + '/commit/' + headSha,
-          repoUrl: 'https://github.com/' + repoFull
-        };
-
-        if (!commitMsg && headSha) {
-          fetch('https://api.github.com/repos/' + repoFull + '/commits/' + headSha, { priority: 'low' })
-            .then(function(r) { return r.ok ? r.json() : null; })
-            .then(function(details) {
-              if (details && details.commit && details.commit.message) {
-                commitData.message = details.commit.message.split('\n')[0];
-                if (details.commit.author && details.commit.author.date) commitData.date = details.commit.author.date;
-              }
-              finalizeCommit(commitData);
-            })
-            .catch(function() { finalizeCommit(commitData); });
-        } else {
-          finalizeCommit(commitData);
-        }
-      })
-      .catch(function() {
-        if (!cachedCommit) commitEl.innerHTML = '<span class="now-empty">couldn\'t reach github</span>';
-      });
-  }
-
-  function finalizeCommit(data) {
-    if (data.message && data.message.length > 72) data.message = data.message.substring(0, 69) + '…';
-    try { localStorage.setItem(COMMIT_KEY, JSON.stringify({ time: Date.now(), data: data })); } catch(e) {}
-    renderCommit(data);
-  }
-
-  /* ── WakaTime language fetch ── */
-  var shouldFetchWt = !cachedWt || (Date.now() - cachedWt.time > CACHE_TTL);
-  if (shouldFetchWt) {
-    fetch('https://wakatime.com/share/@30152bb0-ef36-4e24-8a98-6d8ba211f7fd/dd5c3ecd-923e-4586-b4fc-af1f02b63824.json', { priority: 'low' })
-      .then(function(r) {
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        return r.json();
-      })
-      .then(function(resp) {
-        if (resp && Array.isArray(resp.data) && resp.data.length > 0) {
-          var langs = resp.data.slice(0, 6);
-          try { localStorage.setItem(WT_KEY, JSON.stringify({ time: Date.now(), langs: langs })); } catch(e) {}
-          renderLanguages(langs);
-        }
-      })
-      .catch(function() { /* build-time defaults remain */ });
-  }
-})();
-</script>
+{{ partial "github-swr.html" . }}
 {{ end }}

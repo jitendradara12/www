@@ -83,145 +83,22 @@
   <div class="now-widget-grid">
     <a href="/now" class="now-widget-card" id="hw-commit">
       <span class="now-widget-label">last commit</span>
-      <span class="now-widget-val now-loading">…</span>
+      {{ with site.Data.github }}
+      <span class="now-widget-val">{{ .message | truncate 50 }}</span>
+      <span class="now-widget-sub">{{ .repo_name }}{{ with .relative_time }} · {{ . }}{{ end }}</span>
+      {{ else }}
+      <span class="now-widget-val">latest commit</span>
       <span class="now-widget-sub" style="display:none"></span>
+      {{ end }}
     </a>
     <a href="/now" class="now-widget-card" id="hw-waka">
-      <span class="now-widget-label">wakatime today</span>
-      <span class="now-widget-val">{{ with site.Data.wakatime }}{{ .total_today }}{{ else }}active{{ end }}</span>
-      <span class="now-widget-sub">{{ with site.Data.wakatime }}{{ with .projects }}{{ (index . 0).name }} · {{ (index . 0).text }}{{ end }}{{ else }}logged today{{ end }}</span>
+      <span class="now-widget-label">{{ if and site.Data.wakatime site.Data.wakatime.is_resting }}wakatime 7d{{ else }}wakatime today{{ end }}</span>
+      <span class="now-widget-val">{{ with site.Data.wakatime }}{{ if .is_resting }}{{ .rollup_7d.total }}{{ else }}{{ .total_today }}{{ end }}{{ else }}active{{ end }}</span>
+      <span class="now-widget-sub">{{ with site.Data.wakatime }}{{ if .is_resting }}daily avg: {{ .rollup_7d.daily_average }}{{ else }}{{ with .projects }}{{ (index . 0).name }} · {{ (index . 0).text }}{{ end }}{{ end }}{{ else }}logged recently{{ end }}</span>
     </a>
   </div>
 </section>
 
-<script>
-(function() {
-  var ce = document.getElementById('hw-commit');
-  var cVal = ce ? ce.querySelector('.now-widget-val') : null;
-  var cSub = ce ? ce.querySelector('.now-widget-sub') : null;
-
-  var COMMIT_KEY = 'now_commit_v1';
-  var CACHE_TTL = 10 * 60 * 1000;
-
-  function renderCommit(data) {
-    if (!cVal || !data) return;
-    var msg = data.message || 'Latest commit';
-    if (msg.length > 50) msg = msg.substring(0, 47) + '…';
-    cVal.textContent = msg;
-    cVal.classList.remove('now-loading');
-    if (cSub && data.repoName) {
-      cSub.textContent = data.repoName;
-      cSub.style.display = 'block';
-    }
-  }
-
-  /* ── 1. SWR from localStorage ── */
-  var cachedCommit = null;
-  try {
-    var raw = localStorage.getItem(COMMIT_KEY);
-    if (raw) cachedCommit = JSON.parse(raw);
-  } catch(e) {}
-  if (cachedCommit && cachedCommit.data) {
-    renderCommit(cachedCommit.data);
-  }
-
-  /* ── 2. Fetch fresh commit if needed ── */
-  var shouldFetchCommit = !cachedCommit || (Date.now() - cachedCommit.time > CACHE_TTL);
-  if (shouldFetchCommit) {
-    fetch('https://api.github.com/users/jitendradara12/events?per_page=15', { priority: 'low' })
-      .then(function(r) { return r.ok ? r.json() : null; })
-      .then(function(events) {
-        if (!Array.isArray(events)) return;
-        var push = null;
-        for (var i = 0; i < events.length; i++) {
-          var ev = events[i];
-          if (ev.type === 'PushEvent' && ev.payload && (ev.payload.head || (ev.payload.commits && ev.payload.commits.length))) {
-            push = ev;
-            break;
-          }
-        }
-        if (!push) {
-          if (!cachedCommit && cVal) {
-            cVal.textContent = 'no recent pushes';
-            cVal.classList.remove('now-loading');
-          }
-          return;
-        }
-
-        var repoFull = push.repo.name;
-        var repoName = repoFull.split('/')[1] || repoFull;
-        var headSha = push.payload.head || (push.payload.commits && push.payload.commits[push.payload.commits.length - 1].sha);
-        var branch = (push.payload.ref || '').replace('refs/heads/', '');
-        var createdAt = push.created_at;
-
-        var commitMsg = null;
-        if (push.payload.commits && push.payload.commits.length) {
-          commitMsg = push.payload.commits[push.payload.commits.length - 1].message;
-        }
-
-        var commitData = {
-          sha: headSha,
-          repo: repoFull,
-          repoName: repoName,
-          branch: branch,
-          message: commitMsg ? commitMsg.split('\n')[0] : ('push to ' + (branch || 'main')),
-          date: createdAt,
-          commitUrl: 'https://github.com/' + repoFull + '/commit/' + headSha,
-          repoUrl: 'https://github.com/' + repoFull
-        };
-
-        if (!commitMsg && headSha) {
-          fetch('https://api.github.com/repos/' + repoFull + '/commits/' + headSha, { priority: 'low' })
-            .then(function(r) { return r.ok ? r.json() : null; })
-            .then(function(details) {
-              if (details && details.commit && details.commit.message) {
-                commitData.message = details.commit.message.split('\n')[0];
-                if (details.commit.author && details.commit.author.date) {
-                  commitData.date = details.commit.author.date;
-                }
-              }
-              finishCommit(commitData);
-            })
-            .catch(function() {
-              finishCommit(commitData);
-            });
-        } else {
-          finishCommit(commitData);
-        }
-      })
-      .catch(function() {
-        if (!cachedCommit && cVal) {
-          cVal.textContent = '—';
-          cVal.classList.remove('now-loading');
-        }
-      });
-  }
-
-  function finishCommit(data) {
-    try {
-      localStorage.setItem(COMMIT_KEY, JSON.stringify({ time: Date.now(), data: data }));
-    } catch(e) {}
-    renderCommit(data);
-  }
-
-  /* ── 3. Check WakaTime in background ── */
-  var shouldFetchWt = !cachedWt || (Date.now() - cachedWt.time > CACHE_TTL);
-  if (shouldFetchWt) {
-    var wtUrl = 'https://wakatime.com/share/@30152bb0-ef36-4e24-8a98-6d8ba211f7fd/dd5c3ecd-923e-4586-b4fc-af1f02b63824.json';
-    fetch(wtUrl, { priority: 'low' })
-      .then(function(r) { return r.ok ? r.json() : null; })
-      .then(function(resp) {
-        if (resp && Array.isArray(resp.data) && resp.data.length > 0) {
-          var top = resp.data[0];
-          try {
-            localStorage.setItem(WT_KEY, JSON.stringify({ time: Date.now(), langs: resp.data.slice(0, 6) }));
-          } catch(e) {}
-          renderLang(top.name, top.percent.toFixed(0) + '% of coding time');
-        }
-      })
-      .catch(function() {});
-  }
-})();
-</script>
+{{ partial "github-swr.html" . }}
 
 {{ end }}

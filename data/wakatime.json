@@ -1,56 +1,104 @@
 {
-  "total_today": "1 hr 55 mins",
-  "total_seconds": 6903.71,
+  "total_today": "6 hrs 36 mins",
+  "total_seconds": 23793.561,
+  "is_resting": false,
   "projects": [
     {
-      "name": "desktop-wakatime",
-      "text": "42 mins",
-      "percent": 36.7
-    },
-    {
       "name": "goodix",
-      "text": "37 mins",
-      "percent": 32.7
+      "text": "3 hrs 9 mins",
+      "percent": 47.8
     },
     {
       "name": "www",
-      "text": "27 mins",
-      "percent": 23.8
+      "text": "2 hrs 33 mins",
+      "percent": 38.7
+    },
+    {
+      "name": "desktop-wakatime",
+      "text": "34 mins",
+      "percent": 8.6
     },
     {
       "name": "goodix-5e0a",
-      "text": "6 mins",
-      "percent": 5.4
+      "text": "15 mins",
+      "percent": 4.0
+    },
+    {
+      "name": "sastauser",
+      "text": "1 min",
+      "percent": 0.5
     },
     {
       "name": "libfprint",
-      "text": "59 secs",
-      "percent": 0.9
+      "text": "46 secs",
+      "percent": 0.2
+    },
+    {
+      "name": "antigravity-cli-wakatime",
+      "text": "1 sec",
+      "percent": 0.0
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "1 hr 39 mins",
-      "percent": 86.3
-    },
-    {
-      "name": "Antigravity Desktop",
-      "text": "13 mins",
-      "percent": 11.8
+      "text": "2 hrs 53 mins",
+      "percent": 43.8
     },
     {
       "name": "Antigravity",
-      "text": "2 mins",
-      "percent": 1.9
+      "text": "1 hr 55 mins",
+      "percent": 29.0
+    },
+    {
+      "name": "Antigravity Desktop",
+      "text": "1 hr 44 mins",
+      "percent": 26.2
+    },
+    {
+      "name": "Neovim",
+      "text": "3 mins",
+      "percent": 0.9
+    },
+    {
+      "name": "Zed",
+      "text": "5 secs",
+      "percent": 0.0
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "1 hr 55 mins",
+      "text": "6 hrs 36 mins",
       "percent": 100.0
     }
   ],
-  "last_updated": "2026-09-18T07:34:59Z"
+  "languages": [
+    {
+      "name": "Python",
+      "percent": 44.7
+    },
+    {
+      "name": "C",
+      "percent": 36.0
+    },
+    {
+      "name": "Nix",
+      "percent": 7.2
+    },
+    {
+      "name": "HTML",
+      "percent": 7.1
+    },
+    {
+      "name": "Bash",
+      "percent": 4.9
+    }
+  ],
+  "rollup_7d": {
+    "total": "19 hrs 50 mins",
+    "daily_average": "24 mins",
+    "total_seconds": 71420.561
+  },
+  "last_updated": "2026-09-18T14:14:40Z"
 }
