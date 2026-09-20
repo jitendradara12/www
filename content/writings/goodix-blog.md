@@ -64,7 +64,7 @@ I had
 
 so in total, for every fingerprint matching,  
 it compares it with $8\times12=96$ templates.  
-so the $\text{FAR} = 1 - (1 - 0.012)^{96} \approx 1 - 0.313 = 68.7\%$
+so the $\text{FAR} = 1 - (1 - 0.012)^{96} \approx 1 - 0.313 = 68.7$%
 
 that's bad. a stranger has a 70% chance to unlock where my own fingerprints barely get recognised.
 
