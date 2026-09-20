@@ -1,109 +1,73 @@
 {
-  "total_today": "7 hrs 24 mins",
-  "total_seconds": 26646.130001,
-  "is_resting": false,
+  "total_today": "24 mins",
+  "total_seconds": 1440.414,
+  "is_resting": true,
   "projects": [
     {
-      "name": "www",
-      "text": "3 hrs 15 mins",
-      "percent": 44.1
+      "name": "jj-ryu",
+      "text": "22 mins",
+      "percent": 95.5
     },
     {
-      "name": "goodix",
-      "text": "3 hrs 9 mins",
-      "percent": 42.7
+      "name": "apl2",
+      "text": "36 secs",
+      "percent": 2.5
     },
     {
-      "name": "desktop-wakatime",
-      "text": "34 mins",
-      "percent": 7.7
+      "name": "herdr",
+      "text": "28 secs",
+      "percent": 1.9
     },
     {
-      "name": "goodix-5e0a",
-      "text": "15 mins",
-      "percent": 3.6
-    },
-    {
-      "name": "omaconnect",
-      "text": "4 mins",
-      "percent": 1.1
-    },
-    {
-      "name": "sastauser",
-      "text": "1 min",
-      "percent": 0.5
-    },
-    {
-      "name": "libfprint",
-      "text": "46 secs",
-      "percent": 0.2
-    },
-    {
-      "name": "antigravity-cli-wakatime",
-      "text": "1 sec",
+      "name": "anti-slop",
+      "text": "0 secs",
       "percent": 0.0
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "3 hrs 26 mins",
-      "percent": 46.4
-    },
-    {
-      "name": "Antigravity Desktop",
-      "text": "1 hr 57 mins",
-      "percent": 26.5
-    },
-    {
-      "name": "Antigravity",
-      "text": "1 hr 55 mins",
-      "percent": 25.9
-    },
-    {
-      "name": "Neovim",
-      "text": "5 mins",
-      "percent": 1.1
-    },
-    {
-      "name": "Zed",
-      "text": "5 secs",
-      "percent": 0.0
+      "text": "24 mins",
+      "percent": 100.0
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "7 hrs 24 mins",
+      "text": "24 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
-      "name": "Python",
-      "percent": 39.4
-    },
-    {
-      "name": "C",
-      "percent": 31.7
+      "name": "hyprlang",
+      "percent": 38.1
     },
     {
       "name": "HTML",
-      "percent": 18.2
+      "percent": 34.2
+    },
+    {
+      "name": "Python",
+      "percent": 13.1
+    },
+    {
+      "name": "C",
+      "percent": 10.5
     },
     {
       "name": "Nix",
-      "percent": 6.4
+      "percent": 2.1
     },
     {
       "name": "Bash",
-      "percent": 4.3
+      "percent": 1.4
     }
   ],
   "rollup_7d": {
-    "total": "20 hrs 37 mins",
-    "daily_average": "26 mins",
-    "total_seconds": 74273.130001
+    "total": "33 hrs 25 mins",
+    "daily_average": "1 hr 51 mins",
+    "total_seconds": 120346.112001
   },
-  "last_updated": "2026-09-18T15:00:17Z"
+  "last_updated": "2026-09-20T20:13:23Z"
 }
