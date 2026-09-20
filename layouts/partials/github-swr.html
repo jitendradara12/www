@@ -1,0 +1,129 @@
+{{/* layouts/partials/github-swr.html: Lightweight progressive background check for latest GitHub commit */}}
+<script>
+(function() {
+  var USER = 'jitendradara12';
+  var KEY = 'gh_commit_swr_v3';
+  var TTL = 15 * 60 * 1000;
+
+  function timeAgo(date) {
+    var s = Math.floor((Date.now() - date.getTime()) / 1000);
+    if (s < 60) return 'just now';
+    var m = Math.floor(s / 60);
+    if (m < 60) return m + 'm ago';
+    var h = Math.floor(m / 60);
+    if (h < 24) return h + 'h ago';
+    var d = Math.floor(h / 24);
+    if (d === 1) return 'yesterday';
+    if (d < 30) return d + 'd ago';
+    return date.toLocaleDateString();
+  }
+
+  function updateDOM(d) {
+    if (!d || !d.sha) return;
+    var ago = d.date ? timeAgo(new Date(d.date)) : '';
+
+    // Commit card (shared by homepage and /now)
+    var nowCard = document.getElementById('now-commit');
+    if (nowCard) {
+      var shaEl = nowCard.querySelector('.now-commit-sha');
+      var msgEl = nowCard.querySelector('.now-commit-msg');
+      var repoEl = nowCard.querySelector('.now-commit-repo');
+      var branchEl = nowCard.querySelector('.now-commit-branch');
+      var timeEl = nowCard.querySelector('time');
+
+      if (shaEl && d.short_sha) {
+        shaEl.href = d.commit_url || ('https://github.com/' + d.repo + '/commit/' + d.sha);
+        var code = shaEl.querySelector('code');
+        if (code) code.textContent = d.short_sha;
+        else shaEl.textContent = d.short_sha;
+      }
+      if (msgEl && d.message) {
+        msgEl.textContent = d.message;
+        if (d.commit_url && msgEl.tagName === 'A') {
+          msgEl.href = d.commit_url;
+        }
+      }
+      if (repoEl && d.repo_name) {
+        repoEl.href = d.repo_url || ('https://github.com/' + d.repo);
+        repoEl.textContent = d.repo_name;
+      }
+      if (branchEl && d.branch) branchEl.textContent = d.branch;
+      if (timeEl && d.date) {
+        timeEl.setAttribute('datetime', d.date);
+        timeEl.textContent = ago;
+      }
+    }
+  }
+
+  var cached = null;
+  try {
+    var raw = localStorage.getItem(KEY);
+    if (raw) cached = JSON.parse(raw);
+  } catch(e) {}
+
+  if (cached && cached.data) updateDOM(cached.data);
+
+  if (!cached || (Date.now() - cached.time > TTL)) {
+    fetch('https://api.github.com/users/' + USER + '/events?per_page=15', { priority: 'low' })
+      .then(function(r) { return r.ok ? r.json() : null; })
+      .then(function(events) {
+        if (!Array.isArray(events)) return;
+        var pushes = [];
+        for (var i = 0; i < events.length; i++) {
+          if (events[i].type === 'PushEvent' && events[i].payload) {
+            pushes.push(events[i]);
+          }
+        }
+        if (!pushes.length) return;
+
+        pushes.sort(function(a, b) {
+          return new Date(b.created_at) - new Date(a.created_at);
+        });
+        var push = pushes[0];
+
+        var repoFull = push.repo.name;
+        var repoName = repoFull.split('/')[1] || repoFull;
+        var p = push.payload;
+        var headSha = p.head || (p.commits && p.commits.length ? p.commits[p.commits.length - 1].sha : null);
+        if (!headSha) return;
+
+        var commitMsg = (p.commits && p.commits.length) ? p.commits[p.commits.length - 1].message : null;
+        var branch = (p.ref || '').replace('refs/heads/', '');
+        var date = push.created_at;
+
+        var commitData = {
+          sha: headSha,
+          short_sha: headSha.substring(0, 7),
+          repo: repoFull,
+          repo_name: repoName,
+          branch: branch,
+          message: commitMsg ? commitMsg.split('\n')[0] : ('push to ' + (branch || 'main')),
+          date: date,
+          commit_url: 'https://github.com/' + repoFull + '/commit/' + headSha,
+          repo_url: 'https://github.com/' + repoFull
+        };
+
+        if (!commitMsg) {
+          fetch('https://api.github.com/repos/' + repoFull + '/commits/' + headSha, { priority: 'low' })
+            .then(function(r) { return r.ok ? r.json() : null; })
+            .then(function(d) {
+              if (d && d.commit && d.commit.message) {
+                commitData.message = d.commit.message.split('\n')[0];
+                if (d.commit.author && d.commit.author.date) commitData.date = d.commit.author.date;
+              }
+              saveAndApply(commitData);
+            })
+            .catch(function() { saveAndApply(commitData); });
+        } else {
+          saveAndApply(commitData);
+        }
+      })
+      .catch(function() {});
+  }
+
+  function saveAndApply(data) {
+    try { localStorage.setItem(KEY, JSON.stringify({ time: Date.now(), data: data })); } catch(e) {}
+    updateDOM(data);
+  }
+})();
+</script>
