@@ -3,7 +3,7 @@
 <div class="home-hero h-card">
   <div class="home-hero-intro">
     <img
-      src="https://avatars.githubusercontent.com/u/93462792?s=160"
+      src="{{ site.Params.avatar | default "/avatar.jpg" }}"
       alt="Jitendra Dara"
       class="home-avatar u-photo"
       width="80"
@@ -43,19 +43,19 @@
 
   <div class="home-actions">
     <a href="/me" class="home-link">
-      <img src="/logos/code.svg" alt="" aria-hidden="true" class="inline-icon-svg" />projects
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="inline-icon-svg" aria-hidden="true"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>projects
     </a>
     <a href="/resume.pdf" class="home-link">
-      <img src="/logos/file.svg" alt="" aria-hidden="true" class="inline-icon-svg" />resume
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" class="inline-icon-svg" aria-hidden="true"><path d="M12 2l.117 .007a1 1 0 0 1 .876 .876l.007 .117v4l.005 .15a2 2 0 0 0 1.838 1.844l.157 .006h4l.117 .007a1 1 0 0 1 .876 .876l.007 .117v9a3 3 0 0 1 -2.824 2.995l-.176 .005h-10a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-14a3 3 0 0 1 2.824 -2.995l.176 -.005h5z"/><path d="M19 7h-4l-.001 -4.001z"/></svg>resume
     </a>
     <a href="/me/contact" class="home-link">
-      <img src="/logos/gmail.svg" alt="" aria-hidden="true" class="inline-icon-svg" />contact
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="inline-icon-svg" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10"/><path d="M3 7l9 6l9 -6"/></svg>contact
     </a>
   </div>
 </div>
 
 
-<section>
+<section id="writings">
   <div class="section-head">
     <h2 class="headline-md">writings</h2>
     <a href="/writings" class="section-head-all">all &#8669</a>
@@ -66,7 +66,7 @@
     <li>
       {{- if $.Param "datesinlist" }}
       <span class="label-sm">
-        <time datetime="{{ $displayDate.Format "2006-01-02T15:04:05Z07:00" }}">{{ $displayDate.Format "2 Jan 2006" }}</time>
+        <time datetime="{{ $displayDate.Format "2006-01-02T15:04:05Z07:00" }}">{{ $displayDate.Format "02 Jan 2006" }}</time>
       </span><br>
       {{ end -}}
       <a href="{{ .RelPermalink }}">{{ .Title }}</a>
@@ -74,5 +74,15 @@
     {{- end }}
   </ul>
 </section>
+
+<section id="now">
+  <div class="section-head">
+    <h2 class="headline-md">last commit</h2>
+    <a href="/now" class="section-head-all">now &#8669</a>
+  </div>
+  {{ partial "commit-card.html" . }}
+</section>
+
+{{ partial "github-swr.html" . }}
 
 {{ end }}

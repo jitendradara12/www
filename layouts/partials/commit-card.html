@@ -1,0 +1,18 @@
+<div id="now-commit" class="now-card">
+  {{ with hugo.Data.github }}
+  <span class="label-sm now-commit-time">
+    {{ with .date }}<time datetime="{{ . }}">{{ hugo.Data.github.relative_time }}</time>{{ else }}<time>recently</time>{{ end }}
+  </span>
+  <div class="now-commit-content">
+    <a href="{{ .commit_url }}" target="_blank" rel="noopener" class="now-commit-msg">{{ .message }}</a>
+    <div class="now-commit-meta">
+      <a href="{{ .commit_url }}" target="_blank" rel="noopener" class="now-commit-sha">{{ .short_sha }}</a>
+      <span class="meta-sep">·</span>
+      <a href="{{ .repo_url }}" target="_blank" rel="noopener" class="now-commit-repo">{{ .repo_name }}</a>
+      {{ with .branch }}<span class="now-commit-branch">{{ . }}</span>{{ end }}
+    </div>
+  </div>
+  {{ else }}
+  <span class="now-empty">no recent commits</span>
+  {{ end }}
+</div>
