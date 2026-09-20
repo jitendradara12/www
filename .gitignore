@@ -1,3 +1,4 @@
 .env
 public
 .claude/
+.hugo_build.lock
