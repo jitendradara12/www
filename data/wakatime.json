@@ -1,22 +1,27 @@
 {
-  "total_today": "24 mins",
-  "total_seconds": 1440.414,
-  "is_resting": true,
+  "total_today": "33 mins",
+  "total_seconds": 2037.452,
+  "is_resting": false,
   "projects": [
     {
       "name": "jj-ryu",
-      "text": "22 mins",
-      "percent": 95.5
+      "text": "32 mins",
+      "percent": 96.8
     },
     {
       "name": "apl2",
       "text": "36 secs",
-      "percent": 2.5
+      "percent": 1.8
     },
     {
       "name": "herdr",
       "text": "28 secs",
-      "percent": 1.9
+      "percent": 1.4
+    },
+    {
+      "name": "www",
+      "text": "0 secs",
+      "percent": 0.0
     },
     {
       "name": "anti-slop",
@@ -27,14 +32,14 @@
   "editors": [
     {
       "name": "Firefox",
-      "text": "24 mins",
+      "text": "33 mins",
       "percent": 100.0
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "24 mins",
+      "text": "33 mins",
       "percent": 100.0
     }
   ],
@@ -65,9 +70,9 @@
     }
   ],
   "rollup_7d": {
-    "total": "33 hrs 25 mins",
+    "total": "33 hrs 35 mins",
     "daily_average": "1 hr 51 mins",
-    "total_seconds": 120346.112001
+    "total_seconds": 120943.150001
   },
-  "last_updated": "2026-09-20T20:13:23Z"
+  "last_updated": "2026-09-21T03:02:03Z"
 }
