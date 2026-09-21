@@ -1,80 +1,30 @@
 {
-  "total_today": "3 hrs 15 mins",
-  "total_seconds": 11754.511,
-  "is_resting": false,
+  "total_today": "6 mins",
+  "total_seconds": 392.413,
+  "is_resting": true,
   "projects": [
     {
-      "name": "goodix-5e0a",
-      "text": "2 hrs 16 mins",
-      "percent": 69.8
-    },
-    {
-      "name": "jj-ryu",
-      "text": "32 mins",
-      "percent": 16.8
-    },
-    {
-      "name": "apl2",
-      "text": "11 mins",
-      "percent": 5.8
-    },
-    {
-      "name": "superpowers",
-      "text": "8 mins",
-      "percent": 4.6
-    },
-    {
       "name": "www",
-      "text": "1 min",
-      "percent": 0.9
-    },
-    {
-      "name": "Hyprland-Dots",
-      "text": "1 min",
-      "percent": 0.9
-    },
-    {
-      "name": "omaconnect",
-      "text": "56 secs",
-      "percent": 0.5
+      "text": "3 mins",
+      "percent": 60.0
     },
     {
       "name": "ax",
-      "text": "47 secs",
-      "percent": 0.4
-    },
-    {
-      "name": "herdr",
-      "text": "28 secs",
-      "percent": 0.2
-    },
-    {
-      "name": "tldraw",
-      "text": "5 secs",
-      "percent": 0.0
-    },
-    {
-      "name": "anti-slop",
-      "text": "0 secs",
-      "percent": 0.0
+      "text": "2 mins",
+      "percent": 40.0
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "3 hrs 15 mins",
-      "percent": 99.7
-    },
-    {
-      "name": "Neovim",
-      "text": "35 secs",
-      "percent": 0.3
+      "text": "6 mins",
+      "percent": 100.0
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "3 hrs 15 mins",
+      "text": "6 mins",
       "percent": 100.0
     }
   ],
@@ -105,9 +55,9 @@
     }
   ],
   "rollup_7d": {
-    "total": "36 hrs 17 mins",
-    "daily_average": "2 hrs 1 min",
-    "total_seconds": 130660.209001
+    "total": "30 hrs 53 mins",
+    "daily_average": "2 hrs 3 mins",
+    "total_seconds": 111188.558001
   },
-  "last_updated": "2026-09-21T17:44:58Z"
+  "last_updated": "2026-09-21T21:37:45Z"
 }
