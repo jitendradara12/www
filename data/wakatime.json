@@ -1,63 +1,10 @@
 {
-  "total_today": "1 hr 44 mins",
-  "total_seconds": 6245.985,
-  "is_resting": false,
-  "projects": [
-    {
-      "name": "www",
-      "text": "1 hr 10 mins",
-      "percent": 68.1
-    },
-    {
-      "name": "libfprint",
-      "text": "20 mins",
-      "percent": 19.8
-    },
-    {
-      "name": "Hyprland-Dots",
-      "text": "3 mins",
-      "percent": 3.1
-    },
-    {
-      "name": "goodix-5e0a",
-      "text": "3 mins",
-      "percent": 2.9
-    },
-    {
-      "name": "ax",
-      "text": "2 mins",
-      "percent": 2.5
-    },
-    {
-      "name": "ft9201-libfprint",
-      "text": "1 min",
-      "percent": 1.8
-    },
-    {
-      "name": "omaconnect",
-      "text": "1 min",
-      "percent": 1.4
-    },
-    {
-      "name": "kyaa-laoon",
-      "text": "29 secs",
-      "percent": 0.5
-    }
-  ],
-  "editors": [
-    {
-      "name": "Firefox",
-      "text": "1 hr 44 mins",
-      "percent": 100.0
-    }
-  ],
-  "operating_systems": [
-    {
-      "name": "Linux",
-      "text": "1 hr 44 mins",
-      "percent": 100.0
-    }
-  ],
+  "total_today": "0 secs",
+  "total_seconds": 0.0,
+  "is_resting": true,
+  "projects": [],
+  "editors": [],
+  "operating_systems": [],
   "languages": [
     {
       "name": "hyprlang",
@@ -85,9 +32,9 @@
     }
   ],
   "rollup_7d": {
-    "total": "32 hrs 30 mins",
-    "daily_average": "2 hrs 7 mins",
-    "total_seconds": 117042.130001
+    "total": "31 hrs 28 mins",
+    "daily_average": "2 hrs 33 mins",
+    "total_seconds": 113333.528001
   },
-  "last_updated": "2026-09-22T16:09:28Z"
+  "last_updated": "2026-09-22T20:48:17Z"
 }
