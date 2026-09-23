@@ -1,30 +1,25 @@
 {
-  "total_today": "1 hr 44 mins",
-  "total_seconds": 6267.139,
+  "total_today": "1 hr 8 mins",
+  "total_seconds": 4084.649,
   "is_resting": false,
   "projects": [
     {
       "name": "Hyprland-Dots",
-      "text": "1 hr 44 mins",
-      "percent": 99.8
-    },
-    {
-      "name": "libfprint",
-      "text": "9 secs",
-      "percent": 0.2
+      "text": "1 hr 8 mins",
+      "percent": 100.0
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "1 hr 44 mins",
+      "text": "1 hr 8 mins",
       "percent": 100.0
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "1 hr 44 mins",
+      "text": "1 hr 8 mins",
       "percent": 100.0
     }
   ],
@@ -55,9 +50,9 @@
     }
   ],
   "rollup_7d": {
-    "total": "33 hrs 13 mins",
-    "daily_average": "2 hrs 7 mins",
-    "total_seconds": 119600.667001
+    "total": "35 hrs 10 mins",
+    "daily_average": "1 hr 49 mins",
+    "total_seconds": 126622.542001
   },
-  "last_updated": "2026-09-23T15:59:06Z"
+  "last_updated": "2026-09-23T20:59:32Z"
 }
