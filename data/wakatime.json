@@ -1,78 +1,83 @@
 {
-  "total_today": "2 hrs 2 mins",
-  "total_seconds": 7377.418,
+  "total_today": "4 hrs 23 mins",
+  "total_seconds": 15790.559,
   "is_resting": false,
   "projects": [
     {
+      "name": "hermes-agent",
+      "text": "1 hr 51 mins",
+      "percent": 42.4
+    },
+    {
       "name": "Hyprland-Dots",
       "text": "1 hr 33 mins",
-      "percent": 75.7
+      "percent": 35.4
     },
     {
       "name": "omaconnect",
-      "text": "16 mins",
-      "percent": 13.7
+      "text": "45 mins",
+      "percent": 17.3
     },
     {
       "name": "goodix",
       "text": "11 mins",
-      "percent": 8.9
+      "percent": 4.2
     },
     {
       "name": "goodix-5e0a",
       "text": "2 mins",
-      "percent": 1.6
+      "percent": 0.8
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "1 hr 51 mins",
-      "percent": 91.0
+      "text": "4 hrs 12 mins",
+      "percent": 95.8
     },
     {
       "name": "Neovim",
       "text": "11 mins",
-      "percent": 8.9
+      "percent": 4.2
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "2 hrs 2 mins",
+      "text": "4 hrs 23 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "hyprlang",
-      "percent": 36.7
+      "percent": 32.1
     },
     {
       "name": "HTML",
-      "percent": 33.0
-    },
-    {
-      "name": "Python",
-      "percent": 12.6
+      "percent": 28.8
     },
     {
       "name": "C",
-      "percent": 11.7
+      "percent": 22.8
+    },
+    {
+      "name": "Python",
+      "percent": 11.0
     },
     {
       "name": "Bash",
-      "percent": 2.4
+      "percent": 2.1
     },
     {
       "name": "Nix",
-      "percent": 2.1
+      "percent": 1.8
     }
   ],
   "rollup_7d": {
-    "total": "36 hrs 5 mins",
-    "daily_average": "1 hr 51 mins",
-    "total_seconds": 129915.311001
+    "total": "38 hrs 25 mins",
+    "daily_average": "1 hr 57 mins",
+    "total_seconds": 138328.452001
   },
-  "last_updated": "2026-09-24T11:00:19Z"
+  "last_updated": "2026-09-24T16:23:12Z"
 }
