@@ -1,58 +1,78 @@
 {
-  "total_today": "1 hr 8 mins",
-  "total_seconds": 4084.649,
+  "total_today": "2 hrs 2 mins",
+  "total_seconds": 7377.418,
   "is_resting": false,
   "projects": [
     {
       "name": "Hyprland-Dots",
-      "text": "1 hr 8 mins",
-      "percent": 100.0
+      "text": "1 hr 33 mins",
+      "percent": 75.7
+    },
+    {
+      "name": "omaconnect",
+      "text": "16 mins",
+      "percent": 13.7
+    },
+    {
+      "name": "goodix",
+      "text": "11 mins",
+      "percent": 8.9
+    },
+    {
+      "name": "goodix-5e0a",
+      "text": "2 mins",
+      "percent": 1.6
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "1 hr 8 mins",
-      "percent": 100.0
+      "text": "1 hr 51 mins",
+      "percent": 91.0
+    },
+    {
+      "name": "Neovim",
+      "text": "11 mins",
+      "percent": 8.9
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "1 hr 8 mins",
+      "text": "2 hrs 2 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "hyprlang",
-      "percent": 38.1
+      "percent": 36.7
     },
     {
       "name": "HTML",
-      "percent": 34.2
+      "percent": 33.0
     },
     {
       "name": "Python",
-      "percent": 13.1
+      "percent": 12.6
     },
     {
       "name": "C",
-      "percent": 10.5
+      "percent": 11.7
+    },
+    {
+      "name": "Bash",
+      "percent": 2.4
     },
     {
       "name": "Nix",
       "percent": 2.1
-    },
-    {
-      "name": "Bash",
-      "percent": 1.4
     }
   ],
   "rollup_7d": {
-    "total": "35 hrs 10 mins",
-    "daily_average": "1 hr 49 mins",
-    "total_seconds": 126622.542001
+    "total": "36 hrs 5 mins",
+    "daily_average": "1 hr 51 mins",
+    "total_seconds": 129915.311001
   },
-  "last_updated": "2026-09-23T20:59:32Z"
+  "last_updated": "2026-09-24T11:00:19Z"
 }
