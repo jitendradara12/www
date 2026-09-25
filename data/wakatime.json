@@ -1,45 +1,45 @@
 {
-  "total_today": "1 hr 48 mins",
-  "total_seconds": 6524.599,
+  "total_today": "4 hrs 28 mins",
+  "total_seconds": 16113.903,
   "is_resting": false,
   "projects": [
     {
       "name": "hermes-agent",
-      "text": "54 mins",
-      "percent": 49.9
+      "text": "3 hrs 33 mins",
+      "percent": 79.6
     },
     {
       "name": "grid-load",
       "text": "27 mins",
-      "percent": 25.6
+      "percent": 10.4
     },
     {
       "name": "omaconnect",
       "text": "26 mins",
-      "percent": 24.3
+      "percent": 9.9
     },
     {
       "name": "agentic-stack-desktop",
       "text": "11 secs",
-      "percent": 0.2
+      "percent": 0.1
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "1 hr 46 mins",
-      "percent": 97.9
+      "text": "4 hrs 26 mins",
+      "percent": 99.2
     },
     {
       "name": "Neovim",
       "text": "2 mins",
-      "percent": 2.1
+      "percent": 0.8
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "1 hr 48 mins",
+      "text": "4 hrs 28 mins",
       "percent": 100.0
     }
   ],
@@ -70,9 +70,9 @@
     }
   ],
   "rollup_7d": {
-    "total": "31 hrs 10 mins",
+    "total": "33 hrs 50 mins",
     "daily_average": "1 hr 22 mins",
-    "total_seconds": 112219.68
+    "total_seconds": 121808.984
   },
-  "last_updated": "2026-09-25T11:00:44Z"
+  "last_updated": "2026-09-25T16:23:27Z"
 }
