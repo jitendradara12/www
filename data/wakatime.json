@@ -1,103 +1,128 @@
 {
-  "total_today": "1 hr 26 mins",
-  "total_seconds": 5160.843,
+  "total_today": "3 hrs 46 mins",
+  "total_seconds": 13611.72,
   "is_resting": false,
   "projects": [
     {
       "name": "omaconnect",
-      "text": "1 hr",
-      "percent": 69.9
+      "text": "2 hrs 23 mins",
+      "percent": 63.2
+    },
+    {
+      "name": "omarchy-plugin-marketplace",
+      "text": "55 mins",
+      "percent": 24.3
     },
     {
       "name": "www",
       "text": "16 mins",
-      "percent": 19.1
+      "percent": 7.2
     },
     {
       "name": "i-have-adhd",
       "text": "6 mins",
-      "percent": 7.9
+      "percent": 3.0
+    },
+    {
+      "name": "goodix-5e0a",
+      "text": "1 min",
+      "percent": 0.7
     },
     {
       "name": "awesome-omarchy",
       "text": "1 min",
-      "percent": 1.2
-    },
-    {
-      "name": "goodix-5e0a",
-      "text": "31 secs",
-      "percent": 0.6
+      "percent": 0.5
     },
     {
       "name": "watermelon-platform",
       "text": "22 secs",
-      "percent": 0.4
+      "percent": 0.2
     },
     {
       "name": "hermes-agent",
       "text": "21 secs",
-      "percent": 0.4
+      "percent": 0.1
     },
     {
       "name": "CarbonManthan",
       "text": "19 secs",
-      "percent": 0.4
+      "percent": 0.1
+    },
+    {
+      "name": "temp.html",
+      "text": "19 secs",
+      "percent": 0.1
+    },
+    {
+      "name": "hyprlauncher",
+      "text": "9 secs",
+      "percent": 0.1
+    },
+    {
+      "name": "hyprdotfiles",
+      "text": "9 secs",
+      "percent": 0.1
+    },
+    {
+      "name": "antigravity-cli-wakatime",
+      "text": "0 secs",
+      "percent": 0.0
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "1 hr 11 mins",
-      "percent": 83.3
+      "text": "2 hrs 55 mins",
+      "percent": 77.4
     },
     {
       "name": "Antigravity",
-      "text": "12 mins",
-      "percent": 14.0
+      "text": "37 mins",
+      "percent": 16.6
     },
     {
       "name": "Neovim",
-      "text": "2 mins",
-      "percent": 2.7
+      "text": "13 mins",
+      "percent": 6.0
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "1 hr 26 mins",
+      "text": "3 hrs 46 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
-      "name": "C",
-      "percent": 42.5
+      "name": "HTML",
+      "percent": 42.3
     },
     {
-      "name": "HTML",
-      "percent": 28.6
+      "name": "C",
+      "percent": 34.3
     },
     {
       "name": "hyprlang",
-      "percent": 23.5
+      "percent": 19.0
     },
     {
       "name": "Bash",
-      "percent": 2.2
+      "percent": 1.8
     },
     {
       "name": "SELinux Policy",
-      "percent": 1.9
+      "percent": 1.5
     },
     {
       "name": "gitignore",
-      "percent": 1.2
+      "percent": 0.9
     }
   ],
   "rollup_7d": {
-    "total": "29 hrs 46 mins",
-    "daily_average": "1 hr 7 mins",
-    "total_seconds": 107169.292
+    "total": "32 hrs 7 mins",
+    "daily_average": "1 hr 15 mins",
+    "total_seconds": 115620.169
   },
-  "last_updated": "2026-09-26T10:43:12Z"
+  "last_updated": "2026-09-26T15:38:17Z"
 }
