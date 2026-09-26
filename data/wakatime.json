@@ -1,68 +1,103 @@
 {
-  "total_today": "6 mins",
-  "total_seconds": 362.783,
-  "is_resting": true,
+  "total_today": "1 hr 26 mins",
+  "total_seconds": 5160.843,
+  "is_resting": false,
   "projects": [
     {
+      "name": "omaconnect",
+      "text": "1 hr",
+      "percent": 69.9
+    },
+    {
       "name": "www",
-      "text": "5 mins",
-      "percent": 94.2
+      "text": "16 mins",
+      "percent": 19.1
+    },
+    {
+      "name": "i-have-adhd",
+      "text": "6 mins",
+      "percent": 7.9
+    },
+    {
+      "name": "awesome-omarchy",
+      "text": "1 min",
+      "percent": 1.2
+    },
+    {
+      "name": "goodix-5e0a",
+      "text": "31 secs",
+      "percent": 0.6
+    },
+    {
+      "name": "watermelon-platform",
+      "text": "22 secs",
+      "percent": 0.4
     },
     {
       "name": "hermes-agent",
       "text": "21 secs",
-      "percent": 5.8
+      "percent": 0.4
+    },
+    {
+      "name": "CarbonManthan",
+      "text": "19 secs",
+      "percent": 0.4
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "3 mins",
-      "percent": 61.6
+      "text": "1 hr 11 mins",
+      "percent": 83.3
+    },
+    {
+      "name": "Antigravity",
+      "text": "12 mins",
+      "percent": 14.0
     },
     {
       "name": "Neovim",
       "text": "2 mins",
-      "percent": 38.4
+      "percent": 2.7
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "6 mins",
+      "text": "1 hr 26 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "C",
-      "percent": 51.6
-    },
-    {
-      "name": "hyprlang",
-      "percent": 28.6
+      "percent": 42.5
     },
     {
       "name": "HTML",
-      "percent": 13.2
+      "percent": 28.6
+    },
+    {
+      "name": "hyprlang",
+      "percent": 23.5
     },
     {
       "name": "Bash",
-      "percent": 2.7
+      "percent": 2.2
     },
     {
       "name": "SELinux Policy",
-      "percent": 2.3
+      "percent": 1.9
     },
     {
       "name": "gitignore",
-      "percent": 1.4
+      "percent": 1.2
     }
   ],
   "rollup_7d": {
-    "total": "28 hrs 26 mins",
-    "daily_average": "1 hr 3 mins",
-    "total_seconds": 102371.232
+    "total": "29 hrs 46 mins",
+    "daily_average": "1 hr 7 mins",
+    "total_seconds": 107169.292
   },
-  "last_updated": "2026-09-25T21:01:49Z"
+  "last_updated": "2026-09-26T10:43:12Z"
 }
