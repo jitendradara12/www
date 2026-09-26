@@ -1,13 +1,13 @@
 {
-  "sha": "3e51a836c9830a7e4f62df9208fa6fda03a82760",
-  "short_sha": "3e51a83",
-  "message": "fix: resolve own service via engine-wide bridge for replacement bars \u2026",
+  "sha": "71282d2042b1a1cda1cb1cac84251694eaabb7cb",
+  "short_sha": "71282d2",
+  "message": "chore(release): bump version to 1.5.0",
   "repo": "jitendradara12/omaconnect",
   "repo_name": "omaconnect",
   "branch": "main",
-  "date": "2026-09-26T08:40:21Z",
+  "date": "2026-09-26T12:43:32Z",
   "relative_time": "2h ago",
-  "commit_url": "https://github.com/jitendradara12/omaconnect/commit/3e51a836c9830a7e4f62df9208fa6fda03a82760",
+  "commit_url": "https://github.com/jitendradara12/omaconnect/commit/71282d2042b1a1cda1cb1cac84251694eaabb7cb",
   "repo_url": "https://github.com/jitendradara12/omaconnect",
-  "last_updated": "2026-09-26T10:43:13Z"
+  "last_updated": "2026-09-26T15:38:18Z"
 }
