@@ -1,78 +1,63 @@
 {
-  "total_today": "1 hr 57 mins",
-  "total_seconds": 7037.006,
+  "total_today": "45 mins",
+  "total_seconds": 2743.74,
   "is_resting": false,
   "projects": [
     {
-      "name": "omaconnect",
-      "text": "1 hr 10 mins",
-      "percent": 60.1
-    },
-    {
-      "name": "www",
-      "text": "35 mins",
-      "percent": 30.0
+      "name": "goodix-5e0a",
+      "text": "29 mins",
+      "percent": 64.5
     },
     {
       "name": "omarchy-plugin-marketplace",
-      "text": "9 mins",
-      "percent": 8.0
-    },
-    {
-      "name": "hermes-agent",
-      "text": "59 secs",
-      "percent": 0.8
+      "text": "16 mins",
+      "percent": 35.5
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "1 hr 50 mins",
-      "percent": 94.5
-    },
-    {
-      "name": "Neovim",
-      "text": "6 mins",
-      "percent": 5.5
+      "text": "45 mins",
+      "percent": 100.0
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "1 hr 57 mins",
+      "text": "45 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "HTML",
-      "percent": 54.8
+      "percent": 47.4
     },
     {
       "name": "C",
-      "percent": 41.0
-    },
-    {
-      "name": "Bash",
-      "percent": 2.1
-    },
-    {
-      "name": "SELinux Policy",
-      "percent": 1.8
-    },
-    {
-      "name": "Nix",
-      "percent": 0.2
+      "percent": 35.6
     },
     {
       "name": "QML",
+      "percent": 13.4
+    },
+    {
+      "name": "Bash",
+      "percent": 1.9
+    },
+    {
+      "name": "SELinux Policy",
+      "percent": 1.6
+    },
+    {
+      "name": "Nix",
       "percent": 0.1
     }
   ],
   "rollup_7d": {
-    "total": "28 hrs 5 mins",
-    "daily_average": "42 mins",
-    "total_seconds": 101147.88
+    "total": "25 hrs 57 mins",
+    "daily_average": "35 mins",
+    "total_seconds": 93436.32
   },
-  "last_updated": "2026-09-27T11:16:37Z"
+  "last_updated": "2026-09-27T20:46:17Z"
 }
