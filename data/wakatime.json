@@ -1,63 +1,93 @@
 {
-  "total_today": "45 mins",
-  "total_seconds": 2743.74,
+  "total_today": "3 hrs 2 mins",
+  "total_seconds": 10932.678,
   "is_resting": false,
   "projects": [
     {
+      "name": "waybackurls",
+      "text": "1 hr 30 mins",
+      "percent": 49.7
+    },
+    {
       "name": "goodix-5e0a",
-      "text": "29 mins",
-      "percent": 64.5
+      "text": "37 mins",
+      "percent": 20.6
     },
     {
       "name": "omarchy-plugin-marketplace",
       "text": "16 mins",
-      "percent": 35.5
+      "percent": 8.9
+    },
+    {
+      "name": "ARCHITECTURE.md",
+      "text": "2 mins",
+      "percent": 1.4
+    },
+    {
+      "name": "urlfinder",
+      "text": "1 min",
+      "percent": 0.6
+    },
+    {
+      "name": "sherlock",
+      "text": "26 secs",
+      "percent": 0.2
+    },
+    {
+      "name": "community",
+      "text": "4 secs",
+      "percent": 0.0
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "45 mins",
-      "percent": 100.0
+      "text": "2 hrs 25 mins",
+      "percent": 80.1
+    },
+    {
+      "name": "Neovim",
+      "text": "36 mins",
+      "percent": 19.9
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "45 mins",
+      "text": "3 hrs 2 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "HTML",
-      "percent": 47.4
+      "percent": 41.1
     },
     {
       "name": "C",
-      "percent": 35.6
+      "percent": 30.8
     },
     {
       "name": "QML",
-      "percent": 13.4
+      "percent": 14.7
     },
     {
-      "name": "Bash",
-      "percent": 1.9
+      "name": "JavaScript",
+      "percent": 4.6
     },
     {
-      "name": "SELinux Policy",
-      "percent": 1.6
+      "name": "TypeScript",
+      "percent": 3.1
     },
     {
-      "name": "Nix",
-      "percent": 0.1
+      "name": "CSS",
+      "percent": 2.5
     }
   ],
   "rollup_7d": {
-    "total": "25 hrs 57 mins",
-    "daily_average": "35 mins",
-    "total_seconds": 93436.32
+    "total": "28 hrs 16 mins",
+    "daily_average": "41 mins",
+    "total_seconds": 101763.258001
   },
-  "last_updated": "2026-09-27T20:46:17Z"
+  "last_updated": "2026-09-28T12:45:07Z"
 }
