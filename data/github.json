@@ -1,13 +1,13 @@
 {
-  "sha": "d853be23372382f8a8ccd2174fdda7711643228b",
-  "short_sha": "d853be2",
-  "message": "proxy: scope relayed cookies to Path=/",
+  "sha": "2880ebcc368b58d702fb39109e8f0663133ed532",
+  "short_sha": "2880ebc",
+  "message": "proxy: dev-parity forwarding + temp 401 debug logs",
   "repo": "jitendradara12/lazyportal",
   "repo_name": "lazyportal",
   "branch": "master",
-  "date": "2026-09-28T20:28:23Z",
-  "relative_time": "2h ago",
-  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/d853be23372382f8a8ccd2174fdda7711643228b",
+  "date": "2026-09-28T20:31:37Z",
+  "relative_time": "7h ago",
+  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/2880ebcc368b58d702fb39109e8f0663133ed532",
   "repo_url": "https://github.com/jitendradara12/lazyportal",
-  "last_updated": "2026-09-28T22:53:31Z"
+  "last_updated": "2026-09-29T03:55:34Z"
 }

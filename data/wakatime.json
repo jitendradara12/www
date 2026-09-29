@@ -1,6 +1,6 @@
 {
   "total_today": "2 hrs 4 mins",
-  "total_seconds": 7457.179,
+  "total_seconds": 7460.05,
   "is_resting": false,
   "projects": [
     {
@@ -67,7 +67,7 @@
   "rollup_7d": {
     "total": "33 hrs 57 mins",
     "daily_average": "59 mins",
-    "total_seconds": 122220.050001
+    "total_seconds": 122222.921001
   },
-  "last_updated": "2026-09-28T22:53:30Z"
+  "last_updated": "2026-09-29T03:55:33Z"
 }
