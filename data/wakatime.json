@@ -1,83 +1,58 @@
 {
-  "total_today": "3 hrs 21 mins",
-  "total_seconds": 12088.336,
-  "is_resting": false,
+  "total_today": "21 mins",
+  "total_seconds": 1260.297,
+  "is_resting": true,
   "projects": [
     {
-      "name": "lazyportal",
-      "text": "1 hr 37 mins",
-      "percent": 48.3
-    },
-    {
-      "name": "waybackurls",
-      "text": "1 hr 11 mins",
-      "percent": 35.5
-    },
-    {
       "name": "temp",
-      "text": "8 mins",
-      "percent": 4.2
-    },
-    {
-      "name": "a.py",
-      "text": "3 mins",
-      "percent": 1.8
-    },
-    {
-      "name": "m3e-canvas",
-      "text": "6 secs",
-      "percent": 0.1
+      "text": "21 mins",
+      "percent": 100.0
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "2 hrs 48 mins",
-      "percent": 83.8
-    },
-    {
-      "name": "Neovim",
-      "text": "32 mins",
-      "percent": 16.2
+      "text": "21 mins",
+      "percent": 100.0
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "3 hrs 21 mins",
+      "text": "21 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "HTML",
-      "percent": 23.5
+      "percent": 21.5
     },
     {
       "name": "TypeScript",
-      "percent": 18.8
+      "percent": 20.2
     },
     {
       "name": "C",
-      "percent": 17.5
+      "percent": 16.0
     },
     {
       "name": "JavaScript",
-      "percent": 13.3
+      "percent": 12.7
+    },
+    {
+      "name": "Python",
+      "percent": 10.5
     },
     {
       "name": "CSS",
-      "percent": 10.7
-    },
-    {
-      "name": "QML",
-      "percent": 8.4
+      "percent": 9.8
     }
   ],
   "rollup_7d": {
-    "total": "35 hrs 14 mins",
-    "daily_average": "1 hr 2 mins",
-    "total_seconds": 126851.207001
+    "total": "35 hrs 59 mins",
+    "daily_average": "1 hr 6 mins",
+    "total_seconds": 129591.470001
   },
-  "last_updated": "2026-09-29T12:01:17Z"
+  "last_updated": "2026-09-29T21:47:08Z"
 }
