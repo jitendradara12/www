@@ -1,40 +1,50 @@
 {
-  "total_today": "21 mins",
-  "total_seconds": 1260.297,
-  "is_resting": true,
+  "total_today": "42 mins",
+  "total_seconds": 2549.886,
+  "is_resting": false,
   "projects": [
     {
       "name": "temp",
-      "text": "21 mins",
-      "percent": 100.0
+      "text": "40 mins",
+      "percent": 96.3
+    },
+    {
+      "name": "bro",
+      "text": "1 min",
+      "percent": 3.7
+    },
+    {
+      "name": "bro-skill",
+      "text": "0 secs",
+      "percent": 0.0
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "21 mins",
+      "text": "42 mins",
       "percent": 100.0
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "21 mins",
+      "text": "42 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "HTML",
-      "percent": 21.5
+      "percent": 21.4
     },
     {
       "name": "TypeScript",
-      "percent": 20.2
+      "percent": 20.6
     },
     {
       "name": "C",
-      "percent": 16.0
+      "percent": 15.9
     },
     {
       "name": "JavaScript",
@@ -50,9 +60,9 @@
     }
   ],
   "rollup_7d": {
-    "total": "35 hrs 59 mins",
-    "daily_average": "1 hr 6 mins",
-    "total_seconds": 129591.470001
+    "total": "36 hrs 21 mins",
+    "daily_average": "1 hr 7 mins",
+    "total_seconds": 130881.059001
   },
-  "last_updated": "2026-09-29T21:47:08Z"
+  "last_updated": "2026-09-30T11:49:30Z"
 }
