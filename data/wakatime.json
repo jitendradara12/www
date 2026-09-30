@@ -1,118 +1,58 @@
 {
-  "total_today": "5 hrs 3 mins",
-  "total_seconds": 18232.036,
+  "total_today": "1 hr 34 mins",
+  "total_seconds": 5695.514,
   "is_resting": false,
   "projects": [
     {
-      "name": "goodix",
-      "text": "2 hrs 21 mins",
-      "percent": 46.5
-    },
-    {
       "name": "omaconnect",
-      "text": "1 hr 37 mins",
-      "percent": 32.1
-    },
-    {
-      "name": "temp",
-      "text": "40 mins",
-      "percent": 13.5
-    },
-    {
-      "name": "NixOS-Hyprland",
-      "text": "9 mins",
-      "percent": 3.3
-    },
-    {
-      "name": "bro-skill",
-      "text": "5 mins",
-      "percent": 1.9
-    },
-    {
-      "name": "goodix-5e0a",
-      "text": "3 mins",
-      "percent": 1.2
-    },
-    {
-      "name": "bro",
-      "text": "1 min",
-      "percent": 0.4
-    },
-    {
-      "name": "agents",
-      "text": "1 min",
-      "percent": 0.4
-    },
-    {
-      "name": "go-u8views",
-      "text": "1 min",
-      "percent": 0.4
-    },
-    {
-      "name": "libfprint",
-      "text": "49 secs",
-      "percent": 0.3
-    },
-    {
-      "name": "grid-load",
-      "text": "8 secs",
-      "percent": 0.0
+      "text": "1 hr 34 mins",
+      "percent": 100.0
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "2 hrs 35 mins",
-      "percent": 51.2
-    },
-    {
-      "name": "Antigravity",
-      "text": "2 hrs",
-      "percent": 39.5
-    },
-    {
-      "name": "Neovim",
-      "text": "28 mins",
-      "percent": 9.3
+      "text": "1 hr 34 mins",
+      "percent": 100.0
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "5 hrs 3 mins",
+      "text": "1 hr 34 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
-      "name": "C",
-      "percent": 22.0
-    },
-    {
       "name": "TypeScript",
-      "percent": 19.4
+      "percent": 22.5
     },
     {
       "name": "HTML",
-      "percent": 18.9
+      "percent": 21.9
     },
     {
       "name": "JavaScript",
-      "percent": 11.2
+      "percent": 13.0
     },
     {
       "name": "Python",
-      "percent": 9.6
+      "percent": 11.1
+    },
+    {
+      "name": "C",
+      "percent": 11.0
     },
     {
       "name": "CSS",
-      "percent": 8.6
+      "percent": 10.0
     }
   ],
   "rollup_7d": {
-    "total": "40 hrs 42 mins",
-    "daily_average": "1 hr 29 mins",
-    "total_seconds": 146563.209001
+    "total": "37 hrs 57 mins",
+    "daily_average": "1 hr 20 mins",
+    "total_seconds": 136620.671001
   },
-  "last_updated": "2026-09-30T17:30:12Z"
+  "last_updated": "2026-09-30T21:48:33Z"
 }
