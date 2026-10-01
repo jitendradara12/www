@@ -1,58 +1,73 @@
 {
-  "total_today": "1 hr 34 mins",
-  "total_seconds": 5695.514,
+  "total_today": "4 hrs 16 mins",
+  "total_seconds": 15407.798,
   "is_resting": false,
   "projects": [
     {
+      "name": "grid-load",
+      "text": "2 hrs 20 mins",
+      "percent": 54.6
+    },
+    {
       "name": "omaconnect",
-      "text": "1 hr 34 mins",
-      "percent": 100.0
+      "text": "1 hr 56 mins",
+      "percent": 45.4
+    },
+    {
+      "name": "tldraw",
+      "text": "2 secs",
+      "percent": 0.0
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "1 hr 34 mins",
-      "percent": 100.0
+      "text": "4 hrs 10 mins",
+      "percent": 97.4
+    },
+    {
+      "name": "Neovim",
+      "text": "6 mins",
+      "percent": 2.6
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "1 hr 34 mins",
+      "text": "4 hrs 16 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "TypeScript",
-      "percent": 22.5
+      "percent": 22.2
     },
     {
       "name": "HTML",
-      "percent": 21.9
+      "percent": 21.7
     },
     {
       "name": "JavaScript",
-      "percent": 13.0
+      "percent": 12.8
     },
     {
       "name": "Python",
-      "percent": 11.1
+      "percent": 12.3
     },
     {
       "name": "C",
-      "percent": 11.0
+      "percent": 10.8
     },
     {
       "name": "CSS",
-      "percent": 10.0
+      "percent": 9.9
     }
   ],
   "rollup_7d": {
-    "total": "37 hrs 57 mins",
-    "daily_average": "1 hr 20 mins",
-    "total_seconds": 136620.671001
+    "total": "40 hrs 38 mins",
+    "daily_average": "1 hr 21 mins",
+    "total_seconds": 146332.955001
   },
-  "last_updated": "2026-09-30T21:48:33Z"
+  "last_updated": "2026-10-01T12:19:09Z"
 }
