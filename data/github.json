@@ -1,13 +1,13 @@
 {
-  "sha": "9e7382c3ca098dcfb1e3bb579ae2970c02f0aaf2",
-  "short_sha": "9e7382c",
-  "message": "review fixes: cors privacy, proxy hardening, bundle, docs, CI drift g\u2026",
+  "sha": "c949ae9dcc17efc1ea11c2b4c3cadd3f5189b7df",
+  "short_sha": "c949ae9",
+  "message": "feat(mobile): switch Capacitor shell to live deployment and add servi\u2026",
   "repo": "jitendradara12/lazyportal",
   "repo_name": "lazyportal",
-  "branch": "arena/01a0f95b-lazyportal",
-  "date": "2026-10-02T08:12:41Z",
-  "relative_time": "3h ago",
-  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/9e7382c3ca098dcfb1e3bb579ae2970c02f0aaf2",
+  "branch": "preview/combined-mobile",
+  "date": "2026-10-02T17:19:37Z",
+  "relative_time": "just now",
+  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/c949ae9dcc17efc1ea11c2b4c3cadd3f5189b7df",
   "repo_url": "https://github.com/jitendradara12/lazyportal",
-  "last_updated": "2026-10-02T11:47:22Z"
+  "last_updated": "2026-10-02T17:20:18Z"
 }
