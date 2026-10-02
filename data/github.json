@@ -1,13 +1,13 @@
 {
-  "sha": "c949ae9dcc17efc1ea11c2b4c3cadd3f5189b7df",
-  "short_sha": "c949ae9",
-  "message": "feat(mobile): switch Capacitor shell to live deployment and add servi\u2026",
+  "sha": "37b2099f5f89517e1f62fa2db6be57dfd8c6593b",
+  "short_sha": "37b2099",
+  "message": "feat(mobile): Capacitor shell, proxy CORS, and adaptive install banne\u2026",
   "repo": "jitendradara12/lazyportal",
   "repo_name": "lazyportal",
-  "branch": "preview/combined-mobile",
-  "date": "2026-10-02T17:19:37Z",
-  "relative_time": "just now",
-  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/c949ae9dcc17efc1ea11c2b4c3cadd3f5189b7df",
+  "branch": "master",
+  "date": "2026-10-02T19:34:57Z",
+  "relative_time": "2h ago",
+  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/37b2099f5f89517e1f62fa2db6be57dfd8c6593b",
   "repo_url": "https://github.com/jitendradara12/lazyportal",
-  "last_updated": "2026-10-02T17:20:18Z"
+  "last_updated": "2026-10-02T21:45:21Z"
 }
