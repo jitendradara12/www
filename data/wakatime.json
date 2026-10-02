@@ -1,83 +1,93 @@
 {
-  "total_today": "3 hrs 2 mins",
-  "total_seconds": 10979.996,
+  "total_today": "7 hrs 19 mins",
+  "total_seconds": 26351.062,
   "is_resting": false,
   "projects": [
     {
       "name": "lazyportal",
-      "text": "1 hr 51 mins",
-      "percent": 61.0
+      "text": "5 hrs 7 mins",
+      "percent": 69.9
     },
     {
       "name": "temp",
-      "text": "1 hr 3 mins",
-      "percent": 34.7
+      "text": "1 hr 51 mins",
+      "percent": 25.4
+    },
+    {
+      "name": "runner-images",
+      "text": "12 mins",
+      "percent": 2.9
     },
     {
       "name": "omaconnect",
       "text": "5 mins",
-      "percent": 3.2
+      "percent": 1.3
     },
     {
       "name": "goodix-5e0a",
       "text": "2 mins",
-      "percent": 1.2
+      "percent": 0.5
+    },
+    {
+      "name": "m3e-canvas",
+      "text": "14 secs",
+      "percent": 0.1
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "2 hrs 37 mins",
-      "percent": 86.2
+      "text": "6 hrs 6 mins",
+      "percent": 83.4
     },
     {
       "name": "Neovim",
-      "text": "15 mins",
-      "percent": 8.2
+      "text": "40 mins",
+      "percent": 9.3
     },
     {
       "name": "Antigravity",
-      "text": "10 mins",
-      "percent": 5.6
+      "text": "32 mins",
+      "percent": 7.3
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "3 hrs 2 mins",
+      "text": "7 hrs 19 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "TypeScript",
-      "percent": 24.3
-    },
-    {
-      "name": "QML",
-      "percent": 15.7
-    },
-    {
-      "name": "HTML",
-      "percent": 15.1
+      "percent": 30.0
     },
     {
       "name": "JavaScript",
-      "percent": 13.6
+      "percent": 14.6
+    },
+    {
+      "name": "QML",
+      "percent": 14.0
+    },
+    {
+      "name": "HTML",
+      "percent": 13.5
     },
     {
       "name": "CSS",
-      "percent": 10.2
+      "percent": 9.1
     },
     {
       "name": "Python",
-      "percent": 10.1
+      "percent": 9.0
     }
   ],
   "rollup_7d": {
-    "total": "41 hrs 37 mins",
-    "daily_average": "1 hr 36 mins",
-    "total_seconds": 149834.413001
+    "total": "45 hrs 53 mins",
+    "daily_average": "1 hr 49 mins",
+    "total_seconds": 165205.479001
   },
-  "last_updated": "2026-10-01T22:16:16Z"
+  "last_updated": "2026-10-02T11:47:21Z"
 }
