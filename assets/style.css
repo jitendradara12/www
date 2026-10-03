@@ -55,10 +55,6 @@
   --grid-size: 24px;
   --scanline-color: rgba(92, 141, 255, 0.025);
 
-  /* Starfield */
-  --star-color: rgba(255, 255, 255, 0.15);
-  --star-color-bright: rgba(255, 255, 255, 0.35);
-
   color-scheme: dark;
 }
 
@@ -84,9 +80,6 @@
 
   --grid-color: rgba(10, 71, 214, 0.055);
   --scanline-color: rgba(10, 71, 214, 0.03);
-
-  --star-color: rgba(0, 0, 0, 0.06);
-  --star-color-bright: rgba(0, 0, 0, 0.12);
 
   color-scheme: light;
 }
@@ -130,88 +123,6 @@ summary {
   outline-offset: 3px;
 }
 
-/* ── Sparse Starfield ── */
-html::before,
-html::after {
-  content: "";
-  position: fixed;
-  z-index: -3;
-  pointer-events: none;
-  opacity: var(--star-opacity, 0.55);
-  transition: opacity var(--duration) var(--ease-out);
-}
-
-/* Layer 1: 650px grid (Drifts horizontally right) */
-html::before {
-  top: 0;
-  left: -650px;
-  width: calc(100% + 650px);
-  height: 100%;
-  background-image:
-    radial-gradient(
-      1px 1px at 15% 15%,
-      var(--star-color-bright) 100%,
-      transparent
-    ),
-    radial-gradient(1px 1px at 45% 35%, var(--star-color) 100%, transparent),
-    radial-gradient(
-      1.5px 1.5px at 75% 20%,
-      var(--star-color-bright) 100%,
-      transparent
-    ),
-    radial-gradient(1px 1px at 85% 65%, var(--star-color) 100%, transparent),
-    radial-gradient(
-      1.5px 1.5px at 25% 75%,
-      var(--star-color) 100%,
-      transparent
-    ),
-    radial-gradient(
-      1px 1px at 55% 85%,
-      var(--star-color-bright) 100%,
-      transparent
-    ),
-    radial-gradient(2px 2px at 65% 50%, var(--star-color) 100%, transparent);
-  background-size: 650px 650px;
-  animation: star-drift-1 140s linear infinite;
-}
-
-/* Layer 2: 900px grid (Drifts vertically up) */
-html::after {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: calc(100% + 900px);
-  background-image:
-    radial-gradient(1px 1px at 10% 60%, var(--star-color) 100%, transparent),
-    radial-gradient(
-      1.5px 1.5px at 40% 80%,
-      var(--star-color-bright) 100%,
-      transparent
-    ),
-    radial-gradient(1px 1px at 70% 40%, var(--star-color) 100%, transparent),
-    radial-gradient(2px 2px at 95% 30%, var(--star-color) 100%, transparent);
-  background-size: 900px 900px;
-  animation: star-drift-2 180s linear infinite;
-}
-
-@keyframes star-drift-1 {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(650px, 0, 0);
-  }
-}
-
-@keyframes star-drift-2 {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(0, -900px, 0);
-  }
-}
-
 html {
   scroll-behavior: smooth;
   background-color: var(--surface);
@@ -230,14 +141,15 @@ body {
   font-size: 0.875rem;
   line-height: 1.65;
   color: var(--on-surface);
-  background: transparent; /* transparent to let starfield show through */
+  background: transparent; /* transparent to let grid + scanlines show through */
   transition:
     background-color var(--duration) var(--ease-out),
     color var(--duration) var(--ease-out);
 }
 
-/* ── Dual-Layer Background Texture ── */
-/* Layer 1: Cartesian grid (Only shown on hover/desktop devices to avoid mobile redundancy) */
+/* ── Clean Terminal Background Texture (Restored) ── */
+
+/* Layer 1: Cartesian grid (Desktop spotlight) */
 body::before {
   content: "";
   position: fixed;
@@ -247,6 +159,7 @@ body::before {
     linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
     linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
   background-size: var(--grid-size) var(--grid-size);
+  background-attachment: fixed;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.5s var(--ease-out);
@@ -257,23 +170,22 @@ body::before {
     opacity: 1;
   }
   body::before {
-    /* Mask to create interactive spotlight on the grid */
     mask-image: radial-gradient(
-      circle 250px at var(--mouse-x, -9999px) var(--mouse-y, -9999px),
+      circle 350px at var(--mouse-x, -9999px) var(--mouse-y, -9999px),
       rgba(0, 0, 0, 1) 0%,
-      rgba(0, 0, 0, 0.4) 60%,
+      rgba(0, 0, 0, 0.15) 50%,
       transparent 100%
     );
     -webkit-mask-image: radial-gradient(
-      circle 250px at var(--mouse-x, -9999px) var(--mouse-y, -9999px),
+      circle 350px at var(--mouse-x, -9999px) var(--mouse-y, -9999px),
       rgba(0, 0, 0, 1) 0%,
-      rgba(0, 0, 0, 0.4) 60%,
+      rgba(0, 0, 0, 0.15) 50%,
       transparent 100%
     );
   }
 }
 
-/* Layer 2: Horizontal scanlines (always visible on both desktop and mobile) */
+/* Layer 2: Horizontal scanlines */
 body::after {
   content: "";
   position: fixed;
@@ -282,11 +194,11 @@ body::after {
   background-image: repeating-linear-gradient(
     0deg,
     transparent,
-    transparent 3px,
-    var(--scanline-color) 3px,
-    var(--scanline-color) 4px
+    transparent 4px,
+    var(--scanline-color) 4px,
+    var(--scanline-color) 5px
   );
-  background-size: 100% 4px;
+  background-size: 100% 5px;
   pointer-events: none;
 }
 
