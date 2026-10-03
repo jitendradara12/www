@@ -1,68 +1,58 @@
 {
-  "total_today": "3 hrs 3 mins",
-  "total_seconds": 11008.193,
+  "total_today": "2 hrs",
+  "total_seconds": 7223.802,
   "is_resting": false,
   "projects": [
     {
-      "name": "temp",
-      "text": "1 hr 42 mins",
-      "percent": 56.1
-    },
-    {
       "name": "lazyportal",
-      "text": "1 hr 20 mins",
-      "percent": 43.9
+      "text": "2 hrs",
+      "percent": 100.0
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "2 hrs 45 mins",
-      "percent": 90.5
-    },
-    {
-      "name": "Antigravity",
-      "text": "17 mins",
-      "percent": 9.5
+      "text": "2 hrs",
+      "percent": 100.0
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "3 hrs 3 mins",
+      "text": "2 hrs",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "TypeScript",
-      "percent": 32.0
-    },
-    {
-      "name": "CSS",
-      "percent": 19.7
+      "percent": 29.9
     },
     {
       "name": "JavaScript",
-      "percent": 16.9
+      "percent": 24.5
+    },
+    {
+      "name": "CSS",
+      "percent": 18.6
     },
     {
       "name": "QML",
-      "percent": 12.9
+      "percent": 10.5
     },
     {
       "name": "Python",
-      "percent": 8.4
+      "percent": 7.8
     },
     {
       "name": "C",
-      "percent": 6.2
+      "percent": 5.8
     }
   ],
   "rollup_7d": {
-    "total": "47 hrs 38 mins",
-    "daily_average": "1 hr 53 mins",
-    "total_seconds": 171536.666001
+    "total": "49 hrs 5 mins",
+    "daily_average": "1 hr 58 mins",
+    "total_seconds": 176708.034
   },
-  "last_updated": "2026-10-03T15:37:08Z"
+  "last_updated": "2026-10-03T20:31:55Z"
 }

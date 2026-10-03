@@ -1,13 +1,13 @@
 {
-  "sha": "7936008395bb6fef9cd5e402843cf6e35ec1ef02",
-  "short_sha": "7936008",
-  "message": "fix(proxy): constrain upstream routes and methods",
+  "sha": "a8ad802804161e24029514d3aff468ead9113805",
+  "short_sha": "a8ad802",
+  "message": "fix(core): improve captcha solver template bounds and line tracking",
   "repo": "jitendradara12/lazyportal",
   "repo_name": "lazyportal",
-  "branch": "arena/01a0ffda-lazyportal",
-  "date": "2026-10-03T04:14:24Z",
-  "relative_time": "6h ago",
-  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/7936008395bb6fef9cd5e402843cf6e35ec1ef02",
+  "branch": "master",
+  "date": "2026-10-03T16:34:27Z",
+  "relative_time": "3h ago",
+  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/a8ad802804161e24029514d3aff468ead9113805",
   "repo_url": "https://github.com/jitendradara12/lazyportal",
-  "last_updated": "2026-10-03T11:00:47Z"
+  "last_updated": "2026-10-03T20:31:57Z"
 }
