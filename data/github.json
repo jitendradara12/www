@@ -1,13 +1,13 @@
 {
-  "sha": "37b2099f5f89517e1f62fa2db6be57dfd8c6593b",
-  "short_sha": "37b2099",
-  "message": "feat(mobile): Capacitor shell, proxy CORS, and adaptive install banne\u2026",
+  "sha": "7936008395bb6fef9cd5e402843cf6e35ec1ef02",
+  "short_sha": "7936008",
+  "message": "fix(proxy): constrain upstream routes and methods",
   "repo": "jitendradara12/lazyportal",
   "repo_name": "lazyportal",
-  "branch": "master",
-  "date": "2026-10-02T19:34:57Z",
-  "relative_time": "2h ago",
-  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/37b2099f5f89517e1f62fa2db6be57dfd8c6593b",
+  "branch": "arena/01a0ffda-lazyportal",
+  "date": "2026-10-03T04:14:24Z",
+  "relative_time": "6h ago",
+  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/7936008395bb6fef9cd5e402843cf6e35ec1ef02",
   "repo_url": "https://github.com/jitendradara12/lazyportal",
-  "last_updated": "2026-10-02T21:45:21Z"
+  "last_updated": "2026-10-03T11:00:47Z"
 }
