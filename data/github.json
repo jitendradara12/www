@@ -1,13 +1,13 @@
 {
-  "sha": "747d66f01202a1d49d3cdf33a528a1668941995a",
-  "short_sha": "747d66f",
-  "message": "fix(official-portal): post bridge only after bypass upgrade lands",
+  "sha": "0b00fe91941280c8c7aa0455769601add2e9ae3f",
+  "short_sha": "0b00fe9",
+  "message": "perf(web): 2-hour hard cache, refresh throttle, and reduced backgroun\u2026",
   "repo": "jitendradara12/lazyportal",
   "repo_name": "lazyportal",
-  "branch": "arena/01a102c9-lazyportal",
-  "date": "2026-10-03T19:43:32Z",
-  "relative_time": "15h ago",
-  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/747d66f01202a1d49d3cdf33a528a1668941995a",
+  "branch": "master",
+  "date": "2026-10-04T18:37:22Z",
+  "relative_time": "2h ago",
+  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/0b00fe91941280c8c7aa0455769601add2e9ae3f",
   "repo_url": "https://github.com/jitendradara12/lazyportal",
-  "last_updated": "2026-10-04T11:42:31Z"
+  "last_updated": "2026-10-04T20:48:35Z"
 }
