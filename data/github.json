@@ -1,13 +1,13 @@
 {
-  "sha": "ff36fd34181d4c4ce8e4a499f5be862cc3ce145a",
-  "short_sha": "ff36fd3",
-  "message": "fix(official-portal): escape bootstrap template, seed exact official \u2026",
+  "sha": "747d66f01202a1d49d3cdf33a528a1668941995a",
+  "short_sha": "747d66f",
+  "message": "fix(official-portal): post bridge only after bypass upgrade lands",
   "repo": "jitendradara12/lazyportal",
   "repo_name": "lazyportal",
   "branch": "arena/01a102c9-lazyportal",
-  "date": "2026-10-03T18:17:46Z",
-  "relative_time": "9h ago",
-  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/ff36fd34181d4c4ce8e4a499f5be862cc3ce145a",
+  "date": "2026-10-03T19:43:32Z",
+  "relative_time": "15h ago",
+  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/747d66f01202a1d49d3cdf33a528a1668941995a",
   "repo_url": "https://github.com/jitendradara12/lazyportal",
-  "last_updated": "2026-10-04T04:01:10Z"
+  "last_updated": "2026-10-04T11:42:31Z"
 }
