@@ -1,13 +1,13 @@
 {
-  "sha": "a8ad802804161e24029514d3aff468ead9113805",
-  "short_sha": "a8ad802",
-  "message": "fix(core): improve captcha solver template bounds and line tracking",
+  "sha": "ff36fd34181d4c4ce8e4a499f5be862cc3ce145a",
+  "short_sha": "ff36fd3",
+  "message": "fix(official-portal): escape bootstrap template, seed exact official \u2026",
   "repo": "jitendradara12/lazyportal",
   "repo_name": "lazyportal",
-  "branch": "master",
-  "date": "2026-10-03T16:34:27Z",
-  "relative_time": "3h ago",
-  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/a8ad802804161e24029514d3aff468ead9113805",
+  "branch": "arena/01a102c9-lazyportal",
+  "date": "2026-10-03T18:17:46Z",
+  "relative_time": "9h ago",
+  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/ff36fd34181d4c4ce8e4a499f5be862cc3ce145a",
   "repo_url": "https://github.com/jitendradara12/lazyportal",
-  "last_updated": "2026-10-03T20:31:57Z"
+  "last_updated": "2026-10-04T04:01:10Z"
 }
