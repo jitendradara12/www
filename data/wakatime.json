@@ -1,73 +1,73 @@
 {
-  "total_today": "3 hrs 16 mins",
-  "total_seconds": 11805.091,
+  "total_today": "1 hr 47 mins",
+  "total_seconds": 6457.09,
   "is_resting": false,
   "projects": [
     {
-      "name": "lazyportal",
-      "text": "1 hr 42 mins",
-      "percent": 52.3
+      "name": "Hyprland",
+      "text": "1 hr 15 mins",
+      "percent": 70.5
     },
     {
       "name": "temp",
-      "text": "1 hr 18 mins",
-      "percent": 40.0
+      "text": "29 mins",
+      "percent": 27.7
     },
     {
-      "name": "agystack",
-      "text": "15 mins",
-      "percent": 7.7
+      "name": "lazyportal",
+      "text": "2 mins",
+      "percent": 1.9
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "2 hrs 22 mins",
-      "percent": 72.5
+      "text": "1 hr 27 mins",
+      "percent": 80.9
     },
     {
       "name": "Antigravity",
-      "text": "54 mins",
-      "percent": 27.4
+      "text": "20 mins",
+      "percent": 19.1
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "3 hrs 16 mins",
+      "text": "1 hr 47 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "CSS",
-      "percent": 36.7
-    },
-    {
-      "name": "TypeScript",
-      "percent": 20.8
+      "percent": 41.0
     },
     {
       "name": "JavaScript",
-      "percent": 20.7
+      "percent": 21.7
     },
     {
-      "name": "Python",
-      "percent": 7.1
+      "name": "TypeScript",
+      "percent": 21.2
     },
     {
       "name": "QML",
-      "percent": 6.5
+      "percent": 6.7
     },
     {
       "name": "C",
-      "percent": 5.3
+      "percent": 5.5
+    },
+    {
+      "name": "Nix",
+      "percent": 1.5
     }
   ],
   "rollup_7d": {
-    "total": "51 hrs 24 mins",
-    "daily_average": "2 hrs 2 mins",
-    "total_seconds": 185056.465
+    "total": "48 hrs 58 mins",
+    "daily_average": "1 hr 58 mins",
+    "total_seconds": 176325.399
   },
-  "last_updated": "2026-10-05T13:26:16Z"
+  "last_updated": "2026-10-05T23:39:01Z"
 }
