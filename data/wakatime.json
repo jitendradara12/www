@@ -1,47 +1,52 @@
 {
-  "total_today": "1 hr 47 mins",
-  "total_seconds": 6457.09,
+  "total_today": "3 hrs 11 mins",
+  "total_seconds": 11504.113,
   "is_resting": false,
   "projects": [
     {
-      "name": "Hyprland",
-      "text": "1 hr 15 mins",
-      "percent": 70.5
+      "name": "temp",
+      "text": "1 hr 52 mins",
+      "percent": 58.6
     },
     {
-      "name": "temp",
-      "text": "29 mins",
-      "percent": 27.7
+      "name": "Hyprland",
+      "text": "1 hr 15 mins",
+      "percent": 39.6
     },
     {
       "name": "lazyportal",
       "text": "2 mins",
-      "percent": 1.9
+      "percent": 1.1
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "1 hr 27 mins",
-      "percent": 80.9
+      "text": "2 hrs 49 mins",
+      "percent": 88.5
     },
     {
       "name": "Antigravity",
       "text": "20 mins",
-      "percent": 19.1
+      "percent": 10.6
+    },
+    {
+      "name": "Neovim",
+      "text": "1 min",
+      "percent": 1.0
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "1 hr 47 mins",
+      "text": "3 hrs 11 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "CSS",
-      "percent": 41.0
+      "percent": 40.9
     },
     {
       "name": "JavaScript",
@@ -65,9 +70,9 @@
     }
   ],
   "rollup_7d": {
-    "total": "48 hrs 58 mins",
+    "total": "50 hrs 22 mins",
     "daily_average": "1 hr 58 mins",
-    "total_seconds": 176325.399
+    "total_seconds": 181372.422
   },
-  "last_updated": "2026-10-05T23:39:01Z"
+  "last_updated": "2026-10-06T12:39:28Z"
 }
