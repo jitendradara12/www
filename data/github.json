@@ -1,13 +1,13 @@
 {
-  "sha": "0cd7fcbe456cc066b9b04e1b0d84391e3a9ac6e1",
-  "short_sha": "0cd7fcb",
-  "message": "Revert \"fix(tools): harden decrypt_psk.ps1 to abort on hash mismatch\"",
-  "repo": "jitendradara12/goodix-5e0a",
-  "repo_name": "goodix-5e0a",
-  "branch": "arena/f7e0d8e8-goodix-5e0a",
-  "date": "2026-10-06T18:46:26Z",
-  "relative_time": "3h ago",
-  "commit_url": "https://github.com/jitendradara12/goodix-5e0a/commit/0cd7fcbe456cc066b9b04e1b0d84391e3a9ac6e1",
-  "repo_url": "https://github.com/jitendradara12/goodix-5e0a",
-  "last_updated": "2026-10-06T22:13:36Z"
+  "sha": "df14564d0e1c26f8ee8b1b7ccd450e9a5200d26f",
+  "short_sha": "df14564",
+  "message": "Fix dashboard refresh quota bypass, step 2 error deduction, and past \u2026",
+  "repo": "jitendradara12/lazyportal",
+  "repo_name": "lazyportal",
+  "branch": "arena/7def2b0f-lazyportal",
+  "date": "2026-10-07T18:28:33Z",
+  "relative_time": "4h ago",
+  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/df14564d0e1c26f8ee8b1b7ccd450e9a5200d26f",
+  "repo_url": "https://github.com/jitendradara12/lazyportal",
+  "last_updated": "2026-10-07T22:35:04Z"
 }
