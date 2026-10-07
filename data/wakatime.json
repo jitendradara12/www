@@ -1,73 +1,78 @@
 {
-  "total_today": "2 hrs 15 mins",
-  "total_seconds": 8135.165,
+  "total_today": "1 hr 52 mins",
+  "total_seconds": 6737.398,
   "is_resting": false,
   "projects": [
     {
       "name": "lazyportal",
       "text": "1 hr 14 mins",
-      "percent": 54.7
+      "percent": 66.7
     },
     {
-      "name": "goodix-5e0a",
-      "text": "1 hr",
-      "percent": 44.6
+      "name": "temp",
+      "text": "24 mins",
+      "percent": 22.2
     },
     {
-      "name": "automatic-octo-robot",
-      "text": "44 secs",
-      "percent": 0.5
-    },
-    {
-      "name": "preprocessForHugs",
-      "text": "8 secs",
-      "percent": 0.1
+      "name": "photocraft",
+      "text": "12 mins",
+      "percent": 11.0
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "2 hrs 15 mins",
-      "percent": 100.0
+      "text": "1 hr 27 mins",
+      "percent": 77.8
+    },
+    {
+      "name": "Antigravity",
+      "text": "16 mins",
+      "percent": 15.0
+    },
+    {
+      "name": "Neovim",
+      "text": "8 mins",
+      "percent": 7.2
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "2 hrs 15 mins",
+      "text": "1 hr 52 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "JavaScript",
-      "percent": 36.4
+      "percent": 41.9
     },
     {
       "name": "CSS",
-      "percent": 34.2
+      "percent": 33.3
     },
     {
       "name": "TypeScript",
-      "percent": 16.8
-    },
-    {
-      "name": "QML",
-      "percent": 5.6
+      "percent": 18.8
     },
     {
       "name": "Python",
-      "percent": 2.9
+      "percent": 2.2
     },
     {
       "name": "HTML",
-      "percent": 2.0
+      "percent": 1.9
+    },
+    {
+      "name": "Bash",
+      "percent": 1.7
     }
   ],
   "rollup_7d": {
-    "total": "50 hrs 40 mins",
-    "daily_average": "2 hrs 1 min",
-    "total_seconds": 182400.486
+    "total": "47 hrs 57 mins",
+    "daily_average": "2 hrs",
+    "total_seconds": 172663.122
   },
-  "last_updated": "2026-10-07T12:32:49Z"
+  "last_updated": "2026-10-07T22:35:03Z"
 }
