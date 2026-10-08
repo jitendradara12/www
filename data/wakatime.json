@@ -1,78 +1,78 @@
 {
-  "total_today": "1 hr 52 mins",
-  "total_seconds": 6737.398,
+  "total_today": "2 hrs 21 mins",
+  "total_seconds": 8474.823,
   "is_resting": false,
   "projects": [
     {
+      "name": "omaconnect",
+      "text": "1 hr 15 mins",
+      "percent": 53.2
+    },
+    {
       "name": "lazyportal",
-      "text": "1 hr 14 mins",
-      "percent": 66.7
+      "text": "53 mins",
+      "percent": 38.2
     },
     {
       "name": "temp",
-      "text": "24 mins",
-      "percent": 22.2
+      "text": "11 mins",
+      "percent": 8.3
     },
     {
-      "name": "photocraft",
-      "text": "12 mins",
-      "percent": 11.0
+      "name": "libfprint",
+      "text": "24 secs",
+      "percent": 0.3
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "1 hr 27 mins",
-      "percent": 77.8
+      "text": "2 hrs 11 mins",
+      "percent": 93.4
     },
     {
       "name": "Antigravity",
-      "text": "16 mins",
-      "percent": 15.0
-    },
-    {
-      "name": "Neovim",
-      "text": "8 mins",
-      "percent": 7.2
+      "text": "9 mins",
+      "percent": 6.6
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "1 hr 52 mins",
+      "text": "2 hrs 21 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "JavaScript",
-      "percent": 41.9
+      "percent": 46.5
     },
     {
       "name": "CSS",
-      "percent": 33.3
+      "percent": 29.2
     },
     {
       "name": "TypeScript",
-      "percent": 18.8
+      "percent": 18.1
     },
     {
       "name": "Python",
-      "percent": 2.2
+      "percent": 2.7
     },
     {
       "name": "HTML",
-      "percent": 1.9
+      "percent": 2.3
     },
     {
       "name": "Bash",
-      "percent": 1.7
+      "percent": 1.2
     }
   ],
   "rollup_7d": {
-    "total": "47 hrs 57 mins",
-    "daily_average": "2 hrs",
-    "total_seconds": 172663.122
+    "total": "41 hrs 12 mins",
+    "daily_average": "1 hr 34 mins",
+    "total_seconds": 148364.673
   },
-  "last_updated": "2026-10-07T22:35:03Z"
+  "last_updated": "2026-10-08T22:47:23Z"
 }
