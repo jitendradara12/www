@@ -1,78 +1,73 @@
 {
-  "total_today": "5 hrs 15 mins",
-  "total_seconds": 18914.825,
+  "total_today": "1 hr 50 mins",
+  "total_seconds": 6646.758,
   "is_resting": false,
   "projects": [
     {
       "name": "lazyportal",
-      "text": "3 hrs 12 mins",
-      "percent": 61.0
-    },
-    {
-      "name": "omaconnect",
-      "text": "1 hr 15 mins",
-      "percent": 23.8
+      "text": "1 hr 42 mins",
+      "percent": 92.1
     },
     {
       "name": "temp",
-      "text": "47 mins",
-      "percent": 15.0
-    },
-    {
-      "name": "libfprint",
-      "text": "24 secs",
-      "percent": 0.1
+      "text": "8 mins",
+      "percent": 7.9
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "4 hrs 30 mins",
-      "percent": 85.9
+      "text": "1 hr 44 mins",
+      "percent": 94.2
     },
     {
       "name": "Antigravity",
-      "text": "44 mins",
-      "percent": 14.1
+      "text": "3 mins",
+      "percent": 3.5
+    },
+    {
+      "name": "Neovim",
+      "text": "2 mins",
+      "percent": 2.3
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "5 hrs 15 mins",
+      "text": "1 hr 50 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "JavaScript",
-      "percent": 45.5
-    },
-    {
-      "name": "CSS",
-      "percent": 28.6
+      "percent": 40.0
     },
     {
       "name": "TypeScript",
-      "percent": 19.8
+      "percent": 27.3
+    },
+    {
+      "name": "CSS",
+      "percent": 26.8
     },
     {
       "name": "Python",
-      "percent": 2.6
+      "percent": 2.5
     },
     {
       "name": "HTML",
-      "percent": 2.2
+      "percent": 2.1
     },
     {
       "name": "Bash",
-      "percent": 1.2
+      "percent": 1.1
     }
   ],
   "rollup_7d": {
-    "total": "44 hrs 6 mins",
-    "daily_average": "1 hr 36 mins",
-    "total_seconds": 158804.675
+    "total": "44 hrs 27 mins",
+    "daily_average": "1 hr 50 mins",
+    "total_seconds": 160040.336
   },
-  "last_updated": "2026-10-09T12:29:19Z"
+  "last_updated": "2026-10-09T22:10:13Z"
 }
