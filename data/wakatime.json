@@ -1,40 +1,40 @@
 {
-  "total_today": "1 hr 50 mins",
-  "total_seconds": 6646.758,
+  "total_today": "2 hrs 26 mins",
+  "total_seconds": 8794.974,
   "is_resting": false,
   "projects": [
     {
       "name": "lazyportal",
-      "text": "1 hr 42 mins",
-      "percent": 92.1
+      "text": "2 hrs 17 mins",
+      "percent": 94.1
     },
     {
       "name": "temp",
       "text": "8 mins",
-      "percent": 7.9
+      "percent": 5.9
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "1 hr 44 mins",
-      "percent": 94.2
+      "text": "2 hrs 20 mins",
+      "percent": 95.7
     },
     {
       "name": "Antigravity",
       "text": "3 mins",
-      "percent": 3.5
+      "percent": 2.6
     },
     {
       "name": "Neovim",
       "text": "2 mins",
-      "percent": 2.3
+      "percent": 1.7
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "1 hr 50 mins",
+      "text": "2 hrs 26 mins",
       "percent": 100.0
     }
   ],
@@ -65,9 +65,9 @@
     }
   ],
   "rollup_7d": {
-    "total": "44 hrs 27 mins",
+    "total": "45 hrs 3 mins",
     "daily_average": "1 hr 50 mins",
-    "total_seconds": 160040.336
+    "total_seconds": 162188.552
   },
-  "last_updated": "2026-10-09T22:10:13Z"
+  "last_updated": "2026-10-10T11:48:20Z"
 }
