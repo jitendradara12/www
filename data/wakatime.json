@@ -1,50 +1,60 @@
 {
-  "total_today": "1 hr 30 mins",
-  "total_seconds": 5447.723,
+  "total_today": "3 hrs 21 mins",
+  "total_seconds": 12092.305,
   "is_resting": false,
   "projects": [
     {
-      "name": "lazyportal",
-      "text": "1 hr",
-      "percent": 66.7
+      "name": "PDoomVideo",
+      "text": "1 hr 18 mins",
+      "percent": 39.1
     },
     {
-      "name": "PDoomVideo",
-      "text": "29 mins",
-      "percent": 32.8
+      "name": "Hyprland-Dots",
+      "text": "1 hr 1 min",
+      "percent": 30.6
+    },
+    {
+      "name": "lazyportal",
+      "text": "1 hr",
+      "percent": 30.0
     },
     {
       "name": "ClaudeAnimationBase",
       "text": "28 secs",
-      "percent": 0.5
+      "percent": 0.2
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "1 hr 30 mins",
-      "percent": 100.0
+      "text": "3 hrs 13 mins",
+      "percent": 96.1
+    },
+    {
+      "name": "OpenCode",
+      "text": "7 mins",
+      "percent": 3.9
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "1 hr 30 mins",
+      "text": "3 hrs 21 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "TypeScript",
-      "percent": 45.0
+      "percent": 44.9
     },
     {
       "name": "JavaScript",
-      "percent": 34.8
+      "percent": 34.5
     },
     {
       "name": "CSS",
-      "percent": 14.7
+      "percent": 14.6
     },
     {
       "name": "Python",
@@ -56,13 +66,13 @@
     },
     {
       "name": "Bash",
-      "percent": 1.1
+      "percent": 1.8
     }
   ],
   "rollup_7d": {
-    "total": "40 hrs 43 mins",
-    "daily_average": "1 hr 48 mins",
-    "total_seconds": 146621.325
+    "total": "42 hrs 34 mins",
+    "daily_average": "1 hr 49 mins",
+    "total_seconds": 153265.907
   },
-  "last_updated": "2026-10-10T21:03:54Z"
+  "last_updated": "2026-10-11T12:00:23Z"
 }
