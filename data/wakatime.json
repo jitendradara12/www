@@ -1,78 +1,88 @@
 {
-  "total_today": "3 hrs 21 mins",
-  "total_seconds": 12092.305,
+  "total_today": "2 hrs 44 mins",
+  "total_seconds": 9856.44,
   "is_resting": false,
   "projects": [
     {
-      "name": "PDoomVideo",
-      "text": "1 hr 18 mins",
-      "percent": 39.1
-    },
-    {
-      "name": "Hyprland-Dots",
-      "text": "1 hr 1 min",
-      "percent": 30.6
-    },
-    {
       "name": "lazyportal",
-      "text": "1 hr",
-      "percent": 30.0
+      "text": "2 hrs 24 mins",
+      "percent": 88.0
     },
     {
-      "name": "ClaudeAnimationBase",
+      "name": "grid-load",
+      "text": "16 mins",
+      "percent": 9.8
+    },
+    {
+      "name": "sioyek",
+      "text": "1 min",
+      "percent": 0.8
+    },
+    {
+      "name": "goodix-5e0a",
+      "text": "58 secs",
+      "percent": 0.6
+    },
+    {
+      "name": "omaconnect",
+      "text": "32 secs",
+      "percent": 0.3
+    },
+    {
+      "name": "libfprint-goodix",
       "text": "28 secs",
+      "percent": 0.3
+    },
+    {
+      "name": "www",
+      "text": "21 secs",
       "percent": 0.2
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "3 hrs 13 mins",
-      "percent": 96.1
-    },
-    {
-      "name": "OpenCode",
-      "text": "7 mins",
-      "percent": 3.9
+      "text": "2 hrs 44 mins",
+      "percent": 100.0
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "3 hrs 21 mins",
+      "text": "2 hrs 44 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "TypeScript",
-      "percent": 44.9
+      "percent": 48.2
     },
     {
       "name": "JavaScript",
-      "percent": 34.5
-    },
-    {
-      "name": "CSS",
-      "percent": 14.6
-    },
-    {
-      "name": "Python",
-      "percent": 2.5
-    },
-    {
-      "name": "HTML",
-      "percent": 1.8
+      "percent": 37.7
     },
     {
       "name": "Bash",
-      "percent": 1.8
+      "percent": 7.4
+    },
+    {
+      "name": "Python",
+      "percent": 2.8
+    },
+    {
+      "name": "HTML",
+      "percent": 2.0
+    },
+    {
+      "name": "CSS",
+      "percent": 1.9
     }
   ],
   "rollup_7d": {
-    "total": "42 hrs 34 mins",
-    "daily_average": "1 hr 49 mins",
-    "total_seconds": 153265.907
+    "total": "42 hrs 21 mins",
+    "daily_average": "1 hr 40 mins",
+    "total_seconds": 152477.554
   },
-  "last_updated": "2026-10-11T12:00:23Z"
+  "last_updated": "2026-10-11T21:24:38Z"
 }
