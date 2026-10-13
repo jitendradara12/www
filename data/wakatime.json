@@ -1,78 +1,58 @@
 {
-  "total_today": "4 hrs 11 mins",
-  "total_seconds": 15099.649,
+  "total_today": "45 mins",
+  "total_seconds": 2738.812,
   "is_resting": false,
   "projects": [
     {
-      "name": "goodix-5e0a",
-      "text": "3 hrs 52 mins",
-      "percent": 92.3
-    },
-    {
-      "name": "temp",
-      "text": "14 mins",
-      "percent": 6.0
-    },
-    {
-      "name": "goodix",
-      "text": "4 mins",
-      "percent": 1.7
-    },
-    {
-      "name": "lazyportal",
-      "text": "4 secs",
-      "percent": 0.0
+      "name": "NixOS-Hyprland",
+      "text": "45 mins",
+      "percent": 100.0
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "4 hrs 7 mins",
-      "percent": 98.4
-    },
-    {
-      "name": "Neovim",
-      "text": "3 mins",
-      "percent": 1.6
+      "text": "45 mins",
+      "percent": 100.0
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "4 hrs 11 mins",
+      "text": "45 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "TypeScript",
-      "percent": 61.2
+      "percent": 71.5
     },
     {
       "name": "JavaScript",
-      "percent": 26.2
+      "percent": 11.7
     },
     {
       "name": "Bash",
-      "percent": 8.0
+      "percent": 9.3
     },
     {
       "name": "HTML",
-      "percent": 4.6
+      "percent": 5.3
+    },
+    {
+      "name": "Nix",
+      "percent": 2.2
     },
     {
       "name": "Image (png)",
       "percent": 0.0
-    },
-    {
-      "name": "CSS",
-      "percent": 0.0
     }
   ],
   "rollup_7d": {
-    "total": "45 hrs 24 mins",
-    "daily_average": "1 hr 30 mins",
-    "total_seconds": 163447.155
+    "total": "42 hrs 33 mins",
+    "daily_average": "1 hr 20 mins",
+    "total_seconds": 153233.178
   },
-  "last_updated": "2026-10-13T13:25:53Z"
+  "last_updated": "2026-10-13T22:14:09Z"
 }
