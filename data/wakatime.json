@@ -1,44 +1,64 @@
 {
-  "total_today": "11 mins",
-  "total_seconds": 667.966,
-  "is_resting": true,
+  "total_today": "4 hrs 11 mins",
+  "total_seconds": 15099.649,
+  "is_resting": false,
   "projects": [
     {
+      "name": "goodix-5e0a",
+      "text": "3 hrs 52 mins",
+      "percent": 92.3
+    },
+    {
       "name": "temp",
-      "text": "11 mins",
-      "percent": 100.0
+      "text": "14 mins",
+      "percent": 6.0
+    },
+    {
+      "name": "goodix",
+      "text": "4 mins",
+      "percent": 1.7
+    },
+    {
+      "name": "lazyportal",
+      "text": "4 secs",
+      "percent": 0.0
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "11 mins",
-      "percent": 100.0
+      "text": "4 hrs 7 mins",
+      "percent": 98.4
+    },
+    {
+      "name": "Neovim",
+      "text": "3 mins",
+      "percent": 1.6
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "11 mins",
+      "text": "4 hrs 11 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "TypeScript",
-      "percent": 63.0
+      "percent": 61.2
     },
     {
       "name": "JavaScript",
-      "percent": 27.0
+      "percent": 26.2
     },
     {
       "name": "Bash",
-      "percent": 8.2
+      "percent": 8.0
     },
     {
       "name": "HTML",
-      "percent": 1.7
+      "percent": 4.6
     },
     {
       "name": "Image (png)",
@@ -50,9 +70,9 @@
     }
   ],
   "rollup_7d": {
-    "total": "41 hrs 23 mins",
-    "daily_average": "1 hr 21 mins",
-    "total_seconds": 149015.472
+    "total": "45 hrs 24 mins",
+    "daily_average": "1 hr 30 mins",
+    "total_seconds": 163447.155
   },
-  "last_updated": "2026-10-13T00:04:38Z"
+  "last_updated": "2026-10-13T13:25:53Z"
 }
