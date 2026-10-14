@@ -1,17 +1,17 @@
 {
-  "total_today": "2 hrs 23 mins",
-  "total_seconds": 8620.0,
+  "total_today": "2 hrs 30 mins",
+  "total_seconds": 9008.217,
   "is_resting": false,
   "projects": [
     {
       "name": "NixOS-Hyprland",
       "text": "1 hr 54 mins",
-      "percent": 79.5
+      "percent": 76.1
     },
     {
       "name": "goodix-5e0a",
-      "text": "29 mins",
-      "percent": 20.3
+      "text": "35 mins",
+      "percent": 23.7
     },
     {
       "name": "omaconnect",
@@ -22,14 +22,14 @@
   "editors": [
     {
       "name": "Firefox",
-      "text": "2 hrs 23 mins",
+      "text": "2 hrs 30 mins",
       "percent": 100.0
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "2 hrs 23 mins",
+      "text": "2 hrs 30 mins",
       "percent": 100.0
     }
   ],
@@ -60,9 +60,9 @@
     }
   ],
   "rollup_7d": {
-    "total": "44 hrs 11 mins",
+    "total": "44 hrs 18 mins",
     "daily_average": "1 hr 21 mins",
-    "total_seconds": 159114.366
+    "total_seconds": 159502.583
   },
-  "last_updated": "2026-10-14T11:03:36Z"
+  "last_updated": "2026-10-14T16:23:52Z"
 }
