@@ -1,58 +1,73 @@
 {
-  "total_today": "2 hrs 30 mins",
-  "total_seconds": 9008.217,
+  "total_today": "2 hrs 43 mins",
+  "total_seconds": 9813.807,
   "is_resting": false,
   "projects": [
     {
-      "name": "NixOS-Hyprland",
-      "text": "1 hr 54 mins",
-      "percent": 76.1
+      "name": "omaconnect",
+      "text": "1 hr 7 mins",
+      "percent": 41.5
+    },
+    {
+      "name": "temp",
+      "text": "1 hr 6 mins",
+      "percent": 40.4
+    },
+    {
+      "name": "lazyportal",
+      "text": "29 mins",
+      "percent": 18.0
     },
     {
       "name": "goodix-5e0a",
-      "text": "35 mins",
-      "percent": 23.7
-    },
-    {
-      "name": "omaconnect",
-      "text": "18 secs",
-      "percent": 0.2
+      "text": "2 secs",
+      "percent": 0.0
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "2 hrs 30 mins",
-      "percent": 100.0
+      "text": "2 hrs 18 mins",
+      "percent": 84.7
+    },
+    {
+      "name": "Antigravity",
+      "text": "16 mins",
+      "percent": 9.9
+    },
+    {
+      "name": "OpenCode",
+      "text": "8 mins",
+      "percent": 5.4
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "2 hrs 30 mins",
+      "text": "2 hrs 43 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "TypeScript",
-      "percent": 69.9
+      "percent": 66.2
     },
     {
       "name": "JavaScript",
-      "percent": 11.4
+      "percent": 13.8
     },
     {
       "name": "Bash",
-      "percent": 9.1
+      "percent": 9.8
     },
     {
       "name": "HTML",
-      "percent": 5.2
+      "percent": 5.6
     },
     {
       "name": "Nix",
-      "percent": 4.4
+      "percent": 4.7
     },
     {
       "name": "Image (png)",
@@ -60,9 +75,9 @@
     }
   ],
   "rollup_7d": {
-    "total": "44 hrs 18 mins",
-    "daily_average": "1 hr 21 mins",
-    "total_seconds": 159502.583
+    "total": "42 hrs 42 mins",
+    "daily_average": "1 hr 18 mins",
+    "total_seconds": 153769.321
   },
-  "last_updated": "2026-10-14T16:23:52Z"
+  "last_updated": "2026-10-14T21:14:25Z"
 }
