@@ -1,22 +1,27 @@
 {
-  "total_today": "4 hrs 56 mins",
-  "total_seconds": 17778.586,
+  "total_today": "5 hrs 38 mins",
+  "total_seconds": 20295.495,
   "is_resting": false,
   "projects": [
     {
       "name": "omaconnect",
-      "text": "3 hrs 17 mins",
-      "percent": 66.8
+      "text": "3 hrs 18 mins",
+      "percent": 58.7
+    },
+    {
+      "name": "lazyportal",
+      "text": "1 hr 6 mins",
+      "percent": 19.7
     },
     {
       "name": "temp",
       "text": "1 hr 6 mins",
-      "percent": 22.3
+      "percent": 19.6
     },
     {
-      "name": "lazyportal",
-      "text": "30 mins",
-      "percent": 10.3
+      "name": "goodix-5e0a",
+      "text": "5 mins",
+      "percent": 1.7
     },
     {
       "name": "GFG-Course-Autopilot",
@@ -24,55 +29,55 @@
       "percent": 0.5
     },
     {
-      "name": "goodix-5e0a",
-      "text": "2 secs",
+      "name": "grid-load",
+      "text": "1 sec",
       "percent": 0.0
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "4 hrs 31 mins",
-      "percent": 91.5
+      "text": "5 hrs 13 mins",
+      "percent": 92.6
     },
     {
       "name": "Antigravity",
       "text": "16 mins",
-      "percent": 5.5
+      "percent": 4.8
     },
     {
       "name": "OpenCode",
       "text": "8 mins",
-      "percent": 3.0
+      "percent": 2.6
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "4 hrs 56 mins",
+      "text": "5 hrs 38 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "TypeScript",
-      "percent": 65.5
+      "percent": 60.8
     },
     {
       "name": "JavaScript",
-      "percent": 14.7
+      "percent": 20.9
     },
     {
       "name": "Bash",
-      "percent": 9.7
+      "percent": 9.0
     },
     {
       "name": "HTML",
-      "percent": 5.5
+      "percent": 5.1
     },
     {
       "name": "Nix",
-      "percent": 4.6
+      "percent": 4.3
     },
     {
       "name": "Image (png)",
@@ -80,9 +85,9 @@
     }
   ],
   "rollup_7d": {
-    "total": "44 hrs 55 mins",
-    "daily_average": "1 hr 18 mins",
-    "total_seconds": 161734.1
+    "total": "45 hrs 37 mins",
+    "daily_average": "1 hr 23 mins",
+    "total_seconds": 164251.009
   },
-  "last_updated": "2026-10-15T02:56:05Z"
+  "last_updated": "2026-10-15T16:11:44Z"
 }
