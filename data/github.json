@@ -1,13 +1,13 @@
 {
-  "sha": "44263d58c7d53047ff2ff8685bc467dd1045aa16",
-  "short_sha": "44263d5",
-  "message": "fix(web): preserve in-flight subject responses across effect re-evalu\u2026",
+  "sha": "642270bcba1fb476bdccd5f9e85f90401492f79f",
+  "short_sha": "642270b",
+  "message": "perf(web): optimize attendance refresh and eliminate duplicate detail\u2026",
   "repo": "jitendradara12/lazyportal",
   "repo_name": "lazyportal",
-  "branch": "perf/attendance-refresh-dedup",
-  "date": "2026-10-14T19:26:24Z",
-  "relative_time": "7h ago",
-  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/44263d58c7d53047ff2ff8685bc467dd1045aa16",
+  "branch": "master",
+  "date": "2026-10-14T19:38:54Z",
+  "relative_time": "yesterday",
+  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/642270bcba1fb476bdccd5f9e85f90401492f79f",
   "repo_url": "https://github.com/jitendradara12/lazyportal",
-  "last_updated": "2026-10-15T02:56:06Z"
+  "last_updated": "2026-10-16T02:53:57Z"
 }
