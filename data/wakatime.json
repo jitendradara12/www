@@ -1,40 +1,83 @@
 {
-  "total_today": "0 secs",
-  "total_seconds": 0.0,
-  "is_resting": true,
-  "projects": [],
-  "editors": [],
-  "operating_systems": [],
+  "total_today": "3 hrs 7 mins",
+  "total_seconds": 11257.235079,
+  "is_resting": false,
+  "projects": [
+    {
+      "name": "temp",
+      "text": "1 hr 57 mins",
+      "percent": 62.5
+    },
+    {
+      "name": "lazyportal",
+      "text": "1 hr 9 mins",
+      "percent": 36.8
+    },
+    {
+      "name": "plugins",
+      "text": "53 secs",
+      "percent": 0.5
+    },
+    {
+      "name": "goodix-5e0a",
+      "text": "24 secs",
+      "percent": 0.2
+    }
+  ],
+  "editors": [
+    {
+      "name": "Firefox",
+      "text": "1 hr 44 mins",
+      "percent": 55.8
+    },
+    {
+      "name": "Opencode Cli",
+      "text": "58 mins",
+      "percent": 31.3
+    },
+    {
+      "name": "OpenCode",
+      "text": "24 mins",
+      "percent": 12.9
+    }
+  ],
+  "operating_systems": [
+    {
+      "name": "Linux",
+      "text": "3 hrs 7 mins",
+      "percent": 100.0
+    }
+  ],
   "languages": [
     {
       "name": "TypeScript",
-      "percent": 52.0
+      "percent": 53.2
     },
     {
       "name": "JavaScript",
-      "percent": 26.6
+      "percent": 27.6
     },
     {
       "name": "Bash",
-      "percent": 10.4
+      "percent": 9.0
     },
     {
       "name": "HTML",
-      "percent": 5.9
+      "percent": 5.3
     },
     {
       "name": "Nix",
-      "percent": 5.0
+      "percent": 4.3
     },
     {
-      "name": "Image (png)",
-      "percent": 0.0
+      "name": "CSS",
+      "percent": 0.3
     }
   ],
   "rollup_7d": {
-    "total": "37 hrs 59 mins",
-    "daily_average": "1 hr 16 mins",
-    "total_seconds": 136768.463
+    "total": "41 hrs 7 mins",
+    "daily_average": "1 hr 19 mins",
+    "total_seconds": 148044.275079
   },
-  "last_updated": "2026-10-15T20:52:20Z"
+  "last_updated": "2026-10-16T10:34:16Z"
 }
