@@ -1,68 +1,78 @@
 {
-  "total_today": "4 hrs 28 mins",
-  "total_seconds": 16135.201,
+  "total_today": "1 hr 25 mins",
+  "total_seconds": 5129.44,
   "is_resting": false,
   "projects": [
     {
       "name": "goodix-5e0a",
-      "text": "4 hrs 14 mins",
-      "percent": 94.5
+      "text": "1 hr 14 mins",
+      "percent": 86.6
     },
     {
-      "name": "lazyportal",
-      "text": "13 mins",
-      "percent": 5.2
+      "name": "grid-load",
+      "text": "8 mins",
+      "percent": 10.5
     },
     {
-      "name": "desktop",
-      "text": "52 secs",
+      "name": "analytics",
+      "text": "2 mins",
+      "percent": 2.5
+    },
+    {
+      "name": "awesome-agent-skills",
+      "text": "18 secs",
       "percent": 0.3
+    },
+    {
+      "name": "voltagent",
+      "text": "1 sec",
+      "percent": 0.0
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "4 hrs 28 mins",
+      "text": "1 hr 25 mins",
       "percent": 100.0
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "4 hrs 28 mins",
+      "text": "1 hr 25 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "JavaScript",
-      "percent": 32.6
+      "percent": 36.3
     },
     {
       "name": "TypeScript",
-      "percent": 27.0
+      "percent": 27.2
     },
     {
       "name": "HTML",
-      "percent": 14.7
+      "percent": 14.3
     },
     {
       "name": "Python",
-      "percent": 11.8
-    },
-    {
-      "name": "Bash",
-      "percent": 5.8
+      "percent": 13.1
     },
     {
       "name": "Nix",
-      "percent": 4.2
+      "percent": 4.7
+    },
+    {
+      "name": "PowerShell",
+      "percent": 2.2
     }
   ],
   "rollup_7d": {
-    "total": "47 hrs 33 mins",
-    "daily_average": "1 hr 54 mins",
-    "total_seconds": 171204.595
+    "total": "40 hrs 10 mins",
+    "daily_average": "1 hr 51 mins",
+    "total_seconds": 144625.258
   },
-  "last_updated": "2026-10-18T15:17:14Z"
+  "last_updated": "2026-10-18T20:00:12Z"
 }
