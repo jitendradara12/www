@@ -1,32 +1,42 @@
 {
-  "total_today": "5 hrs 38 mins",
-  "total_seconds": 20315.963,
+  "total_today": "7 hrs 54 mins",
+  "total_seconds": 28479.436,
   "is_resting": false,
   "projects": [
     {
       "name": "goodix-5e0a",
-      "text": "4 hrs 28 mins",
-      "percent": 79.2
+      "text": "6 hrs 42 mins",
+      "percent": 84.7
     },
     {
       "name": "grid-load",
       "text": "43 mins",
-      "percent": 12.9
+      "percent": 9.2
     },
     {
       "name": "rea",
       "text": "16 mins",
-      "percent": 5.0
+      "percent": 3.6
     },
     {
       "name": "goodix",
       "text": "7 mins",
-      "percent": 2.1
+      "percent": 1.5
     },
     {
       "name": "analytics",
       "text": "2 mins",
-      "percent": 0.6
+      "percent": 0.5
+    },
+    {
+      "name": "Hyprland-Dots",
+      "text": "1 min",
+      "percent": 0.4
+    },
+    {
+      "name": "FOCA",
+      "text": "22 secs",
+      "percent": 0.1
     },
     {
       "name": "awesome-agent-skills",
@@ -42,19 +52,29 @@
   "editors": [
     {
       "name": "Firefox",
-      "text": "5 hrs 33 mins",
+      "text": "7 hrs 48 mins",
       "percent": 98.6
     },
     {
       "name": "Neovim",
       "text": "4 mins",
-      "percent": 1.4
+      "percent": 1.0
+    },
+    {
+      "name": "Opencode Cli",
+      "text": "1 min",
+      "percent": 0.4
+    },
+    {
+      "name": "OpenCode",
+      "text": "3 secs",
+      "percent": 0.0
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "5 hrs 38 mins",
+      "text": "7 hrs 54 mins",
       "percent": 100.0
     }
   ],
@@ -85,9 +105,9 @@
     }
   ],
   "rollup_7d": {
-    "total": "44 hrs 23 mins",
-    "daily_average": "2 hrs 18 mins",
-    "total_seconds": 159811.781
+    "total": "46 hrs 39 mins",
+    "daily_average": "2 hrs 29 mins",
+    "total_seconds": 167975.254
   },
-  "last_updated": "2026-10-19T11:57:07Z"
+  "last_updated": "2026-10-19T18:26:06Z"
 }
