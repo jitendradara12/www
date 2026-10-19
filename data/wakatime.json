@@ -1,27 +1,32 @@
 {
-  "total_today": "3 hrs 56 mins",
-  "total_seconds": 14198.522,
+  "total_today": "5 hrs 38 mins",
+  "total_seconds": 20315.963,
   "is_resting": false,
   "projects": [
     {
       "name": "goodix-5e0a",
-      "text": "3 hrs 4 mins",
-      "percent": 77.8
+      "text": "4 hrs 28 mins",
+      "percent": 79.2
     },
     {
       "name": "grid-load",
       "text": "43 mins",
-      "percent": 18.5
+      "percent": 12.9
+    },
+    {
+      "name": "rea",
+      "text": "16 mins",
+      "percent": 5.0
     },
     {
       "name": "goodix",
-      "text": "6 mins",
-      "percent": 2.6
+      "text": "7 mins",
+      "percent": 2.1
     },
     {
       "name": "analytics",
       "text": "2 mins",
-      "percent": 0.9
+      "percent": 0.6
     },
     {
       "name": "awesome-agent-skills",
@@ -37,19 +42,19 @@
   "editors": [
     {
       "name": "Firefox",
-      "text": "3 hrs 52 mins",
-      "percent": 98.3
+      "text": "5 hrs 33 mins",
+      "percent": 98.6
     },
     {
       "name": "Neovim",
       "text": "4 mins",
-      "percent": 1.7
+      "percent": 1.4
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "3 hrs 56 mins",
+      "text": "5 hrs 38 mins",
       "percent": 100.0
     }
   ],
@@ -80,9 +85,9 @@
     }
   ],
   "rollup_7d": {
-    "total": "42 hrs 41 mins",
-    "daily_average": "2 hrs 7 mins",
-    "total_seconds": 153694.34
+    "total": "44 hrs 23 mins",
+    "daily_average": "2 hrs 18 mins",
+    "total_seconds": 159811.781
   },
-  "last_updated": "2026-10-19T02:59:56Z"
+  "last_updated": "2026-10-19T11:57:07Z"
 }
