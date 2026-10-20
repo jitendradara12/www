@@ -1,13 +1,13 @@
 {
-  "sha": "186f32df99f3bb652be7a6de3a74a062f529fc43",
-  "short_sha": "186f32d",
-  "message": "docs: shorten Jet-Soup hardware test to checkout, run and report",
+  "sha": "1ff6543c84dbe673257493bd7dcab562e2501dd5",
+  "short_sha": "1ff6543",
+  "message": "docs: streamline PSK recovery, hardware testing, and ticket records",
   "repo": "jitendradara12/goodix-5e0a",
   "repo_name": "goodix-5e0a",
   "branch": "codex/linux-psk-jet-capture",
-  "date": "2026-10-19T09:52:46Z",
-  "relative_time": "2h ago",
-  "commit_url": "https://github.com/jitendradara12/goodix-5e0a/commit/186f32df99f3bb652be7a6de3a74a062f529fc43",
+  "date": "2026-10-19T19:42:54Z",
+  "relative_time": "7h ago",
+  "commit_url": "https://github.com/jitendradara12/goodix-5e0a/commit/1ff6543c84dbe673257493bd7dcab562e2501dd5",
   "repo_url": "https://github.com/jitendradara12/goodix-5e0a",
-  "last_updated": "2026-10-19T11:57:08Z"
+  "last_updated": "2026-10-20T03:09:21Z"
 }
