@@ -1,13 +1,13 @@
 {
-  "sha": "e92209e82ba5947e96ab8d4ad3500f3bcdaaaa84",
-  "short_sha": "e92209e",
-  "message": "fix(driver): bound spurious air trigger, align wire config offsets, a\u2026",
+  "sha": "d50f48ce5320a150a894f6b27ab1a788b961188d",
+  "short_sha": "d50f48c",
+  "message": "Linux key recovery and automatic OTP capture calibration (#15)",
   "repo": "jitendradara12/goodix-5e0a",
   "repo_name": "goodix-5e0a",
-  "branch": "codex/linux-psk-jet-capture",
-  "date": "2026-10-19T23:01:48Z",
-  "relative_time": "11h ago",
-  "commit_url": "https://github.com/jitendradara12/goodix-5e0a/commit/e92209e82ba5947e96ab8d4ad3500f3bcdaaaa84",
+  "branch": "master",
+  "date": "2026-10-20T13:11:01Z",
+  "relative_time": "3h ago",
+  "commit_url": "https://github.com/jitendradara12/goodix-5e0a/commit/d50f48ce5320a150a894f6b27ab1a788b961188d",
   "repo_url": "https://github.com/jitendradara12/goodix-5e0a",
-  "last_updated": "2026-10-20T10:51:30Z"
+  "last_updated": "2026-10-20T16:15:41Z"
 }
