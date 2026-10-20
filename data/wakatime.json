@@ -1,118 +1,68 @@
 {
-  "total_today": "5 hrs 50 mins",
-  "total_seconds": 21019.798,
+  "total_today": "2 hrs 40 mins",
+  "total_seconds": 9639.379,
   "is_resting": false,
   "projects": [
     {
       "name": "goodix-5e0a",
-      "text": "3 hrs 59 mins",
-      "percent": 68.3
+      "text": "2 hrs 40 mins",
+      "percent": 100.0
     },
     {
-      "name": "goodix",
-      "text": "1 hr 9 mins",
-      "percent": 19.9
+      "name": "goodix-5e0a-patch-linux-mint",
+      "text": "3 secs",
+      "percent": 0.0
     },
     {
-      "name": "NixOS-Hyprland",
-      "text": "20 mins",
-      "percent": 5.8
-    },
-    {
-      "name": "nectarlink",
-      "text": "19 mins",
-      "percent": 5.6
-    },
-    {
-      "name": "hi",
-      "text": "44 secs",
-      "percent": 0.2
-    },
-    {
-      "name": "graphite",
-      "text": "16 secs",
-      "percent": 0.1
-    },
-    {
-      "name": "chatgpt-desktop-linux",
-      "text": "13 secs",
-      "percent": 0.1
-    },
-    {
-      "name": "FOCA",
-      "text": "10 secs",
-      "percent": 0.1
-    },
-    {
-      "name": "waggles",
-      "text": "8 secs",
+      "name": "aistudio-www",
+      "text": "0 secs",
       "percent": 0.0
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "4 hrs 20 mins",
-      "percent": 74.3
-    },
-    {
-      "name": "Opencode Cli",
-      "text": "1 hr 19 mins",
-      "percent": 22.7
-    },
-    {
-      "name": "Antigravity",
-      "text": "4 mins",
-      "percent": 1.4
-    },
-    {
-      "name": "Codex Vscode",
-      "text": "3 mins",
-      "percent": 1.1
-    },
-    {
-      "name": "OpenCode",
-      "text": "1 min",
-      "percent": 0.5
+      "text": "2 hrs 40 mins",
+      "percent": 100.0
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "5 hrs 50 mins",
+      "text": "2 hrs 40 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "JavaScript",
-      "percent": 25.2
-    },
-    {
-      "name": "Python",
-      "percent": 22.6
-    },
-    {
-      "name": "TypeScript",
-      "percent": 18.9
+      "percent": 23.6
     },
     {
       "name": "Nix",
-      "percent": 17.1
+      "percent": 22.6
+    },
+    {
+      "name": "Python",
+      "percent": 21.3
+    },
+    {
+      "name": "TypeScript",
+      "percent": 17.2
     },
     {
       "name": "HTML",
-      "percent": 7.5
+      "percent": 7.0
     },
     {
       "name": "C",
-      "percent": 6.6
+      "percent": 6.2
     }
   ],
   "rollup_7d": {
-    "total": "46 hrs 9 mins",
-    "daily_average": "2 hrs 59 mins",
-    "total_seconds": 166172.322
+    "total": "47 hrs 53 mins",
+    "daily_average": "3 hrs 4 mins",
+    "total_seconds": 172419.611769
   },
-  "last_updated": "2026-10-20T16:15:40Z"
+  "last_updated": "2026-10-20T21:10:52Z"
 }
