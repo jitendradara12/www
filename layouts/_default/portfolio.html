@@ -19,7 +19,7 @@
       {{- range .Pages.ByWeight }}
       <article class="project-card">
         <div class="project-card-head">
-          <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          <h3><a href="{{ .Params.read | default .RelPermalink }}">{{ .Title }}</a></h3>
           {{ with .Params.year }}<span class="project-year">{{ . }}</span>{{ end }}
         </div>
 

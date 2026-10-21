@@ -5,8 +5,11 @@ timeZone = 'Asia/Kolkata'
 enableGitInfo = true
 enableRobotsTXT = true
 
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
 [frontmatter]
-  # if 'date' is missing, resolve to other mathods
+  # if 'date' is missing, resolve to other methods
   lastmod = ["date",":git",":filemodtime" ,"lastmod" ]
 
 [params]

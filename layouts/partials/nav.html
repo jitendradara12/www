@@ -8,6 +8,12 @@
     <a href="{{ .URL }}">{{ .Name }}</a>
     {{ end }} {{ end }}
     <button
+      class="cmd-trigger"
+      id="cmd-trigger"
+      aria-label="Open fuzzy finder"
+      title="fzf / telescope (press / or Ctrl+K)"
+    >/</button>
+    <button
       class="theme-toggle"
       id="theme-toggle"
       aria-label="Toggle theme"

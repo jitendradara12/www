@@ -17,5 +17,5 @@ Feel free to reach out.
 
 ### Coding Profiles
 
-{{<inline_img src="/logos/leetcode.svg" >}} **Leetcode:** [@sorrybutidonthavename](https://leetcode.com/u/sorrybutidonthaveaname/)  
+{{<inline_img src="/logos/leetcode.svg" >}} **Leetcode:** [@sorrybutidonthaveaname](https://leetcode.com/u/sorrybutidonthaveaname/)  
 {{<inline_img src="/logos/code.svg" >}} **Codolio:** [@sorrybutidonthaveaname](https://codolio.com/profile/sorrybutidonthaveaname)

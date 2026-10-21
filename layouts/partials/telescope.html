@@ -1,0 +1,546 @@
+{{/* layouts/partials/telescope.html: Telescope.nvim / fzf --preview="bat" fuzzy finder + Vim normal-mode motions */}}
+<div id="telescope-backdrop" class="ts-backdrop" hidden aria-hidden="true">
+  <div class="ts-modal" role="dialog" aria-modal="true" aria-label="Telescope">
+    <div class="ts-body">
+      <!-- Left pane: Prompt + Results -->
+      <div class="ts-left">
+        <div class="ts-pane-title"><span>Telescope</span><span class="ts-counter" id="ts-counter">0/0</span></div>
+        <div class="ts-prompt-row">
+          <span class="ts-prompt-char" id="ts-prompt-char">❯</span>
+          <input
+            type="text"
+            id="ts-input"
+            class="ts-input"
+            placeholder=""
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+          />
+        </div>
+        <ul class="ts-results" id="ts-results" role="listbox"></ul>
+      </div>
+
+      <!-- Right pane: preview -->
+      <div class="ts-right">
+        <div class="ts-pane-title"><span id="ts-preview-title">~/</span></div>
+        <div class="ts-preview" id="ts-preview"></div>
+      </div>
+    </div>
+
+    <!-- Status bar -->
+    <div class="ts-statusline">
+      <div class="ts-status-left">
+        <span class="ts-mode" id="ts-mode">INSERT</span>
+        <span class="ts-status-msg" id="ts-status-msg"></span>
+      </div>
+      <div class="ts-status-right">
+        <span><kbd>↑↓</kbd> / <kbd>^n</kbd><kbd>^p</kbd> move</span>
+        <span><kbd>↵</kbd> open</span>
+        <span><kbd>esc</kbd> close</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Subtle Vim keychord / status toast (bottom-right) -->
+<div id="vim-chord" class="vim-chord" hidden></div>
+
+<script>
+(function() {
+  var backdrop = document.getElementById('telescope-backdrop');
+  var input = document.getElementById('ts-input');
+  var resultsEl = document.getElementById('ts-results');
+  var previewEl = document.getElementById('ts-preview');
+  var previewTitleEl = document.getElementById('ts-preview-title');
+  var counterEl = document.getElementById('ts-counter');
+  var modeEl = document.getElementById('ts-mode');
+  var statusMsgEl = document.getElementById('ts-status-msg');
+  var promptCharEl = document.getElementById('ts-prompt-char');
+  var triggerBtn = document.getElementById('cmd-trigger');
+  var chordEl = document.getElementById('vim-chord');
+
+  var indexData = null;
+  var loadingIndex = false;
+  var filtered = [];
+  var selectedIdx = 0;
+  var isOpen = false;
+
+  var builtinCommands = [
+    {
+      title: ':fastfetch',
+      path: ':fastfetch',
+      url: '#fastfetch',
+      section: 'cmd',
+      date: 'exec',
+      meta: 'system telemetry',
+      isCmd: 'fastfetch',
+      preview: [
+        '  ▗▄   ▗▄ ▄▖    jitendra@0x43',
+        ' ▄▄▄█▄▄▄▄█▛ ▃   -------------',
+        '   ▟▛    ▜▃▟▛   os: nixos',
+        '▀▀▜█      █▛▀▀  kern: linux 7.xx',
+        ' ▗▛▀▙    ▟▛     wm: hyprland',
+        ' ▀ ▟█▀▀▀▀█▀▀▀   sh: zsh',
+        '  ▝▀ ▀▘   ▀▘    term: kitty',
+        '                ed: neovim',
+        '',
+        '7d code : {{ with hugo.Data.wakatime.rollup_7d.total }}{{ . }}{{ else }}46 hrs 9 mins{{ end }}',
+        'avg/day : {{ with hugo.Data.wakatime.rollup_7d.daily_average }}{{ . }}{{ else }}2 hrs 59 mins{{ end }}',
+        'commit  : {{ with hugo.Data.github }}{{ .repo_name }}@{{ .short_sha }}{{ else }}clean{{ end }}'
+      ].join('\n')
+    },
+    {
+      title: ':theme',
+      path: ':theme',
+      url: '#theme',
+      section: 'cmd',
+      date: 'exec',
+      meta: 'toggle dark / light mode',
+      isCmd: 'theme',
+      preview: 'toggle flashbang.'
+    },
+    {
+      title: ':keymaps',
+      path: ':keymaps',
+      url: '#keymaps',
+      section: 'cmd',
+      date: 'help',
+      meta: 'normal mode bindings',
+      isCmd: 'noop',
+      preview: [
+        '/ or : or ^k   open telescope',
+        'j / k          scroll down / up',
+        'gg / G         top / bottom',
+        'gh             ~/home',
+        'gp             ~/me',
+        'gw             ~/writings',
+        'gn             ~/now',
+        'gc             ~/me/contact',
+        'gf             ~/photography'
+      ].join('\n')
+    },
+    {
+      title: ':q!',
+      path: ':q!',
+      url: '#quit',
+      section: 'cmd',
+      date: 'exit',
+      meta: 'quit',
+      isCmd: 'quit',
+      preview: 'close telescope.'
+    }
+  ];
+
+  function showToast(msg, duration) {
+    if (!chordEl) return;
+    chordEl.textContent = msg;
+    chordEl.hidden = false;
+    clearTimeout(chordEl._timer);
+    if (duration !== 0) {
+      chordEl._timer = setTimeout(function() {
+        chordEl.hidden = true;
+      }, duration || 2200);
+    }
+  }
+
+  function loadIndex(cb) {
+    if (indexData) return cb(indexData);
+    if (loadingIndex) return;
+    loadingIndex = true;
+    fetch('/index.json')
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        indexData = data.concat(builtinCommands);
+        loadingIndex = false;
+        cb(indexData);
+      })
+      .catch(function() {
+        indexData = builtinCommands;
+        loadingIndex = false;
+        cb(indexData);
+      });
+  }
+
+  // Fuzzy match scorer + character highlighter
+  function fuzzyScore(query, text) {
+    if (!query) return { score: 1, indices: [] };
+    var q = query.toLowerCase();
+    var t = text.toLowerCase();
+    var qi = 0;
+    var score = 0;
+    var consecutive = 0;
+    var indices = [];
+
+    for (var ti = 0; ti < t.length && qi < q.length; ti++) {
+      if (t[ti] === q[qi]) {
+        indices.push(ti);
+        consecutive++;
+        score += 10 + consecutive * 5;
+        if (ti === 0 || t[ti - 1] === '/' || t[ti - 1] === '-' || t[ti - 1] === ' ') {
+          score += 15; // word boundary bonus
+        }
+        qi++;
+      } else {
+        consecutive = 0;
+        score -= 1;
+      }
+    }
+    if (qi < q.length) return null;
+    return { score: score, indices: indices };
+  }
+
+  function highlightText(text, indices) {
+    if (!indices || !indices.length) return escapeHtml(text);
+    var set = {};
+    for (var i = 0; i < indices.length; i++) set[indices[i]] = true;
+    var out = '';
+    for (var j = 0; j < text.length; j++) {
+      var ch = escapeHtml(text[j]);
+      out += set[j] ? '<mark class="ts-match">' + ch + '</mark>' : ch;
+    }
+    return out;
+  }
+
+  function escapeHtml(s) {
+    return String(s || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
+  function renderPreview(item) {
+    if (!item) {
+      previewTitleEl.textContent = 'Preview';
+      previewEl.innerHTML = '<div class="ts-empty">No matching buffer</div>';
+      return;
+    }
+    previewTitleEl.textContent = item.path || item.url;
+    var lines = [];
+    if (item.section !== 'cmd') {
+      lines.push('<span class="bat-delim">+++</span>');
+      lines.push('<span class="bat-key">title</span>   = <span class="bat-str">"' + escapeHtml(item.title) + '"</span>');
+      lines.push('<span class="bat-key">section</span> = <span class="bat-str">"' + escapeHtml(item.section) + '"</span>');
+      if (item.meta) {
+        lines.push('<span class="bat-comment"># ' + escapeHtml(item.meta) + '</span>');
+      }
+      if (item.github) {
+        lines.push('<span class="bat-key">github</span>  = <span class="bat-str">"' + escapeHtml(item.github) + '"</span>');
+      }
+      if (item.live) {
+        lines.push('<span class="bat-key">live</span>    = <span class="bat-str">"' + escapeHtml(item.live) + '"</span>');
+      }
+      lines.push('<span class="bat-delim">+++</span>');
+      lines.push('');
+    }
+
+    var bodyLines = String(item.preview || item.summary || '').split('\n');
+    for (var i = 0; i < bodyLines.length; i++) {
+      lines.push(escapeHtml(bodyLines[i]));
+    }
+
+    var isCmdClass = item.section === 'cmd' ? ' is-cmd' : '';
+    var html = '<div class="bat-code' + isCmdClass + '">';
+    for (var l = 0; l < lines.length; l++) {
+      html += '<div class="bat-line"><span class="bat-ln">' + (l + 1) + '</span><span class="bat-txt">' + (lines[l] || ' ') + '</span></div>';
+    }
+    html += '</div>';
+    if (item.cover) {
+      html += '<div class="ts-preview-img-wrap"><img src="' + escapeHtml(item.cover) + '" alt="' + escapeHtml(item.title) + '" class="ts-preview-img" loading="lazy" /></div>';
+    }
+    previewEl.innerHTML = html;
+  }
+
+  function renderResults() {
+    var rawQ = input.value.trim();
+    var isCommandMode = rawQ.indexOf(':') === 0;
+    promptCharEl.textContent = isCommandMode ? ':' : '❯';
+    modeEl.textContent = isCommandMode ? 'COMMAND' : 'INSERT';
+
+    var q = isCommandMode ? rawQ.slice(1).trim() : rawQ;
+    var list = indexData || [];
+
+    if (!rawQ) {
+      filtered = list.map(function(item) {
+        return { item: item, titleIndices: [], pathIndices: [] };
+      });
+    } else {
+      var scored = [];
+      for (var i = 0; i < list.length; i++) {
+        var it = list[i];
+        if (isCommandMode && it.section !== 'cmd' && rawQ.length > 1) {
+          // Still allow matching pages on :w, :now, etc., but boost commands
+        }
+        var mTitle = fuzzyScore(q, it.title);
+        var mPath = fuzzyScore(q, it.path || '');
+        var mMeta = fuzzyScore(q, (it.meta || '') + ' ' + (it.preview || ''));
+
+        var best = null;
+        var tIdx = [];
+        var pIdx = [];
+
+        if (mTitle) {
+          best = mTitle.score + 25;
+          tIdx = mTitle.indices;
+        }
+        if (mPath && (best === null || mPath.score + 15 > best)) {
+          best = mPath.score + 15;
+          pIdx = mPath.indices;
+        }
+        if (mMeta && best === null) {
+          best = mMeta.score;
+        }
+        if (best !== null) {
+          if (isCommandMode && it.section === 'cmd') best += 50;
+          scored.push({ item: it, score: best, titleIndices: tIdx, pathIndices: pIdx });
+        }
+      }
+      scored.sort(function(a, b) { return b.score - a.score; });
+      filtered = scored;
+    }
+
+    if (selectedIdx >= filtered.length) selectedIdx = 0;
+    if (selectedIdx < 0) selectedIdx = Math.max(0, filtered.length - 1);
+
+    counterEl.textContent = (filtered.length ? (selectedIdx + 1) : 0) + '/' + filtered.length;
+
+    var html = '';
+    for (var r = 0; r < filtered.length; r++) {
+      var entry = filtered[r];
+      var it = entry.item;
+      var activeClass = r === selectedIdx ? ' is-selected' : '';
+      var badge = it.section || 'page';
+      html += '<li class="ts-item' + activeClass + '" data-idx="' + r + '" role="option" aria-selected="' + (r === selectedIdx) + '">' +
+        '<span class="ts-item-badge ts-badge-' + escapeHtml(badge) + '">' + escapeHtml(badge) + '</span>' +
+        '<span class="ts-item-title">' + highlightText(it.title, entry.titleIndices) + '</span>' +
+        '<span class="ts-item-path">' + highlightText(it.path || '', entry.pathIndices) + '</span>' +
+      '</li>';
+    }
+    resultsEl.innerHTML = html || '<li class="ts-empty-item">No matches found</li>';
+
+    var activeEl = resultsEl.querySelector('.is-selected');
+    if (activeEl) activeEl.scrollIntoView({ block: 'nearest' });
+
+    renderPreview(filtered[selectedIdx] ? filtered[selectedIdx].item : null);
+  }
+
+  function executeItem(item) {
+    if (!item) return;
+    var rawQ = input.value.trim();
+    if (rawQ === ':q') {
+      statusMsgEl.textContent = 'E37: No write since last change (add ! to override)';
+      statusMsgEl.classList.add('ts-error');
+      return;
+    }
+    if (item.isCmd === 'theme') {
+      var toggle = document.getElementById('theme-toggle');
+      if (toggle) toggle.click();
+      closeTelescope();
+      showToast('colorscheme toggled', 1600);
+      return;
+    }
+    if (item.isCmd === 'quit') {
+      closeTelescope();
+      return;
+    }
+    if (item.isCmd === 'fastfetch' || item.isCmd === 'noop') {
+      statusMsgEl.classList.remove('ts-error');
+      statusMsgEl.textContent = '';
+      return;
+    }
+    closeTelescope();
+    window.location.href = item.url;
+  }
+
+  function openTelescope(initialVal) {
+    isOpen = true;
+    backdrop.hidden = false;
+    backdrop.setAttribute('aria-hidden', 'false');
+    input.value = initialVal || '';
+    selectedIdx = 0;
+    statusMsgEl.classList.remove('ts-error');
+    statusMsgEl.textContent = '';
+    loadIndex(function() {
+      renderResults();
+      input.focus();
+    });
+  }
+
+  function closeTelescope() {
+    isOpen = false;
+    backdrop.hidden = true;
+    backdrop.setAttribute('aria-hidden', 'true');
+    input.blur();
+  }
+
+  if (triggerBtn) {
+    triggerBtn.addEventListener('click', function() {
+      openTelescope('');
+    });
+  }
+
+  backdrop.addEventListener('mousedown', function(e) {
+    if (e.target === backdrop) closeTelescope();
+  });
+
+  input.addEventListener('input', function() {
+    selectedIdx = 0;
+    statusMsgEl.classList.remove('ts-error');
+    renderResults();
+  });
+
+  resultsEl.addEventListener('mousemove', function(e) {
+    var li = e.target.closest('.ts-item');
+    if (!li) return;
+    var idx = Number(li.getAttribute('data-idx'));
+    if (!isNaN(idx) && idx !== selectedIdx) {
+      selectedIdx = idx;
+      var items = resultsEl.querySelectorAll('.ts-item');
+      items.forEach(function(el, i) {
+        el.classList.toggle('is-selected', i === selectedIdx);
+      });
+      counterEl.textContent = (selectedIdx + 1) + '/' + filtered.length;
+      renderPreview(filtered[selectedIdx] ? filtered[selectedIdx].item : null);
+    }
+  });
+
+  resultsEl.addEventListener('click', function(e) {
+    var li = e.target.closest('.ts-item');
+    if (!li) return;
+    var idx = Number(li.getAttribute('data-idx'));
+    if (filtered[idx]) executeItem(filtered[idx].item);
+  });
+
+  // Global keyboard handler (Telescope navigation + Vim Normal Mode motions)
+  var pendingG = false;
+  var gTimer = null;
+
+  document.addEventListener('keydown', function(e) {
+    // Ctrl+K or Cmd+K anywhere toggles Telescope
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      if (isOpen) closeTelescope();
+      else openTelescope('');
+      return;
+    }
+
+    if (isOpen) {
+      if (e.key === 'Escape' || (e.ctrlKey && e.key === '[')) {
+        e.preventDefault();
+        closeTelescope();
+        return;
+      }
+      if (e.key === 'ArrowDown' || (e.ctrlKey && (e.key === 'n' || e.key === 'j'))) {
+        e.preventDefault();
+        if (filtered.length) {
+          selectedIdx = (selectedIdx + 1) % filtered.length;
+          renderResults();
+        }
+        return;
+      }
+      if (e.key === 'ArrowUp' || (e.ctrlKey && (e.key === 'p' || e.key === 'k'))) {
+        e.preventDefault();
+        if (filtered.length) {
+          selectedIdx = (selectedIdx - 1 + filtered.length) % filtered.length;
+          renderResults();
+        }
+        return;
+      }
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        var raw = input.value.trim();
+        if (raw === ':q') {
+          statusMsgEl.textContent = 'E37: No write since last change (add ! to override)';
+          statusMsgEl.classList.add('ts-error');
+          return;
+        }
+        if (raw === ':q!' || raw === ':wq' || raw === ':x') {
+          closeTelescope();
+          return;
+        }
+        if (filtered[selectedIdx]) {
+          executeItem(filtered[selectedIdx].item);
+        }
+        return;
+      }
+      return;
+    }
+
+    // Ignore normal-mode keys when typing in inputs or when modifier keys are held
+    var tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
+    if (tag === 'input' || tag === 'textarea' || e.target.isContentEditable) return;
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+
+    if (e.key === '/') {
+      e.preventDefault();
+      openTelescope('');
+      return;
+    }
+    if (e.key === ':') {
+      e.preventDefault();
+      openTelescope(':');
+      return;
+    }
+    if (e.key === '?') {
+      e.preventDefault();
+      openTelescope(':keymaps');
+      return;
+    }
+
+    // Vim g-prefix chords (gg, gh, gp, gw, gn, gc, gf)
+    if (pendingG) {
+      pendingG = false;
+      clearTimeout(gTimer);
+      var k = e.key.toLowerCase();
+      if (k === 'g') {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        showToast('NORMAL · gg (top)', 900);
+        return;
+      }
+      var routes = {
+        'h': ['/', '~/home'],
+        'p': ['/me/', '~/me (portfolio)'],
+        'a': ['/me/', '~/me (about)'],
+        'w': ['/writings/', '~/writings'],
+        'n': ['/now/', '~/now'],
+        'c': ['/me/contact/', '~/me/contact'],
+        'f': ['/photography/', '~/photography']
+      };
+      if (routes[k]) {
+        e.preventDefault();
+        showToast('cd ' + routes[k][1], 900);
+        window.location.href = routes[k][0];
+        return;
+      }
+      chordEl.hidden = true;
+      return;
+    }
+
+    if (e.key === 'g') {
+      pendingG = true;
+      showToast('NORMAL · g… (h:home  p:projects  w:writings  n:now  f:photos  g:top)', 2500);
+      gTimer = setTimeout(function() {
+        pendingG = false;
+      }, 2500);
+      return;
+    }
+
+    if (e.key === 'G') {
+      e.preventDefault();
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      showToast('NORMAL · G (bottom)', 900);
+      return;
+    }
+
+    if (e.key === 'j') {
+      window.scrollBy({ top: 140, behavior: 'smooth' });
+      return;
+    }
+    if (e.key === 'k') {
+      window.scrollBy({ top: -140, behavior: 'smooth' });
+      return;
+    }
+  });
+})();
+</script>

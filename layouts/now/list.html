@@ -76,7 +76,7 @@
 
       {{ if gt (len .projects) 0 }}
       <div class="now-wt-projects">
-        {{ range (cond .is_resting (first 4 .projects) .projects) }}
+        {{ range first 4 .projects }}
         <div class="now-wt-project">
           <span class="now-wt-pname">{{ .name }}</span>
           <span class="now-wt-ptime">{{ .text }}</span>

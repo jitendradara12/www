@@ -1644,6 +1644,7 @@ nav.breadcrumb a:hover {
 .now-commit-time {
   flex-shrink: 0;
   width: 5.5em;
+  white-space: nowrap;
   color: var(--on-surface-faint);
   font-family: var(--font-code);
   font-size: 0.6875rem;
@@ -2176,4 +2177,386 @@ ul.article-list {
     display: none;
   }
 }
+
+/* ================================================================
+   TELESCOPE.NVIM / FZF FUZZY FINDER & VIM NORMAL MODE
+   ================================================================ */
+.cmd-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: var(--on-surface-dim);
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  line-height: 1;
+  transition: color var(--duration) var(--ease-out);
+}
+
+.cmd-trigger:hover {
+  color: var(--primary);
+  text-shadow: 0 0 8px var(--primary-glow);
+}
+
+.ts-backdrop[hidden],
+.vim-chord[hidden] {
+  display: none !important;
+}
+
+.ts-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(2, 3, 7, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10vh var(--margin-mobile) var(--sp-6);
+}
+
+[data-theme="light"] .ts-backdrop {
+  background: rgba(30, 30, 36, 0.35);
+}
+
+.ts-modal {
+  width: 100%;
+  max-width: 860px;
+  max-height: calc(100dvh - var(--sp-4) - var(--sp-4));
+  background: var(--surface-dim);
+  border: 1px solid var(--border-hover);
+  border-radius: 12px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.65), 0 0 40px var(--primary-glow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-code);
+  animation: fadeInUp 0.16s var(--ease-out) both;
+}
+
+[data-theme="light"] .ts-modal {
+  background: var(--surface);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.18);
+}
+
+.ts-body {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  height: min(400px, calc(100dvh - 6rem));
+  min-height: 0;
+}
+
+.ts-left,
+.ts-right {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+.ts-left {
+  border-right: 1px solid var(--border);
+}
+
+.ts-pane-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--sp-2) var(--sp-4);
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--primary);
+  border-bottom: 1px solid var(--border);
+  background: rgba(92, 141, 255, 0.04);
+}
+
+.ts-counter {
+  color: var(--on-surface-faint);
+}
+
+.ts-prompt-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-4);
+  border-bottom: 1px solid var(--border);
+}
+
+.ts-prompt-char {
+  color: var(--secondary);
+  font-weight: 700;
+  font-size: 0.875rem;
+  user-select: none;
+}
+
+.ts-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--on-surface);
+  font-family: var(--font-code);
+  font-size: 0.8125rem;
+}
+
+.ts-input::placeholder {
+  color: var(--on-surface-faint);
+  opacity: 0.7;
+}
+
+.ts-results {
+  list-style: none;
+  margin: 0;
+  padding: var(--sp-1) 0;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.ts-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 6px var(--sp-4);
+  cursor: pointer;
+  font-size: 0.75rem;
+  border-left: 2px solid transparent;
+  transition: background 0.1s ease;
+}
+
+.ts-item.is-selected {
+  background: var(--primary-glow);
+  border-left-color: var(--secondary);
+}
+
+.ts-item-badge {
+  font-size: 0.5625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 1px 5px;
+  border: 1px solid var(--border);
+  color: var(--on-surface-faint);
+  flex-shrink: 0;
+  width: 46px;
+  text-align: center;
+}
+
+.ts-badge-cmd {
+  color: var(--tertiary);
+  border-color: rgba(0, 245, 160, 0.25);
+}
+
+.ts-badge-proj {
+  color: var(--primary);
+  border-color: rgba(92, 141, 255, 0.25);
+}
+
+.ts-badge-post {
+  color: var(--secondary);
+  border-color: rgba(0, 242, 254, 0.25);
+}
+
+.ts-item-title {
+  color: var(--on-surface);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+}
+
+.ts-item-path {
+  margin-left: auto;
+  color: var(--on-surface-faint);
+  font-size: 0.625rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+mark.ts-match {
+  background: transparent;
+  color: var(--secondary);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.ts-empty-item,
+.ts-empty {
+  padding: var(--sp-6) var(--sp-4);
+  color: var(--on-surface-faint);
+  font-size: 0.75rem;
+}
+
+/* Preview pane (bat style) */
+.ts-preview {
+  padding: var(--sp-3);
+  overflow-y: auto;
+  flex: 1;
+  font-size: 0.65rem;
+  line-height: 1.5;
+  color: var(--on-surface-dim);
+}
+
+.bat-code {
+  display: flex;
+  flex-direction: column;
+}
+
+.bat-line {
+  display: flex;
+  gap: var(--sp-3);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.bat-code.is-cmd .bat-line {
+  white-space: pre;
+  word-break: normal;
+}
+
+.bat-ln {
+  width: 2ch;
+  text-align: right;
+  color: var(--on-surface-faint);
+  opacity: 0.45;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.bat-txt {
+  flex: 1;
+  min-width: 0;
+}
+
+.bat-delim {
+  color: var(--on-surface-faint);
+}
+
+.bat-key {
+  color: var(--primary);
+}
+
+.bat-str {
+  color: var(--tertiary);
+}
+
+.bat-comment {
+  color: var(--on-surface-faint);
+  font-style: italic;
+}
+
+.ts-preview-img-wrap {
+  margin-top: var(--sp-3);
+  padding-left: 3ch;
+}
+
+.ts-preview-img {
+  max-height: 150px;
+  width: auto;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
+/* Lualine / Telescope statusbar */
+.ts-statusline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px var(--sp-3);
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  font-size: 0.625rem;
+  color: var(--on-surface-faint);
+}
+
+.ts-status-left,
+.ts-status-right {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  min-width: 0;
+}
+
+.ts-mode {
+  background: var(--primary);
+  color: #020307;
+  font-weight: 700;
+  padding: 1px 6px;
+  letter-spacing: 0.05em;
+}
+
+.ts-branch {
+  color: var(--secondary);
+}
+
+.ts-status-msg {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ts-status-msg.ts-error {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.ts-status-right kbd {
+  font-family: var(--font-code);
+  color: var(--on-surface);
+  background: var(--surface-dim);
+  border: 1px solid var(--border);
+  padding: 0 4px;
+  border-radius: 2px;
+}
+
+/* Bottom-right Vim normal-mode chord pill */
+.vim-chord {
+  position: fixed;
+  bottom: var(--sp-4);
+  right: var(--sp-4);
+  z-index: 900;
+  background: var(--surface-dim);
+  border: 1px solid var(--primary);
+  color: var(--on-surface);
+  font-family: var(--font-code);
+  font-size: 0.6875rem;
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+}
+
+@media (max-width: 700px) {
+  .ts-backdrop {
+    padding: var(--sp-4) var(--margin-mobile);
+  }
+  .ts-body {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    height: min(68vh, 560px);
+  }
+  .ts-left {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .ts-status-right {
+    display: none;
+  }
+}
+
+@media (max-height: 560px) {
+  .ts-backdrop {
+    padding-block: var(--sp-4);
+  }
+
+  .ts-body {
+    height: calc(100dvh - 6rem);
+  }
+}
+
 

@@ -1,0 +1,113 @@
+{{- $items := slice -}}
+
+{{- /* Core sections */ -}}
+{{- $items = $items | append (dict
+  "title" "~/home"
+  "path" "~/"
+  "url" "/"
+  "section" "core"
+  "date" "root"
+  "meta" "layout = 'home' · h-card"
+  "preview" "hi, welcome to my corner of the internet.\nthe goal of this place is to extend my 15 kilobyte memory\nabout myself and my own work.\nhere's the overflow."
+) -}}
+
+{{- $items = $items | append (dict
+  "title" "portfolio"
+  "path" "~/me"
+  "url" "/me/"
+  "section" "core"
+  "date" "about"
+  "meta" "layout = 'portfolio' · 20 / CS Student"
+  "preview" "> I live in the terminal.\n> sometimes, I touch grass too.\n> I build a lot of stuff and some of it actually works."
+) -}}
+
+{{- $items = $items | append (dict
+  "title" "now"
+  "path" "~/now"
+  "url" "/now/"
+  "section" "core"
+  "date" "live"
+  "meta" "wakatime + github swr"
+  "preview" (printf "location = %q\nbuilding = %q" (site.GetPage "/now").Params.location (site.GetPage "/now").Params.building)
+) -}}
+
+{{- $items = $items | append (dict
+  "title" "writings"
+  "path" "~/writings"
+  "url" "/writings/"
+  "section" "core"
+  "date" "index"
+  "meta" "section = 'writings'"
+  "preview" "Articles, reverse-engineering logs, developer workflow, and TIL notes."
+) -}}
+
+{{- $items = $items | append (dict
+  "title" "photography"
+  "path" "~/photography"
+  "url" "/photography/"
+  "section" "core"
+  "date" "hidden"
+  "meta" "section = 'photography'"
+  "preview" "proof that I've touched grass at some point of my life. although, I rarely click nowadays. this is a simple visual log of frames captured along the way."
+) -}}
+
+{{- $items = $items | append (dict
+  "title" "resume.pdf"
+  "path" "~/resume.pdf"
+  "url" "/resume.pdf"
+  "section" "core"
+  "date" "pdf"
+  "meta" "application/pdf · static asset"
+  "preview" "Direct PDF resume for Jitendra Dara."
+) -}}
+
+{{- /* Regular pages (writings, projects, contact, photography) */ -}}
+{{- range .Site.RegularPages.ByLastmod.Reverse -}}
+  {{- $sec := .Section | default "page" -}}
+  {{- if strings.HasPrefix .RelPermalink "/me/projects/" -}}
+    {{- $sec = "proj" -}}
+  {{- else if eq .RelPermalink "/me/contact/" -}}
+    {{- $sec = "core" -}}
+  {{- else if eq $sec "writings" -}}
+    {{- $sec = "post" -}}
+  {{- else if eq $sec "photography" -}}
+    {{- $sec = "photo" -}}
+  {{- end -}}
+
+  {{- $metaParts := slice -}}
+  {{- with .Params.year }}{{ $metaParts = $metaParts | append (printf "year = %q" .) }}{{ end -}}
+  {{- with .Params.tech }}{{ $metaParts = $metaParts | append (printf "tech = [%s]" (delimit . ", ")) }}{{ end -}}
+  {{- with .Params.exif.camera }}{{ $metaParts = $metaParts | append (printf "camera = %q" .) }}{{ end -}}
+  {{- with .Params.exif.aperture }}{{ $metaParts = $metaParts | append (printf "aperture = %q" .) }}{{ end -}}
+  {{- with .Params.exif.shutter }}{{ $metaParts = $metaParts | append (printf "shutter = %q" .) }}{{ end -}}
+  {{- if eq (len $metaParts) 0 -}}
+    {{- $metaParts = $metaParts | append (printf "lastmod = %q" (.Lastmod.Format "2006-01-02")) -}}
+  {{- end -}}
+
+  {{- $raw := .Plain | htmlUnescape | strings.TrimSpace -}}
+  {{- if eq $raw "" -}}
+    {{- $raw = .Params.summary | default .Description | default "" -}}
+  {{- end -}}
+  {{- $preview := $raw | truncate 650 -}}
+
+  {{- $targetUrl := .RelPermalink -}}
+  {{- if and (eq $sec "projects") .Params.read -}}
+    {{- $targetUrl = .Params.read -}}
+  {{- end -}}
+
+  {{- $items = $items | append (dict
+    "title" .Title
+    "path" (printf "~%s" (strings.TrimSuffix "/" .RelPermalink))
+    "url" $targetUrl
+    "section" $sec
+    "date" (.Params.year | default (.Lastmod.Format "02 Jan 2006"))
+    "meta" (delimit $metaParts " · ")
+    "summary" (.Params.summary | default .Description | default "")
+    "preview" $preview
+    "github" (.Params.github | default "")
+    "live" (.Params.live | default "")
+    "cover" (.Params.cover | default "")
+  ) -}}
+{{- end -}}
+
+{{- $items | jsonify -}}

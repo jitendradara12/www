@@ -8,14 +8,14 @@
 {{ $imgSrc := "" }}
 {{ if $image }}{{ $imgSrc = $image.RelPermalink }}{{ else if .Params.cover }}{{ $imgSrc = .Params.cover }}{{ end }}
 
-<article class="h-entry photo-single">
+<div class="photo-single">
   {{ if $imgSrc }}
   <img src="{{ $imgSrc }}" alt="{{ .Title }}" class="u-photo photo-img" />
   {{ end }}
 
   {{ with .Params.caption }}<p class="photo-caption">{{ . }}</p>{{ end }}
 
-  <div class="e-content">{{ .Content }}</div>
+  {{ .Content }}
 
   {{ with .Params.exif }}
   <details class="exif-single-box">
@@ -30,5 +30,5 @@
     </div>
   </details>
   {{ end }}
-</article>
+</div>
 {{ end }}
