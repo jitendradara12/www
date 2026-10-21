@@ -1,17 +1,32 @@
 {
-  "total_today": "2 hrs 44 mins",
-  "total_seconds": 9876.733,
+  "total_today": "3 hrs 28 mins",
+  "total_seconds": 12523.059,
   "is_resting": false,
   "projects": [
     {
       "name": "goodix-5e0a",
-      "text": "2 hrs 43 mins",
-      "percent": 99.2
+      "text": "2 hrs 31 mins",
+      "percent": 72.5
     },
     {
       "name": "aistudio-www",
-      "text": "1 min",
-      "percent": 0.7
+      "text": "38 mins",
+      "percent": 18.6
+    },
+    {
+      "name": "new-chat",
+      "text": "12 mins",
+      "percent": 5.8
+    },
+    {
+      "name": "JUET-Nexus",
+      "text": "5 mins",
+      "percent": 2.7
+    },
+    {
+      "name": "lazyportal",
+      "text": "47 secs",
+      "percent": 0.4
     },
     {
       "name": "goodix-5e0a-patch-linux-mint",
@@ -27,47 +42,52 @@
   "editors": [
     {
       "name": "Firefox",
-      "text": "2 hrs 44 mins",
-      "percent": 100.0
+      "text": "3 hrs 16 mins",
+      "percent": 94.2
+    },
+    {
+      "name": "Codex Vscode",
+      "text": "12 mins",
+      "percent": 5.8
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "2 hrs 44 mins",
+      "text": "3 hrs 28 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
-      "name": "JavaScript",
-      "percent": 23.6
+      "name": "Nix",
+      "percent": 26.8
     },
     {
-      "name": "Nix",
-      "percent": 22.8
+      "name": "JavaScript",
+      "percent": 22.4
     },
     {
       "name": "Python",
-      "percent": 21.2
+      "percent": 20.1
     },
     {
       "name": "TypeScript",
-      "percent": 17.2
+      "percent": 16.3
     },
     {
       "name": "HTML",
-      "percent": 7.0
+      "percent": 6.6
     },
     {
       "name": "C",
-      "percent": 6.2
+      "percent": 5.8
     }
   ],
   "rollup_7d": {
-    "total": "47 hrs 57 mins",
-    "daily_average": "3 hrs 4 mins",
-    "total_seconds": 172656.965769
+    "total": "48 hrs 41 mins",
+    "daily_average": "3 hrs 9 mins",
+    "total_seconds": 175303.291769
   },
-  "last_updated": "2026-10-21T03:04:26Z"
+  "last_updated": "2026-10-21T16:30:27Z"
 }
