@@ -54,7 +54,7 @@
 {{- $items = $items | append (dict
   "title" "resume.pdf"
   "path" "~/resume.pdf"
-  "url" "/resume.pdf"
+  "url" "https://pub-31d0c0a2113b48878471392e0af84455.r2.dev/resume.pdf"
   "section" "core"
   "date" "pdf"
   "meta" "application/pdf · static asset"
