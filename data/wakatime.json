@@ -1,17 +1,17 @@
 {
-  "total_today": "3 hrs 32 mins",
-  "total_seconds": 12730.427,
+  "total_today": "3 hrs 41 mins",
+  "total_seconds": 13284.999,
   "is_resting": false,
   "projects": [
     {
       "name": "lazyportal",
-      "text": "2 hrs 31 mins",
-      "percent": 71.3
+      "text": "2 hrs 40 mins",
+      "percent": 72.5
     },
     {
       "name": "www",
       "text": "45 mins",
-      "percent": 21.4
+      "percent": 20.6
     },
     {
       "name": "goodix-5e0a",
@@ -21,7 +21,7 @@
     {
       "name": "Hyprland-Dots",
       "text": "1 min",
-      "percent": 0.8
+      "percent": 0.7
     },
     {
       "name": "omaconnect",
@@ -42,24 +42,24 @@
   "editors": [
     {
       "name": "Firefox",
-      "text": "3 hrs 19 mins",
-      "percent": 94.2
+      "text": "3 hrs 29 mins",
+      "percent": 94.4
     },
     {
       "name": "Neovim",
       "text": "10 mins",
-      "percent": 5.0
+      "percent": 4.8
     },
     {
       "name": "OpenCode",
       "text": "1 min",
-      "percent": 0.8
+      "percent": 0.7
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "3 hrs 32 mins",
+      "text": "3 hrs 41 mins",
       "percent": 100.0
     }
   ],
@@ -90,9 +90,9 @@
     }
   ],
   "rollup_7d": {
-    "total": "47 hrs 33 mins",
+    "total": "47 hrs 42 mins",
     "daily_average": "2 hrs 42 mins",
-    "total_seconds": 171181.544769
+    "total_seconds": 171736.116769
   },
-  "last_updated": "2026-10-23T10:55:53Z"
+  "last_updated": "2026-10-23T16:21:14Z"
 }
