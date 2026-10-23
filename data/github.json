@@ -1,13 +1,13 @@
 {
-  "sha": "e1f8035fc9c55aee409aecee085b13ac676fcbf8",
-  "short_sha": "e1f8035",
-  "message": "feat: link resume to Cloudflare R2 and add redirect rule",
-  "repo": "jitendradara12/www",
-  "repo_name": "www",
-  "branch": "master",
-  "date": "2026-10-22T19:51:12Z",
-  "relative_time": "7h ago",
-  "commit_url": "https://github.com/jitendradara12/www/commit/e1f8035fc9c55aee409aecee085b13ac676fcbf8",
-  "repo_url": "https://github.com/jitendradara12/www",
-  "last_updated": "2026-10-23T03:07:19Z"
+  "sha": "bfa8ed3f198e27732d1a0662e605de2758bf5b90",
+  "short_sha": "bfa8ed3",
+  "message": "native android stuff (#32)",
+  "repo": "jitendradara12/lazyportal",
+  "repo_name": "lazyportal",
+  "branch": "refactor/ui",
+  "date": "2026-10-23T18:16:55Z",
+  "relative_time": "2h ago",
+  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/bfa8ed3f198e27732d1a0662e605de2758bf5b90",
+  "repo_url": "https://github.com/jitendradara12/lazyportal",
+  "last_updated": "2026-10-23T20:54:56Z"
 }
