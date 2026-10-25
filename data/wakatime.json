@@ -1,58 +1,73 @@
 {
-  "total_today": "0 secs",
-  "total_seconds": 4.657,
-  "is_resting": true,
+  "total_today": "1 hr 24 mins",
+  "total_seconds": 5079.216,
+  "is_resting": false,
   "projects": [
     {
+      "name": "temp",
+      "text": "1 hr 2 mins",
+      "percent": 74.3
+    },
+    {
       "name": "goodix-5e0a",
-      "text": "4 secs",
-      "percent": 100.0
+      "text": "21 mins",
+      "percent": 25.7
     }
   ],
   "editors": [
     {
+      "name": "Codex Vscode",
+      "text": "1 hr",
+      "percent": 71.2
+    },
+    {
       "name": "Firefox",
-      "text": "4 secs",
-      "percent": 100.0
+      "text": "21 mins",
+      "percent": 25.7
+    },
+    {
+      "name": "Antigravity",
+      "text": "2 mins",
+      "percent": 3.1
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "4 secs",
+      "text": "1 hr 24 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "Nix",
-      "percent": 50.0
+      "percent": 43.9
     },
     {
       "name": "Python",
-      "percent": 22.4
+      "percent": 19.6
     },
     {
       "name": "C",
-      "percent": 9.0
-    },
-    {
-      "name": "HTML",
       "percent": 7.9
     },
     {
-      "name": "TeX",
-      "percent": 4.7
+      "name": "HTML",
+      "percent": 6.9
     },
     {
-      "name": "TypeScript",
-      "percent": 2.8
+      "name": "Java",
+      "percent": 4.9
+    },
+    {
+      "name": "JavaScript",
+      "percent": 4.4
     }
   ],
   "rollup_7d": {
-    "total": "33 hrs 56 mins",
-    "daily_average": "1 hr 52 mins",
-    "total_seconds": 122171.396769
+    "total": "35 hrs 35 mins",
+    "daily_average": "2 hrs 4 mins",
+    "total_seconds": 128121.807769
   },
-  "last_updated": "2026-10-24T20:06:55Z"
+  "last_updated": "2026-10-25T10:36:00Z"
 }
