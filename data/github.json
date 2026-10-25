@@ -1,13 +1,13 @@
 {
-  "sha": "9864b91f8611d1ad60f3e65d32ec3d072ec41474",
-  "short_sha": "9864b91",
-  "message": "Codex/android official portal (#34)",
+  "sha": "ea18ebdf1deb31b9236a4abc2c1d0d66421c5a5a",
+  "short_sha": "ea18ebd",
+  "message": "fix: reconnect scrolls bug",
   "repo": "jitendradara12/lazyportal",
   "repo_name": "lazyportal",
   "branch": "master",
-  "date": "2026-10-23T20:52:59Z",
-  "relative_time": "yesterday",
-  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/9864b91f8611d1ad60f3e65d32ec3d072ec41474",
+  "date": "2026-10-25T10:36:58Z",
+  "relative_time": "4h ago",
+  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/ea18ebdf1deb31b9236a4abc2c1d0d66421c5a5a",
   "repo_url": "https://github.com/jitendradara12/lazyportal",
-  "last_updated": "2026-10-25T02:56:49Z"
+  "last_updated": "2026-10-25T15:27:33Z"
 }
