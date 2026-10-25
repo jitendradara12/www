@@ -1,13 +1,13 @@
 {
-  "sha": "ea18ebdf1deb31b9236a4abc2c1d0d66421c5a5a",
-  "short_sha": "ea18ebd",
-  "message": "fix: reconnect scrolls bug",
+  "sha": "17db02fe6897e034812b049937a7f0f5c14f3260",
+  "short_sha": "17db02f",
+  "message": "chore(calendar): better ui",
   "repo": "jitendradara12/lazyportal",
   "repo_name": "lazyportal",
   "branch": "master",
-  "date": "2026-10-25T10:36:58Z",
-  "relative_time": "4h ago",
-  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/ea18ebdf1deb31b9236a4abc2c1d0d66421c5a5a",
+  "date": "2026-10-25T16:19:21Z",
+  "relative_time": "3h ago",
+  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/17db02fe6897e034812b049937a7f0f5c14f3260",
   "repo_url": "https://github.com/jitendradara12/lazyportal",
-  "last_updated": "2026-10-25T15:27:33Z"
+  "last_updated": "2026-10-25T20:19:14Z"
 }

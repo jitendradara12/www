@@ -1,93 +1,68 @@
 {
-  "total_today": "4 hrs 41 mins",
-  "total_seconds": 16891.859,
+  "total_today": "1 hr 48 mins",
+  "total_seconds": 6507.088,
   "is_resting": false,
   "projects": [
     {
-      "name": "temp",
-      "text": "2 hrs 36 mins",
-      "percent": 55.7
-    },
-    {
       "name": "lazyportal",
-      "text": "1 hr 43 mins",
-      "percent": 36.6
+      "text": "1 hr 47 mins",
+      "percent": 99.0
     },
     {
-      "name": "goodix-5e0a",
-      "text": "21 mins",
-      "percent": 7.7
+      "name": "24",
+      "text": "1 min",
+      "percent": 1.0
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "2 hrs 43 mins",
-      "percent": 57.9
+      "text": "1 hr 47 mins",
+      "percent": 99.0
     },
     {
       "name": "Codex Vscode",
-      "text": "1 hr 15 mins",
-      "percent": 26.9
-    },
-    {
-      "name": "Neovim",
-      "text": "20 mins",
-      "percent": 7.4
-    },
-    {
-      "name": "Opencode Cli",
-      "text": "17 mins",
-      "percent": 6.4
-    },
-    {
-      "name": "Antigravity",
-      "text": "2 mins",
+      "text": "1 min",
       "percent": 1.0
-    },
-    {
-      "name": "OpenCode",
-      "text": "56 secs",
-      "percent": 0.3
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "4 hrs 41 mins",
+      "text": "1 hr 48 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "Nix",
-      "percent": 40.0
+      "percent": 34.8
     },
     {
       "name": "Python",
-      "percent": 17.9
+      "percent": 15.5
+    },
+    {
+      "name": "CSS",
+      "percent": 13.5
     },
     {
       "name": "JavaScript",
-      "percent": 10.8
+      "percent": 9.8
     },
     {
       "name": "C",
-      "percent": 7.2
-    },
-    {
-      "name": "HTML",
       "percent": 6.3
     },
     {
       "name": "TypeScript",
-      "percent": 5.2
+      "percent": 5.6
     }
   ],
   "rollup_7d": {
-    "total": "38 hrs 52 mins",
-    "daily_average": "2 hrs 17 mins",
-    "total_seconds": 139934.450769
+    "total": "34 hrs 54 mins",
+    "daily_average": "1 hr 43 mins",
+    "total_seconds": 125652.453769
   },
-  "last_updated": "2026-10-25T15:27:32Z"
+  "last_updated": "2026-10-25T20:19:14Z"
 }
