@@ -1,44 +1,44 @@
 {
-  "total_today": "2 hrs 48 mins",
-  "total_seconds": 10116.459,
+  "total_today": "2 hrs 58 mins",
+  "total_seconds": 10697.49,
   "is_resting": false,
   "projects": [
     {
       "name": "lazyportal",
       "text": "1 hr 48 mins",
-      "percent": 64.3
+      "percent": 60.9
     },
     {
       "name": "24",
       "text": "47 mins",
-      "percent": 28.3
+      "percent": 26.7
     },
     {
       "name": "goodix-5e0a",
       "text": "12 mins",
-      "percent": 7.2
+      "percent": 6.8
+    },
+    {
+      "name": "grid-load",
+      "text": "9 mins",
+      "percent": 5.4
     },
     {
       "name": "JUET-Nexus",
       "text": "24 secs",
       "percent": 0.2
-    },
-    {
-      "name": "grid-load",
-      "text": "0 secs",
-      "percent": 0.0
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "2 hrs 45 mins",
-      "percent": 98.0
+      "text": "2 hrs 54 mins",
+      "percent": 98.1
     },
     {
       "name": "Codex Vscode",
       "text": "3 mins",
-      "percent": 2.0
+      "percent": 1.9
     },
     {
       "name": "Neovim",
@@ -49,7 +49,7 @@
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "2 hrs 48 mins",
+      "text": "2 hrs 58 mins",
       "percent": 100.0
     }
   ],
@@ -80,9 +80,9 @@
     }
   ],
   "rollup_7d": {
-    "total": "35 hrs 54 mins",
+    "total": "36 hrs 4 mins",
     "daily_average": "1 hr 45 mins",
-    "total_seconds": 129261.824769
+    "total_seconds": 129842.855769
   },
-  "last_updated": "2026-10-26T02:55:25Z"
+  "last_updated": "2026-10-26T12:09:16Z"
 }
