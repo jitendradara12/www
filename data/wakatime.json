@@ -1,68 +1,88 @@
 {
-  "total_today": "1 hr 48 mins",
-  "total_seconds": 6507.088,
+  "total_today": "2 hrs 48 mins",
+  "total_seconds": 10116.459,
   "is_resting": false,
   "projects": [
     {
       "name": "lazyportal",
-      "text": "1 hr 47 mins",
-      "percent": 99.0
+      "text": "1 hr 48 mins",
+      "percent": 64.3
     },
     {
       "name": "24",
-      "text": "1 min",
-      "percent": 1.0
+      "text": "47 mins",
+      "percent": 28.3
+    },
+    {
+      "name": "goodix-5e0a",
+      "text": "12 mins",
+      "percent": 7.2
+    },
+    {
+      "name": "JUET-Nexus",
+      "text": "24 secs",
+      "percent": 0.2
+    },
+    {
+      "name": "grid-load",
+      "text": "0 secs",
+      "percent": 0.0
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "1 hr 47 mins",
-      "percent": 99.0
+      "text": "2 hrs 45 mins",
+      "percent": 98.0
     },
     {
       "name": "Codex Vscode",
-      "text": "1 min",
-      "percent": 1.0
+      "text": "3 mins",
+      "percent": 2.0
+    },
+    {
+      "name": "Neovim",
+      "text": "0 secs",
+      "percent": 0.0
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "1 hr 48 mins",
+      "text": "2 hrs 48 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "Nix",
-      "percent": 34.8
+      "percent": 34.3
     },
     {
       "name": "Python",
-      "percent": 15.5
+      "percent": 15.3
     },
     {
       "name": "CSS",
-      "percent": 13.5
+      "percent": 14.7
     },
     {
       "name": "JavaScript",
-      "percent": 9.8
+      "percent": 9.7
     },
     {
       "name": "C",
-      "percent": 6.3
+      "percent": 6.2
     },
     {
       "name": "TypeScript",
-      "percent": 5.6
+      "percent": 5.5
     }
   ],
   "rollup_7d": {
-    "total": "34 hrs 54 mins",
-    "daily_average": "1 hr 43 mins",
-    "total_seconds": 125652.453769
+    "total": "35 hrs 54 mins",
+    "daily_average": "1 hr 45 mins",
+    "total_seconds": 129261.824769
   },
-  "last_updated": "2026-10-25T20:19:14Z"
+  "last_updated": "2026-10-26T02:55:25Z"
 }
