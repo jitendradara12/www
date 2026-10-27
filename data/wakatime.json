@@ -1,63 +1,73 @@
 {
-  "total_today": "41 mins",
-  "total_seconds": 2498.205,
+  "total_today": "3 hrs 34 mins",
+  "total_seconds": 12871.345,
   "is_resting": false,
   "projects": [
     {
+      "name": "grid-load",
+      "text": "2 hrs 52 mins",
+      "percent": 80.5
+    },
+    {
       "name": "lazyportal",
       "text": "40 mins",
-      "percent": 98.1
+      "percent": 19.0
     },
     {
       "name": "omaconnect",
       "text": "48 secs",
-      "percent": 1.9
+      "percent": 0.4
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "41 mins",
-      "percent": 100.0
+      "text": "3 hrs 1 min",
+      "percent": 84.6
+    },
+    {
+      "name": "Neovim",
+      "text": "33 mins",
+      "percent": 15.4
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "41 mins",
+      "text": "3 hrs 34 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "CSS",
-      "percent": 28.4
+      "percent": 23.7
     },
     {
       "name": "JavaScript",
-      "percent": 18.7
+      "percent": 15.6
+    },
+    {
+      "name": "Python",
+      "percent": 14.7
     },
     {
       "name": "Nix",
-      "percent": 15.3
+      "percent": 12.8
     },
     {
       "name": "TypeScript",
-      "percent": 10.7
+      "percent": 8.9
     },
     {
       "name": "HTML",
-      "percent": 10.4
-    },
-    {
-      "name": "Java",
-      "percent": 7.4
+      "percent": 8.7
     }
   ],
   "rollup_7d": {
-    "total": "32 hrs 40 mins",
-    "daily_average": "1 hr 7 mins",
-    "total_seconds": 117653.205
+    "total": "35 hrs 33 mins",
+    "daily_average": "1 hr 14 mins",
+    "total_seconds": 128026.345
   },
-  "last_updated": "2026-10-26T22:13:39Z"
+  "last_updated": "2026-10-27T11:30:49Z"
 }
