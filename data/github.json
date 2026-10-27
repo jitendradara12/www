@@ -1,13 +1,13 @@
 {
-  "sha": "17db02fe6897e034812b049937a7f0f5c14f3260",
-  "short_sha": "17db02f",
-  "message": "chore(calendar): better ui",
-  "repo": "jitendradara12/lazyportal",
-  "repo_name": "lazyportal",
+  "sha": "a968e77c3e40229448c225648280659afc38c104",
+  "short_sha": "a968e77",
+  "message": "fix(ci): download specific csv file from kaggle instead of archive bu\u2026",
+  "repo": "jitendradara12/grid-load",
+  "repo_name": "grid-load",
   "branch": "master",
-  "date": "2026-10-25T16:19:21Z",
-  "relative_time": "3h ago",
-  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/17db02fe6897e034812b049937a7f0f5c14f3260",
-  "repo_url": "https://github.com/jitendradara12/lazyportal",
-  "last_updated": "2026-10-25T20:19:14Z"
+  "date": "2026-10-26T13:01:53Z",
+  "relative_time": "yesterday",
+  "commit_url": "https://github.com/jitendradara12/grid-load/commit/a968e77c3e40229448c225648280659afc38c104",
+  "repo_url": "https://github.com/jitendradara12/grid-load",
+  "last_updated": "2026-10-27T17:20:49Z"
 }
