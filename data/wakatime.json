@@ -1,58 +1,88 @@
 {
-  "total_today": "16 mins",
-  "total_seconds": 980.25,
-  "is_resting": true,
+  "total_today": "49 mins",
+  "total_seconds": 2980.522237,
+  "is_resting": false,
   "projects": [
     {
+      "name": "Hyprland-Dots",
+      "text": "20 mins",
+      "percent": 41.6
+    },
+    {
       "name": "lazyportal",
-      "text": "16 mins",
-      "percent": 100.0
+      "text": "18 mins",
+      "percent": 37.6
+    },
+    {
+      "name": "Hyprland",
+      "text": "10 mins",
+      "percent": 20.3
+    },
+    {
+      "name": "github",
+      "text": "15 secs",
+      "percent": 0.5
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "16 mins",
-      "percent": 100.0
+      "text": "28 mins",
+      "percent": 58.4
+    },
+    {
+      "name": "Neovim",
+      "text": "13 mins",
+      "percent": 27.4
+    },
+    {
+      "name": "Opencode Cli",
+      "text": "6 mins",
+      "percent": 14.0
+    },
+    {
+      "name": "OpenCode",
+      "text": "9 secs",
+      "percent": 0.3
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "16 mins",
+      "text": "49 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "CSS",
-      "percent": 24.2
+      "percent": 24.0
     },
     {
       "name": "JavaScript",
-      "percent": 24.2
+      "percent": 23.9
     },
     {
       "name": "Python",
-      "percent": 16.6
+      "percent": 16.4
     },
     {
       "name": "TypeScript",
-      "percent": 12.3
+      "percent": 13.0
     },
     {
       "name": "HTML",
-      "percent": 8.5
+      "percent": 8.4
     },
     {
       "name": "Java",
-      "percent": 6.3
+      "percent": 6.2
     }
   ],
   "rollup_7d": {
-    "total": "31 hrs 38 mins",
-    "daily_average": "1 hr 13 mins",
-    "total_seconds": 113913.933002
+    "total": "32 hrs 11 mins",
+    "daily_average": "1 hr 16 mins",
+    "total_seconds": 115914.205239
   },
-  "last_updated": "2026-10-27T21:45:03Z"
+  "last_updated": "2026-10-28T12:00:02Z"
 }
