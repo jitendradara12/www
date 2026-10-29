@@ -1,13 +1,13 @@
 {
-  "sha": "2981af38a72a5374453024a24bbd814e65cb5ac2",
-  "short_sha": "2981af3",
-  "message": "fix: T2 marks replacing T1 in cache",
+  "sha": "5626214a5cc86b0b1c9e10f69d7bb587bf893504",
+  "short_sha": "5626214",
+  "message": "chore(marks): better ui, recover lost marks",
   "repo": "jitendradara12/lazyportal",
   "repo_name": "lazyportal",
   "branch": "master",
-  "date": "2026-10-27T15:18:22Z",
-  "relative_time": "12h ago",
-  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/2981af38a72a5374453024a24bbd814e65cb5ac2",
+  "date": "2026-10-27T16:13:57Z",
+  "relative_time": "yesterday",
+  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/5626214a5cc86b0b1c9e10f69d7bb587bf893504",
   "repo_url": "https://github.com/jitendradara12/lazyportal",
-  "last_updated": "2026-10-28T03:44:17Z"
+  "last_updated": "2026-10-29T12:11:19Z"
 }

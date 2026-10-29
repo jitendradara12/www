@@ -1,17 +1,32 @@
 {
-  "total_today": "2 hrs 26 mins",
-  "total_seconds": 8789.286,
+  "total_today": "3 hrs 8 mins",
+  "total_seconds": 11325.337453,
   "is_resting": false,
   "projects": [
     {
       "name": "Downloads",
-      "text": "2 hrs 26 mins",
-      "percent": 99.7
+      "text": "2 hrs 49 mins",
+      "percent": 89.6
+    },
+    {
+      "name": "tmp",
+      "text": "10 mins",
+      "percent": 5.4
+    },
+    {
+      "name": "hokum",
+      "text": "7 mins",
+      "percent": 4.1
+    },
+    {
+      "name": "omarchy",
+      "text": "1 min",
+      "percent": 0.6
     },
     {
       "name": "contrigraph",
       "text": "16 secs",
-      "percent": 0.2
+      "percent": 0.1
     },
     {
       "name": "omaconnect",
@@ -27,47 +42,57 @@
   "editors": [
     {
       "name": "Firefox",
-      "text": "2 hrs 26 mins",
-      "percent": 100.0
+      "text": "2 hrs 58 mins",
+      "percent": 94.6
+    },
+    {
+      "name": "Opencode Cli",
+      "text": "9 mins",
+      "percent": 5.3
+    },
+    {
+      "name": "OpenCode",
+      "text": "19 secs",
+      "percent": 0.2
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "2 hrs 26 mins",
+      "text": "3 hrs 8 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "JavaScript",
-      "percent": 26.5
+      "percent": 24.9
     },
     {
       "name": "CSS",
-      "percent": 23.8
+      "percent": 22.3
     },
     {
       "name": "Python",
-      "percent": 18.2
+      "percent": 17.0
     },
     {
       "name": "TypeScript",
-      "percent": 10.9
+      "percent": 10.3
+    },
+    {
+      "name": "Nix",
+      "percent": 7.0
     },
     {
       "name": "Java",
-      "percent": 6.9
-    },
-    {
-      "name": "TeX",
-      "percent": 5.8
+      "percent": 6.5
     }
   ],
   "rollup_7d": {
-    "total": "31 hrs 13 mins",
-    "daily_average": "1 hr 14 mins",
-    "total_seconds": 112435.045222
+    "total": "31 hrs 56 mins",
+    "daily_average": "1 hr 17 mins",
+    "total_seconds": 114971.096675
   },
-  "last_updated": "2026-10-29T04:05:31Z"
+  "last_updated": "2026-10-29T12:11:18Z"
 }
