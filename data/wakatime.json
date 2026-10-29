@@ -1,123 +1,73 @@
 {
-  "total_today": "3 hrs 57 mins",
-  "total_seconds": 14234.00922,
+  "total_today": "2 hrs 26 mins",
+  "total_seconds": 8789.286,
   "is_resting": false,
   "projects": [
     {
       "name": "Downloads",
-      "text": "1 hr 40 mins",
-      "percent": 42.2
+      "text": "2 hrs 26 mins",
+      "percent": 99.7
     },
     {
-      "name": "Hyprland-Dots",
-      "text": "1 hr 23 mins",
-      "percent": 35.3
-    },
-    {
-      "name": "lazyportal",
-      "text": "18 mins",
-      "percent": 7.9
-    },
-    {
-      "name": "goodix-5e0a",
-      "text": "18 mins",
-      "percent": 7.8
-    },
-    {
-      "name": "Hyprland",
-      "text": "10 mins",
-      "percent": 4.2
-    },
-    {
-      "name": "NixOS-Hyprland",
-      "text": "5 mins",
-      "percent": 2.1
-    },
-    {
-      "name": "hyprdotfiles",
-      "text": "30 secs",
+      "name": "contrigraph",
+      "text": "16 secs",
       "percent": 0.2
     },
     {
-      "name": "github",
-      "text": "15 secs",
-      "percent": 0.1
-    },
-    {
       "name": "omaconnect",
-      "text": "9 secs",
+      "text": "6 secs",
       "percent": 0.1
     },
     {
-      "name": "grid-load",
-      "text": "0 secs",
+      "name": "www",
+      "text": "3 secs",
       "percent": 0.0
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "3 hrs 9 mins",
-      "percent": 79.7
-    },
-    {
-      "name": "Opencode Cli",
-      "text": "22 mins",
-      "percent": 9.7
-    },
-    {
-      "name": "Neovim",
-      "text": "17 mins",
-      "percent": 7.4
-    },
-    {
-      "name": "OpenCode",
-      "text": "7 mins",
-      "percent": 3.0
-    },
-    {
-      "name": "Antigravity",
-      "text": "27 secs",
-      "percent": 0.2
+      "text": "2 hrs 26 mins",
+      "percent": 100.0
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "3 hrs 57 mins",
+      "text": "2 hrs 26 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
-      "name": "CSS",
-      "percent": 23.1
+      "name": "JavaScript",
+      "percent": 26.5
     },
     {
-      "name": "JavaScript",
-      "percent": 23.0
+      "name": "CSS",
+      "percent": 23.8
     },
     {
       "name": "Python",
-      "percent": 15.8
+      "percent": 18.2
     },
     {
       "name": "TypeScript",
-      "percent": 12.5
-    },
-    {
-      "name": "HTML",
-      "percent": 8.1
+      "percent": 10.9
     },
     {
       "name": "Java",
-      "percent": 6.0
+      "percent": 6.9
+    },
+    {
+      "name": "TeX",
+      "percent": 5.8
     }
   ],
   "rollup_7d": {
-    "total": "35 hrs 19 mins",
-    "daily_average": "1 hr 20 mins",
-    "total_seconds": 127167.692222
+    "total": "31 hrs 13 mins",
+    "daily_average": "1 hr 14 mins",
+    "total_seconds": 112435.045222
   },
-  "last_updated": "2026-10-28T18:18:03Z"
+  "last_updated": "2026-10-29T04:05:31Z"
 }
