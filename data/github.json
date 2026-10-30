@@ -1,13 +1,13 @@
 {
-  "sha": "7a68e01380171db7d192617418a014c9e3b67fd7",
-  "short_sha": "7a68e01",
-  "message": "kitty",
-  "repo": "jitendradara12/Hyprland-Dots",
-  "repo_name": "Hyprland-Dots",
-  "branch": "main",
-  "date": "2026-10-28T12:07:24Z",
+  "sha": "5096414f82fd7c245d44d440aef77a0a778b53ec",
+  "short_sha": "5096414",
+  "message": "fix: route slow requests to proxy.",
+  "repo": "jitendradara12/lazyportal",
+  "repo_name": "lazyportal",
+  "branch": "master",
+  "date": "2026-10-29T14:12:51Z",
   "relative_time": "yesterday",
-  "commit_url": "https://github.com/jitendradara12/Hyprland-Dots/commit/7a68e01380171db7d192617418a014c9e3b67fd7",
-  "repo_url": "https://github.com/jitendradara12/Hyprland-Dots",
-  "last_updated": "2026-10-29T22:22:18Z"
+  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/5096414f82fd7c245d44d440aef77a0a778b53ec",
+  "repo_url": "https://github.com/jitendradara12/lazyportal",
+  "last_updated": "2026-10-30T21:53:30Z"
 }
