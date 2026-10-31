@@ -1,78 +1,88 @@
 {
-  "total_today": "2 hrs 14 mins",
-  "total_seconds": 8042.478,
+  "total_today": "3 hrs 58 mins",
+  "total_seconds": 14292.792,
   "is_resting": false,
   "projects": [
     {
+      "name": "lazyportal",
+      "text": "1 hr 13 mins",
+      "percent": 30.9
+    },
+    {
+      "name": "omaconnect",
+      "text": "58 mins",
+      "percent": 24.4
+    },
+    {
       "name": "goodix-5e0a",
-      "text": "48 mins",
-      "percent": 36.3
+      "text": "49 mins",
+      "percent": 20.8
     },
     {
       "name": "temp",
       "text": "44 mins",
-      "percent": 33.0
+      "percent": 18.6
     },
     {
-      "name": "omaconnect",
-      "text": "30 mins",
-      "percent": 22.9
+      "name": "omarchy-plugin-marketplace",
+      "text": "12 mins",
+      "percent": 5.2
     },
     {
-      "name": "lazyportal",
-      "text": "10 mins",
-      "percent": 7.8
+      "name": "Hyprland-Dots",
+      "text": "17 secs",
+      "percent": 0.1
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "1 hr 52 mins",
-      "percent": 84.0
+      "text": "3 hrs 36 mins",
+      "percent": 91.0
     },
     {
       "name": "Zed",
       "text": "21 mins",
-      "percent": 16.1
+      "percent": 9.0
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "2 hrs 14 mins",
+      "text": "3 hrs 58 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
       "name": "JavaScript",
-      "percent": 28.8
-    },
-    {
-      "name": "TypeScript",
-      "percent": 21.7
+      "percent": 27.0
     },
     {
       "name": "CSS",
-      "percent": 16.7
+      "percent": 22.1
+    },
+    {
+      "name": "TypeScript",
+      "percent": 20.3
     },
     {
       "name": "Nix",
-      "percent": 13.6
+      "percent": 12.7
     },
     {
       "name": "Python",
-      "percent": 8.2
+      "percent": 7.6
     },
     {
       "name": "Lua",
-      "percent": 5.9
+      "percent": 5.6
     }
   ],
   "rollup_7d": {
-    "total": "41 hrs 39 mins",
-    "daily_average": "2 hrs 6 mins",
-    "total_seconds": 149940.617675
+    "total": "43 hrs 23 mins",
+    "daily_average": "2 hrs 12 mins",
+    "total_seconds": 156190.931675
   },
-  "last_updated": "2026-10-31T11:36:34Z"
+  "last_updated": "2026-10-31T16:43:39Z"
 }
