@@ -1,13 +1,13 @@
 {
-  "sha": "5096414f82fd7c245d44d440aef77a0a778b53ec",
-  "short_sha": "5096414",
-  "message": "fix: route slow requests to proxy.",
-  "repo": "jitendradara12/lazyportal",
-  "repo_name": "lazyportal",
-  "branch": "master",
-  "date": "2026-10-29T14:12:51Z",
+  "sha": "b2858fc897a219f941d8b43b1e2ad88083484ffc",
+  "short_sha": "b2858fc",
+  "message": "refactor(dbus): parse structured busctl JSON instead of gdbus text; v\u2026",
+  "repo": "jitendradara12/omaconnect",
+  "repo_name": "omaconnect",
+  "branch": "main",
+  "date": "2026-10-29T20:34:15Z",
   "relative_time": "yesterday",
-  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/5096414f82fd7c245d44d440aef77a0a778b53ec",
-  "repo_url": "https://github.com/jitendradara12/lazyportal",
-  "last_updated": "2026-10-30T21:53:30Z"
+  "commit_url": "https://github.com/jitendradara12/omaconnect/commit/b2858fc897a219f941d8b43b1e2ad88083484ffc",
+  "repo_url": "https://github.com/jitendradara12/omaconnect",
+  "last_updated": "2026-10-31T11:36:35Z"
 }
