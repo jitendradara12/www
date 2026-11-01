@@ -1,13 +1,13 @@
 {
-  "sha": "b2858fc897a219f941d8b43b1e2ad88083484ffc",
-  "short_sha": "b2858fc",
-  "message": "refactor(dbus): parse structured busctl JSON instead of gdbus text; v\u2026",
-  "repo": "jitendradara12/omaconnect",
-  "repo_name": "omaconnect",
-  "branch": "main",
-  "date": "2026-10-29T20:34:15Z",
+  "sha": "97723188dd44469d1397da2f6e31d9676d1f545e",
+  "short_sha": "9772318",
+  "message": "fix(ci): test failed",
+  "repo": "jitendradara12/lazyportal",
+  "repo_name": "lazyportal",
+  "branch": "master",
+  "date": "2026-10-30T12:18:33Z",
   "relative_time": "yesterday",
-  "commit_url": "https://github.com/jitendradara12/omaconnect/commit/b2858fc897a219f941d8b43b1e2ad88083484ffc",
-  "repo_url": "https://github.com/jitendradara12/omaconnect",
-  "last_updated": "2026-10-31T11:36:35Z"
+  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/97723188dd44469d1397da2f6e31d9676d1f545e",
+  "repo_url": "https://github.com/jitendradara12/lazyportal",
+  "last_updated": "2026-11-01T03:59:28Z"
 }
