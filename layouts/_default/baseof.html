@@ -84,6 +84,28 @@
 (function() {
 	var toggle = document.getElementById('theme-toggle');
 	if (!toggle) return;
+	function flashbang() {
+		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+		var f = document.createElement('div');
+		f.className = 'flashbang';
+		f.innerHTML = '<span>FLASHBANG!</span>';
+		document.body.appendChild(f);
+		document.body.classList.add('stunned');
+		setTimeout(function() { document.body.classList.remove('stunned'); }, 2600);
+		f.addEventListener('animationend', function() { f.remove(); });
+		try {
+			// tinnitus: high sine that fades out with the flash
+			var ac = new (window.AudioContext || window.webkitAudioContext)();
+			var o = ac.createOscillator(), g = ac.createGain();
+			o.frequency.value = 4200;
+			g.gain.setValueAtTime(0.04, ac.currentTime);
+			g.gain.exponentialRampToValueAtTime(0.0001, ac.currentTime + 3);
+			o.connect(g).connect(ac.destination);
+			o.start();
+			o.stop(ac.currentTime + 3);
+			o.onended = function() { ac.close(); };
+		} catch (e) {}
+	}
 	toggle.addEventListener('click', function() {
 		var html = document.documentElement;
 		var isLight = html.getAttribute('data-theme') === 'light';
@@ -94,7 +116,34 @@
 		} else {
 			html.setAttribute('data-theme', 'light');
 			localStorage.setItem('theme', 'light');
+			flashbang();
 		}
+	});
+})();
+(function() {
+	// 0x43 decoder: hex → dec → ascii → binary → back
+	var el = document.getElementById('hex-logo');
+	if (!el) return;
+	var forms = ['0x43', '67', 'C', '0b1000011', '0x43'];
+	var glyphs = '0123456789abcdefx', running = false;
+	function scramble(to, done) {
+		var n = 0;
+		var t = setInterval(function() {
+			n++;
+			el.textContent = to.split('').map(function(c, i) {
+				return i < n / 2 ? c : glyphs[Math.floor(Math.random() * glyphs.length)];
+			}).join('');
+			if (n / 2 >= to.length) { clearInterval(t); el.textContent = to; done(); }
+		}, 30);
+	}
+	el.parentElement.addEventListener('mouseenter', function() {
+		if (running) return;
+		running = true;
+		var i = 1;
+		(function next() {
+			if (i >= forms.length) { running = false; return; }
+			scramble(forms[i++], function() { setTimeout(next, 450); });
+		})();
 	});
 })();
 (function() {
