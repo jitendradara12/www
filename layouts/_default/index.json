@@ -91,7 +91,7 @@
   {{- $preview := $raw | truncate 650 -}}
 
   {{- $targetUrl := .RelPermalink -}}
-  {{- if and (eq $sec "projects") .Params.read -}}
+  {{- if and (eq $sec "proj") .Params.read -}}
     {{- $targetUrl = .Params.read -}}
   {{- end -}}
 

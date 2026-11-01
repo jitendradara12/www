@@ -1,9 +1,11 @@
 <nav class="breadcrumb" aria-label="Breadcrumb">
   <ol>
     {{ range .Ancestors.Reverse }}
+    {{ if ne .RelPermalink "/me/projects/" }}
     <li>
       <a href="{{- .RelPermalink }}" title="{{- .LinkTitle }}">{{- .LinkTitle }}</a>
     </li>
+    {{ end }}
     {{ end }}
     <!-- the current page (not a link) -->
     <li class="active">

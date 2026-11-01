@@ -1,0 +1,22 @@
+{{- $dest := .Destination -}}
+{{- $img := .Page.Resources.GetMatch $dest -}}
+{{- if not $img -}}
+  {{- $img = resources.Get (strings.TrimPrefix "/" $dest) -}}
+{{- end -}}
+<img
+  src="{{ $dest | safeURL }}"
+  alt="{{ .Text }}"
+  {{- with .Title }} title="{{ . }}"{{ end -}}
+  {{- if $img -}}
+    {{- if reflect.IsImageResourceProcessable $img }} width="{{ $img.Width }}" height="{{ $img.Height }}"{{ end -}}
+  {{- else if strings.HasPrefix $dest "/gifs/" -}}
+    {{- if eq $dest "/gifs/67.gif" }} width="48" height="48"{{ else }} width="88" height="31"{{ end -}}
+  {{- else -}}
+    {{- $staticPath := printf "static/%s" (strings.TrimPrefix "/" $dest) -}}
+    {{- if fileExists $staticPath -}}
+      {{- with imageConfig $staticPath }} width="{{ .Width }}" height="{{ .Height }}"{{ end -}}
+    {{- end -}}
+  {{- end }}
+  loading="lazy"
+  decoding="async"
+/>

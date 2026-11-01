@@ -29,16 +29,16 @@
           <div class="project-links">
             {{ with .Params.github }}
             <a href="{{ . }}" target="_blank" rel="noopener">
-              <img src="/logos/github.svg" alt="" class="inline-icon-svg" />github
+              <img src="/logos/github.svg" alt="" width="13" height="13" class="inline-icon-svg" />github
             </a>
             {{ end }}
             {{ with .Params.live }}
             <a href="{{ . }}" {{ if hasPrefix . "http" }}target="_blank" rel="noopener"{{ end }}>
-              <img src="/logos/device-desktop.svg" alt="" class="inline-icon-svg" />live
+              <img src="/logos/device-desktop.svg" alt="" width="13" height="13" class="inline-icon-svg" />live
             </a>
             {{ end }}
             <a href="{{ .Params.read | default .RelPermalink }}">
-              <img src="/logos/book.svg" alt="" class="inline-icon-svg" />read
+              <img src="/logos/book.svg" alt="" width="13" height="13" class="inline-icon-svg" />read
             </a>
           </div>
           {{ with .Params.tech }}

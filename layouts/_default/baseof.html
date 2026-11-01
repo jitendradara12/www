@@ -196,6 +196,31 @@
 		observer.observe(el);
 	});
 })();
+(function() {
+	// Click-to-zoom on prose images (excludes icons, retro badges, avatars, photography feed)
+	var imgs = document.querySelectorAll('article.h-entry .e-content img:not(.inline-icon):not(.inline-icon-svg):not(.photo-img):not([src*="/gifs/"])');
+	if (!imgs.length) return;
+	var dlg;
+	imgs.forEach(function(img) {
+		if (img.closest('a')) return;
+		img.classList.add('is-zoomable');
+		img.addEventListener('click', function() {
+			if (!dlg) {
+				dlg = document.createElement('dialog');
+				dlg.className = 'lightbox is-prose-lb';
+				dlg.innerHTML = '<button class="lb-close" type="button" aria-label="close">esc</button><figure class="lb-figure"><div class="lb-frame"><img class="lb-img" alt="" /></div><figcaption class="lb-meta"><span class="lb-caption"></span></figcaption></figure>';
+				dlg.addEventListener('click', function(e) {
+					if (e.target === dlg || e.target.closest('.lb-close') || e.target.closest('.lb-figure')) dlg.close();
+				});
+				document.body.appendChild(dlg);
+			}
+			dlg.querySelector('.lb-img').src = img.currentSrc || img.src;
+			dlg.querySelector('.lb-img').alt = img.alt || '';
+			dlg.querySelector('.lb-caption').textContent = img.alt || '';
+			dlg.showModal();
+		});
+	});
+})();
 </script>
 </body>
 </html>
