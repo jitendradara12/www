@@ -147,9 +147,35 @@
 	});
 })();
 (function() {
+	// copy button on code blocks
+	if (!navigator.clipboard) return;
+	document.querySelectorAll('main pre').forEach(function(pre) {
+		var host = pre.closest('.highlight') || pre;
+		var btn = document.createElement('button');
+		btn.className = 'yank';
+		btn.type = 'button';
+		btn.textContent = 'copy';
+		btn.addEventListener('click', function() {
+			navigator.clipboard.writeText(pre.innerText.replace(/\n$/, '')).then(function() {
+				btn.textContent = 'yanked!';
+				btn.classList.add('is-done');
+				setTimeout(function() { btn.textContent = 'copy'; btn.classList.remove('is-done'); }, 1500);
+			});
+		});
+		host.classList.add('has-yank');
+		host.appendChild(btn);
+	});
+})();
+(function() {
+	var cards = document.querySelectorAll('.project-card, .now-card, .now-manual, blockquote, .home-link, nav:not(.breadcrumb)');
 	document.addEventListener('mousemove', function(e) {
 		document.documentElement.style.setProperty('--mouse-x', e.clientX + 'px');
 		document.documentElement.style.setProperty('--mouse-y', e.clientY + 'px');
+		for (var i = 0; i < cards.length; i++) {
+			var r = cards[i].getBoundingClientRect();
+			cards[i].style.setProperty('--card-x', (e.clientX - r.left) + 'px');
+			cards[i].style.setProperty('--card-y', (e.clientY - r.top) + 'px');
+		}
 	}, { passive: true });
 })();
 (function() {

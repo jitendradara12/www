@@ -33,7 +33,20 @@
       ];
       const taglineEl = document.querySelector('.home-tagline');
       if (taglineEl) {
-        taglineEl.textContent = taglines[Math.floor(Math.random() * taglines.length)];
+        let i = Math.floor(Math.random() * taglines.length), typing;
+        taglineEl.textContent = taglines[i];
+        taglineEl.title = 'click me';
+        taglineEl.addEventListener('click', () => {
+          clearInterval(typing);
+          i = (i + 1 + Math.floor(Math.random() * (taglines.length - 1))) % taglines.length;
+          const next = taglines[i];
+          let n = 0;
+          taglineEl.classList.add('is-typing');
+          typing = setInterval(() => {
+            taglineEl.textContent = next.slice(0, ++n);
+            if (n >= next.length) { clearInterval(typing); taglineEl.classList.remove('is-typing'); }
+          }, 28);
+        });
       }
     })();
   </script>
@@ -68,9 +81,10 @@
       {{- if $.Param "datesinlist" }}
       <span class="label-sm">
         <time datetime="{{ $displayDate.Format "2006-01-02T15:04:05Z07:00" }}">{{ $displayDate.Format "02 Jan 2006" }}</time>
-      </span><br>
+      </span>
       {{ end -}}
       <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      <span class="article-list-meta label-sm">{{ .ReadingTime }}m</span>
     </li>
     {{- end }}
   </ul>

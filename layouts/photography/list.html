@@ -7,16 +7,155 @@
 {{ .Content }}
 
 <div class="photo-feed">
-  {{ range .Pages.ByDate.Reverse }}
+  {{ range $i, $p := .Pages.ByDate.Reverse }}
   {{ $image := .Resources.GetMatch (.Params.cover | default "*") }}
   {{ $imgSrc := "" }}
   {{ if $image }}{{ $imgSrc = $image.RelPermalink }}{{ else if .Params.cover }}{{ $imgSrc = .Params.cover }}{{ end }}
 
   {{ if $imgSrc }}
-  <a href="{{ .RelPermalink }}" class="photo-link" title="{{ .Title }}">
-    <img src="{{ $imgSrc }}" alt="{{ .Title }}" class="u-photo photo-img" loading="lazy" />
-  </a>
+  {{ $exif := slice }}
+  {{ with .Params.exif }}
+    {{ with .camera }}{{ $exif = $exif | append . }}{{ end }}
+    {{ with .focal_length }}{{ $exif = $exif | append . }}{{ end }}
+    {{ with .aperture }}{{ $exif = $exif | append . }}{{ end }}
+    {{ with .shutter }}{{ $exif = $exif | append . }}{{ end }}
+    {{ with .iso }}{{ $exif = $exif | append (printf "ISO %v" .) }}{{ end }}
+  {{ end }}
+  <figure class="photo-item">
+    <a href="{{ .RelPermalink }}" class="photo-link" title="{{ .Title }}"
+       data-title="{{ .Title }}"
+       data-stamp="{{ .Date.Format "02 01 '06" }}"
+       data-exif="{{ delimit $exif " · " }}"
+       data-caption="{{ .Params.caption }}">
+      <img src="{{ $imgSrc }}" alt="{{ .Title }}" class="u-photo photo-img" loading="{{ if lt $i 4 }}eager{{ else }}lazy{{ end }}" decoding="async" />
+      <span class="photo-stamp" aria-hidden="true">{{ .Date.Format "02 01 '06" }}</span>
+    </a>
+    <figcaption class="photo-meta">
+      <span class="photo-meta-title">{{ .Title }}</span>
+      {{ with $exif }}<span class="photo-meta-exif">{{ delimit . " · " }}</span>{{ end }}
+    </figcaption>
+  </figure>
   {{ end }}
   {{ end }}
 </div>
+
+<dialog class="lightbox" id="lightbox" aria-label="photo viewer">
+  <button class="lb-close" type="button" aria-label="close">esc</button>
+  <button class="lb-nav lb-prev" type="button" aria-label="previous photo">←</button>
+  <figure class="lb-figure">
+    <div class="lb-frame">
+      <img class="lb-img" alt="" />
+      <span class="photo-stamp lb-stamp" aria-hidden="true"></span>
+    </div>
+    <figcaption class="lb-meta">
+      <span class="lb-title"></span>
+      <span class="lb-caption"></span>
+      <span class="lb-exif"></span>
+      <span class="lb-row"><span class="lb-count"></span><a class="lb-open" href="#">open page ↗</a></span>
+    </figcaption>
+  </figure>
+  <button class="lb-nav lb-next" type="button" aria-label="next photo">→</button>
+</dialog>
+
+<script>
+(function() {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.photo-link'));
+  var dlg = document.getElementById('lightbox');
+  if (!links.length || !dlg || !dlg.showModal) return;
+
+  document.querySelector('.photo-feed').classList.add('can-develop');
+  // "develop" each print once it is loaded and on screen
+  var io = 'IntersectionObserver' in window ? new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (!e.isIntersecting) return;
+      var img = e.target;
+      var done = function() { img.closest('.photo-item').classList.add('is-developed'); };
+      img.complete ? done() : img.addEventListener('load', done, { once: true });
+      io.unobserve(img);
+    });
+  }, { rootMargin: '0px 0px -10% 0px' }) : null;
+  links.forEach(function(a) {
+    var img = a.querySelector('img');
+    io ? io.observe(img) : a.parentElement.classList.add('is-developed');
+  });
+
+  var img = dlg.querySelector('.lb-img');
+  var cur = 0;
+  var vt = function(fn) { document.startViewTransition && !matchMedia('(prefers-reduced-motion: reduce)').matches ? document.startViewTransition(fn) : fn(); };
+
+  function fill(i) {
+    cur = (i + links.length) % links.length;
+    var a = links[cur];
+    img.src = a.querySelector('img').currentSrc || a.querySelector('img').src;
+    img.alt = a.dataset.title;
+    dlg.querySelector('.lb-title').textContent = a.dataset.title;
+    dlg.querySelector('.lb-caption').textContent = a.dataset.caption || '';
+    dlg.querySelector('.lb-exif').textContent = a.dataset.exif || '';
+    dlg.querySelector('.lb-stamp').textContent = a.dataset.stamp;
+    dlg.querySelector('.lb-count').textContent = String(cur + 1).padStart(2, '0') + ' / ' + String(links.length).padStart(2, '0');
+    dlg.querySelector('.lb-open').href = a.href;
+    [(cur + 1) % links.length, (cur - 1 + links.length) % links.length].forEach(function(j) {
+      new Image().src = links[j].querySelector('img').src;
+    });
+  }
+
+  function tag(el) { el.style.viewTransitionName = 'photo-hero'; }
+  function untag(el) { el.style.viewTransitionName = ''; }
+
+  function open(i) {
+    var thumb = links[i].querySelector('img');
+    tag(thumb);
+    vt(function() {
+      untag(thumb);
+      fill(i);
+      tag(img);
+      dlg.showModal();
+    });
+  }
+
+  function close() {
+    var thumb = links[cur].querySelector('img');
+    vt(function() {
+      untag(img);
+      dlg.close();
+      tag(thumb);
+    });
+    setTimeout(function() { untag(thumb); }, 600);
+  }
+
+  function step(d) {
+    img.classList.remove('is-in');
+    void img.offsetWidth;
+    fill(cur + d);
+    img.classList.add('is-in');
+  }
+
+  links.forEach(function(a, i) {
+    a.addEventListener('click', function(e) {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      e.preventDefault();
+      open(i);
+    });
+  });
+
+  dlg.querySelector('.lb-close').addEventListener('click', close);
+  dlg.querySelector('.lb-prev').addEventListener('click', function() { step(-1); });
+  dlg.querySelector('.lb-next').addEventListener('click', function() { step(1); });
+  dlg.addEventListener('click', function(e) { if (e.target === dlg || e.target.classList.contains('lb-figure')) close(); });
+  dlg.addEventListener('cancel', function(e) { e.preventDefault(); close(); });
+  dlg.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowRight' || e.key === 'l') { step(1); e.stopPropagation(); }
+    if (e.key === 'ArrowLeft' || e.key === 'h') { step(-1); e.stopPropagation(); }
+  });
+
+  var x0 = null;
+  dlg.addEventListener('touchstart', function(e) { x0 = e.touches[0].clientX; }, { passive: true });
+  dlg.addEventListener('touchend', function(e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1);
+    x0 = null;
+  });
+})();
+</script>
 {{ end }}

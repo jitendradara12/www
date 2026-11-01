@@ -21,9 +21,14 @@
 
 <li>
 	{{- if .Param "datesinlist" }}<span class="label-sm">
-      <time datetime="{{ $displayDate.Format "2006-01-02T15:04:05Z07:00" }}">{{ $displayDate.Format "2 Jan 2006" }}</time>
-    </span><br>{{ end -}}
+      <time datetime="{{ $displayDate.Format "2006-01-02T15:04:05Z07:00" }}">{{ $displayDate.Format "02 Jan 2006" }}</time>
+    </span>{{ end -}}
 	<a href="{{ .RelPermalink }}">{{ .Title }}</a>
+	{{- if .IsSection }}
+	<span class="article-list-meta label-sm is-dir">{{ len .RegularPagesRecursive }} {{ if eq (len .RegularPagesRecursive) 1 }}item{{ else }}items{{ end }}</span>
+	{{- else }}
+	<span class="article-list-meta label-sm">{{ .ReadingTime }}m</span>
+	{{- end }}
 </li>
 {{- end }}
 </ul>
