@@ -9,15 +9,19 @@ year = 'Aug. 2026'
 weight = 12
 +++
 
-### screenshot
+![screenshot of Omaconnect](https://raw.githubusercontent.com/jitendradara12/omaconnect/refs/heads/main/preview.png)
 
-![workflow diagram](https://raw.githubusercontent.com/jitendradara12/omaconnect/refs/heads/main/preview.png)
+the soon to be launched, Omarchy 4, was hot on the internet and I was hyped about it too as
+it had the potential to introduce a desktop very similar to mine to a very widespread audience.
 
-### What I did
+kde-connect is awesome and I love to show it to every friend of mine. but the kde-connect desktop app or the tray menu aren't much handy.
+but it can be fixed in Omarchy: with a simple quickshell plugin, I can make it however I want. and I'll have a user next door so why not.
 
-- Built a desktop status bar plugin for Omarchy Linux to monitor phone battery, 5G signal strength, and trigger quick actions (SMS, ping,
-  file sharing).
-- Used Bash scripting and Linux D-Bus to query device status from the KDE Connect daemon and handle automatic daemon restarts.
-- Published to the official Omarchy Plugin Registry, adding customizable keyboard shortcuts and Vim-style navigation for desktop users.
+even in my NixOS setup, developing for Omarchy is fairly simple just clone the repository and run quickshell with proper OMARCHY_PATH.
+the skills which comes with Omarchy repo were a bonus for my agents.
 
-...will write the full blog after more users give feedback/suggestion.
+I made the plugin, added it to omarchyplugins.com and just went to bed. expecting nothing. but the coolest thing about open source
+is that your mistakes will be corrected by someone else. the thought which never came in your mind will come in someone else's mind.
+Omaconnect went from "developed by me used by no one" to "developed by people used by people" and that's the best thing you could ask for.
+
+GitHub = https://github.com/jitendradara12/omaconnect

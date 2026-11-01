@@ -5,8 +5,11 @@ summary = "successfully reverse engineered an unsupported fingerprint sensor for
 tech = ['C', 'fprintd']
 github = 'https://github.com/jitendradara12/goodix-5e0a'
 read = '/writings/goodix-blog'
-live = 'https://github.com/goodix-fp-linux-dev/libfprint/pull/42'
 year = 'Sep 2026'
 rss_exclude = true
 weight = 10
 +++
+
+you've stumbled upon the wrong page.  
+blog: [writings/goodix-blog](/writings/goodix-blog)  
+github = https://github.com/jitendradara12/goodix-5e0a

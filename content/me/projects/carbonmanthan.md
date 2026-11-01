@@ -6,9 +6,11 @@ tech = ['django']
 github = 'https://github.com/jitendradara12/CarbonManthan'
 year = 'sep 2025'
 live = 'https://carbonmanthan.ddns.net/'
-weight = 18
+weight = 118
 +++
 
-- Developed the backend MVP for a carbon credit trading platform.
-- Implemented role-based access control (RBAC) to securely isolate routing and views for Buyers, Sellers, and Admins.
-- Deployed to a self-managed Linux VPS using Nginx and Gunicorn as a reverse proxy.
+### Idea
+- the carbon credits can act as cryptocurrency -- which will surely increase in value or the environment will get better.
+- planters can gain the credits with approved green projects. polluters can buy those credits for offsetting.
+
+MVP live at https://carbonmanthan.ddns.net/
