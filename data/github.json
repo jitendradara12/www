@@ -1,13 +1,13 @@
 {
-  "sha": "4e28a40c87dcb3ea511795daee368859d97881d5",
-  "short_sha": "4e28a40",
-  "message": "perf: bench and some improvements",
-  "repo": "jitendradara12/lazyportal",
-  "repo_name": "lazyportal",
-  "branch": "master",
-  "date": "2026-10-30T20:32:24Z",
+  "sha": "a9814d0506286b5eef4c48da9ee283a65539a97d",
+  "short_sha": "a9814d0",
+  "message": "Merge upstream JaKooLit/Hyprland-Dots changes",
+  "repo": "jitendradara12/Hyprland-Dots",
+  "repo_name": "Hyprland-Dots",
+  "branch": "main",
+  "date": "2026-10-31T20:04:05Z",
   "relative_time": "yesterday",
-  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/4e28a40c87dcb3ea511795daee368859d97881d5",
-  "repo_url": "https://github.com/jitendradara12/lazyportal",
-  "last_updated": "2026-11-01T12:34:38Z"
+  "commit_url": "https://github.com/jitendradara12/Hyprland-Dots/commit/a9814d0506286b5eef4c48da9ee283a65539a97d",
+  "repo_url": "https://github.com/jitendradara12/Hyprland-Dots",
+  "last_updated": "2026-11-02T14:37:56Z"
 }
