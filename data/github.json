@@ -1,13 +1,13 @@
 {
-  "sha": "a9814d0506286b5eef4c48da9ee283a65539a97d",
-  "short_sha": "a9814d0",
-  "message": "Merge upstream JaKooLit/Hyprland-Dots changes",
-  "repo": "jitendradara12/Hyprland-Dots",
-  "repo_name": "Hyprland-Dots",
-  "branch": "main",
-  "date": "2026-10-31T20:04:05Z",
-  "relative_time": "yesterday",
-  "commit_url": "https://github.com/jitendradara12/Hyprland-Dots/commit/a9814d0506286b5eef4c48da9ee283a65539a97d",
-  "repo_url": "https://github.com/jitendradara12/Hyprland-Dots",
-  "last_updated": "2026-11-02T14:37:56Z"
+  "sha": "72bde2fdacf09937b686a13753711ceba5094952",
+  "short_sha": "72bde2f",
+  "message": "Read PDF text without requiring stream async iteration",
+  "repo": "jitendradara12/lazyportal",
+  "repo_name": "lazyportal",
+  "branch": "master",
+  "date": "2026-11-03T09:07:39Z",
+  "relative_time": "4h ago",
+  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/72bde2fdacf09937b686a13753711ceba5094952",
+  "repo_url": "https://github.com/jitendradara12/lazyportal",
+  "last_updated": "2026-11-03T13:30:37Z"
 }
