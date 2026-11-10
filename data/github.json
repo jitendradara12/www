@@ -1,13 +1,13 @@
 {
-  "sha": "9a6a93e7d5607768b745bd4dc561a2928976d1a0",
-  "short_sha": "9a6a93e",
-  "message": "cleanup: delete leftovers and artifacts (#17)",
-  "repo": "jitendradara12/goodix-5e0a",
-  "repo_name": "goodix-5e0a",
-  "branch": "master",
-  "date": "2026-11-03T11:40:14Z",
-  "relative_time": "2d ago",
-  "commit_url": "https://github.com/jitendradara12/goodix-5e0a/commit/9a6a93e7d5607768b745bd4dc561a2928976d1a0",
-  "repo_url": "https://github.com/jitendradara12/goodix-5e0a",
-  "last_updated": "2026-11-05T13:54:11Z"
+  "sha": "4c647dd709cbaf8ea83abe9c74c7f8865a7a5a65",
+  "short_sha": "4c647dd",
+  "message": "fix: misleading lables & bug in text extraction",
+  "repo": "jitendradara12/resume-triage",
+  "repo_name": "resume-triage",
+  "branch": "main",
+  "date": "2026-11-09T10:46:53Z",
+  "relative_time": "14h ago",
+  "commit_url": "https://github.com/jitendradara12/resume-triage/commit/4c647dd709cbaf8ea83abe9c74c7f8865a7a5a65",
+  "repo_url": "https://github.com/jitendradara12/resume-triage",
+  "last_updated": "2026-11-10T01:06:36Z"
 }
