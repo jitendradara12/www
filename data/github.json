@@ -1,13 +1,13 @@
 {
-  "sha": "4c647dd709cbaf8ea83abe9c74c7f8865a7a5a65",
-  "short_sha": "4c647dd",
-  "message": "fix: misleading lables & bug in text extraction",
+  "sha": "797e6d68c1b9d60ccaa7a5ae24aa47ed5f30b4c8",
+  "short_sha": "797e6d6",
+  "message": "show filename of the resume, re-architect jev scoring",
   "repo": "jitendradara12/resume-triage",
   "repo_name": "resume-triage",
   "branch": "main",
-  "date": "2026-11-09T10:46:53Z",
-  "relative_time": "14h ago",
-  "commit_url": "https://github.com/jitendradara12/resume-triage/commit/4c647dd709cbaf8ea83abe9c74c7f8865a7a5a65",
+  "date": "2026-11-10T07:41:47Z",
+  "relative_time": "15h ago",
+  "commit_url": "https://github.com/jitendradara12/resume-triage/commit/797e6d68c1b9d60ccaa7a5ae24aa47ed5f30b4c8",
   "repo_url": "https://github.com/jitendradara12/resume-triage",
-  "last_updated": "2026-11-10T01:06:36Z"
+  "last_updated": "2026-11-10T22:45:32Z"
 }
