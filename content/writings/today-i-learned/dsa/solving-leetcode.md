@@ -1,7 +1,6 @@
 +++
 date = '2026-05-31T23:13:27+05:30'
 title = 'solving LeetCode'
-banner = '/logos/leetcode.svg'
 description = "My experiences and code solutions for interesting LeetCode problems (Integer to English Words, Container With Most Water)."
 keywords = ["LeetCode", "Python", "C", "Algorithms", "Problem Solving", "Data Structures"]
 +++
@@ -13,7 +12,7 @@ The most fun ones made me write the most bizarre of the solutions.
 
 ## 273. [Integer to English Words](https://leetcode.com/problems/integer-to-english-words)
 
-Looks easy enough but there're a lot of things which needs to to taken in consideration.
+Looks easy enough but there're a lot of things which needs to be taken into consideration.
 Although, my solution here is total ass, It works.
 
 ```python

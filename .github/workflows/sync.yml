@@ -9,6 +9,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: sync-stats
+  cancel-in-progress: false
+
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -35,6 +39,7 @@ jobs:
           if [ -n "$(git status --porcelain data/ static/avatar.jpg)" ]; then
             git add data/ static/avatar.jpg
             git commit -m "chore(data): auto-sync stats and avatar"
+            git pull --rebase
             git push
           else
             echo "No data changes detected. Everything up to date."

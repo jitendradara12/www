@@ -6,11 +6,9 @@ Uses only Python standard library.
 """
 
 import os
-import sys
 import json
 import base64
 import urllib.request
-import urllib.error
 import configparser
 import subprocess
 from datetime import datetime, timezone
@@ -168,21 +166,6 @@ def sync_wakatime():
     # Resting status if logged under 30 minutes today
     is_resting = total_seconds < 1800
 
-    # Idempotency guard: skip write if core stats haven't changed
-    if os.path.exists(out_file):
-        try:
-            with open(out_file, 'r', encoding='utf-8') as f:
-                old = json.load(f)
-            if (old.get('total_today') == total_today and
-                old.get('is_resting') == is_resting and
-                old.get('projects') == projects and
-                old.get('languages') == languages and
-                old.get('rollup_7d') == rollup_7d):
-                print(f"[wakatime] Stats unchanged ({total_today}). Skipping file write.")
-                return
-        except Exception:
-            pass
-
     payload = {
         'total_today': total_today,
         'total_seconds': total_seconds,
@@ -192,8 +175,20 @@ def sync_wakatime():
         'operating_systems': operating_systems,
         'languages': languages,
         'rollup_7d': rollup_7d,
-        'last_updated': datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
     }
+
+    # Idempotency guard: skip write if core stats haven't changed
+    if os.path.exists(out_file):
+        try:
+            with open(out_file, 'r', encoding='utf-8') as f:
+                old = json.load(f)
+            if all(old.get(k) == v for k, v in payload.items()):
+                print(f"[wakatime] Stats unchanged ({total_today}). Skipping file write.")
+                return
+        except Exception:
+            pass
+
+    payload['last_updated'] = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
 
     with open(out_file, 'w', encoding='utf-8') as f:
         json.dump(payload, f, indent=2)
@@ -214,7 +209,7 @@ def sync_github():
 
     try:
         events = fetch_json(
-            f'https://api.github.com/users/{GH_USER}/events?per_page=30',
+            f'https://api.github.com/users/{GH_USER}/events/public?per_page=30',
             headers
         )
     except Exception as e:
@@ -227,7 +222,7 @@ def sync_github():
 
     pushes = [
         ev for ev in events
-        if ev.get('type') == 'PushEvent' and ev.get('payload')
+        if ev.get('type') == 'PushEvent' and ev.get('public', True) and ev.get('payload')
     ]
     if not pushes:
         print("[github] No recent PushEvent found.")
@@ -238,10 +233,11 @@ def sync_github():
     pushes.sort(key=lambda e: e.get('created_at', ''), reverse=True)
     push = pushes[0]
 
-    payload = push.get('payload', {})
+    payload = push['payload']
     repo_full = push['repo']['name']
     repo_name = repo_full.split('/')[1] if '/' in repo_full else repo_full
-    branch = payload.get('ref', '').replace('refs/heads/', '')
+    ref = payload.get('ref', '')
+    branch = ref[len('refs/heads/'):] if ref.startswith('refs/heads/') else ''
     created_at = push.get('created_at')
 
     # Find HEAD SHA
@@ -255,13 +251,11 @@ def sync_github():
         return
 
     # Find commit message
-    commit_msg = None
+    commit_msg = commits[-1].get('message') if commits else None
     commit_date_str = created_at
-    if commits:
-        commit_msg = commits[-1].get('message')
 
     # If payload lacked commit message, fetch commit details directly
-    if not commit_msg:
+    if not (commit_msg or '').strip():
         try:
             commit_detail = fetch_json(
                 f'https://api.github.com/repos/{repo_full}/commits/{head_sha}',
@@ -274,15 +268,13 @@ def sync_github():
                 commit_date_str = author_date
         except Exception as e:
             print(f"[github] Notice: commit detail lookup skipped ({e})")
-            commit_msg = f"push to {branch or 'main'}"
 
     # Clean message (first line, strip whitespace, truncate if overly long)
-    if commit_msg:
-        commit_msg = commit_msg.split('\n')[0].strip()
-        if len(commit_msg) > 72:
-            commit_msg = commit_msg[:69] + '…'
+    first_line = (commit_msg or '').split('\n')[0].strip()
+    if first_line:
+        commit_msg = first_line[:69] + '…' if len(first_line) > 72 else first_line
     else:
-        commit_msg = f"push to {branch or 'main'}"
+        commit_msg = f"push to {branch or repo_name}"
 
     # Calculate relative time
     dt = None
@@ -294,7 +286,7 @@ def sync_github():
         except Exception:
             pass
 
-    short_sha = head_sha[:7] if head_sha else ''
+    short_sha = head_sha[:7]
     commit_url = f"https://github.com/{repo_full}/commit/{head_sha}"
     repo_url = f"https://github.com/{repo_full}"
 

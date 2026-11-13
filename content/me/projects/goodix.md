@@ -4,12 +4,11 @@ title = 'Goodix 27c6:5e0a'
 summary = "successfully reverse engineered an unsupported fingerprint sensor for linux using AI agents to write fprintd compatible drivers"
 tech = ['C', 'fprintd']
 github = 'https://github.com/jitendradara12/goodix-5e0a'
-read = '/writings/goodix-blog'
+read = '/writings/goodix-blog/'
 year = 'Sep 2026'
-rss_exclude = true
 weight = 10
 +++
 
 you've stumbled upon the wrong page.  
-blog: [writings/goodix-blog](/writings/goodix-blog)  
+blog: [writings/goodix-blog](/writings/goodix-blog/)  
 github = https://github.com/jitendradara12/goodix-5e0a

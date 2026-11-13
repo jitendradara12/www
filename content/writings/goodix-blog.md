@@ -2,7 +2,6 @@
 date = '2026-09-12T18:09:57+05:30'
 title = 'the agents gaslit me into reverse engineering an unsupported fingerprint sensor for Linux'
 description = "successfully reverse engineered an unsupported fingerprint sensor (goodix 27c6:5e0a) for linux using AI agents to write fprintd compatible drivers"
-rss_exclude = false
 math = true
 +++
 

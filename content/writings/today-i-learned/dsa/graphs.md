@@ -9,8 +9,9 @@ rss_exclude = true
 
 ## DFS
 
-| time              | O(n)         |
+| Property          | Details      |
 | ----------------- | ------------ |
+| time              | O(n)         |
 | When Recursive    | **Set**      |
 | Without Recursion | Stack needed |
 
@@ -18,16 +19,18 @@ rss_exclude = true
 
 > Usually, non recursive.
 
-| time           | O(n)              |
+| Property       | Details           |
 | -------------- | ----------------- |
+| time           | O(n)              |
 | Data Structure | **Queue and Set** |
 
 ---
 
 ## Dijkstra's Shortest Path
 
-| time           | O(ElogV)                             |
+| Property       | Details                              |
 | -------------- | ------------------------------------ |
+| time           | O(ElogV)                             |
 | Data Structure | **Heap** _(priority queue)_ and Sets |
 
 > E:Edges, V:Vertices
