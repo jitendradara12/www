@@ -41,14 +41,8 @@ enableRobotsTXT = true
   filename = "sitemap.xml"
 
 [[menu.main]]
-  name = "Home"
-  url = '/'
-  weight = 0
-
-
-[[menu.main]]
   name = "about"
-  url = '/me'
+  url = '/me/'
   weight = 1
 
 

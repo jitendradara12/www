@@ -11,6 +11,11 @@
             type="text"
             id="ts-input"
             class="ts-input"
+            role="combobox"
+            aria-label="Search pages and commands"
+            aria-autocomplete="list"
+            aria-controls="ts-results"
+            aria-expanded="false"
             placeholder=""
             autocomplete="off"
             autocorrect="off"
@@ -18,7 +23,7 @@
             spellcheck="false"
           />
         </div>
-        <ul class="ts-results" id="ts-results" role="listbox"></ul>
+        <ul class="ts-results" id="ts-results" role="listbox" aria-label="Results"></ul>
       </div>
 
       <!-- Right pane: preview -->
@@ -60,11 +65,13 @@
   var triggerBtn = document.getElementById('cmd-trigger');
   var chordEl = document.getElementById('vim-chord');
 
+  var modalEl = backdrop.querySelector('.ts-modal');
   var indexData = null;
-  var loadingIndex = false;
+  var indexPromise = null;
   var filtered = [];
   var selectedIdx = 0;
   var isOpen = false;
+  var previousFocus = null;
 
   var builtinCommands = [
     {
@@ -144,22 +151,30 @@
     }
   }
 
-  function loadIndex(cb) {
-    if (indexData) return cb(indexData);
-    if (loadingIndex) return;
-    loadingIndex = true;
-    fetch('/index.json')
-      .then(function(r) { return r.json(); })
-      .then(function(data) {
-        indexData = data.concat(builtinCommands);
-        loadingIndex = false;
-        cb(indexData);
-      })
-      .catch(function() {
-        indexData = builtinCommands;
-        loadingIndex = false;
-        cb(indexData);
-      });
+  function setBackgroundInert(state) {
+    document.querySelectorAll('body > nav, body > main, body > footer').forEach(function(el) {
+      el.inert = state;
+    });
+  }
+
+  function loadIndex() {
+    if (indexData) return Promise.resolve(indexData);
+    if (!indexPromise) {
+      indexPromise = fetch('/index.json')
+        .then(function(r) {
+          if (!r.ok) throw new Error(r.status);
+          return r.json();
+        })
+        .then(function(data) {
+          indexData = data.concat(builtinCommands);
+          return indexData;
+        })
+        .catch(function() {
+          indexData = builtinCommands;
+          return indexData;
+        });
+    }
+    return indexPromise;
   }
 
   // Fuzzy match scorer + character highlighter
@@ -258,7 +273,7 @@
     modeEl.textContent = isCommandMode ? 'COMMAND' : 'INSERT';
 
     var q = isCommandMode ? rawQ.slice(1).trim() : rawQ;
-    var list = indexData || [];
+    var list = indexData || builtinCommands;
 
     if (!rawQ) {
       filtered = list.map(function(item) {
@@ -268,9 +283,6 @@
       var scored = [];
       for (var i = 0; i < list.length; i++) {
         var it = list[i];
-        if (isCommandMode && it.section !== 'cmd' && rawQ.length > 1) {
-          // Still allow matching pages on :w, :now, etc., but boost commands
-        }
         var mTitle = fuzzyScore(q, it.title);
         var mPath = fuzzyScore(q, it.path || '');
         var mMeta = fuzzyScore(q, (it.meta || '') + ' ' + (it.preview || ''));
@@ -310,7 +322,7 @@
       var it = entry.item;
       var activeClass = r === selectedIdx ? ' is-selected' : '';
       var badge = it.section || 'page';
-      html += '<li class="ts-item' + activeClass + '" data-idx="' + r + '" role="option" aria-selected="' + (r === selectedIdx) + '">' +
+      html += '<li id="ts-opt-' + r + '" class="ts-item' + activeClass + '" data-idx="' + r + '" role="option" aria-selected="' + (r === selectedIdx) + '">' +
         '<span class="ts-item-badge ts-badge-' + escapeHtml(badge) + '">' + escapeHtml(badge) + '</span>' +
         '<span class="ts-item-title">' + highlightText(it.title, entry.titleIndices) + '</span>' +
         '<span class="ts-item-path">' + highlightText(it.path || '', entry.pathIndices) + '</span>' +
@@ -318,20 +330,33 @@
     }
     resultsEl.innerHTML = html || '<li class="ts-empty-item">No matches found</li>';
 
+    if (filtered.length) {
+      input.setAttribute('aria-activedescendant', 'ts-opt-' + selectedIdx);
+    } else {
+      input.removeAttribute('aria-activedescendant');
+    }
+
     var activeEl = resultsEl.querySelector('.is-selected');
     if (activeEl) activeEl.scrollIntoView({ block: 'nearest' });
 
     renderPreview(filtered[selectedIdx] ? filtered[selectedIdx].item : null);
   }
 
-  function executeItem(item) {
-    if (!item) return;
-    var rawQ = input.value.trim();
-    if (rawQ === ':q') {
+  function checkSpecialQuit(raw) {
+    if (raw === ':q') {
       statusMsgEl.textContent = 'E37: No write since last change (add ! to override)';
       statusMsgEl.classList.add('ts-error');
-      return;
+      return true;
     }
+    if (raw === ':q!' || raw === ':wq' || raw === ':x') {
+      closeTelescope();
+      return true;
+    }
+    return false;
+  }
+
+  function executeItem(item) {
+    if (!item || checkSpecialQuit(input.value.trim())) return;
     if (item.isCmd === 'theme') {
       var toggle = document.getElementById('theme-toggle');
       if (toggle) toggle.click();
@@ -353,16 +378,20 @@
   }
 
   function openTelescope(initialVal) {
+    if (!isOpen) previousFocus = document.activeElement;
     isOpen = true;
     backdrop.hidden = false;
     backdrop.setAttribute('aria-hidden', 'false');
+    setBackgroundInert(true);
     input.value = initialVal || '';
+    input.setAttribute('aria-expanded', 'true');
     selectedIdx = 0;
     statusMsgEl.classList.remove('ts-error');
     statusMsgEl.textContent = '';
-    loadIndex(function() {
-      renderResults();
-      input.focus();
+    renderResults();
+    input.focus();
+    loadIndex().then(function() {
+      if (isOpen) renderResults();
     });
   }
 
@@ -370,7 +399,12 @@
     isOpen = false;
     backdrop.hidden = true;
     backdrop.setAttribute('aria-hidden', 'true');
-    input.blur();
+    input.setAttribute('aria-expanded', 'false');
+    input.removeAttribute('aria-activedescendant');
+    setBackgroundInert(false);
+    var target = (previousFocus && previousFocus !== document.body && typeof previousFocus.focus === 'function' && previousFocus.isConnected) ? previousFocus : triggerBtn;
+    previousFocus = null;
+    if (target) target.focus();
   }
 
   if (triggerBtn) {
@@ -397,8 +431,13 @@
       selectedIdx = idx;
       var items = resultsEl.querySelectorAll('.ts-item');
       items.forEach(function(el, i) {
-        el.classList.toggle('is-selected', i === selectedIdx);
+        var isSel = i === selectedIdx;
+        el.classList.toggle('is-selected', isSel);
+        el.setAttribute('aria-selected', String(isSel));
       });
+      if (filtered.length) {
+        input.setAttribute('aria-activedescendant', 'ts-opt-' + selectedIdx);
+      }
       counterEl.textContent = (selectedIdx + 1) + '/' + filtered.length;
       renderPreview(filtered[selectedIdx] ? filtered[selectedIdx].item : null);
     }
@@ -416,6 +455,8 @@
   var gTimer = null;
 
   document.addEventListener('keydown', function(e) {
+    if (!isOpen && document.querySelector('dialog[open]')) return;
+
     // Ctrl+K or Cmd+K anywhere toggles Telescope
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
       e.preventDefault();
@@ -425,6 +466,24 @@
     }
 
     if (isOpen) {
+      if (e.key === 'Tab') {
+        var focusables = Array.prototype.slice.call(
+          modalEl.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])')
+        ).filter(function(el) {
+          return el.offsetParent !== null || el === document.activeElement;
+        });
+        if (!focusables.length) { e.preventDefault(); return; }
+        var first = focusables[0];
+        var last = focusables[focusables.length - 1];
+        if (e.shiftKey && (document.activeElement === first || !modalEl.contains(document.activeElement))) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && (document.activeElement === last || !modalEl.contains(document.activeElement))) {
+          e.preventDefault();
+          first.focus();
+        }
+        return;
+      }
       if (e.key === 'Escape' || (e.ctrlKey && e.key === '[')) {
         e.preventDefault();
         closeTelescope();
@@ -448,16 +507,7 @@
       }
       if (e.key === 'Enter') {
         e.preventDefault();
-        var raw = input.value.trim();
-        if (raw === ':q') {
-          statusMsgEl.textContent = 'E37: No write since last change (add ! to override)';
-          statusMsgEl.classList.add('ts-error');
-          return;
-        }
-        if (raw === ':q!' || raw === ':wq' || raw === ':x') {
-          closeTelescope();
-          return;
-        }
+        if (checkSpecialQuit(input.value.trim())) return;
         if (filtered[selectedIdx]) {
           executeItem(filtered[selectedIdx].item);
         }
@@ -468,22 +518,16 @@
 
     // Ignore normal-mode keys when typing in inputs or when modifier keys are held
     var tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
-    if (tag === 'input' || tag === 'textarea' || e.target.isContentEditable) return;
+    if (tag === 'input' || tag === 'textarea' || tag === 'select' || (e.target && e.target.isContentEditable)) return;
     if (e.ctrlKey || e.metaKey || e.altKey) return;
 
-    if (e.key === '/') {
+    if (e.key === 'Shift' || e.key === 'Control' || e.key === 'Alt' || e.key === 'Meta') return;
+
+    if (e.key === '/' || e.key === ':' || e.key === '?') {
       e.preventDefault();
-      openTelescope('');
-      return;
-    }
-    if (e.key === ':') {
-      e.preventDefault();
-      openTelescope(':');
-      return;
-    }
-    if (e.key === '?') {
-      e.preventDefault();
-      openTelescope(':keymaps');
+      pendingG = false;
+      clearTimeout(gTimer);
+      openTelescope(e.key === '/' ? '' : (e.key === ':' ? ':' : ':keymaps'));
       return;
     }
 

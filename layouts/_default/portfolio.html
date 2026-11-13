@@ -1,4 +1,4 @@
-{{ define "title" -}} {{- end }} {{ define "main" -}}
+{{ define "main" -}}
 <div class="portfolio-wrapper">
   <section class="portfolio-hero">
     <h1 class="display-lg">
@@ -17,9 +17,13 @@
     <div class="project-list">
       {{- with .Site.GetPage "/me/projects" }}
       {{- range .Pages.ByWeight }}
+      {{- $readUrl := .RelPermalink }}
+      {{- with .Params.read }}
+        {{- with site.GetPage . }}{{ $readUrl = .RelPermalink }}{{ else }}{{ $readUrl = . }}{{ end }}
+      {{- end }}
       <article class="project-card">
         <div class="project-card-head">
-          <h3><a href="{{ .Params.read | default .RelPermalink }}">{{ .Title }}</a></h3>
+          <h3><a href="{{ $readUrl }}">{{ .Title }}</a></h3>
           {{ with .Params.year }}<span class="project-year">{{ . }}</span>{{ end }}
         </div>
 
@@ -37,7 +41,7 @@
               <img src="/logos/device-desktop.svg" alt="" width="13" height="13" class="inline-icon-svg" />live
             </a>
             {{ end }}
-            <a href="{{ .Params.read | default .RelPermalink }}">
+            <a href="{{ $readUrl }}">
               <img src="/logos/book.svg" alt="" width="13" height="13" class="inline-icon-svg" />read
             </a>
           </div>

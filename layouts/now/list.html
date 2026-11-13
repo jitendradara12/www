@@ -1,4 +1,3 @@
-{{ define "title" }}{{ end }}
 {{ define "main" }}
 
 {{/* ── Language color palette (curated to harmonize with site theme) ── */}}
@@ -67,11 +66,14 @@
   <section class="now-section">
     <h2 class="headline-md">{{ if .is_resting }}wakatime (past 7 days){{ else }}wakatime today{{ end }}</h2>
     <div class="now-card">
+      {{- $wtMeta := slice -}}
+      {{- with .operating_systems }}{{ $wtMeta = $wtMeta | append (index . 0).name }}{{ end -}}
+      {{- if .is_resting }}{{ with .rollup_7d.daily_average }}{{ $wtMeta = $wtMeta | append (printf "daily avg: %s" .) }}{{ end }}{{ end -}}
       <div class="now-wt-hero">
         <span class="now-wt-total">{{ if .is_resting }}{{ .rollup_7d.total }}{{ else }}{{ .total_today }}{{ end }}</span>
-        {{ with .operating_systems }}
-        <span class="now-wt-os">{{ (index . 0).name }}{{ if hugo.Data.wakatime.is_resting }} · daily avg: {{ hugo.Data.wakatime.rollup_7d.daily_average }}{{ end }}</span>
-        {{ end }}
+        {{- with $wtMeta }}
+        <span class="now-wt-os">{{ delimit . " · " }}</span>
+        {{- end }}
       </div>
 
       {{ if gt (len .projects) 0 }}

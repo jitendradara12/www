@@ -28,25 +28,28 @@
 	<link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}">
 	<script>
 		(function() {
-			var t = localStorage.getItem('theme');
-			if (t === 'light') {
-				document.documentElement.setAttribute('data-theme', 'light');
-				document.querySelector('meta[name="theme-color"]').content = '#f7f6f3';
-			}
+			try {
+				if (localStorage.getItem('theme') === 'light') {
+					document.documentElement.setAttribute('data-theme', 'light');
+					document.querySelector('meta[name="theme-color"]').content = '#f7f6f3';
+				}
+			} catch (e) {}
 		})();
 	</script>
 	{{ if .Params.math -}}
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
-			renderMathInElement(document.body, {
-				delimiters: [
-					{left: "$$", right: "$$", display: true},
-					{left: "$", right: "$", display: false}
-				]
-			});
+			if (typeof renderMathInElement === "function") {
+				renderMathInElement(document.querySelector(".e-content") || document.body, {
+					delimiters: [
+						{left: "$$", right: "$$", display: true},
+						{left: "$", right: "$", display: false}
+					]
+				});
+			}
 		});
 	</script>
 	{{- end }}
@@ -58,11 +61,11 @@
 {{- if and (.Param "breadcrumb") (not .IsHome) }}
   {{ partial "breadcrumb.html" . }}
 {{ end -}}
-<header>{{ block "title" . }}{{ end }}</header>
+{{ block "title" . }}{{ end }}
 <article {{- if .IsPage }} class="h-entry"{{ end }}>
 {{- if .IsPage -}}
   <a class="u-url" href="{{ .Permalink }}" hidden></a>
-  <a class="p-author h-card" href="{{ .Site.BaseURL }}/" hidden>{{ .Site.Params.author }}</a>
+  <a class="p-author h-card" href="{{ site.Home.Permalink }}" hidden>{{ .Site.Params.author }}</a>
   {{- if .Date -}}
   <time class="dt-published" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}" hidden>{{ .Date.Format "2 Jan 2006" }}</time>
   {{- end -}}
@@ -83,6 +86,18 @@
 <script>
 (function() {
 	var toggle = document.getElementById('theme-toggle');
+	var metaTheme = document.querySelector('meta[name="theme-color"]');
+	function applyTheme(isLight) {
+		var html = document.documentElement;
+		if (isLight) {
+			html.setAttribute('data-theme', 'light');
+		} else {
+			html.removeAttribute('data-theme');
+		}
+		if (metaTheme) metaTheme.content = isLight ? '#f7f6f3' : '#060814';
+		if (toggle) toggle.setAttribute('aria-pressed', String(isLight));
+	}
+	applyTheme(document.documentElement.getAttribute('data-theme') === 'light');
 	if (!toggle) return;
 	function flashbang() {
 		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -107,17 +122,13 @@
 		} catch (e) {}
 	}
 	toggle.addEventListener('click', function() {
-		var html = document.documentElement;
-		var isLight = html.getAttribute('data-theme') === 'light';
-		document.querySelector('meta[name="theme-color"]').content = isLight ? '#060814' : '#f7f6f3';
-		if (isLight) {
-			html.removeAttribute('data-theme');
-			localStorage.setItem('theme', 'dark');
-		} else {
-			html.setAttribute('data-theme', 'light');
-			localStorage.setItem('theme', 'light');
-			flashbang();
-		}
+		var nextLight = document.documentElement.getAttribute('data-theme') !== 'light';
+		applyTheme(nextLight);
+		try { localStorage.setItem('theme', nextLight ? 'light' : 'dark'); } catch (e) {}
+		if (nextLight) flashbang();
+	});
+	window.addEventListener('storage', function(e) {
+		if (e.key === 'theme') applyTheme(e.newValue === 'light');
 	});
 })();
 (function() {
@@ -126,6 +137,7 @@
 	if (!el) return;
 	var forms = ['0x43', '67', 'C', '0b1000011', '0x43'];
 	var glyphs = '0123456789abcdefx', running = false;
+	var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 	function scramble(to, done) {
 		var n = 0;
 		var t = setInterval(function() {
@@ -136,46 +148,69 @@
 			if (n / 2 >= to.length) { clearInterval(t); el.textContent = to; done(); }
 		}, 30);
 	}
-	el.parentElement.addEventListener('mouseenter', function() {
-		if (running) return;
+	function run() {
+		if (running || reducedMotion.matches) return;
 		running = true;
 		var i = 1;
 		(function next() {
 			if (i >= forms.length) { running = false; return; }
 			scramble(forms[i++], function() { setTimeout(next, 450); });
 		})();
-	});
+	}
+	el.parentElement.addEventListener('mouseenter', run);
+	el.parentElement.addEventListener('focus', run);
 })();
 (function() {
 	// copy button on code blocks
 	if (!navigator.clipboard) return;
 	document.querySelectorAll('main pre').forEach(function(pre) {
-		var host = pre.closest('.highlight') || pre;
+		var host = pre.closest('.highlight');
+		if (!host) {
+			host = document.createElement('div');
+			host.className = 'highlight';
+			pre.parentNode.insertBefore(host, pre);
+			host.appendChild(pre);
+		}
 		var btn = document.createElement('button');
 		btn.className = 'yank';
 		btn.type = 'button';
 		btn.textContent = 'copy';
+		var resetTimer;
+		function setLabel(text, done) {
+			clearTimeout(resetTimer);
+			btn.textContent = text;
+			btn.classList.toggle('is-done', done);
+			resetTimer = setTimeout(function() { btn.textContent = 'copy'; btn.classList.remove('is-done'); }, 1500);
+		}
 		btn.addEventListener('click', function() {
-			navigator.clipboard.writeText(pre.innerText.replace(/\n$/, '')).then(function() {
-				btn.textContent = 'yanked!';
-				btn.classList.add('is-done');
-				setTimeout(function() { btn.textContent = 'copy'; btn.classList.remove('is-done'); }, 1500);
-			});
+			var text = (pre.querySelector('code') || pre).innerText.replace(/\n$/, '');
+			navigator.clipboard.writeText(text).then(
+				function() { setLabel('yanked!', true); },
+				function() { setLabel('failed', false); }
+			);
 		});
 		host.classList.add('has-yank');
 		host.appendChild(btn);
 	});
 })();
 (function() {
-	var cards = document.querySelectorAll('.project-card, .now-card, .now-manual, blockquote, .home-link, nav:not(.breadcrumb)');
+	if (!window.matchMedia('(hover: hover)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+	var cards = document.querySelectorAll('.project-card, .now-card, .now-manual, nav:not(.breadcrumb)');
+	var rafId = 0, lastX = 0, lastY = 0;
 	document.addEventListener('mousemove', function(e) {
-		document.documentElement.style.setProperty('--mouse-x', e.clientX + 'px');
-		document.documentElement.style.setProperty('--mouse-y', e.clientY + 'px');
-		for (var i = 0; i < cards.length; i++) {
-			var r = cards[i].getBoundingClientRect();
-			cards[i].style.setProperty('--card-x', (e.clientX - r.left) + 'px');
-			cards[i].style.setProperty('--card-y', (e.clientY - r.top) + 'px');
-		}
+		lastX = e.clientX;
+		lastY = e.clientY;
+		if (rafId) return;
+		rafId = requestAnimationFrame(function() {
+			rafId = 0;
+			document.documentElement.style.setProperty('--mouse-x', lastX + 'px');
+			document.documentElement.style.setProperty('--mouse-y', lastY + 'px');
+			for (var i = 0; i < cards.length; i++) {
+				var r = cards[i].getBoundingClientRect();
+				cards[i].style.setProperty('--card-x', (lastX - r.left) + 'px');
+				cards[i].style.setProperty('--card-y', (lastY - r.top) + 'px');
+			}
+		});
 	}, { passive: true });
 })();
 (function() {
@@ -208,7 +243,8 @@
 			if (!dlg) {
 				dlg = document.createElement('dialog');
 				dlg.className = 'lightbox is-prose-lb';
-				dlg.innerHTML = '<button class="lb-close" type="button" aria-label="close">esc</button><figure class="lb-figure"><div class="lb-frame"><img class="lb-img" alt="" /></div><figcaption class="lb-meta"><span class="lb-caption"></span></figcaption></figure>';
+				dlg.setAttribute('aria-label', 'image preview');
+				dlg.innerHTML = '<button class="lb-close" type="button" aria-label="esc (close)" title="close (Esc)">esc</button><figure class="lb-figure"><div class="lb-frame"><img class="lb-img" alt="" /></div><figcaption class="lb-meta"><span class="lb-caption"></span></figcaption></figure>';
 				dlg.addEventListener('click', function(e) {
 					if (e.target === dlg || e.target.closest('.lb-close') || e.target.closest('.lb-figure')) dlg.close();
 				});

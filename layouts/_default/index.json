@@ -21,6 +21,15 @@
   "preview" "> I live in the terminal.\n> sometimes, I touch grass too.\n> I build a lot of stuff and some of it actually works."
 ) -}}
 
+{{- $nowPreview := "" -}}
+{{- with site.GetPage "/now" -}}
+  {{- $nowLines := slice -}}
+  {{- with .Params.location }}{{ $nowLines = $nowLines | append (printf "location = %q" .) }}{{ end -}}
+  {{- with .Params.building }}{{ $nowLines = $nowLines | append (printf "building = %q" .) }}{{ end -}}
+  {{- with .Params.reading }}{{ $nowLines = $nowLines | append (printf "reading  = %q" .) }}{{ end -}}
+  {{- $nowPreview = delimit $nowLines "\n" -}}
+{{- end -}}
+
 {{- $items = $items | append (dict
   "title" "now"
   "path" "~/now"
@@ -28,7 +37,7 @@
   "section" "core"
   "date" "live"
   "meta" "wakatime + github swr"
-  "preview" (printf "location = %q\nbuilding = %q" (site.GetPage "/now").Params.location (site.GetPage "/now").Params.building)
+  "preview" $nowPreview
 ) -}}
 
 {{- $items = $items | append (dict
@@ -84,15 +93,20 @@
     {{- $metaParts = $metaParts | append (printf "lastmod = %q" (.Lastmod.Format "2006-01-02")) -}}
   {{- end -}}
 
+  {{- $summary := .Params.summary | default .Description | default .Params.caption | default "" | htmlUnescape | strings.TrimSpace -}}
   {{- $raw := .Plain | htmlUnescape | strings.TrimSpace -}}
   {{- if eq $raw "" -}}
-    {{- $raw = .Params.summary | default .Description | default "" -}}
+    {{- $raw = $summary -}}
   {{- end -}}
-  {{- $preview := $raw | truncate 650 -}}
+  {{- $preview := $raw | truncate 650 | htmlUnescape -}}
 
   {{- $targetUrl := .RelPermalink -}}
   {{- if and (eq $sec "proj") .Params.read -}}
-    {{- $targetUrl = .Params.read -}}
+    {{- with site.GetPage .Params.read -}}
+      {{- $targetUrl = .RelPermalink -}}
+    {{- else -}}
+      {{- $targetUrl = .Params.read -}}
+    {{- end -}}
   {{- end -}}
 
   {{- $items = $items | append (dict
@@ -102,7 +116,7 @@
     "section" $sec
     "date" (.Params.year | default (.Lastmod.Format "02 Jan 2006"))
     "meta" (delimit $metaParts " · ")
-    "summary" (.Params.summary | default .Description | default "")
+    "summary" $summary
     "preview" $preview
     "github" (.Params.github | default "")
     "live" (.Params.live | default "")

@@ -1,6 +1,8 @@
 {{ define "title" }}
+<header>
 <h1 class="headline-md">{{ .Title }}</h1>
 {{ with .Description }}<p class="photo-header-desc">{{ . }}</p>{{ end }}
+</header>
 {{ end }}
 
 {{ define "main" }}
@@ -26,7 +28,7 @@
        data-title="{{ .Title }}"
        data-stamp="{{ .Date.Format "02 01 '06" }}"
        data-exif="{{ delimit $exif " · " }}"
-       data-caption="{{ .Params.caption }}">
+       data-caption="{{ .Params.caption | default (.Plain | strings.TrimSpace) }}">
       <img src="{{ $imgSrc }}" alt="{{ .Title }}" class="u-photo photo-img" loading="{{ if lt $i 4 }}eager{{ else }}lazy{{ end }}" decoding="async" />
       <span class="photo-stamp" aria-hidden="true">{{ .Date.Format "02 01 '06" }}</span>
     </a>
@@ -40,7 +42,7 @@
 </div>
 
 <dialog class="lightbox" id="lightbox" aria-label="photo viewer">
-  <button class="lb-close" type="button" aria-label="close">esc</button>
+  <button class="lb-close" type="button" aria-label="esc (close)" title="close (Esc)">esc</button>
   <button class="lb-nav lb-prev" type="button" aria-label="previous photo">←</button>
   <figure class="lb-figure">
     <div class="lb-frame">
@@ -70,7 +72,12 @@
       if (!e.isIntersecting) return;
       var img = e.target;
       var done = function() { img.closest('.photo-item').classList.add('is-developed'); };
-      img.complete ? done() : img.addEventListener('load', done, { once: true });
+      if (img.complete) {
+        done();
+      } else {
+        img.addEventListener('load', done, { once: true });
+        img.addEventListener('error', done, { once: true });
+      }
       io.unobserve(img);
     });
   }, { rootMargin: '0px 0px -10% 0px' }) : null;
@@ -81,7 +88,14 @@
 
   var img = dlg.querySelector('.lb-img');
   var cur = 0;
-  var vt = function(fn) { document.startViewTransition && !matchMedia('(prefers-reduced-motion: reduce)').matches ? document.startViewTransition(fn) : fn(); };
+  var activeTransition = null;
+  function vt(fn) {
+    if (document.startViewTransition && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return document.startViewTransition(fn);
+    }
+    fn();
+    return null;
+  }
 
   function fill(i) {
     cur = (i + links.length) % links.length;
@@ -101,11 +115,28 @@
 
   function tag(el) { el.style.viewTransitionName = 'photo-hero'; }
   function untag(el) { el.style.viewTransitionName = ''; }
+  function clearHeroTags() {
+    links.forEach(function(a) { untag(a.querySelector('img')); });
+    untag(img);
+  }
+
+  function beginHeroTransition(beforeEl, fn, afterEl) {
+    if (activeTransition && activeTransition.skipTransition) activeTransition.skipTransition();
+    clearHeroTags();
+    tag(beforeEl);
+    var t = vt(fn);
+    activeTransition = t;
+    var finish = function() {
+      if (afterEl) untag(afterEl);
+      if (activeTransition === t) activeTransition = null;
+    };
+    if (t && t.finished) t.finished.finally(finish);
+    else finish();
+  }
 
   function open(i) {
     var thumb = links[i].querySelector('img');
-    tag(thumb);
-    vt(function() {
+    beginHeroTransition(thumb, function() {
       untag(thumb);
       fill(i);
       tag(img);
@@ -115,12 +146,11 @@
 
   function close() {
     var thumb = links[cur].querySelector('img');
-    vt(function() {
+    beginHeroTransition(img, function() {
       untag(img);
       dlg.close();
       tag(thumb);
-    });
-    setTimeout(function() { untag(thumb); }, 600);
+    }, thumb);
   }
 
   function step(d) {

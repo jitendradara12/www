@@ -1,13 +1,11 @@
 {{ define "title" -}}
-
-<!-- <span class="masthead-label">Collection</span> -->
-
-<h1 class="headline-md">{{ .Title }}</h1>
+<header><h1 class="headline-md">{{ .Title }}</h1></header>
 {{- end }}
 {{ define "main" -}}
 {{ .Content }}
+{{- with .Pages }}
 <ul class="article-list">
-{{- range.Pages }}
+{{- range . }}
 
 <!-- intital date: _index's date-->
 {{- $displayDate := .Lastmod -}}
@@ -32,4 +30,5 @@
 </li>
 {{- end }}
 </ul>
+{{- end }}
 {{- end }}

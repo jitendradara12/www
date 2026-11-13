@@ -10,17 +10,23 @@
       <a href="https://xn--sr8hvo.ws">🕸</a>
       <a href="https://xn--sr8hvo.ws/next">→</a>
 
-      <a href="https://github.com/jitendradara12" target="_blank" rel="me noopener" title="GitHub">
+      {{ with .Site.Params.github }}
+      <a href="{{ . }}" target="_blank" rel="me noopener" title="GitHub">
         <img src="/logos/github.svg" alt="GitHub" width="11" height="11" />
       </a>
-      <a href="https://www.linkedin.com/in/jitendradara12" target="_blank" rel="me noopener" title="LinkedIn">
+      {{ end }}
+      {{ with .Site.Params.linkedin }}
+      <a href="{{ . }}" target="_blank" rel="me noopener" title="LinkedIn">
         <img src="/logos/linkedin.svg" alt="LinkedIn" width="11" height="11" />
       </a>
-      <a href="mailto:jitendradara4464@gmail.com" rel="me" title="Email">
+      {{ end }}
+      {{ with .Site.Params.email }}
+      <a href="mailto:{{ . }}" rel="me" title="Email">
         <img src="/logos/gmail.svg" alt="Email" width="11" height="11" />
       </a>
+      {{ end }}
 
-      <a href="/photography" rel="me" title="clicks">
+      <a href="/photography/" rel="me" title="clicks">
         <img src="/logos/camera.svg" alt="camera" width="11" height="11" />
       </a>
       <a href="/index.xml" title="RSS Feed if you're a real chad">

@@ -18,6 +18,12 @@
     return date.toLocaleDateString();
   }
 
+  function formatMessage(rawMsg, branch) {
+    var line = rawMsg ? String(rawMsg).split('\n')[0].trim() : '';
+    if (!line) return 'push to ' + (branch || 'main');
+    return line.length > 72 ? line.slice(0, 69) + '…' : line;
+  }
+
   function updateDOM(d) {
     if (!d || !d.sha) return;
     var ago = d.date ? timeAgo(new Date(d.date)) : '';
@@ -38,7 +44,7 @@
         else shaEl.textContent = d.short_sha;
       }
       if (msgEl && d.message) {
-        msgEl.textContent = d.message;
+        msgEl.textContent = formatMessage(d.message, d.branch);
         if (d.commit_url && msgEl.tagName === 'A') {
           msgEl.href = d.commit_url;
         }
@@ -47,11 +53,38 @@
         repoEl.href = d.repo_url || ('https://github.com/' + d.repo);
         repoEl.textContent = d.repo_name;
       }
-      if (branchEl && d.branch) branchEl.textContent = d.branch;
+      if (d.branch) {
+        if (!branchEl) {
+          var metaEl = nowCard.querySelector('.now-commit-meta');
+          if (metaEl) {
+            branchEl = document.createElement('span');
+            branchEl.className = 'now-commit-branch';
+            metaEl.appendChild(branchEl);
+          }
+        }
+        if (branchEl) {
+          branchEl.textContent = d.branch;
+          branchEl.hidden = false;
+        }
+      } else if (branchEl) {
+        branchEl.textContent = '';
+        branchEl.hidden = true;
+      }
       if (timeEl && d.date) {
         timeEl.setAttribute('datetime', d.date);
         timeEl.textContent = ago;
       }
+    }
+  }
+
+  var nowCard = document.getElementById('now-commit');
+  var ssrTimeEl = nowCard ? nowCard.querySelector('time[datetime]') : null;
+  var ssrDateMs = 0;
+  if (ssrTimeEl) {
+    var ssrDt = new Date(ssrTimeEl.getAttribute('datetime'));
+    if (!isNaN(ssrDt.getTime())) {
+      ssrDateMs = ssrDt.getTime();
+      ssrTimeEl.textContent = timeAgo(ssrDt);
     }
   }
 
@@ -61,10 +94,15 @@
     if (raw) cached = JSON.parse(raw);
   } catch(e) {}
 
-  if (cached && cached.data) updateDOM(cached.data);
+  if (cached && cached.data) {
+    var cachedMs = cached.data.date ? Date.parse(cached.data.date) : 0;
+    if (!ssrDateMs || (cachedMs && cachedMs >= ssrDateMs)) {
+      updateDOM(cached.data);
+    }
+  }
 
   if (!cached || (Date.now() - cached.time > TTL)) {
-    fetch('https://api.github.com/users/' + USER + '/events?per_page=15', { priority: 'low' })
+    fetch('https://api.github.com/users/' + USER + '/events?per_page=30', { priority: 'low' })
       .then(function(r) { return r.ok ? r.json() : null; })
       .then(function(events) {
         if (!Array.isArray(events)) return;
@@ -88,7 +126,8 @@
         if (!headSha) return;
 
         var commitMsg = (p.commits && p.commits.length) ? p.commits[p.commits.length - 1].message : null;
-        var branch = (p.ref || '').replace('refs/heads/', '');
+        var rawRef = p.ref || '';
+        var branch = rawRef.indexOf('refs/tags/') === 0 ? '' : rawRef.replace(/^refs\/heads\//, '');
         var date = push.created_at;
 
         var commitData = {
@@ -97,7 +136,7 @@
           repo: repoFull,
           repo_name: repoName,
           branch: branch,
-          message: commitMsg ? commitMsg.split('\n')[0] : ('push to ' + (branch || 'main')),
+          message: formatMessage(commitMsg, branch),
           date: date,
           commit_url: 'https://github.com/' + repoFull + '/commit/' + headSha,
           repo_url: 'https://github.com/' + repoFull
@@ -108,7 +147,7 @@
             .then(function(r) { return r.ok ? r.json() : null; })
             .then(function(d) {
               if (d && d.commit && d.commit.message) {
-                commitData.message = d.commit.message.split('\n')[0];
+                commitData.message = formatMessage(d.commit.message, branch);
                 if (d.commit.author && d.commit.author.date) commitData.date = d.commit.author.date;
               }
               saveAndApply(commitData);
