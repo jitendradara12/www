@@ -1,13 +1,13 @@
 {
-  "sha": "797e6d68c1b9d60ccaa7a5ae24aa47ed5f30b4c8",
-  "short_sha": "797e6d6",
-  "message": "show filename of the resume, re-architect jev scoring",
-  "repo": "jitendradara12/resume-triage",
-  "repo_name": "resume-triage",
-  "branch": "main",
-  "date": "2026-11-10T07:41:47Z",
-  "relative_time": "15h ago",
-  "commit_url": "https://github.com/jitendradara12/resume-triage/commit/797e6d68c1b9d60ccaa7a5ae24aa47ed5f30b4c8",
-  "repo_url": "https://github.com/jitendradara12/resume-triage",
-  "last_updated": "2026-11-10T22:45:32Z"
+  "sha": "905af8aa48a1693a37a0e1adae72265b4fb4d5d2",
+  "short_sha": "905af8a",
+  "message": "fix review finding",
+  "repo": "jitendradara12/lazyportal",
+  "repo_name": "lazyportal",
+  "branch": "master",
+  "date": "2026-11-04T12:51:56Z",
+  "relative_time": "9d ago",
+  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/905af8aa48a1693a37a0e1adae72265b4fb4d5d2",
+  "repo_url": "https://github.com/jitendradara12/lazyportal",
+  "last_updated": "2026-11-14T04:42:19Z"
 }
