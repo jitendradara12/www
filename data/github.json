@@ -1,13 +1,13 @@
 {
-  "sha": "905af8aa48a1693a37a0e1adae72265b4fb4d5d2",
-  "short_sha": "905af8a",
-  "message": "fix review finding",
+  "sha": "95ecf3fb4cf85f9f134476b44fcb4d778be144fb",
+  "short_sha": "95ecf3f",
+  "message": "fixes: harden portal response normalization, storage fallbacks and re\u2026",
   "repo": "jitendradara12/lazyportal",
   "repo_name": "lazyportal",
   "branch": "master",
-  "date": "2026-11-04T12:51:56Z",
-  "relative_time": "9d ago",
-  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/905af8aa48a1693a37a0e1adae72265b4fb4d5d2",
+  "date": "2026-11-12T18:03:45Z",
+  "relative_time": "yesterday",
+  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/95ecf3fb4cf85f9f134476b44fcb4d778be144fb",
   "repo_url": "https://github.com/jitendradara12/lazyportal",
-  "last_updated": "2026-11-14T04:42:19Z"
+  "last_updated": "2026-11-14T12:53:34Z"
 }
