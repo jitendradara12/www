@@ -1,13 +1,13 @@
 {
-  "sha": "95ecf3fb4cf85f9f134476b44fcb4d778be144fb",
-  "short_sha": "95ecf3f",
-  "message": "fixes: harden portal response normalization, storage fallbacks and re\u2026",
+  "sha": "0dcc5a6661ffcf5ab190d500f6ddb60cef172b45",
+  "short_sha": "0dcc5a6",
+  "message": "test(android): await off-thread disconnect in PortalHttpPluginTest",
   "repo": "jitendradara12/lazyportal",
   "repo_name": "lazyportal",
   "branch": "master",
-  "date": "2026-11-12T18:03:45Z",
-  "relative_time": "yesterday",
-  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/95ecf3fb4cf85f9f134476b44fcb4d778be144fb",
+  "date": "2026-11-15T10:28:56Z",
+  "relative_time": "2h ago",
+  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/0dcc5a6661ffcf5ab190d500f6ddb60cef172b45",
   "repo_url": "https://github.com/jitendradara12/lazyportal",
-  "last_updated": "2026-11-14T12:53:34Z"
+  "last_updated": "2026-11-15T13:21:25Z"
 }
