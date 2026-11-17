@@ -2,8 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   {{- range .Pages }}
-  {{- $isEmptyTax := and (or (eq .Kind "taxonomy") (eq .Kind "term")) (eq (len .Pages) 0) }}
-  {{- if and (not .Params.sitemap_exclude) (not $isEmptyTax) }}
+  {{- if not .Params.sitemap_exclude }}
   <url>
     <loc>{{ .Permalink }}</loc>
     {{- if not .Lastmod.IsZero }}

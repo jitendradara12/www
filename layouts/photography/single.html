@@ -13,7 +13,7 @@
 <div class="photo-single">
   {{ if $imgSrc }}
   <div class="photo-single-frame">
-    <img src="{{ $imgSrc }}" alt="{{ .Title }}" class="u-photo photo-img" />
+    <img src="{{ $imgSrc }}" alt="{{ .Title }}" class="u-photo photo-img"{{ with .Params.width }} width="{{ . }}"{{ end }}{{ with .Params.height }} height="{{ . }}"{{ end }} fetchpriority="high" decoding="async" />
     <span class="photo-stamp" aria-hidden="true">{{ .Date.Format "02 01 '06" }}</span>
   </div>
   {{ end }}

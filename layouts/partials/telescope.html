@@ -4,7 +4,7 @@
     <div class="ts-body">
       <!-- Left pane: Prompt + Results -->
       <div class="ts-left">
-        <div class="ts-pane-title"><span>Telescope</span><span class="ts-counter" id="ts-counter">0/0</span></div>
+        <div class="ts-pane-title"><span>Telescope</span><span class="ts-pane-title-right"><span class="ts-counter" id="ts-counter">0/0</span><button type="button" class="ts-close" id="ts-close" aria-label="Close Telescope">esc</button></span></div>
         <div class="ts-prompt-row">
           <span class="ts-prompt-char" id="ts-prompt-char">❯</span>
           <input
@@ -37,7 +37,7 @@
     <div class="ts-statusline">
       <div class="ts-status-left">
         <span class="ts-mode" id="ts-mode">INSERT</span>
-        <span class="ts-status-msg" id="ts-status-msg"></span>
+        <span class="ts-status-msg" id="ts-status-msg" role="status" aria-live="polite"></span>
       </div>
       <div class="ts-status-right">
         <span><kbd>↑↓</kbd> / <kbd>^n</kbd><kbd>^p</kbd> move</span>
@@ -49,7 +49,7 @@
 </div>
 
 <!-- Subtle Vim keychord / status toast (bottom-right) -->
-<div id="vim-chord" class="vim-chord" hidden></div>
+<div id="vim-chord" class="vim-chord" role="status" aria-live="polite" hidden></div>
 
 <script>
 (function() {
@@ -63,6 +63,7 @@
   var statusMsgEl = document.getElementById('ts-status-msg');
   var promptCharEl = document.getElementById('ts-prompt-char');
   var triggerBtn = document.getElementById('cmd-trigger');
+  var closeBtn = document.getElementById('ts-close');
   var chordEl = document.getElementById('vim-chord');
 
   var modalEl = backdrop.querySelector('.ts-modal');
@@ -72,6 +73,17 @@
   var selectedIdx = 0;
   var isOpen = false;
   var previousFocus = null;
+  {{- $wtTotal := "46 hrs 9 mins" -}}
+  {{- with hugo.Data.wakatime.rollup_7d.total }}{{ $wtTotal = . }}{{ end -}}
+  {{- $wtAvg := "2 hrs 59 mins" -}}
+  {{- with hugo.Data.wakatime.rollup_7d.daily_average }}{{ $wtAvg = . }}{{ end -}}
+  {{- $ghCommit := "clean" -}}
+  {{- $ghDate := "" -}}
+  {{- with hugo.Data.github -}}
+    {{- $ghCommit = printf "%s@%s" .repo_name .short_sha -}}
+    {{- with .date }}{{ $ghDate = . }}{{ end -}}
+  {{- end }}
+  var ssrGhDate = {{ $ghDate | jsonify | safeJS }};
 
   var builtinCommands = [
     {
@@ -92,9 +104,9 @@
         '  ▝▀ ▀▘   ▀▘    term: kitty',
         '                ed: neovim',
         '',
-        '7d code : {{ with hugo.Data.wakatime.rollup_7d.total }}{{ . }}{{ else }}46 hrs 9 mins{{ end }}',
-        'avg/day : {{ with hugo.Data.wakatime.rollup_7d.daily_average }}{{ . }}{{ else }}2 hrs 59 mins{{ end }}',
-        'commit  : {{ with hugo.Data.github }}{{ .repo_name }}@{{ .short_sha }}{{ else }}clean{{ end }}'
+        '7d code : ' + {{ $wtTotal | jsonify | safeJS }},
+        'avg/day : ' + {{ $wtAvg | jsonify | safeJS }},
+        'commit  : ' + {{ $ghCommit | jsonify | safeJS }}
       ].join('\n')
     },
     {
@@ -170,8 +182,8 @@
           return indexData;
         })
         .catch(function() {
-          indexData = builtinCommands;
-          return indexData;
+          indexPromise = null;
+          return builtinCommands;
         });
     }
     return indexPromise;
@@ -224,6 +236,26 @@
       .replace(/>/g, '&gt;');
   }
 
+  function getPreviewText(item) {
+    var raw = String(item.preview || item.summary || '');
+    if (item.isCmd !== 'fastfetch') return raw;
+    try {
+      var rawCache = localStorage.getItem('gh_commit_swr_v3');
+      if (rawCache) {
+        var c = JSON.parse(rawCache);
+        var d = c && c.data;
+        if (d && d.repo_name && d.short_sha) {
+          var ssrMs = ssrGhDate ? Date.parse(ssrGhDate) : 0;
+          var cMs = d.date ? Date.parse(d.date) : 0;
+          if (!ssrMs || (cMs && cMs >= ssrMs)) {
+            return raw.replace(/^commit  : .*$/m, 'commit  : ' + d.repo_name + '@' + d.short_sha);
+          }
+        }
+      }
+    } catch (e) {}
+    return raw;
+  }
+
   function renderPreview(item) {
     if (!item) {
       previewTitleEl.textContent = 'Preview';
@@ -249,7 +281,7 @@
       lines.push('');
     }
 
-    var bodyLines = String(item.preview || item.summary || '').split('\n');
+    var bodyLines = getPreviewText(item).split('\n');
     for (var i = 0; i < bodyLines.length; i++) {
       lines.push(escapeHtml(bodyLines[i]));
     }
@@ -328,7 +360,7 @@
         '<span class="ts-item-path">' + highlightText(it.path || '', entry.pathIndices) + '</span>' +
       '</li>';
     }
-    resultsEl.innerHTML = html || '<li class="ts-empty-item">No matches found</li>';
+    resultsEl.innerHTML = html || '<li class="ts-empty-item" role="option" aria-disabled="true">No matches found</li>';
 
     if (filtered.length) {
       input.setAttribute('aria-activedescendant', 'ts-opt-' + selectedIdx);
@@ -370,7 +402,11 @@
     }
     if (item.isCmd === 'fastfetch' || item.isCmd === 'noop') {
       statusMsgEl.classList.remove('ts-error');
-      statusMsgEl.textContent = '';
+      statusMsgEl.textContent = item.isCmd === 'fastfetch' ? '-- FASTFETCH --' : '-- KEYMAPS --';
+      if (window.innerWidth <= 700 && previewEl) {
+        var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        previewEl.scrollIntoView({ block: 'nearest', behavior: rm ? 'auto' : 'smooth' });
+      }
       return;
     }
     closeTelescope();
@@ -413,17 +449,31 @@
     });
   }
 
-  backdrop.addEventListener('mousedown', function(e) {
-    if (e.target === backdrop) closeTelescope();
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeTelescope);
+  }
+
+  var backdropDown = false;
+  backdrop.addEventListener('pointerdown', function(e) {
+    backdropDown = (e.target === backdrop);
+  });
+  backdrop.addEventListener('pointerup', function(e) {
+    if (backdropDown && e.target === backdrop) closeTelescope();
+    backdropDown = false;
   });
 
   input.addEventListener('input', function() {
     selectedIdx = 0;
     statusMsgEl.classList.remove('ts-error');
+    statusMsgEl.textContent = '';
     renderResults();
   });
 
+  var lastMouseX = -1, lastMouseY = -1;
   resultsEl.addEventListener('mousemove', function(e) {
+    if (e.clientX === lastMouseX && e.clientY === lastMouseY) return;
+    lastMouseX = e.clientX;
+    lastMouseY = e.clientY;
     var li = e.target.closest('.ts-item');
     if (!li) return;
     var idx = Number(li.getAttribute('data-idx'));
@@ -538,7 +588,8 @@
       var k = e.key.toLowerCase();
       if (k === 'g') {
         e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        var sb = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+        window.scrollTo({ top: 0, behavior: sb });
         showToast('NORMAL · gg (top)', 900);
         return;
       }
@@ -572,17 +623,21 @@
 
     if (e.key === 'G') {
       e.preventDefault();
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      var sbEnd = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+      var maxScroll = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+      window.scrollTo({ top: maxScroll, behavior: sbEnd });
       showToast('NORMAL · G (bottom)', 900);
       return;
     }
 
     if (e.key === 'j') {
-      window.scrollBy({ top: 140, behavior: 'smooth' });
+      var sbDown = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+      window.scrollBy({ top: 140, behavior: sbDown });
       return;
     }
     if (e.key === 'k') {
-      window.scrollBy({ top: -140, behavior: 'smooth' });
+      var sbUp = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+      window.scrollBy({ top: -140, behavior: sbUp });
       return;
     }
   });

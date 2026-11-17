@@ -4,13 +4,15 @@ title = '0x43'
 timeZone = 'Asia/Kolkata'
 enableGitInfo = true
 enableRobotsTXT = true
+disableKinds = ["taxonomy", "term"]
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
+  section = ["HTML"]
 
 [frontmatter]
   # if 'date' is missing, resolve to other methods
-  lastmod = ["date",":git",":filemodtime" ,"lastmod" ]
+  lastmod = ["lastmod", "date", ":git", ":filemodtime"]
 
 [params]
   author = "Jitendra Dara"

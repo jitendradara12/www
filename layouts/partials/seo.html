@@ -1,15 +1,14 @@
 {{- $author := .Params.author | default .Site.Params.author -}}
 {{- $avatar := .Site.Params.avatar | default "/avatar.jpg" -}}
 {{- $is404 := eq .Kind "404" -}}
-{{- $isEmptyTax := and (or (eq .Kind "taxonomy") (eq .Kind "term")) (eq (len .Pages) 0) -}}
 {{- $isArticle := and .IsPage (eq .Section "writings") -}}
 
-{{- $desc := .Description | default .Params.summary | default .Summary | default .Site.Params.description -}}
+{{- $desc := .Description | default .RawSummary | default .Params.caption | default .Summary | default .Site.Params.description -}}
 {{- $desc = $desc | plainify | htmlUnescape | truncate 160 | htmlUnescape -}}
 
 {{- $keywords := slice -}}
-{{- if .Params.keywords -}}
-  {{- $keywords = .Params.keywords -}}
+{{- if .Keywords -}}
+  {{- $keywords = .Keywords -}}
 {{- else if .Params.tags -}}
   {{- $keywords = .Params.tags -}}
 {{- else if .Site.Params.keywords -}}
@@ -45,8 +44,6 @@
 <meta name="author" content="{{ $author }}">
 {{- if $is404 }}
 <meta name="robots" content="noindex, nofollow">
-{{- else if $isEmptyTax }}
-<meta name="robots" content="noindex, follow">
 {{- else }}
 <meta name="robots" content="index, follow">
 {{- end }}

@@ -18,14 +18,16 @@
 	<link rel="apple-touch-icon" sizes="180x180" href="{{ .Site.Params.appleTouchIcon | default "/apple-touch-icon.png" }}">
 	<link rel="manifest" href="{{ .Site.Params.manifest | default "/site.webmanifest" }}">
 	<link rel='alternate' type='application/rss+xml' title="{{ .Site.Title }} RSS" href='/index.xml'>
-	<link rel="preconnect" href="https://cloudflareinsights.com">
+	{{- if eq .Section "photography" }}
+	<link rel="preconnect" href="https://pub-31d0c0a2113b48878471392e0af84455.r2.dev">
+	{{- end }}
+	{{- if .Params.math }}
+	<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin referrerpolicy="no-referrer">
+	{{- end }}
 	{{ range slice "space-grotesk" "lora" "jetbrains-mono" }}
 	{{ $font := resources.Get (printf "fonts/%s-normal-latin.woff2" .) | fingerprint }}
 	<link rel="preload" href="{{ $font.RelPermalink }}" as="font" type="font/woff2" crossorigin>
 	{{ end }}
-	{{ $fonts := resources.Get "fonts.css" | resources.ExecuteAsTemplate "fonts.css" . }}
-	{{ $style := slice $fonts (resources.Get "style.css") | resources.Concat "style.css" | minify | fingerprint }}
-	<link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}">
 	<script>
 		(function() {
 			try {
@@ -36,10 +38,13 @@
 			} catch (e) {}
 		})();
 	</script>
+	{{ $fonts := resources.Get "fonts.css" | resources.ExecuteAsTemplate "fonts.css" . }}
+	{{ $style := slice $fonts (resources.Get "style.css") | resources.Concat "style.css" | minify | fingerprint }}
+	<link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}">
 	{{ if .Params.math -}}
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
-	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
-	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous" referrerpolicy="no-referrer">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
 			if (typeof renderMathInElement === "function") {
@@ -58,12 +63,12 @@
 {{ if .Site.Menus.main }}{{ partialCached "nav.html" . }}{{ end -}}
 <main>
 
-{{- if and (.Param "breadcrumb") (not .IsHome) }}
+{{- if and (.Param "breadcrumb") (not .IsHome) (ne .Kind "404") }}
   {{ partial "breadcrumb.html" . }}
 {{ end -}}
 {{ block "title" . }}{{ end }}
-<article {{- if .IsPage }} class="h-entry"{{ end }}>
-{{- if .IsPage -}}
+{{- if .IsPage }}
+<article class="h-entry">
   <a class="u-url" href="{{ .Permalink }}" hidden></a>
   <a class="p-author h-card" href="{{ site.Home.Permalink }}" hidden>{{ .Site.Params.author }}</a>
   {{- if .Date -}}
@@ -72,13 +77,15 @@
   {{- if .Lastmod -}}
   <time class="dt-updated" datetime="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}" hidden>{{ .Lastmod.Format "2 Jan 2006" }}</time>
   {{- end -}}
-{{- end -}}
-<div {{- if .IsPage }} class="e-content"{{ end }}>
+<div class="e-content">
+{{- end }}
 {{ block "main" . }}
 {{ .Content }}
 {{ end }}
+{{- if .IsPage }}
 </div>
 </article>
+{{- end }}
 </main>
 
 {{ partialCached "footer.html" . }}
@@ -99,18 +106,28 @@
 	}
 	applyTheme(document.documentElement.getAttribute('data-theme') === 'light');
 	if (!toggle) return;
+	var flashTimer, flashAudioCtx;
 	function flashbang() {
 		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+		clearTimeout(flashTimer);
+		document.querySelectorAll('.flashbang').forEach(function(el) { el.remove(); });
+		if (flashAudioCtx) {
+			try { flashAudioCtx.close(); } catch (e) {}
+			flashAudioCtx = null;
+		}
 		var f = document.createElement('div');
 		f.className = 'flashbang';
 		f.innerHTML = '<span>FLASHBANG!</span>';
 		document.body.appendChild(f);
+		document.body.classList.remove('stunned');
+		void f.offsetWidth;
 		document.body.classList.add('stunned');
-		setTimeout(function() { document.body.classList.remove('stunned'); }, 2600);
+		flashTimer = setTimeout(function() { document.body.classList.remove('stunned'); }, 2600);
 		f.addEventListener('animationend', function() { f.remove(); });
 		try {
 			// tinnitus: high sine that fades out with the flash
 			var ac = new (window.AudioContext || window.webkitAudioContext)();
+			flashAudioCtx = ac;
 			var o = ac.createOscillator(), g = ac.createGain();
 			o.frequency.value = 4200;
 			g.gain.setValueAtTime(0.04, ac.currentTime);
@@ -118,7 +135,10 @@
 			o.connect(g).connect(ac.destination);
 			o.start();
 			o.stop(ac.currentTime + 3);
-			o.onended = function() { ac.close(); };
+			o.onended = function() {
+				if (flashAudioCtx === ac) flashAudioCtx = null;
+				ac.close();
+			};
 		} catch (e) {}
 	}
 	toggle.addEventListener('click', function() {
@@ -195,7 +215,7 @@
 })();
 (function() {
 	if (!window.matchMedia('(hover: hover)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-	var cards = document.querySelectorAll('.project-card, .now-card, .now-manual, nav:not(.breadcrumb)');
+	var cards = document.querySelectorAll('.project-card, .now-card, .now-manual, nav:not(.breadcrumb):not(.post-back)');
 	var rafId = 0, lastX = 0, lastY = 0;
 	document.addEventListener('mousemove', function(e) {
 		lastX = e.clientX;
@@ -224,7 +244,7 @@
 		});
 	}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
 
-	document.querySelectorAll('main > section:not(:first-child), .project-card, .now-section').forEach(function(el) {
+	document.querySelectorAll('.project-card, .now-section').forEach(function(el) {
 		var rect = el.getBoundingClientRect();
 		if (rect.top < window.innerHeight) return;
 		el.classList.add('scroll-reveal');
@@ -232,28 +252,51 @@
 	});
 })();
 (function() {
-	// Click-to-zoom on prose images (excludes icons, retro badges, avatars, photography feed)
-	var imgs = document.querySelectorAll('article.h-entry .e-content img:not(.inline-icon):not(.inline-icon-svg):not(.photo-img):not([src*="/gifs/"])');
+	// Pause autoplay videos when prefers-reduced-motion is enabled
+	var vids = document.querySelectorAll('video[autoplay]');
+	if (!vids.length) return;
+	var rm = window.matchMedia('(prefers-reduced-motion: reduce)');
+	function sync(matches) {
+		if (!matches) return;
+		vids.forEach(function(v) { v.removeAttribute('autoplay'); v.pause(); });
+	}
+	sync(rm.matches);
+	if (rm.addEventListener) rm.addEventListener('change', function(e) { sync(e.matches); });
+})();
+(function() {
+	// Click-to-zoom on prose images (excludes icons, retro badges, photography feed)
+	var imgs = document.querySelectorAll('article.h-entry .e-content img:not(.inline-icon-svg):not(.photo-img):not([src*="/gifs/"])');
 	if (!imgs.length) return;
 	var dlg;
+	function openZoom(img) {
+		if (!dlg) {
+			dlg = document.createElement('dialog');
+			dlg.className = 'lightbox is-prose-lb';
+			dlg.setAttribute('aria-label', 'image preview');
+			dlg.innerHTML = '<button class="lb-close" type="button" aria-label="esc (close)" title="close (Esc)">esc</button><figure class="lb-figure"><div class="lb-frame"><img class="lb-img" alt="" /></div><figcaption class="lb-meta"><span class="lb-caption"></span></figcaption></figure>';
+			dlg.addEventListener('click', function(e) {
+				if (e.target === dlg || e.target.closest('.lb-close') || e.target.closest('.lb-figure')) dlg.close();
+			});
+			document.body.appendChild(dlg);
+		}
+		dlg.querySelector('.lb-img').src = img.currentSrc || img.src;
+		dlg.querySelector('.lb-img').alt = img.alt || '';
+		dlg.querySelector('.lb-caption').textContent = img.alt || '';
+		dlg.showModal();
+	}
 	imgs.forEach(function(img) {
 		if (img.closest('a')) return;
 		img.classList.add('is-zoomable');
-		img.addEventListener('click', function() {
-			if (!dlg) {
-				dlg = document.createElement('dialog');
-				dlg.className = 'lightbox is-prose-lb';
-				dlg.setAttribute('aria-label', 'image preview');
-				dlg.innerHTML = '<button class="lb-close" type="button" aria-label="esc (close)" title="close (Esc)">esc</button><figure class="lb-figure"><div class="lb-frame"><img class="lb-img" alt="" /></div><figcaption class="lb-meta"><span class="lb-caption"></span></figcaption></figure>';
-				dlg.addEventListener('click', function(e) {
-					if (e.target === dlg || e.target.closest('.lb-close') || e.target.closest('.lb-figure')) dlg.close();
-				});
-				document.body.appendChild(dlg);
-			}
-			dlg.querySelector('.lb-img').src = img.currentSrc || img.src;
-			dlg.querySelector('.lb-img').alt = img.alt || '';
-			dlg.querySelector('.lb-caption').textContent = img.alt || '';
-			dlg.showModal();
+		img.tabIndex = 0;
+		img.setAttribute('role', 'button');
+		img.setAttribute('aria-label', img.alt ? 'Zoom image: ' + img.alt : 'Zoom image');
+		img.addEventListener('click', function() { openZoom(img); });
+		img.addEventListener('keydown', function(e) {
+			if (e.key === 'Enter') { e.preventDefault(); openZoom(img); }
+			else if (e.key === ' ') { e.preventDefault(); }
+		});
+		img.addEventListener('keyup', function(e) {
+			if (e.key === ' ') { e.preventDefault(); openZoom(img); }
 		});
 	});
 })();

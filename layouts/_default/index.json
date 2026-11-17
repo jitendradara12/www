@@ -93,7 +93,7 @@
     {{- $metaParts = $metaParts | append (printf "lastmod = %q" (.Lastmod.Format "2006-01-02")) -}}
   {{- end -}}
 
-  {{- $summary := .Params.summary | default .Description | default .Params.caption | default "" | htmlUnescape | strings.TrimSpace -}}
+  {{- $summary := .RawSummary | default .Description | default .Params.caption | default "" | htmlUnescape | strings.TrimSpace -}}
   {{- $raw := .Plain | htmlUnescape | strings.TrimSpace -}}
   {{- if eq $raw "" -}}
     {{- $raw = $summary -}}
@@ -109,6 +109,15 @@
     {{- end -}}
   {{- end -}}
 
+  {{- $cover := "" -}}
+  {{- if or .Params.cover (eq $sec "photo") -}}
+    {{- with .Resources.GetMatch (.Params.cover | default "*") -}}
+      {{- $cover = .RelPermalink -}}
+    {{- else -}}
+      {{- $cover = .Params.cover | default "" -}}
+    {{- end -}}
+  {{- end -}}
+
   {{- $items = $items | append (dict
     "title" .Title
     "path" (printf "~%s" (strings.TrimSuffix "/" .RelPermalink))
@@ -120,7 +129,7 @@
     "preview" $preview
     "github" (.Params.github | default "")
     "live" (.Params.live | default "")
-    "cover" (.Params.cover | default "")
+    "cover" $cover
   ) -}}
 {{- end -}}
 

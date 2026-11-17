@@ -29,7 +29,7 @@
        data-stamp="{{ .Date.Format "02 01 '06" }}"
        data-exif="{{ delimit $exif " · " }}"
        data-caption="{{ .Params.caption | default (.Plain | strings.TrimSpace) }}">
-      <img src="{{ $imgSrc }}" alt="{{ .Title }}" class="u-photo photo-img" loading="{{ if lt $i 4 }}eager{{ else }}lazy{{ end }}" decoding="async" />
+      <img src="{{ $imgSrc }}" alt="{{ .Title }}" class="u-photo photo-img"{{ with .Params.width }} width="{{ . }}"{{ end }}{{ with .Params.height }} height="{{ . }}"{{ end }} loading="{{ if lt $i 4 }}eager{{ else }}lazy{{ end }}" decoding="async" />
       <span class="photo-stamp" aria-hidden="true">{{ .Date.Format "02 01 '06" }}</span>
     </a>
     <figcaption class="photo-meta">
@@ -100,7 +100,15 @@
   function fill(i) {
     cur = (i + links.length) % links.length;
     var a = links[cur];
-    img.src = a.querySelector('img').currentSrc || a.querySelector('img').src;
+    var nextSrc = a.querySelector('img').currentSrc || a.querySelector('img').src;
+    if (img.getAttribute('src') !== nextSrc) {
+      img.classList.add('is-loading');
+      var doneLoad = function() { img.classList.remove('is-loading'); };
+      img.onload = doneLoad;
+      img.onerror = doneLoad;
+      img.src = nextSrc;
+      if (img.complete) doneLoad();
+    }
     img.alt = a.dataset.title;
     dlg.querySelector('.lb-title').textContent = a.dataset.title;
     dlg.querySelector('.lb-caption').textContent = a.dataset.caption || '';
@@ -146,6 +154,14 @@
 
   function close() {
     var thumb = links[cur].querySelector('img');
+    var item = thumb.closest('.photo-item');
+    var r = thumb.getBoundingClientRect();
+    var canMorph = item && item.classList.contains('is-developed') && r.bottom > 0 && r.top < window.innerHeight;
+    if (!canMorph) {
+      clearHeroTags();
+      dlg.close();
+      return;
+    }
     beginHeroTransition(img, function() {
       untag(img);
       dlg.close();
@@ -178,13 +194,19 @@
     if (e.key === 'ArrowLeft' || e.key === 'h') { step(-1); e.stopPropagation(); }
   });
 
-  var x0 = null;
-  dlg.addEventListener('touchstart', function(e) { x0 = e.touches[0].clientX; }, { passive: true });
+  var x0 = null, y0 = null;
+  dlg.addEventListener('touchstart', function(e) {
+    if (e.touches.length !== 1) { x0 = null; y0 = null; return; }
+    x0 = e.touches[0].clientX;
+    y0 = e.touches[0].clientY;
+  }, { passive: true });
   dlg.addEventListener('touchend', function(e) {
-    if (x0 === null) return;
+    if (x0 === null || e.changedTouches.length !== 1) return;
     var dx = e.changedTouches[0].clientX - x0;
-    if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1);
+    var dy = e.changedTouches[0].clientY - y0;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) step(dx < 0 ? 1 : -1);
     x0 = null;
+    y0 = null;
   });
 })();
 </script>

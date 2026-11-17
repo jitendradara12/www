@@ -15,7 +15,8 @@
     var d = Math.floor(h / 24);
     if (d === 1) return 'yesterday';
     if (d < 30) return d + 'd ago';
-    return date.toLocaleDateString();
+    var months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+    return String(date.getDate()).padStart(2, '0') + ' ' + months[date.getMonth()] + ' ' + date.getFullYear();
   }
 
   function formatMessage(rawMsg, branch) {
@@ -79,6 +80,8 @@
 
   var nowCard = document.getElementById('now-commit');
   var ssrTimeEl = nowCard ? nowCard.querySelector('time[datetime]') : null;
+  var ssrShaEl = nowCard ? nowCard.querySelector('.now-commit-sha') : null;
+  var ssrSha = ssrShaEl ? ssrShaEl.textContent.trim() : '';
   var ssrDateMs = 0;
   if (ssrTimeEl) {
     var ssrDt = new Date(ssrTimeEl.getAttribute('datetime'));
@@ -88,31 +91,44 @@
     }
   }
 
+  function isFresherThanSSR(d) {
+    if (!d || !d.sha) return false;
+    var ms = d.date ? Date.parse(d.date) : 0;
+    if (ssrDateMs && (!ms || ms < ssrDateMs)) return false;
+    if (d._fallback && ssrSha && d.short_sha === ssrSha) return false;
+    return true;
+  }
+
+  function saveCache(data) {
+    try { localStorage.setItem(KEY, JSON.stringify({ time: Date.now(), data: data })); } catch(e) {}
+  }
+
   var cached = null;
   try {
     var raw = localStorage.getItem(KEY);
     if (raw) cached = JSON.parse(raw);
   } catch(e) {}
 
-  if (cached && cached.data) {
-    var cachedMs = cached.data.date ? Date.parse(cached.data.date) : 0;
-    if (!ssrDateMs || (cachedMs && cachedMs >= ssrDateMs)) {
-      updateDOM(cached.data);
-    }
+  if (cached && cached.data && isFresherThanSSR(cached.data)) {
+    updateDOM(cached.data);
   }
 
   if (!cached || (Date.now() - cached.time > TTL)) {
+    var fallbackCache = (cached && cached.data && isFresherThanSSR(cached.data)) ? cached.data : null;
     fetch('https://api.github.com/users/' + USER + '/events?per_page=30', { priority: 'low' })
-      .then(function(r) { return r.ok ? r.json() : null; })
+      .then(function(r) {
+        if (!r.ok) { saveCache(fallbackCache); return null; }
+        return r.json();
+      })
       .then(function(events) {
-        if (!Array.isArray(events)) return;
+        if (!Array.isArray(events)) { saveCache(fallbackCache); return; }
         var pushes = [];
         for (var i = 0; i < events.length; i++) {
           if (events[i].type === 'PushEvent' && events[i].payload) {
             pushes.push(events[i]);
           }
         }
-        if (!pushes.length) return;
+        if (!pushes.length) { saveCache(fallbackCache); return; }
 
         pushes.sort(function(a, b) {
           return new Date(b.created_at) - new Date(a.created_at);
@@ -123,7 +139,7 @@
         var repoName = repoFull.split('/')[1] || repoFull;
         var p = push.payload;
         var headSha = p.head || (p.commits && p.commits.length ? p.commits[p.commits.length - 1].sha : null);
-        if (!headSha) return;
+        if (!headSha) { saveCache(fallbackCache); return; }
 
         var commitMsg = (p.commits && p.commits.length) ? p.commits[p.commits.length - 1].message : null;
         var rawRef = p.ref || '';
@@ -139,7 +155,8 @@
           message: formatMessage(commitMsg, branch),
           date: date,
           commit_url: 'https://github.com/' + repoFull + '/commit/' + headSha,
-          repo_url: 'https://github.com/' + repoFull
+          repo_url: 'https://github.com/' + repoFull,
+          _fallback: !commitMsg
         };
 
         if (!commitMsg) {
@@ -148,6 +165,7 @@
             .then(function(d) {
               if (d && d.commit && d.commit.message) {
                 commitData.message = formatMessage(d.commit.message, branch);
+                commitData._fallback = false;
                 if (d.commit.author && d.commit.author.date) commitData.date = d.commit.author.date;
               }
               saveAndApply(commitData);
@@ -157,12 +175,17 @@
           saveAndApply(commitData);
         }
       })
-      .catch(function() {});
+      .catch(function() { saveCache(fallbackCache); });
   }
 
   function saveAndApply(data) {
-    try { localStorage.setItem(KEY, JSON.stringify({ time: Date.now(), data: data })); } catch(e) {}
-    updateDOM(data);
+    if (isFresherThanSSR(data)) {
+      delete data._fallback;
+      saveCache(data);
+      updateDOM(data);
+    } else {
+      saveCache(cached && cached.data && isFresherThanSSR(cached.data) ? cached.data : null);
+    }
   }
 })();
 </script>

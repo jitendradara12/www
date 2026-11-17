@@ -63,14 +63,19 @@
 
   {{/* ── Wakatime coding stats ── */}}
   {{ with hugo.Data.wakatime }}
+  {{- $stale := false -}}
+  {{- with .last_updated -}}
+    {{- if gt (sub now.Unix (time.AsTime .).Unix) 86400 }}{{ $stale = true }}{{ end -}}
+  {{- end -}}
+  {{- $showRollup := or .is_resting $stale -}}
   <section class="now-section">
-    <h2 class="headline-md">{{ if .is_resting }}wakatime (past 7 days){{ else }}wakatime today{{ end }}</h2>
+    <h2 class="headline-md">{{ if $showRollup }}wakatime (past 7 days){{ else }}wakatime today{{ end }}</h2>
     <div class="now-card">
       {{- $wtMeta := slice -}}
       {{- with .operating_systems }}{{ $wtMeta = $wtMeta | append (index . 0).name }}{{ end -}}
-      {{- if .is_resting }}{{ with .rollup_7d.daily_average }}{{ $wtMeta = $wtMeta | append (printf "daily avg: %s" .) }}{{ end }}{{ end -}}
+      {{- if $showRollup }}{{ with .rollup_7d.daily_average }}{{ $wtMeta = $wtMeta | append (printf "daily avg: %s" .) }}{{ end }}{{ end -}}
       <div class="now-wt-hero">
-        <span class="now-wt-total">{{ if .is_resting }}{{ .rollup_7d.total }}{{ else }}{{ .total_today }}{{ end }}</span>
+        <span class="now-wt-total">{{ if $showRollup }}{{ .rollup_7d.total }}{{ else }}{{ .total_today }}{{ end }}</span>
         {{- with $wtMeta }}
         <span class="now-wt-os">{{ delimit . " · " }}</span>
         {{- end }}
@@ -124,10 +129,10 @@
 
   {{/* ── Last refreshed (IST) ── */}}
   {{ with hugo.Data.wakatime }}
-  <footer class="now-footer">
+  <p class="now-footer">
     {{- $t := (time.AsTime .last_updated).Add (time.ParseDuration "5h30m") -}}
     last refreshed · {{ time.Format "2 Jan 2006, 15:04" $t | lower }} IST
-  </footer>
+  </p>
   {{ end }}
 </div>
 

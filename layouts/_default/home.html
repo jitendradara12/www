@@ -7,15 +7,14 @@
       class="home-avatar u-photo"
       width="80"
       height="80"
-      loading="eager"
       fetchpriority="high"
       title="not an anime pfp guy, this is a real photo"
     />
     <div class="home-hero-text">
       <h1 class="home-name">
         <span class="p-name">Jitendra Dara</span><span class="cursor">_</span>
-        <a href="{{ site.Home.Permalink }}" class="u-url" style="display:none"></a>
-      </h1>     <p class="home-tagline p-note" role="button" tabindex="0">sand is now smarter than me.</p>
+        <a href="{{ site.Home.Permalink }}" class="u-url" hidden></a>
+      </h1>     <button type="button" class="home-tagline p-note">sand is now smarter than me.</button>
     </div>
   </div>
 
@@ -53,13 +52,6 @@
           }, 28);
         }
         taglineEl.addEventListener('click', reroll);
-        taglineEl.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter') { e.preventDefault(); reroll(); }
-          else if (e.key === ' ') e.preventDefault();
-        });
-        taglineEl.addEventListener('keyup', (e) => {
-          if (e.key === ' ') { e.preventDefault(); reroll(); }
-        });
       }
     })();
   </script>

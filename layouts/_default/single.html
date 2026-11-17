@@ -10,3 +10,9 @@
 {{- end }}
 </header>
 {{- end }}
+{{ define "main" -}}
+{{ .Content }}
+{{- if eq .Section "writings" }}
+<nav class="post-back" aria-label="Back to writings"><a href="/writings/">← cd ~/writings</a></nav>
+{{- end }}
+{{- end }}
