@@ -3,7 +3,7 @@
 {{- $is404 := eq .Kind "404" -}}
 {{- $isArticle := and .IsPage (eq .Section "writings") -}}
 
-{{- $desc := .Description | default .RawSummary | default .Params.caption | default .Summary | default .Site.Params.description -}}
+{{- $desc := .Description | default .Params.caption | default .Summary | default .Site.Params.description -}}
 {{- $desc = $desc | plainify | htmlUnescape | truncate 160 | htmlUnescape -}}
 
 {{- $keywords := slice -}}

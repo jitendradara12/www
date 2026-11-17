@@ -93,7 +93,7 @@
     {{- $metaParts = $metaParts | append (printf "lastmod = %q" (.Lastmod.Format "2006-01-02")) -}}
   {{- end -}}
 
-  {{- $summary := .RawSummary | default .Description | default .Params.caption | default "" | htmlUnescape | strings.TrimSpace -}}
+  {{- $summary := .Description | default .Params.caption | default (.Summary | plainify) | default "" | htmlUnescape | strings.TrimSpace -}}
   {{- $raw := .Plain | htmlUnescape | strings.TrimSpace -}}
   {{- if eq $raw "" -}}
     {{- $raw = $summary -}}
