@@ -1,103 +1,77 @@
 {
-  "total_today": "2 hrs 6 mins",
-  "total_seconds": 7566.891363,
+  "total_today": "6 hrs 36 mins",
+  "total_seconds": 23811.066,
   "is_resting": false,
   "projects": [
     {
+      "name": "lazyportal",
+      "text": "4 hrs 1 min",
+      "percent": 60.9
+    },
+    {
+      "name": "www",
+      "text": "2 hrs 21 mins",
+      "percent": 35.8
+    },
+    {
+      "name": "temp",
+      "text": "11 mins",
+      "percent": 2.9
+    },
+    {
+      "name": "sastauser",
+      "text": "45 secs",
+      "percent": 0.2
+    },
+    {
       "name": "omaconnect",
-      "text": "1 hr 33 mins",
-      "percent": 73.8
-    },
-    {
-      "name": "Hyprland-Dots",
-      "text": "29 mins",
-      "percent": 23.6
-    },
-    {
-      "name": "devika",
-      "text": "1 min",
-      "percent": 1.3
-    },
-    {
-      "name": "omaconnect-kde-plus",
-      "text": "1 min",
-      "percent": 1.1
-    },
-    {
-      "name": "LazyVim",
-      "text": "7 secs",
-      "percent": 0.1
-    },
-    {
-      "name": "ryanwinkler",
-      "text": "5 secs",
-      "percent": 0.1
-    },
-    {
-      "name": "omarchy-plugin-marketplace",
-      "text": "1 sec",
-      "percent": 0.0
+      "text": "45 secs",
+      "percent": 0.2
     }
   ],
   "editors": [
     {
       "name": "Firefox",
-      "text": "1 hr 36 mins",
-      "percent": 76.4
+      "text": "5 hrs 40 mins",
+      "percent": 85.8
     },
     {
-      "name": "Opencode Cli",
-      "text": "18 mins",
-      "percent": 14.8
-    },
-    {
-      "name": "Neovim",
-      "text": "6 mins",
-      "percent": 5.3
+      "name": "Antigravity Desktop",
+      "text": "45 mins",
+      "percent": 11.4
     },
     {
       "name": "Antigravity",
-      "text": "4 mins",
-      "percent": 3.5
+      "text": "10 mins",
+      "percent": 2.6
+    },
+    {
+      "name": "Antigravity CLI",
+      "text": "43 secs",
+      "percent": 0.2
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "2 hrs 6 mins",
+      "text": "6 hrs 36 mins",
       "percent": 100.0
     }
   ],
   "languages": [
     {
-      "name": "JavaScript",
-      "percent": 23.6
-    },
-    {
-      "name": "TypeScript",
-      "percent": 19.7
-    },
-    {
-      "name": "CSS",
-      "percent": 19.2
-    },
-    {
       "name": "Nix",
-      "percent": 14.2
+      "percent": 98.3
     },
     {
-      "name": "Python",
-      "percent": 8.6
-    },
-    {
-      "name": "Lua",
-      "percent": 7.8
+      "name": "Kotlin",
+      "percent": 1.7
     }
   ],
   "rollup_7d": {
-    "total": "39 hrs 22 mins",
-    "daily_average": "1 hr 49 mins",
-    "total_seconds": 141733.585038
+    "total": "36 hrs 43 mins",
+    "daily_average": "48 mins",
+    "total_seconds": 132181.97558
   },
-  "last_updated": "2026-10-31T20:54:59Z"
+  "last_updated": "2026-11-17T15:25:37Z"
 }
