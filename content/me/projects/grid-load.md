@@ -15,7 +15,7 @@ the whole pipeline is automated from data scraping to the forecast [dashboard](h
 
 ### workflow
 
-![workflow diagram](/grid-load-workflow.png)
+![workflow diagram](/grid-load-workflow.webp)
 
 source code is available at: https://github.com/jitendradara12/grid-load
 

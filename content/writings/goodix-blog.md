@@ -18,7 +18,7 @@ good thing I had W*ndows lying around in one partition of the disk. so I just ha
 `/run/media/user/Windows`. they figured out the core architecture and stuff and got the first
 image capture rather quickly.
 
-![milestone](/goodix/milestone.png)
+![milestone](/goodix/milestone.webp)
 
 It was just an image capture. and I had no intention to see how my fingerprints look in a 64×80 pixel image.
 I needed it to correctly identify and do the PAM verification, which was quite far but achievable now.
@@ -96,7 +96,7 @@ while casually browsing, I came across [this repo](https://github.com/OMGrant/ft
 to find out how the hell is he doing it. I couldn't understand it obviously
 so I asked the agent to find out if it's useful for us or not. and the response is **"huge!"**
 
-![response: yes this is exactly what we need](/goodix/llm-reply.png)
+![response: yes this is exactly what we need](/goodix/llm-reply.webp)
 
 Windows used Goodix's proprietary `GoodixEngineAdapter.dll` (the Milan engine), which works on frequency-domain ridge flow and stitches multiple touches into a unified composite template.
 

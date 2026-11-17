@@ -1,7 +1,7 @@
 +++
 date = '2026-06-02T14:31:36+05:30'
 title = 'my developer workflow'
-banner = '/fastfetch-sc.png'
+banner = '/fastfetch-sc.webp'
 description = "A detailed breakdown of my Linux development workflow: Fedora, Hyprland, Neovim, LazyVim, Kitty, FZF, and AI tooling."
 keywords = ["Developer Workflow", "Neovim", "LazyVim", "Hyprland", "Linux", "Kitty", "FZF", "Fedora"]
 +++
@@ -16,7 +16,7 @@ I won't talk much about the OS, there's only one, Linux.
 The distro is fedora, which was a reasonable enough choice back then.
 Other than some urges to move fully to nix, I'm quite satisfied with fedora.
 
-![screenshot of fastfetch](/fastfetch-sc.png)
+![screenshot of fastfetch](/fastfetch-sc.webp)
 
 ## Desktop
 

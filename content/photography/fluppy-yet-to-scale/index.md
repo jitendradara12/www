@@ -2,6 +2,8 @@
 title: "A Tiny Red Velvet Mite Running"
 date: 2024-06-27T13:01:00+05:30
 cover: "https://pub-31d0c0a2113b48878471392e0af84455.r2.dev/photography%20/fluppyyettoscale.avif"
+width: 2500
+height: 1872
 caption: "A close up shot of a Red Velvet Mite, also known as true velvet mite or rain bug."
 exif:
   camera: "moto g64"
