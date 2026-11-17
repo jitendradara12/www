@@ -8,6 +8,7 @@ Uses only Python standard library.
 import os
 import json
 import base64
+import urllib.error
 import urllib.request
 import configparser
 import subprocess
@@ -23,16 +24,20 @@ GH_USER = 'jitendradara12'
 
 # ── Helpers ──
 
-def get_wakatime_api_key():
-    api_key = os.environ.get('WAKATIME_API_KEY')
-    if api_key:
-        return api_key.strip()
+def get_wakatime_token():
+    for env_var in ('WAKATIME_OAUTH_TOKEN', 'WAKATIME_API_KEY'):
+        token = os.environ.get(env_var, '').strip()
+        if token:
+            return token
     cfg_path = os.path.expanduser('~/.wakatime.cfg')
     if os.path.exists(cfg_path):
         c = configparser.ConfigParser()
         c.read(cfg_path)
-        if c.has_option('settings', 'api_key'):
-            return c.get('settings', 'api_key').strip()
+        for option in ('oauth_token', 'api_key'):
+            if c.has_option('settings', option):
+                token = c.get('settings', option).strip()
+                if token:
+                    return token
     return None
 
 
@@ -86,31 +91,58 @@ def format_relative_time(dt):
 
 # ── WakaTime Sync ──
 
+def warn_wakatime(msg):
+    """Emit a single-line GitHub Actions warning annotation for WakaTime sync failures."""
+    clean = ' '.join(str(msg).splitlines())
+    print(f"::warning title=WakaTime sync failed::{clean}")
+
+
 def sync_wakatime():
-    api_key = get_wakatime_api_key()
+    token = get_wakatime_token()
     out_file = os.path.join(DATA_DIR, 'wakatime.json')
-    if not api_key:
-        print("[wakatime] No API key found in WAKATIME_API_KEY or ~/.wakatime.cfg. Skipping.")
+    if not token:
+        warn_wakatime(
+            "No personal OAuth token (wakatime.com/oauth) found in "
+            "WAKATIME_OAUTH_TOKEN, WAKATIME_API_KEY, or ~/.wakatime.cfg. Skipping."
+        )
         return
 
-    b64 = base64.b64encode(api_key.encode()).decode()
-    auth_header = {'Authorization': f'Basic {b64}'}
+    b64 = base64.b64encode(token.encode()).decode()
+    auth_candidates = [
+        {'Authorization': f'Bearer {token}'},
+        {'Authorization': f'Basic {b64}'},
+    ]
 
-    try:
-        today_data = fetch_json(
-            'https://wakatime.com/api/v1/users/current/summaries?range=today',
-            auth_header
-        )
-        weekly_data = fetch_json(
-            'https://wakatime.com/api/v1/users/current/summaries?range=last_7_days',
-            auth_header
-        )
-    except Exception as e:
-        print(f"[wakatime] Error fetching API: {e}")
-        return
+    today_data = None
+    weekly_data = None
+    for i, auth_header in enumerate(auth_candidates):
+        try:
+            today_data = fetch_json(
+                'https://wakatime.com/api/v1/users/current/summaries?range=today',
+                auth_header
+            )
+            weekly_data = fetch_json(
+                'https://wakatime.com/api/v1/users/current/summaries?range=last_7_days',
+                auth_header
+            )
+            break
+        except urllib.error.HTTPError as e:
+            if e.code in (401, 403) and i == 0:
+                continue
+            if e.code in (401, 403):
+                warn_wakatime(
+                    f"API auth failed (HTTP {e.code}). Legacy API keys return 403 on /summaries; "
+                    "set WAKATIME_OAUTH_TOKEN or WAKATIME_API_KEY to a personal OAuth token from wakatime.com/oauth."
+                )
+            else:
+                warn_wakatime(f"Error fetching API: {str(e).replace(token, '[redacted]')}")
+            return
+        except Exception as e:
+            warn_wakatime(f"Error fetching API: {str(e).replace(token, '[redacted]')}")
+            return
 
-    if not today_data.get('data'):
-        print("[wakatime] No today data returned.")
+    if not isinstance(today_data, dict) or not today_data.get('data'):
+        warn_wakatime("No today data returned.")
         return
 
     day = today_data['data'][0]
@@ -236,8 +268,8 @@ def sync_github():
     payload = push['payload']
     repo_full = push['repo']['name']
     repo_name = repo_full.split('/')[1] if '/' in repo_full else repo_full
-    ref = payload.get('ref', '')
-    branch = ref[len('refs/heads/'):] if ref.startswith('refs/heads/') else ''
+    ref = payload.get('ref') or ''
+    branch = '' if ref.startswith('refs/tags/') else ref.removeprefix('refs/heads/')
     created_at = push.get('created_at')
 
     # Find HEAD SHA
