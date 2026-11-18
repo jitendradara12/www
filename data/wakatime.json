@@ -1,63 +1,10 @@
 {
-  "total_today": "6 hrs 36 mins",
-  "total_seconds": 23811.066,
-  "is_resting": false,
-  "projects": [
-    {
-      "name": "lazyportal",
-      "text": "4 hrs 1 min",
-      "percent": 60.9
-    },
-    {
-      "name": "www",
-      "text": "2 hrs 21 mins",
-      "percent": 35.8
-    },
-    {
-      "name": "temp",
-      "text": "11 mins",
-      "percent": 2.9
-    },
-    {
-      "name": "sastauser",
-      "text": "45 secs",
-      "percent": 0.2
-    },
-    {
-      "name": "omaconnect",
-      "text": "45 secs",
-      "percent": 0.2
-    }
-  ],
-  "editors": [
-    {
-      "name": "Firefox",
-      "text": "5 hrs 40 mins",
-      "percent": 85.8
-    },
-    {
-      "name": "Antigravity Desktop",
-      "text": "45 mins",
-      "percent": 11.4
-    },
-    {
-      "name": "Antigravity",
-      "text": "10 mins",
-      "percent": 2.6
-    },
-    {
-      "name": "Antigravity CLI",
-      "text": "43 secs",
-      "percent": 0.2
-    }
-  ],
-  "operating_systems": [
-    {
-      "name": "Linux",
-      "text": "6 hrs 36 mins",
-      "percent": 100.0
-    }
-  ],
+  "total_today": "0 secs",
+  "total_seconds": 0.0,
+  "is_resting": true,
+  "projects": [],
+  "editors": [],
+  "operating_systems": [],
   "languages": [
     {
       "name": "Nix",
@@ -69,9 +16,9 @@
     }
   ],
   "rollup_7d": {
-    "total": "36 hrs 43 mins",
-    "daily_average": "48 mins",
-    "total_seconds": 132181.97558
+    "total": "34 hrs 36 mins",
+    "daily_average": "54 mins",
+    "total_seconds": 124615.827
   },
-  "last_updated": "2026-11-17T15:25:37Z"
+  "last_updated": "2026-11-18T00:26:01Z"
 }
