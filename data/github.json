@@ -1,13 +1,13 @@
 {
-  "sha": "89bab403c6556dda4d2c5e0c7b0c563a6182a1aa",
-  "short_sha": "89bab40",
-  "message": "fix(templates): replace Hugo 0.169 RawSummary with 0.166-compatible S\u2026",
-  "repo": "jitendradara12/www",
-  "repo_name": "www",
+  "sha": "58d3ca71bae741ab6764e1311678ad30b2375e87",
+  "short_sha": "58d3ca7",
+  "message": "fix: make mute alerts switch instant with optimistic state",
+  "repo": "jitendradara12/lazyportal",
+  "repo_name": "lazyportal",
   "branch": "master",
-  "date": "2026-11-17T08:45:33Z",
-  "relative_time": "yesterday",
-  "commit_url": "https://github.com/jitendradara12/www/commit/89bab403c6556dda4d2c5e0c7b0c563a6182a1aa",
-  "repo_url": "https://github.com/jitendradara12/www",
-  "last_updated": "2026-11-18T14:59:54Z"
+  "date": "2026-11-18T12:26:29Z",
+  "relative_time": "17h ago",
+  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/58d3ca71bae741ab6764e1311678ad30b2375e87",
+  "repo_url": "https://github.com/jitendradara12/lazyportal",
+  "last_updated": "2026-11-19T05:41:16Z"
 }
