@@ -1,13 +1,13 @@
 {
-  "sha": "58d3ca71bae741ab6764e1311678ad30b2375e87",
-  "short_sha": "58d3ca7",
-  "message": "fix: make mute alerts switch instant with optimistic state",
+  "sha": "17b183ace13da8da5871f046bb1c147088778f6e",
+  "short_sha": "17b183a",
+  "message": "Separate labs from courses on Results marks view",
   "repo": "jitendradara12/lazyportal",
   "repo_name": "lazyportal",
   "branch": "master",
-  "date": "2026-11-18T12:26:29Z",
-  "relative_time": "17h ago",
-  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/58d3ca71bae741ab6764e1311678ad30b2375e87",
+  "date": "2026-11-18T14:45:40Z",
+  "relative_time": "yesterday",
+  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/17b183ace13da8da5871f046bb1c147088778f6e",
   "repo_url": "https://github.com/jitendradara12/lazyportal",
-  "last_updated": "2026-11-19T05:41:16Z"
+  "last_updated": "2026-11-20T00:13:12Z"
 }
