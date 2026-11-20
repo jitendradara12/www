@@ -1,13 +1,13 @@
 {
-  "sha": "17b183ace13da8da5871f046bb1c147088778f6e",
-  "short_sha": "17b183a",
-  "message": "Separate labs from courses on Results marks view",
+  "sha": "101ad95f28e872462b9362f0966d16b5979190d1",
+  "short_sha": "101ad95",
+  "message": "android: recover blank, stalled, or unmounted WebView on boot and war\u2026",
   "repo": "jitendradara12/lazyportal",
   "repo_name": "lazyportal",
   "branch": "master",
-  "date": "2026-11-18T14:45:40Z",
+  "date": "2026-11-18T15:31:42Z",
   "relative_time": "yesterday",
-  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/17b183ace13da8da5871f046bb1c147088778f6e",
+  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/101ad95f28e872462b9362f0966d16b5979190d1",
   "repo_url": "https://github.com/jitendradara12/lazyportal",
-  "last_updated": "2026-11-20T00:13:12Z"
+  "last_updated": "2026-11-20T14:48:38Z"
 }
