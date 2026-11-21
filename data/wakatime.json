@@ -1,10 +1,38 @@
 {
-  "total_today": "0 secs",
-  "total_seconds": 0.0,
-  "is_resting": true,
-  "projects": [],
-  "editors": [],
-  "operating_systems": [],
+  "total_today": "44 mins",
+  "total_seconds": 2687.373,
+  "is_resting": false,
+  "projects": [
+    {
+      "name": "temp",
+      "text": "44 mins",
+      "percent": 100.0
+    }
+  ],
+  "editors": [
+    {
+      "name": "Firefox",
+      "text": "26 mins",
+      "percent": 59.4
+    },
+    {
+      "name": "Antigravity Desktop",
+      "text": "15 mins",
+      "percent": 34.6
+    },
+    {
+      "name": "Antigravity",
+      "text": "2 mins",
+      "percent": 6.0
+    }
+  ],
+  "operating_systems": [
+    {
+      "name": "Linux",
+      "text": "44 mins",
+      "percent": 100.0
+    }
+  ],
   "languages": [
     {
       "name": "Nix",
@@ -16,9 +44,9 @@
     }
   ],
   "rollup_7d": {
-    "total": "32 hrs 4 mins",
-    "daily_average": "1 hr 5 mins",
-    "total_seconds": 115499.549
+    "total": "32 hrs 49 mins",
+    "daily_average": "55 mins",
+    "total_seconds": 118186.922
   },
-  "last_updated": "2026-11-20T23:36:52Z"
+  "last_updated": "2026-11-21T14:05:28Z"
 }
