@@ -1,13 +1,13 @@
 {
-  "sha": "101ad95f28e872462b9362f0966d16b5979190d1",
-  "short_sha": "101ad95",
-  "message": "android: recover blank, stalled, or unmounted WebView on boot and war\u2026",
+  "sha": "826ab03100bcf44cba3e4f872c7ecdf11da0e85c",
+  "short_sha": "826ab03",
+  "message": "android: fix grey-screen boot stalls, speed up cold start, and add bo\u2026",
   "repo": "jitendradara12/lazyportal",
   "repo_name": "lazyportal",
   "branch": "master",
-  "date": "2026-11-18T15:31:42Z",
+  "date": "2026-11-19T07:03:02Z",
   "relative_time": "yesterday",
-  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/101ad95f28e872462b9362f0966d16b5979190d1",
+  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/826ab03100bcf44cba3e4f872c7ecdf11da0e85c",
   "repo_url": "https://github.com/jitendradara12/lazyportal",
-  "last_updated": "2026-11-20T14:48:38Z"
+  "last_updated": "2026-11-21T05:22:49Z"
 }
