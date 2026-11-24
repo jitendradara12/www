@@ -1,13 +1,13 @@
 {
-  "sha": "f94d955cb17ce6edb69de2671a89c2c64af0168a",
-  "short_sha": "f94d955",
-  "message": "fix: legacy Android update banner and empty-semester CI fix (#39)",
+  "sha": "8039b15ddefe6d71c074acccfdcd74f8e2e628c4",
+  "short_sha": "8039b15",
+  "message": "test(attendance): align partially supported batch test with unchanged\u2026",
   "repo": "jitendradara12/lazyportal",
   "repo_name": "lazyportal",
-  "branch": "master",
-  "date": "2026-11-23T18:36:14Z",
-  "relative_time": "9h ago",
-  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/f94d955cb17ce6edb69de2671a89c2c64af0168a",
+  "branch": "fix/proxy-on-demand-attendance-details",
+  "date": "2026-11-24T08:08:18Z",
+  "relative_time": "8h ago",
+  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/8039b15ddefe6d71c074acccfdcd74f8e2e628c4",
   "repo_url": "https://github.com/jitendradara12/lazyportal",
-  "last_updated": "2026-11-24T03:44:14Z"
+  "last_updated": "2026-11-24T16:54:01Z"
 }

@@ -1,10 +1,68 @@
 {
-  "total_today": "0 secs",
-  "total_seconds": 0.0,
-  "is_resting": true,
-  "projects": [],
-  "editors": [],
-  "operating_systems": [],
+  "total_today": "3 hrs 57 mins",
+  "total_seconds": 14262.587,
+  "is_resting": false,
+  "projects": [
+    {
+      "name": "hex",
+      "text": "1 hr 17 mins",
+      "percent": 32.5
+    },
+    {
+      "name": "temp",
+      "text": "1 hr 17 mins",
+      "percent": 32.4
+    },
+    {
+      "name": "lazyportal",
+      "text": "50 mins",
+      "percent": 21.3
+    },
+    {
+      "name": "NixOS-Hyprland",
+      "text": "30 mins",
+      "percent": 12.7
+    },
+    {
+      "name": "sastauser",
+      "text": "2 mins",
+      "percent": 0.9
+    },
+    {
+      "name": "omaconnect",
+      "text": "22 secs",
+      "percent": 0.2
+    }
+  ],
+  "editors": [
+    {
+      "name": "Firefox",
+      "text": "3 hrs 28 mins",
+      "percent": 87.8
+    },
+    {
+      "name": "Antigravity Desktop",
+      "text": "25 mins",
+      "percent": 10.5
+    },
+    {
+      "name": "Opencode Cli",
+      "text": "2 mins",
+      "percent": 0.9
+    },
+    {
+      "name": "OpenCode",
+      "text": "1 min",
+      "percent": 0.8
+    }
+  ],
+  "operating_systems": [
+    {
+      "name": "Linux",
+      "text": "3 hrs 57 mins",
+      "percent": 100.0
+    }
+  ],
   "languages": [
     {
       "name": "Nix",
@@ -12,9 +70,9 @@
     }
   ],
   "rollup_7d": {
-    "total": "13 hrs 13 mins",
-    "daily_average": "49 mins",
-    "total_seconds": 47604.73
+    "total": "17 hrs 11 mins",
+    "daily_average": "50 mins",
+    "total_seconds": 61867.317
   },
-  "last_updated": "2026-11-24T03:44:13Z"
+  "last_updated": "2026-11-24T16:54:00Z"
 }
