@@ -1,10 +1,38 @@
 {
-  "total_today": "0 secs",
-  "total_seconds": 0.0,
-  "is_resting": true,
-  "projects": [],
-  "editors": [],
-  "operating_systems": [],
+  "total_today": "2 hrs 25 mins",
+  "total_seconds": 8715.033,
+  "is_resting": false,
+  "projects": [
+    {
+      "name": "t3code",
+      "text": "1 hr 54 mins",
+      "percent": 78.8
+    },
+    {
+      "name": "hex",
+      "text": "29 mins",
+      "percent": 20.6
+    },
+    {
+      "name": "lazyportal",
+      "text": "56 secs",
+      "percent": 0.7
+    }
+  ],
+  "editors": [
+    {
+      "name": "Firefox",
+      "text": "2 hrs 25 mins",
+      "percent": 100.0
+    }
+  ],
+  "operating_systems": [
+    {
+      "name": "Linux",
+      "text": "2 hrs 25 mins",
+      "percent": 100.0
+    }
+  ],
   "languages": [
     {
       "name": "Nix",
@@ -12,9 +40,9 @@
     }
   ],
   "rollup_7d": {
-    "total": "7 hrs 36 mins",
-    "daily_average": "16 mins",
-    "total_seconds": 27377.606
+    "total": "10 hrs 1 min",
+    "daily_average": "18 mins",
+    "total_seconds": 36092.639
   },
-  "last_updated": "2026-11-25T01:51:24Z"
+  "last_updated": "2026-11-25T16:42:06Z"
 }
