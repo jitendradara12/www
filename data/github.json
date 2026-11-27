@@ -1,13 +1,13 @@
 {
-  "sha": "aaff45e454877d3d499448077ff475efb8d2ba58",
-  "short_sha": "aaff45e",
-  "message": "fix(attendance): make background attendance detail sync transport-awa\u2026",
+  "sha": "f10d98b79aaaef665c8a8452f13fd5a509af7b4b",
+  "short_sha": "f10d98b",
+  "message": "fix: restore 55s proxy timeout, map 504s, and guard empty future term\u2026",
   "repo": "jitendradara12/lazyportal",
   "repo_name": "lazyportal",
   "branch": "master",
-  "date": "2026-11-24T08:12:36Z",
-  "relative_time": "17h ago",
-  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/aaff45e454877d3d499448077ff475efb8d2ba58",
+  "date": "2026-11-25T17:51:15Z",
+  "relative_time": "yesterday",
+  "commit_url": "https://github.com/jitendradara12/lazyportal/commit/f10d98b79aaaef665c8a8452f13fd5a509af7b4b",
   "repo_url": "https://github.com/jitendradara12/lazyportal",
-  "last_updated": "2026-11-25T01:51:25Z"
+  "last_updated": "2026-11-27T01:26:23Z"
 }
