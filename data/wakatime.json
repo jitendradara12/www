@@ -1,40 +1,35 @@
 {
-  "total_today": "1 hr 17 mins",
-  "total_seconds": 4653.893,
+  "total_today": "1 hr 24 mins",
+  "total_seconds": 5070.314,
   "is_resting": false,
   "projects": [
     {
-      "name": "pi",
-      "text": "42 mins",
-      "percent": 55.4
-    },
-    {
-      "name": "goodix-5e0a",
-      "text": "33 mins",
-      "percent": 43.0
+      "name": "nectarlink",
+      "text": "1 hr 9 mins",
+      "percent": 81.8
     },
     {
       "name": "lazyportal",
-      "text": "1 min",
-      "percent": 1.6
-    },
-    {
-      "name": "omaconnect",
-      "text": "2 secs",
-      "percent": 0.1
+      "text": "15 mins",
+      "percent": 18.2
     }
   ],
   "editors": [
     {
+      "name": "Antigravity Desktop",
+      "text": "50 mins",
+      "percent": 59.6
+    },
+    {
       "name": "Firefox",
-      "text": "1 hr 17 mins",
-      "percent": 100.0
+      "text": "34 mins",
+      "percent": 40.4
     }
   ],
   "operating_systems": [
     {
       "name": "Linux",
-      "text": "1 hr 17 mins",
+      "text": "1 hr 24 mins",
       "percent": 100.0
     }
   ],
@@ -45,9 +40,9 @@
     }
   ],
   "rollup_7d": {
-    "total": "17 hrs 26 mins",
-    "daily_average": "34 mins",
-    "total_seconds": 62803.259
+    "total": "20 hrs 4 mins",
+    "daily_average": "44 mins",
+    "total_seconds": 72295.655
   },
-  "last_updated": "2026-11-27T16:01:08Z"
+  "last_updated": "2026-11-28T00:59:24Z"
 }
